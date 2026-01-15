@@ -87,3 +87,50 @@ a { color: inherit; text-decoration: none; }
 .footer-sep {
   opacity: 0.5;
 }
+/* Logo link */
+.logo-link { color: inherit; text-decoration: none; }
+
+/* Hero küçük varyant (certificates sayfası) */
+.hero-small h1 { margin-bottom: 8px; }
+.hero-small p { margin-top: 0; }
+
+/* Footer link & ikonlar */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-sep { opacity: 0.5; }
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+}
+.footer-link:hover { text-decoration: underline; opacity: 1; }
+
+.footer-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 6px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.9;
+}
+.icon-btn:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
