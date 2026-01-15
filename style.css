@@ -1,0 +1,68 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: #0b0f14;
+  color: #e6edf3;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.logo { font-weight: 700; letter-spacing: .3px; }
+.links a { margin-left: 14px; opacity: .85; }
+.links a:hover { opacity: 1; }
+
+.hero { padding: 44px 0 18px; }
+.hero h1 { font-size: 44px; margin: 0 0 10px; }
+.hero p { margin: 0 0 18px; opacity: .85; line-height: 1.5; }
+.cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(46,160,67,.9);
+  border: 1px solid rgba(46,160,67,.7);
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.card {
+  margin: 18px 0;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.card h2 { margin: 0 0 12px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+
+.project {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.18);
+}
+.project h3 { margin: 0 0 6px; }
+.project p { margin: 0 0 10px; opacity: .85; line-height: 1.45; }
+.tags span {
+  display: inline-block; font-size: 12px;
+  padding: 5px 8px; margin-right: 6px; margin-bottom: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  opacity: .9;
+}
+
+.contact { list-style: none; padding: 0; margin: 0; }
+.contact li { padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,.10); }
+.contact li:last-child { border-bottom: 0; }
+
+.footer { opacity: .65; text-align: center; padding: 28px 0 10px; }
+.muted { opacity: .7; }
