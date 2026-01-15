@@ -66,3 +66,24 @@ a { color: inherit; text-decoration: none; }
 
 .footer { opacity: .65; text-align: center; padding: 28px 0 10px; }
 .muted { opacity: .7; }
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.footer-sep {
+  opacity: 0.5;
+}
