@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("y").textContent = new Date().getFullYear();
 /* =====================
    Dil (TR / EN) Sistemi
@@ -55,3 +56,4 @@ toggleBtn.addEventListener("click", () => {
 
 // Sayfa ilk açıldığında
 setLanguage("tr");
+});
