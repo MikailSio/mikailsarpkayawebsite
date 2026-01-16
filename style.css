@@ -80,24 +80,28 @@ a { color: inherit; text-decoration: none; }
 
 /* Genel ikon butonu */
 .icon-btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 38px;
-  height: 38px;
-  padding: 0 10px;
-  border-radius: 12px;
-  border: 1px solid var(--btn-border);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  border:1px solid var(--btn-border);
   background: var(--btn);
   color: var(--text);
-  cursor: pointer;
-  opacity: .95;
-  transition: transform .12s ease, opacity .12s ease;
+  opacity:.92;
+  transition: transform .12s ease, opacity .12s ease, background .12s ease;
 }
 
 .icon-btn:hover{
-  opacity: 1;
+  opacity:1;
   transform: translateY(-1px);
+}
+
+/* Klavye ile gezenler için net fokus */
+.icon-btn:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 /* =========================
