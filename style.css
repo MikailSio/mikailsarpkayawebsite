@@ -145,3 +145,63 @@ a { color: inherit; text-decoration: none; }
 .lang-btn:hover {
   opacity: 0.8;
 }
+/* =========================
+   Tema Sistemi (Koyu / Açık)
+   ========================= */
+
+/* Varsayılan: koyu tema */
+:root {
+  --bg: #0b1220;
+  --text: #e7eefc;
+  --card: #111a2e;
+  --muted: rgba(231, 238, 252, 0.7);
+  --border: rgba(231, 238, 252, 0.12);
+  --btn: rgba(231, 238, 252, 0.10);
+}
+
+/* Açık tema */
+:root[data-theme="light"] {
+  --bg: #f6f7fb;
+  --text: #111827;
+  --card: #ffffff;
+  --muted: rgba(17, 24, 39, 0.65);
+  --border: rgba(17, 24, 39, 0.12);
+  --btn: rgba(17, 24, 39, 0.08);
+}
+
+/* Sayfa genel renkler */
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Kartlar (senin class'ların farklıysa card kısmını uyarlayabiliriz) */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* Soluk metin */
+.muted {
+  color: var(--muted);
+}
+
+/* Tema butonu */
+.theme-toggle {
+  margin-left: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--btn);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
