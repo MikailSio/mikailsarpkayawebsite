@@ -24,7 +24,6 @@ I am currently pursuing advanced studies and continuously building projects and 
 ```markdown
 ## 📁 Website Structure
 
-```text
 /
 ├── index.html
 ├── certificates.html
