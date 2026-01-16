@@ -56,4 +56,35 @@ toggleBtn.addEventListener("click", () => {
 
 // Sayfa ilk açıldığında
 setLanguage("tr");
+// =========================
+// Tema (Koyu / Açık) Toggle
+// =========================
+(function () {
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+
+  const root = document.documentElement;
+
+  // Sayfa açılırken: kayıtlı tema varsa uygula
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") root.setAttribute("data-theme", "light");
+
+  // Buton ikonunu güncelle
+  function syncIcon() {
+    const isLight = root.getAttribute("data-theme") === "light";
+    btn.textContent = isLight ? "☀️" : "🌙";
+  }
+  syncIcon();
+
+  // Tıklandığında temayı değiştir ve kaydet
+  btn.addEventListener("click", () => {
+    const isLight = root.getAttribute("data-theme") === "light";
+    if (isLight) root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", "light");
+
+    localStorage.setItem("theme", root.getAttribute("data-theme") === "light" ? "light" : "dark");
+    syncIcon();
+  });
+})();
+   
 });
