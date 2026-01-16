@@ -83,37 +83,3 @@ Central reference for applications and collaborations
 
 This website is continuously evolving.
 New sections, projects, and improvements will be added over time.
-
-
-👆👆👆 **BURAYA KADAR OLAN HER ŞEYİ** 👆👆👆
-
----
-
-## 🔹 3. GitHub’a kaydet
-
-1️⃣ Metni **büyük boş editör alanına** yapıştır  
-2️⃣ En alta in  
-3️⃣ **Commit changes** butonuna bas  
-
-🎉 **Bitti. README eklendi.**
-
----
-
-## 🔍 Kontrol
-Repo ana sayfasına dön →  
-Dosyaların **üstünde otomatik README görünecek**.
-
----
-
-## 🎯 Tek cümlelik özet
-- Dosya adı: `README.md`  
-- İçerik: yukarıdaki **tam blok**  
-- Yer: repo ana dizini  
-
-İstersen bir sonraki adımda README’yi:
-- Türkçe
-- daha akademik
-- CV uyumlu
-- ya da startup tarzı
-
-hale de çevirebiliriz.
