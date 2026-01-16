@@ -21,9 +21,9 @@ I am currently pursuing advanced studies and continuously building projects and 
 
 ---
 
-```markdown
 ## 📁 Website Structure
 
+```text
 /
 ├── index.html
 ├── certificates.html
@@ -36,49 +36,53 @@ I am currently pursuing advanced studies and continuously building projects and 
 │       ├── android-chrome-512x512.png
 │       └── site.webmanifest
 ```
-🏆 Certificates Page
 
-The Certificates section includes verified certificates from platforms such as:
+---
 
-Coursera
+## 🏆 Certificates Page
 
-IBM
+The **Certificates** section includes verified certificates from platforms such as:
 
-Google
-
-University-backed online programs
+- Coursera
+- IBM
+- Google
+- University-backed online programs
 
 All certificates are showcased transparently and linked when possible.
 
-🚀 Technologies Used
+---
 
-HTML5
+## 🚀 Technologies Used
 
-CSS3
+- HTML5  
+- CSS3  
+- Responsive Web Design  
+- Git & GitHub  
+- Linux-based VPS deployment (Hetzner)
 
-Responsive Web Design
+---
 
-Git & GitHub
+## 🎯 Purpose of This Website
 
-Linux-based VPS deployment (Hetzner)
+- Personal portfolio  
+- Professional identity  
+- Certificate showcase  
+- Central reference for applications and collaborations
 
-🎯 Purpose of This Website
+---
 
-Personal portfolio
+## 📬 Contact & Links
 
-Professional identity
+- 🌍 Website: https://mikailsarpkaya.com  
+- 💼 GitHub: https://github.com/MikailSio  
 
-Certificate showcase
+---
 
-Central reference for applications and collaborations
+## 📌 Notes
 
-📬 Contact & Links
-
-🌍 Website: https://mikailsarpkaya.com
-
-💼 GitHub: https://github.com/MikailSio
-
-📌 Notes
-
-This website is continuously evolving.
+This website is continuously evolving.  
 New sections, projects, and improvements will be added over time.
+
+---
+
+⭐ If you find this project useful or inspiring, feel free to star the repository.
