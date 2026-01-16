@@ -23,7 +23,7 @@ I am currently pursuing advanced studies and continuously building projects and 
 
 ## 📁 Website Structure
 
-```text
+
 /
 ├── index.html
 ├── certificates.html
@@ -36,7 +36,7 @@ I am currently pursuing advanced studies and continuously building projects and 
 │       ├── android-chrome-512x512.png
 │       └── site.webmanifest
 
-```markdown
+
 🏆 Certificates Page
 
 The Certificates section includes verified certificates from platforms such as:
