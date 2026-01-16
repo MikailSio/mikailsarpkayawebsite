@@ -36,6 +36,7 @@ I am currently pursuing advanced studies and continuously building projects and 
 │       ├── android-chrome-512x512.png
 │       └── site.webmanifest
 
+
 🏆 Certificates Page
 
 The Certificates section includes verified certificates from platforms such as:
