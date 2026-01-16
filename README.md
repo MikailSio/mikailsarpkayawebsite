@@ -21,6 +21,7 @@ I am currently pursuing advanced studies and continuously building projects and 
 
 ---
 
+```markdown
 ## 📁 Website Structure
 
 ```text
@@ -35,8 +36,7 @@ I am currently pursuing advanced studies and continuously building projects and 
 │       ├── android-chrome-192x192.png
 │       ├── android-chrome-512x512.png
 │       └── site.webmanifest
-
-text```
+```
 🏆 Certificates Page
 
 The Certificates section includes verified certificates from platforms such as:
