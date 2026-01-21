@@ -211,3 +211,41 @@ a { color: inherit; text-decoration: none; }
 }
 
 .muted { color: var(--muted); }
+
+/* Header sosyal ikonlar */
+.social-icons{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 6px;
+}
+
+/* Proje kart başlığı + durum etiketi */
+.project-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:6px;
+}
+
+.pill{
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid var(--btn-border);
+  opacity:.9;
+  white-space: nowrap;
+}
+
+.pill.warn{
+  border-color: rgba(245, 158, 11, .6);
+}
+
+/* Proje butonları */
+.project-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
