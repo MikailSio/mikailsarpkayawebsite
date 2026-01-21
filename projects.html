@@ -3,121 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="projects.pageTitle">Projeler · Mikail Sarpkaya</title>
-  <meta name="description" content="Mikail Sarpkaya projeleri: AbcToHero ve diğer çalışmalar." />
+  <title>Projeler | Mikail Sarpkaya</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="/assets/favicon/favicon.ico">
-  <link rel="manifest" href="/assets/favicon/site.webmanifest">
-  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
-  <meta name="theme-color" content="#000000">
 </head>
 
-<body>
-  <body data-page="projects">
-  <header class="wrap">
-    <nav class="topnav">
-  <div class="nav-container">
-    <div class="nav-left">
-      <a class="brand" href="index.html">MikailSarpkaya</a>
+<body data-page="projects">
+  <nav class="topnav">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a class="brand" href="index.html">MikailSarpkaya</a>
+        <div class="social">
+          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+        </div>
+      </div>
 
-      <div class="social">
-        <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-        <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+      <div class="nav-right">
+        <div id="navPages" class="nav-pages"></div>
+        <button id="langToggle" class="chip" aria-label="Dili değiştir">EN</button>
+        <button id="themeToggle" class="chip" aria-label="Tema değiştir">☀️</button>
       </div>
     </div>
+  </nav>
 
-    <div class="nav-right">
-      <!-- Sayfa linkleri buraya JS ile gelecek -->
-      <div id="navPages" class="nav-pages"></div>
+  <main class="container">
+    <section class="hero">
+      <h1 data-i18n="nav.projects">Projeler</h1>
+      <p class="sub">Seçili projeler ve kısa özetler.</p>
+    </section>
 
-      <button id="langToggle" class="chip" data-i18n-aria="lang.aria">EN</button>
-      <button id="themeToggle" class="chip" data-i18n-aria="theme.aria">☀️</button>
+    <section class="grid" style="margin-top:18px;">
+      <article class="card" style="margin:0;">
+        <h2>AbcToHero</h2>
+        <p>İngilizce öğrenme odaklı web uygulaması. Admin panel mevcut, geliştime devam ediyor.</p>
+        <div class="tagrow">
+          <span class="tag">Python</span>
+          <span class="tag">Django</span>
+          <span class="tag">SQLite</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="https://abctohero.mikailsarpkaya.com" target="_blank" rel="noopener">Demo</a>
+          <a class="btn" href="https://github.com/MikailSio" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" style="margin:0;">
+        <h2>Diğer Projeler</h2>
+        <p>Yakında buraya yeni projeler eklenecek (case study + repo linkleriyle).</p>
+        <div class="tagrow">
+          <span class="tag">Automation</span>
+          <span class="tag">Data</span>
+          <span class="tag">Web</span>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">
+      <span data-i18n="footer">© MikailSarpkaya</span>
     </div>
-  </div>
-</nav>
-
-
-    <section class="hero hero-small">
-      <h1 data-i18n="projects.pageTitleH1">Projeler</h1>
-      <p data-i18n="projects.pageSubtitle">Öne çıkanlar + geliştirmekte olduklarım.</p>
-
-      <div class="cta">
-        <a class="btn" href="index.html" data-i18n="projects.backHome">Ana Sayfa</a>
-      </div>
-    </section>
-  </header>
-
-  <main class="wrap">
-    <section class="card">
-      <h2 data-i18n="projects.featured">Öne Çıkan</h2>
-
-      <div class="grid">
-        <article class="project">
-          <div class="project-head">
-            <h3>AbcToHero</h3>
-            <span class="pill warn" data-i18n="projects.status.dev">Geliştirme Aşamasında</span>
-          </div>
-
-          <p data-i18n="projects.abctohero.long">
-            İngilizce kelimeleri; zamanlar, modallar ve kalıplar altında örnek cümlelerle çalıştıran web uygulaması.
-            Django + Gunicorn + Nginx + Cloudflare altyapısıyla VPS üzerinde çalışıyor.
-          </p>
-
-          <div class="tags">
-            <span>Django</span><span>Python</span><span>Gunicorn</span><span>Nginx</span><span>VPS</span><span>Cloudflare</span>
-          </div>
-
-          <p class="project-actions">
-            <a class="btn ghost" href="https://www.abctohero.com" target="_blank" rel="noreferrer">Siteyi Aç →</a>
-          </p>
-
-          <p class="muted" data-i18n="projects.abctohero.note">
-            Not: Şu an sadece admin panel açık, kullanıcı arayüzü geliştirme aşamasında.
-          </p>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3 data-i18n="projects.scraping.title">Web Scraping & Veri Analizi</h3>
-            <span class="pill" data-i18n="projects.status.planned">Planlanıyor</span>
-          </div>
-
-          <p data-i18n="projects.scraping.desc">
-            IMDb benzeri kaynaklardan veri çekme, temizleme ve analiz akışları.
-          </p>
-          <div class="tags">
-            <span>BeautifulSoup</span><span>Pandas</span><span>Selenium</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3 data-i18n="projects.wordapp.title">Kelime Öğrenme Platformu (Genel)</h3>
-            <span class="pill" data-i18n="projects.status.planned">Planlanıyor</span>
-          </div>
-
-          <p data-i18n="projects.wordapp.desc">
-            Kişiselleştirilmiş kelime çalışma mantığı (liste seviyeleri, tekrar sistemi).
-          </p>
-          <div class="tags">
-            <span>Python</span><span>Web</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>© <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span></span>
-      <span class="footer-sep">•</span>
-      <a href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer.credly">🎓 Credly</a>
-    </footer>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
