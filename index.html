@@ -1,84 +1,31 @@
-:root {
-    --bg: #f9fafb;
-    --text: #1f2937;
-    --accent: #2563eb;
-    --card-bg: #ffffff;
-    --border: #e5e7eb;
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikail Sarpkaya | Ana Sayfa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="projeler.html">Projeler</a>
+            <a href="sertifikalar.html">Sertifikalar</a>
+        </div>
+    </nav>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    <div class="container" style="text-align: center;">
+        <img src="https://ui-avatars.com/api/?name=Mikail+Sarpkaya&background=2563eb&color=fff&size=150" style="border-radius: 50%; margin-bottom: 20px;">
+        <h1>Merhaba, Ben Mikail Sarpkaya</h1>
+        <p>Yazılım geliştirme tutkusuyla projeler üretiyorum. Web dünyasında modern çözümler tasarlıyorum.</p>
+        <div style="margin-top: 30px;">
+            <a href="projeler.html" style="background: var(--accent); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none;">Projelerimi Gör</a>
+        </div>
+    </div>
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Navigasyon */
-nav {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav a:hover { color: var(--accent); }
-
-/* Ana İçerik */
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-    flex: 1;
-}
-
-h1, h2 { margin-bottom: 20px; }
-
-/* Proje ve Sertifika Kartları */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #9ca3af;
-    font-size: 0.9rem;
-}
+    <footer>&copy; 2026 mikailsarpkaya.com</footer>
+    <script src="script.js"></script>
+</body>
+</html>
