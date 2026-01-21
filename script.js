@@ -102,6 +102,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       "cert.card.other.title": "Diğer",
       "cert.card.other.desc": "İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz."
+      "projects.pageTitle": "Projeler · Mikail Sarpkaya",
+      "projects.pageTitleH1": "Projeler",
+      "projects.pageSubtitle": "Öne çıkanlar + geliştirmekte olduklarım.",
+      "projects.backHome": "Ana Sayfa",
+      "projects.featured": "Öne Çıkan",
+      "projects.viewAll": "Tüm projeler",
+      "projects.status.dev": "Geliştirme Aşamasında",
+      "projects.status.planned": "Planlanıyor",
+      "projects.abctohero.desc": "İngilizce kelimeleri zamanlar, modallar ve kalıplarla çalıştıran web uygulaması (Django + VPS).",
+      "projects.abctohero.long": "İngilizce kelimeleri; zamanlar, modallar ve kalıplar altında örnek cümlelerle çalıştıran web uygulaması. Django + Gunicorn + Nginx + Cloudflare altyapısıyla VPS üzerinde çalışıyor.",
+      "projects.abctohero.note": "Not: Şu an sadece admin panel açık, kullanıcı arayüzü geliştirme aşamasında."
     },
 
     en: {
@@ -156,6 +167,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       "cert.card.other.title": "Other",
       "cert.card.other.desc": "We can add IBM, Google, Microsoft, etc."
+      "projects.pageTitle": "Projects · Mikail Sarpkaya",
+      "projects.pageTitleH1": "Projects",
+      "projects.pageSubtitle": "Featured + in-progress work.",
+      "projects.backHome": "Home",
+      "projects.featured": "Featured",
+      "projects.viewAll": "All projects",
+      "projects.status.dev": "In Development",
+      "projects.status.planned": "Planned",
+      "projects.abctohero.desc": "An English-learning web app that groups vocabulary by tenses, modals and phrases (Django + VPS).",
+      "projects.abctohero.long": "A vocabulary learning web app that groups examples under tenses, modals and phrases. Runs on a VPS with Django + Gunicorn + Nginx + Cloudflare.",
+      "projects.abctohero.note": "Note: Currently only the admin panel is open; the user interface is under development."
+
     }
   };
 
