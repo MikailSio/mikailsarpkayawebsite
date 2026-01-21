@@ -3,26 +3,24 @@
    - Theme (dark/light)
    - i18n (tr/en)
    - Footer year
-   ===================================================== */
+===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-
   /* ------------------------------
      Footer yılı otomatik güncelle
-     ------------------------------ */
+  ------------------------------ */
   const yearSpan = document.getElementById("y");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
   /* =====================================================
      TEMA SİSTEMİ (KOYU / AÇIK)
-     ===================================================== */
+  ===================================================== */
   const root = document.documentElement;
   const themeToggleBtn = document.getElementById("themeToggle");
 
   function setTheme(theme) {
     if (theme === "light") root.setAttribute("data-theme", "light");
     else root.removeAttribute("data-theme");
-
     localStorage.setItem("theme", theme);
     updateThemeIcon();
   }
@@ -47,11 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =====================================================
      DİL SİSTEMİ (TR / EN)
-     ===================================================== */
-
+  ===================================================== */
   const translations = {
     tr: {
+      "nav.home": "Ana Sayfa",
       "nav.projects": "Projeler",
+      "nav.projectsPage": "Projeler",
       "nav.about": "Hakkımda",
       "nav.contact": "İletişim",
       "nav.certificates": "Sertifikalarım",
@@ -62,7 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "hero.title": "AI & Software-Oriented Engineer",
       "hero.subtitle": "Elektrik-Elektronik Mühendisi · Veri Bilimi · Otomasyon · Web",
       "hero.cta.projects": "Projelerimi Gör",
+      "hero.cta.projectsPage": "Projelerimi Gör",
       "hero.cta.github": "GitHub",
+
+      "projects.pageTitle": "Projeler · Mikail Sarpkaya",
+      "projects.pageH1": "Projeler",
+      "projects.pageSub": "Öne çıkan çalışmalar ve planlanan projeler.",
 
       "projects.title": "Projeler",
       "projects.wordapp.title": "Kelime Öğrenme Platformu",
@@ -78,8 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       "contact.title": "İletişim",
       "contact.mail.label": "Mail:",
-      "contact.github.label": "GitHub:",
-      "contact.domain.label": "Domain:",
 
       "footer.credly": "🎓 Credly",
       "footer.name": "Mikail Sarpkaya",
@@ -89,34 +91,22 @@ document.addEventListener("DOMContentLoaded", () => {
       "cert.subtitle": "Doğrulanabilir rozetler ve sertifika bağlantıları.",
       "cert.cta.home": "Ana Sayfa",
       "cert.cta.credly": "Credly Profilim",
-
       "cert.section.credly": "Credly Rozetler",
       "cert.section.credly.desc": "Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.",
       "cert.card.credly.title": "Credly Badges",
       "cert.card.credly.desc": "Rozet koleksiyonum (doğrulama bağlantısı).",
       "cert.card.view": "Görüntüle",
-
       "cert.card.coursera.title": "Coursera",
       "cert.card.coursera.desc": "Coursera sertifikalarım (profil / doğrulama).",
       "cert.card.coursera.linkText": "Coursera Profil Linki (burayı değiştir)",
-
       "cert.card.other.title": "Diğer",
       "cert.card.other.desc": "İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz."
-      "projects.pageTitle": "Projeler · Mikail Sarpkaya",
-      "projects.pageTitleH1": "Projeler",
-      "projects.pageSubtitle": "Öne çıkanlar + geliştirmekte olduklarım.",
-      "projects.backHome": "Ana Sayfa",
-      "projects.featured": "Öne Çıkan",
-      "projects.viewAll": "Tüm projeler",
-      "projects.status.dev": "Geliştirme Aşamasında",
-      "projects.status.planned": "Planlanıyor",
-      "projects.abctohero.desc": "İngilizce kelimeleri zamanlar, modallar ve kalıplarla çalıştıran web uygulaması (Django + VPS).",
-      "projects.abctohero.long": "İngilizce kelimeleri; zamanlar, modallar ve kalıplar altında örnek cümlelerle çalıştıran web uygulaması. Django + Gunicorn + Nginx + Cloudflare altyapısıyla VPS üzerinde çalışıyor.",
-      "projects.abctohero.note": "Not: Şu an sadece admin panel açık, kullanıcı arayüzü geliştirme aşamasında."
     },
 
     en: {
+      "nav.home": "Home",
       "nav.projects": "Projects",
+      "nav.projectsPage": "Projects",
       "nav.about": "About",
       "nav.contact": "Contact",
       "nav.certificates": "Certificates",
@@ -127,7 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "hero.title": "AI & Software-Oriented Engineer",
       "hero.subtitle": "Electrical & Electronics Engineer · Data Science · Automation · Web",
       "hero.cta.projects": "View Projects",
+      "hero.cta.projectsPage": "View Projects",
       "hero.cta.github": "GitHub",
+
+      "projects.pageTitle": "Projects · Mikail Sarpkaya",
+      "projects.pageH1": "Projects",
+      "projects.pageSub": "Featured work and planned projects.",
 
       "projects.title": "Projects",
       "projects.wordapp.title": "Vocabulary Learning Platform",
@@ -143,8 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       "contact.title": "Contact",
       "contact.mail.label": "Email:",
-      "contact.github.label": "GitHub:",
-      "contact.domain.label": "Website:",
 
       "footer.credly": "🎓 Credly",
       "footer.name": "Mikail Sarpkaya",
@@ -154,31 +147,16 @@ document.addEventListener("DOMContentLoaded", () => {
       "cert.subtitle": "Verifiable badges and certificate links.",
       "cert.cta.home": "Home",
       "cert.cta.credly": "My Credly Profile",
-
       "cert.section.credly": "Credly Badges",
       "cert.section.credly.desc": "You can view and verify my badges on Credly.",
       "cert.card.credly.title": "Credly Badges",
       "cert.card.credly.desc": "My badge collection (verification link).",
       "cert.card.view": "Open",
-
       "cert.card.coursera.title": "Coursera",
       "cert.card.coursera.desc": "My Coursera certificates (profile / verification).",
       "cert.card.coursera.linkText": "Coursera Profile Link (replace this)",
-
       "cert.card.other.title": "Other",
       "cert.card.other.desc": "We can add IBM, Google, Microsoft, etc."
-      "projects.pageTitle": "Projects · Mikail Sarpkaya",
-      "projects.pageTitleH1": "Projects",
-      "projects.pageSubtitle": "Featured + in-progress work.",
-      "projects.backHome": "Home",
-      "projects.featured": "Featured",
-      "projects.viewAll": "All projects",
-      "projects.status.dev": "In Development",
-      "projects.status.planned": "Planned",
-      "projects.abctohero.desc": "An English-learning web app that groups vocabulary by tenses, modals and phrases (Django + VPS).",
-      "projects.abctohero.long": "A vocabulary learning web app that groups examples under tenses, modals and phrases. Runs on a VPS with Django + Gunicorn + Nginx + Cloudflare.",
-      "projects.abctohero.note": "Note: Currently only the admin panel is open; the user interface is under development."
-
     }
   };
 
@@ -186,19 +164,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentLang = localStorage.getItem("lang") || "tr";
 
   function applyTranslations(lang) {
-    // 1) textContent çevirisi
+    // 1) textContent çevirisi + opsiyonel attribute çevirisi
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
-      const attr = el.getAttribute("data-i18n-attr"); // varsa attribute çevirisi
-
+      const attr = el.getAttribute("data-i18n-attr");
       const value = translations?.[lang]?.[key];
       if (!value) return;
 
-      if (attr) {
-        el.setAttribute(attr, value);
-      } else {
-        el.textContent = value;
-      }
+      if (attr) el.setAttribute(attr, value);
+      else el.textContent = value;
     });
 
     // 2) Lang butonu üstündeki yazı (TR iken EN yazsın)
