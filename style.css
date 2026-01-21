@@ -437,6 +437,12 @@ header.wrap{
     height: 14px;
   }
 }
+@media (max-width:720px){
+  .links{
+    overflow-x:auto;
+    white-space: nowrap;
+  }
+}
 /* ===== MOBILE FIX (header tek satır + center) ===== */
 @media (max-width: 720px){
 
