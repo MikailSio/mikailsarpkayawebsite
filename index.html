@@ -1,215 +1,156 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mikail Sarpkaya</title>
   <meta name="description" content="Mikail Sarpkaya - AI & Software-Oriented Engineer. Portfolio, projects, and contact." />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=7" />
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
   <meta name="theme-color" content="#000000">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <!-- ================= HEADER ================= -->
   <header class="wrap">
     <nav class="nav">
-      <div class="logo">MikailSarpkaya</div>
+      <!-- LEFT -->
+      <div class="nav-left">
+        <a class="logo" href="index.html">MikailSarpkaya</a>
 
-      <div class="links">
-        <a href="projects.html" data-i18n="nav.projects">Projeler</a>
-        <a href="#about" data-i18n="nav.about">Hakkımda</a>
-        <a href="#contact" data-i18n="nav.contact">İletişim</a>
-        <a href="certificates.html" data-i18n="nav.certificates">Sertifikalarım</a>
-
-        <!-- Sağ üst aksiyonlar -->
-        <div class="nav-actions">
-          <!-- Tema Değiştirici (Koyu / Açık) -->
-          <button
-            id="themeToggle"
-            class="icon-btn"
-            type="button"
-            data-i18n="theme.aria"
-            data-i18n-attr="aria-label"
-            aria-label="Tema değiştir"
-            title="Koyu / Açık Tema"
-          >🌙</button>
-
-          <!-- Dil Değiştirici -->
-          <button
-            id="langToggle"
-            class="icon-btn"
-            data-i18n="lang.aria"
-            data-i18n-attr="aria-label"
-            aria-label="Dili değiştir"
-          >EN</button>
-          <!-- Sosyal ikonlar (footer yerine header) -->
-        <div class="social-icons" aria-label="Sosyal bağlantılar">
-          <a class="icon-btn"
-             href="https://github.com/MikailSio"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 7.53c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.95.68 1.91 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.48A10.05 10.05 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+        <div class="social">
+          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5H4.5V24H.5V8.5zM8.5 8.5H12.3V10.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V24h-4V15.5c0-2.03-.04-4.65-2.83-4.65-2.83 0-3.27 2.21-3.27 4.5V24h-4V8.5z"/>
             </svg>
           </a>
-        
-          <a class="icon-btn"
-             href="https://www.linkedin.com/in/mikailsarpkaya/"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.13zM3.56 20.45h3.56V9H3.56v11.45z"/>
+
+          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55 0-.27-.01-.98-.02-1.92-3.2.7-3.88-1.55-3.88-1.55-.52-1.33-1.27-1.68-1.27-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.72-1.54-2.56-.29-5.25-1.28-5.25-5.72 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.45-2.69 5.42-5.26 5.71.41.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .3.2.65.79.54 4.56-1.53 7.85-5.86 7.85-10.96C23.5 5.74 18.27.5 12 .5z"/>
             </svg>
           </a>
-        
-          <a class="icon-btn"
-             href="https://www.kaggle.com/mikailsarpkaya"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Kaggle">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path fill="currentColor" d="M7 4h3v7.2L15.2 4H19l-5.5 7 5.8 9h-3.7L12 14.3 10 16.6V20H7V4z"/>
+
+          <a class="icon" href="https://www.kaggle.com/mikailsarpkaya" target="_blank" rel="noreferrer" aria-label="Kaggle" title="Kaggle">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 3h4v8l6-8h5l-7.4 9.4L21 21h-5.2l-5.8-6.9V21H6V3z"/>
             </svg>
           </a>
         </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="nav-right">
+        <div class="links">
+          <a class="nav-cta" href="https://abctohero.com" target="_blank" rel="noreferrer" data-i18n="nav.abctohero">AbcToHero</a>
+          <a href="certificates.html" data-i18n="nav.certificates">Certificates</a>
+          <a href="projects.html" data-i18n="nav.projects">Projects</a>
+	  <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="toggles">
+          <button id="langToggle" class="chip" type="button" aria-label="Change language">EN</button>
+          <button id="themeToggle" class="chip" type="button" aria-label="Toggle theme">🌙</button>
         </div>
       </div>
     </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-      <h1 data-i18n="hero.title">AI & Software-Oriented Engineer</h1>
-
-      <p data-i18n="hero.subtitle">
-        Elektrik-Elektronik Mühendisi · Veri Bilimi ·· Otomasyon · Web
-      </p>
-
-      <div class="cta">
-        <a class="btn" href="#projects" data-i18n="hero.cta.projects">Projelerimi Gör</a>
-
-        <a
-          class="btn ghost"
-          href="https://github.com/MikailSio"
-          target="_blank"
-          rel="noreferrer"
-          data-i18n="hero.cta.github"
-        >GitHub</a>
-      </div>
-    </section>
   </header>
 
-  <!-- ================= MAIN ================= -->
+  <!-- ================= HERO ================= -->
   <main class="wrap">
+    <section class="hero">
+      <!-- Ana sayfada isim başlık yok: meslek başlığı büyük -->
+      <h1 class="hero-title" data-i18n="hero.title">AI & Software-Oriented Engineer</h1>
 
-    <!-- PROJELER -->
+      <p class="meta" data-i18n="hero.meta">
+        Electrical-Electronics Engineer · Data Science · Automation · Web
+      </p>
+    </section>
+
+    <!-- ================= PROJECTS (HOME PREVIEW) ================= -->
     <section id="projects" class="card">
-  <h2 data-i18n="projects.title">Projeler</h2>
+      <h2 data-i18n="home.projectsH">Projects</h2>
 
-  <div class="grid">
-    <article class="project">
-      <div class="project-head">
-        <h3>AbcToHero</h3>
-        <span class="pill warn" data-i18n="projects.status.dev">Geliştirme Aşamasında</span>
-      </div>
+      <article class="card project-card" style="margin-top:14px;">
+        <span class="badge" data-i18n="home.badgeDev">In Development</span>
 
-      <p data-i18n="projects.abctohero.desc">
-        İngilizce kelimeleri zamanlar, modallar ve kalıplarla çalıştıran web uygulaması (Django + VPS).
+        <h3 style="margin:0 0 6px;">AbcToHero</h3>
+        <p style="margin:0; opacity:.9;" data-i18n="home.abcDesc">
+          English learning web app that practices vocabulary, tenses, modals and patterns (Django + VPS).
+        </p>
+
+        <div class="tags" aria-label="Tech stack">
+          <span class="tag">Django</span>
+          <span class="tag">Python</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">VPS</span>
+          <span class="tag">Cloudflare</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://abctohero.com" target="_blank" rel="noreferrer">
+            🌐 abctohero.com
+          </a>
+          <a class="btn" href="projects.html" data-i18n="home.allProjects">All projects</a>
+        </div>
+      </article>
+
+      <p style="margin-top:12px; color: var(--muted);" data-i18n="home.note">
+        Note: I’m organizing project details on a separate page.
       </p>
+    </section>
 
-      <div class="tags">
-        <span>Django</span><span>Python</span><span>Nginx</span><span>VPS</span><span>Cloudflare</span>
-      </div>
+<!-- ================= ABOUT ================= -->
+<section id="about" class="card">
+  <h2 data-i18n="about.h">About</h2>
 
-      <p class="project-actions">
-        <a class="btn ghost" href="https://www.abctohero.com" target="_blank" rel="noreferrer">
-          AbcToHero →
-        </a>
-        <a class="btn" href="projects.html" data-i18n="projects.viewAll">Tüm projeler</a>
-      </p>
-    </article>
-  </div>
-
-  <p class="muted" data-i18n="projects.note">
-    Not: Projeleri ayrı sayfada daha detaylı toparlıyorum.
+  <p data-i18n="about.text">
+    I’m an Electrical & Electronics Engineer building projects in software, data science, and AI.
+    I focus on Python-based automation, data processing/analytics pipelines, and web systems.
+    My goal is to build practical, maintainable solutions that can be shipped to production.
   </p>
 </section>
 
-    <!-- HAKKIMDA -->
-    <section id="about" class="card">
-      <h2 data-i18n="about.title">Hakkımda</h2>
-      <p data-i18n="about.text">
-        Elektrik-Elektronik Mühendisiyim. Yazılım, veri bilimi ve yapay zeka alanlarında
-        projeler geliştiriyorum. Özellikle Python tabanlı otomasyon, veri işleme ve
-        web sistemleriyle ilgileniyorum.
-      </p>
-      <!-- TODO: İstersen buraya kısa “Skills” listesi ekleyebiliriz -->
-    </section>
-
-    <!-- İLETİŞİM -->
+    <!-- ================= CONTACT ================= -->
     <section id="contact" class="card">
-      <h2 data-i18n="contact.title">İletişim</h2>
-      <ul class="contact">
-        <li>
-          <strong data-i18n="contact.mail.label">Mail:</strong>
+      <h2 data-i18n="contact.h">Contact</h2>
+
+      <div class="contact-row">
+        <span class="contact-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
+          </svg>
+        </span>
+        <div>
+          <span data-i18n="contact.emailLabel">Email</span>:
           <a href="mailto:mikailsarpkaya09@gmail.com">mikailsarpkaya09@gmail.com</a>
-        </li>
-      </ul>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3.9 12a5 5 0 0 1 5-5h3v2h-3a3 3 0 0 0 0 6h3v2h-3a5 5 0 0 1-5-5zm7.1 1h2v-2h-2v2zm4-6h-3V5h3a5 5 0 0 1 0 10h-3v-2h3a3 3 0 0 0 0-6z"/>
+          </svg>
+        </span>
+        <div>
+          <span data-i18n="contact.webLabel">Website</span>:
+          <a href="https://mikailsarpkaya.com" target="_blank" rel="noreferrer">mikailsarpkaya.com</a>
+        </div>
+      </div>
     </section>
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <span>© <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span></span>
-
-      <span class="footer-sep">•</span>
-
-      <a
-        href="https://www.credly.com/users/mikailsarpkaya/badges#credly"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="footer-link"
-        data-i18n="footer.credly"
-      >🎓 Credly</a>
-
-  <a class="icon-btn"
-     href="https://github.com/MikailSio"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="GitHub">
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 7.53c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.95.68 1.91 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.48A10.05 10.05 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-    </svg>
-  </a>
-
-  <a class="icon-btn"
-     href="https://www.linkedin.com/in/mikailsarpkaya/"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="LinkedIn">
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.13zM3.56 20.45h3.56V9H3.56v11.45z"/>
-    </svg>
-  </a>
-
-  <a class="icon-btn"
-     href="https://www.kaggle.com/mikailsarpkaya"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Kaggle">
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <path fill="currentColor" d="M7 4h3v7.2L15.2 4H19l-5.5 7 5.8 9h-3.7L12 14.3 10 16.6V20H7V4z"/>
-    </svg>
-  </a>
-
-</div>
-    </footer>
   </main>
 
-  <script src="script.js"></script>
+  <!-- ================= FOOTER ================= -->
+  <footer class="wrap footer">
+    © <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span>
+  </footer>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>
