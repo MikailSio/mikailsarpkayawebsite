@@ -14,39 +14,28 @@
 
 <body>
   <header class="wrap">
-    <nav class="nav">
-      <div class="logo">
-        <a class="logo-link" href="index.html">MikailSarpkaya</a>
-      </div>
+    <nav class="topnav">
+  <div class="nav-container">
+    <a class="brand" href="index.html">MikailSarpkaya</a>
 
-      <div class="links">
-        <a href="index.html#projects" data-i18n="nav.projects">Projeler</a>
-        <a href="index.html#about" data-i18n="nav.about">Hakkımda</a>
-        <a href="index.html#contact" data-i18n="nav.contact">İletişim</a>
-        <a href="certificates.html" aria-current="page" data-i18n="nav.certificates">Sertifikalarım</a>
+    <div class="nav-links">
+      <a href="projects.html" data-i18n="nav.projects">Projeler</a>
+      <a href="index.html#about" data-i18n="nav.about">Hakkımda</a>
+      <a href="index.html#contact" data-i18n="nav.contact">İletişim</a>
+      <a href="certificates.html" data-i18n="nav.certificates">Sertifikalarım</a>
+    </div>
 
-        <!-- Sağ üst aksiyonlar (index ile aynı) -->
-        <div class="nav-actions">
-          <button
-            id="themeToggle"
-            class="icon-btn"
-            type="button"
-            data-i18n="theme.aria"
-            data-i18n-attr="aria-label"
-            aria-label="Tema değiştir"
-            title="Koyu / Açık Tema"
-          >🌙</button>
+    <div class="nav-actions">
+      <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+      <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
 
-          <button
-            id="langToggle"
-            class="icon-btn"
-            data-i18n="lang.aria"
-            data-i18n-attr="aria-label"
-            aria-label="Dili değiştir"
-          >EN</button>
-        </div>
-      </div>
-    </nav>
+      <button id="langToggle" class="chip" aria-label="Dili değiştir">EN</button>
+      <button id="themeToggle" class="chip" aria-label="Tema değiştir">☀️</button>
+    </div>
+  </div>
+</nav>
+
 
     <section class="hero hero-small">
       <h1 data-i18n="cert.title">Sertifikalarım</h1>
