@@ -142,3 +142,41 @@ footer {
   .nav-links{ justify-content: flex-start; }
   .nav-actions{ justify-content: flex-start; }
 }
+/* ===== NEW NAV LAYOUT ===== */
+nav { background:#fff; border-bottom:1px solid var(--border); padding: 14px 0; position: sticky; top:0; z-index:100; }
+
+.nav-container{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+}
+
+.nav-left{ display:flex; align-items:center; gap:12px; }
+.brand{ font-weight:700; text-decoration:none; color:var(--text); }
+
+.social{ display:flex; align-items:center; gap:10px; }
+
+.nav-right{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+.nav-pages{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+
+.icon, .chip{
+  text-decoration:none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  background: #fff;
+  cursor: pointer;
+}
+
+.icon:hover, .chip:hover{ border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 780px){
+  .nav-container{ flex-direction: column; align-items: stretch; }
+  .nav-right{ justify-content:flex-start; }
+}
