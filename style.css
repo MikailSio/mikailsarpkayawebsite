@@ -569,3 +569,8 @@ header.wrap{
     max-width: 520px !important;
   }
 }
+@media (max-width: 720px){
+  .wrap{
+    width: calc(100% - 20px) !important; /* 32px yerine 20px */
+  }
+}
