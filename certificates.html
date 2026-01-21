@@ -2,65 +2,62 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sertifikalar | Mikail Sarpkaya</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Sertifikalarım · Mikail Sarpkaya</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="/assets/favicon/favicon.ico">
 </head>
 
 <body data-page="certificates">
-  <nav class="topnav">
+  <nav>
     <div class="nav-container">
       <div class="nav-left">
-        <a class="brand" href="index.html">MikailSarpkaya</a>
+        <a class="logo" href="index.html">MikailSarpkaya</a>
         <div class="social">
-          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-          <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+          <a class="btn-icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a class="btn-icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a class="btn-icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
         </div>
       </div>
 
       <div class="nav-right">
-        <div id="navPages" class="nav-pages"></div>
-        <button id="langToggle" class="chip" aria-label="Dili değiştir">EN</button>
-        <button id="themeToggle" class="chip" aria-label="Tema değiştir">☀️</button>
+        <div id="navPages"></div>
+        <button id="langToggle" class="pill" aria-label="Dili değiştir">EN</button>
+        <button id="themeToggle" class="pill" aria-label="Tema değiştir">☀️</button>
       </div>
     </div>
   </nav>
 
   <main class="container">
     <section class="hero">
-      <h1 data-i18n="nav.certificates">Sertifikalarım</h1>
-      <p class="sub">Seçili sertifikalar ve doğrulama linkleri.</p>
+      <h1 data-i18n="cert.h1">Sertifikalarım</h1>
+      <p class="sub" data-i18n="cert.sub">Doğrulanabilir rozetler ve sertifika bağlantıları.</p>
     </section>
 
-    <section class="grid" style="margin-top:18px;">
-      <article class="card" style="margin:0;">
-        <h2>IBM / Coursera</h2>
-        <p>Uygulamalı yapay zeka ve yazılım odaklı sertifikalar.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#" target="_blank" rel="noopener">Verify</a>
-          <a class="btn" href="#" target="_blank" rel="noopener">Profile</a>
-        </div>
-      </article>
+    <section class="card">
+      <h2 data-i18n="cert.credlyTitle">Credly Rozetler</h2>
+      <p data-i18n="cert.credlyDesc">Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.</p>
 
-      <article class="card" style="margin:0;">
-        <h2>Credly</h2>
-        <p>Rozetler ve doğrulamalar (varsa link ekle).</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#" target="_blank" rel="noopener">Credly</a>
-        </div>
-      </article>
+      <div class="actions">
+        <a class="btn primary" href="https://www.credly.com" target="_blank" rel="noopener" data-i18n="cert.view">Görüntüle</a>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h2>Coursera</h2>
+        <p>Coursera sertifikalarım (profil / doğrulama).</p>
+        <p style="color:var(--muted)">Coursera Profil Linki (burayı değiştir)</p>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h2>Diğer</h2>
+        <p>İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz.</p>
+      </div>
     </section>
-
-    <div class="footer">
-      <span data-i18n="footer">© MikailSarpkaya</span>
-    </div>
   </main>
 
-  <script src="script.js" defer></script>
-</body>
-</html>
+  <footer class="footer">
+    <span>© <span id="y">2026</span> Mikail Sarpkaya</span>
+  </footer>
 
   <script src="script.js"></script>
 </body>
