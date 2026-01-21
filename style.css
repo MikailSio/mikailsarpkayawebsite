@@ -538,3 +538,34 @@ header.wrap{
     align-items: flex-start !important;
   }
 }
+/* ===== MOBILE: içerikleri ortala ve kartları full genişlik yap ===== */
+@media (max-width: 720px){
+
+  /* Ana içerik ortalı kolon */
+  main.wrap{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* Hero ve tüm kartlar mobilde tam genişlik + ortalı */
+  .hero,
+  .card,
+  .page-head{
+    width: 100% !important;
+    max-width: 520px !important;   /* istersen 480 yap */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* İçeriği biraz daha dengeli yap */
+  .hero{
+    text-align: center !important;
+  }
+
+  /* Kart içindeki küçük iç-kartlar da genişlesin */
+  .project-card{
+    width: 100% !important;
+    max-width: 520px !important;
+  }
+}
