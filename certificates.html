@@ -3,112 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="cert.pageTitle">Sertifikalarım · Mikail Sarpkaya</title>
-  <meta name="description" content="Mikail Sarpkaya sertifikalar, rozetler ve doğrulama bağlantıları (Credly, Coursera vb.)." />
+  <title>Sertifikalar | Mikail Sarpkaya</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="/assets/favicon/favicon.ico">
-  <link rel="manifest" href="/assets/favicon/site.webmanifest">
-  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
-  <meta name="theme-color" content="#000000">
 </head>
 
-<body>
-  <body data-page="certificates">
-  <header class="wrap">
-    <nav class="topnav">
+<body data-page="certificates">
+  <nav class="topnav">
     <div class="nav-container">
-    <div class="nav-left">
-      <a class="brand" href="index.html">MikailSarpkaya</a>
+      <div class="nav-left">
+        <a class="brand" href="index.html">MikailSarpkaya</a>
+        <div class="social">
+          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+        </div>
+      </div>
 
-      <div class="social">
-        <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-        <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+      <div class="nav-right">
+        <div id="navPages" class="nav-pages"></div>
+        <button id="langToggle" class="chip" aria-label="Dili değiştir">EN</button>
+        <button id="themeToggle" class="chip" aria-label="Tema değiştir">☀️</button>
       </div>
     </div>
+  </nav>
 
-    <div class="nav-right">
-      <!-- Sayfa linkleri buraya JS ile gelecek -->
-      <div id="navPages" class="nav-pages"></div>
+  <main class="container">
+    <section class="hero">
+      <h1 data-i18n="nav.certificates">Sertifikalarım</h1>
+      <p class="sub">Seçili sertifikalar ve doğrulama linkleri.</p>
+    </section>
 
-      <button id="langToggle" class="chip" data-i18n-aria="lang.aria">EN</button>
-      <button id="themeToggle" class="chip" data-i18n-aria="theme.aria">☀️</button>
+    <section class="grid" style="margin-top:18px;">
+      <article class="card" style="margin:0;">
+        <h2>IBM / Coursera</h2>
+        <p>Uygulamalı yapay zeka ve yazılım odaklı sertifikalar.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#" target="_blank" rel="noopener">Verify</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Profile</a>
+        </div>
+      </article>
+
+      <article class="card" style="margin:0;">
+        <h2>Credly</h2>
+        <p>Rozetler ve doğrulamalar (varsa link ekle).</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#" target="_blank" rel="noopener">Credly</a>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">
+      <span data-i18n="footer">© MikailSarpkaya</span>
     </div>
-  </div>
-</nav>
-
-
-    <section class="hero hero-small">
-      <h1 data-i18n="cert.title">Sertifikalarım</h1>
-      <p data-i18n="cert.subtitle">Doğrulanabilir rozetler ve sertifika bağlantıları.</p>
-
-      <div class="cta">
-        <a class="btn" href="index.html" data-i18n="cert.cta.home">Ana Sayfa</a>
-        <a
-          class="btn ghost"
-          href="https://www.credly.com/users/mikailsarpkaya/badges#credly"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-i18n="cert.cta.credly"
-        >Credly Profilim</a>
-      </div>
-    </section>
-  </header>
-
-  <main class="wrap">
-    <section class="card">
-      <h2 data-i18n="cert.section.credly">Credly Rozetler</h2>
-      <p class="muted" data-i18n="cert.section.credly.desc">
-        Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.
-      </p>
-
-      <div class="grid">
-        <article class="project">
-          <h3 data-i18n="cert.card.credly.title">Credly Badges</h3>
-          <p data-i18n="cert.card.credly.desc">Rozet koleksiyonum (doğrulama bağlantısı).</p>
-          <div class="tags">
-            <span>Credly</span><span>Verification</span>
-          </div>
-          <p style="margin-top:12px;">
-            <a class="btn" href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" rel="noopener noreferrer"
-               data-i18n="cert.card.view">
-              Görüntüle
-            </a>
-          </p>
-        </article>
-
-        <article class="project">
-          <h3 data-i18n="cert.card.coursera.title">Coursera</h3>
-          <p data-i18n="cert.card.coursera.desc">Coursera sertifikalarım (profil / doğrulama).</p>
-          <div class="tags">
-            <span>Coursera</span><span>Certificates</span>
-          </div>
-          <p style="margin-top:12px;">
-            <!-- TODO: Coursera profil linkini buraya koy -->
-            <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer"
-               data-i18n="cert.card.coursera.linkText">
-              Coursera Profil Linki (burayı değiştir)
-            </a>
-          </p>
-        </article>
-
-        <article class="project">
-          <h3 data-i18n="cert.card.other.title">Diğer</h3>
-          <p data-i18n="cert.card.other.desc">İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz.</p>
-          <div class="tags">
-            <span>Professional</span><span>Learning</span>
-          </div>
-          <!-- TODO: Yeni sertifika kartları ekleyebilirsin -->
-        </article>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>© <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span></span>
-      <span class="footer-sep">•</span>
-      <a href="certificates.html" class="footer-link" data-i18n="nav.certificates">Sertifikalarım</a>
-    </footer>
   </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
 
   <script src="script.js"></script>
 </body>
