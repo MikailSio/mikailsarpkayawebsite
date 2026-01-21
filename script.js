@@ -1,120 +1,382 @@
-// ================== YEAR ==================
-const y = document.getElementById("y");
-if (y) y.textContent = new Date().getFullYear();
-
-// ================== THEME ==================
-const themeToggle = document.getElementById("themeToggle");
-const savedTheme = localStorage.getItem("theme") || "dark";
-document.documentElement.dataset.theme = savedTheme;
-
-function syncThemeBtn() {
-  if (!themeToggle) return;
-  const t = document.documentElement.dataset.theme;
-  themeToggle.textContent = t === "dark" ? "🌙" : "☀️";
-}
-syncThemeBtn();
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const current = document.documentElement.dataset.theme;
-    const next = current === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
-    syncThemeBtn();
-  });
+:root {
+  --bg: #0b0f14;
+  --text: #e8eef6;
+  --muted: rgba(232,238,246,.72);
+  --card: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.12);
 }
 
-// ================== I18N ==================
-const translations = {
-  en: {
-    "nav.home": "Home",
-    "nav.projects": "Projects",
-    "nav.certificates": "Certificates",
-    "nav.contact": "Contact",
-    "nav.abctohero": "AbcToHero",
-	"nav.about": "About",
-	"about.h": "About",
-	"about.text": "I’m an Electrical & Electronics Engineer building projects in software, data science, and AI. I focus on Python-based automation, data processing/analytics pipelines, and web systems. My goal is to build practical, maintainable solutions that can be shipped to production.",
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #0b0f14;
+  --muted: rgba(11,15,20,.65);
+  --card: rgba(0,0,0,.05);
+  --border: rgba(0,0,0,.12);
+}
 
-    "hero.title": "AI & Software-Oriented Engineer",
-    "hero.meta": "Electrical-Electronics Engineer · Data Science · Automation · Web",
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
 
-    "home.projectsH": "Projects",
-    "home.badgeDev": "In Development",
-    "home.abcDesc": "English learning web app that practices vocabulary, tenses, modals and patterns (Django + VPS).",
-    "home.allProjects": "All projects",
-    "home.note": "Note: I’m organizing project details on a separate page.",
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.06), transparent 60%),
+    radial-gradient(700px 500px at 80% 0%, rgba(255,255,255,0.04), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
 
-    "contact.h": "Contact",
-    "contact.emailLabel": "Email",
-    "contact.webLabel": "Website",
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
 
-    "projects.h": "Projects",
-    "projects.p": "A selection of my work.",
+.wrap{
+  width:min(1100px, calc(100% - 32px));
+  margin:0 auto;
+}
 
-    "certs.h": "Certificates",
-    "certs.p": "Verified achievements and training.",
-    "certs.credlyBtn": "View on Credly",
+/* ===== HEADER ===== */
+header.wrap{ padding:18px 0; }
 
-    "footer.name": "Mikail Sarpkaya"
-  },
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
 
-  tr: {
-    "nav.home": "Ana Sayfa",
-    "nav.projects": "Projeler",
-    "nav.certificates": "Sertifikalar",
-    "nav.contact": "İletişim",
-    "nav.abctohero": "AbcToHero",
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
 
-	"nav.about": "Hakkımda",
-	"about.h": "Hakkımda",
-	"about.text": "Elektrik-Elektronik Mühendisiyim. Yazılım, veri bilimi ve yapay zeka alanlarında projeler geliştiriyorum. Özellikle Python tabanlı otomasyonlar, veri işleme/analiz akışları ve web sistemleri üzerine odaklanıyorum. Amacım; gerçek problemleri çözen, sürdürülebilir ve üretim ortamına taşınabilir sistemler geliştirmek.",
+.logo{
+  font-weight:800;
+  letter-spacing:.2px;
+  font-size:16px;
+}
 
-    "hero.title": "Yapay Zeka & Yazılım Odaklı Mühendis",
-    "hero.meta": "Elektrik-Elektronik Mühendisi · Veri Bilimi · Otomasyon · Web",
+.social{
+  display:flex;
+  gap:10px;
+}
 
-    "home.projectsH": "Projeler",
-    "home.badgeDev": "Geliştirme Aşamasında",
-    "home.abcDesc": "İngilizce kelimeleri, zamanlar/modallar ve kalıplarla çalıştıran web uygulaması (Django + VPS).",
-    "home.allProjects": "Tüm projeler",
-    "home.note": "Not: Projeleri ayrı sayfada daha detaylı toparlıyorum.",
+.icon{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+  transition:.15s;
+}
+.icon:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.12);
+}
+.icon svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+  opacity:.92;
+}
 
-    "contact.h": "İletişim",
-    "contact.emailLabel": "E-posta",
-    "contact.webLabel": "Web Sitesi",
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  box-shadow:0 18px 45px rgba(0,0,0,.28);
+  backdrop-filter:blur(10px);
+}
 
-    "projects.h": "Projeler",
-    "projects.p": "Çalışmalarımdan seçmeler.",
+.links{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
 
-    "certs.h": "Sertifikalar",
-    "certs.p": "Doğrulanabilir eğitim ve başarılar.",
-    "certs.credlyBtn": "Credly'de Gör",
+.links a{
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  letter-spacing:.2px;
+  opacity:1;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.10);
+  transition:.15s;
+}
+.links a:hover{
+  background:rgba(255,255,255,0.12);
+  transform:translateY(-1px);
+}
 
-    "footer.name": "Mikail Sarpkaya"
+.nav-cta{
+  border:1px solid rgba(34,197,94,0.35) !important;
+  background:rgba(34,197,94,0.18) !important;
+}
+.nav-cta:hover{
+  background:rgba(34,197,94,0.26) !important;
+}
+
+.spacer{
+  width:10px;
+  height:26px;
+  border-left:1px solid var(--border);
+  opacity:.85;
+}
+
+.toggles{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.chip{
+  cursor:pointer;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.07);
+  color:var(--text);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  transition:.15s;
+}
+.chip:hover{
+  background:rgba(255,255,255,.12);
+  transform:translateY(-1px);
+}
+
+/* Navbar alt çizgisi */
+header.wrap{
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  padding-bottom: 14px; /* çizgiyle bar arasında nefes */
+}
+
+/* Light tema için de uyumlu olsun */
+:root[data-theme="light"] header.wrap{
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+
+/* ===== HERO ===== */
+.hero{ padding:26px 0 10px; }
+
+.hero-title{
+  font-size: clamp(38px, 4.2vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin: 10px 0 10px;
+}
+
+.meta{
+  margin:0;
+  margin-top:14px;
+  font-size:18px;            /* büyüttük */
+  font-weight:500;
+  color:var(--muted);
+  opacity:1;
+  letter-spacing:0.3px;
+}
+
+/* ===== CARDS ===== */
+.card{
+  margin-top:16px;
+  padding:22px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+  box-shadow:0 18px 45px rgba(0,0,0,.28);
+}
+
+.card h2{
+  font-size:22px;
+  margin:0 0 10px;
+}
+
+/* ===== PAGE HEAD ===== */
+.page-head{ padding:10px 0 6px; }
+.page-head h1{ margin: 0 0 6px; }
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:14px;
+  margin-top:12px;
+}
+
+/* ===== PROJECT CARD UI ===== */
+.project-card{
+  position:relative;
+  padding:22px;
+}
+
+.badge{
+  position:absolute;
+  top:18px;
+  right:18px;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.06);
+  color:rgba(255,255,255,0.92);
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+.tag{
+  font-size:12px;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.05);
+  color:rgba(255,255,255,0.86);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.06);
+  text-decoration:none;
+  font-weight:800;
+  opacity:.96;
+  transition:.15s;
+}
+.btn:hover{
+  background:rgba(255,255,255,0.12);
+  transform:translateY(-1px);
+  opacity:1;
+}
+.btn-primary{
+  background:rgba(34,197,94,0.18);
+  border-color:rgba(34,197,94,0.35);
+}
+.btn-primary:hover{
+  background:rgba(34,197,94,0.26);
+}
+
+/* ===== CERT HEAD (Credly button by title) ===== */
+.cert-head-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.cert-credly{
+  white-space:nowrap;
+}
+
+/* ===== CONTACT ICON ROW ===== */
+.contact-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:10px 0;
+}
+.contact-ico{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+.contact-ico svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+  opacity:.9;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  width:100%;
+  margin-top:34px;
+  padding:26px 0 30px;
+  color:var(--muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 820px){
+  .nav-right{
+    flex-wrap:wrap;
+    border-radius:18px;
+    padding:10px;
+    justify-content:flex-end;
   }
-};
-
-const langToggle = document.getElementById("langToggle");
-let currentLang = localStorage.getItem("lang") || "en";
-
-function applyTranslations() {
-  document.documentElement.lang = currentLang;
-
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    const value = translations[currentLang]?.[key];
-    if (typeof value === "string") el.textContent = value;
-  });
-
-  if (langToggle) langToggle.textContent = currentLang.toUpperCase();
+  .spacer{ display:none; }
+  .grid{ grid-template-columns:1fr; }
+  .cert-head-row{ flex-wrap:wrap; justify-content:flex-start; }
+}
+/* ===== NAV LINK RESTYLE (sade premium) ===== */
+.nav-right{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
-applyTranslations();
+.links a{
+  background: none !important;
+  border: none !important;
+  padding: 6px 2px !important;
+  border-radius: 0 !important;
+  font-weight: 600 !important;
+  opacity: .85 !important;
+  position: relative;
+}
 
-if (langToggle) {
-  langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "en" ? "tr" : "en";
-    localStorage.setItem("lang", currentLang);
-    applyTranslations();
-  });
+/* hover underline animasyonu */
+.links a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width .2s ease;
+}
+
+.links a:hover{
+  opacity: 1 !important;
+}
+.links a:hover::after{
+  width: 100%;
+}
+
+/* CTA AbcToHero özel kalsın */
+.nav-cta{
+  padding: 6px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(34,197,94,.18) !important;
+  border: 1px solid rgba(34,197,94,.35) !important;
+  font-weight: 800 !important;
 }
