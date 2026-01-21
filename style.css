@@ -380,3 +380,60 @@ header.wrap{
   border: 1px solid rgba(34,197,94,.35) !important;
   font-weight: 800 !important;
 }
+/* ================= MOBILE ================= */
+@media (max-width: 720px){
+
+  /* Header düzeni */
+  .nav{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nav-left,
+  .nav-right{
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .links{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .nav-cta{
+    order: -1; /* AbcToHero öne çıksın */
+  }
+
+  /* Hero */
+  .hero-title{
+    font-size: clamp(28px, 8vw, 42px) !important;
+    text-align: center;
+  }
+
+  .meta{
+    font-size: 15px !important;
+    text-align: center;
+  }
+
+  /* Kartlar */
+  .card{
+    padding: 16px;
+  }
+
+  /* Footer */
+  .footer{
+    font-size: 14px;
+  }
+
+  /* Iconlar mobilde daha küçük */
+  .icon{
+    width: 26px;
+    height: 26px;
+  }
+  .icon svg{
+    width: 14px;
+    height: 14px;
+  }
+}
