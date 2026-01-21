@@ -15,47 +15,35 @@
 <body>
   <header class="wrap">
     <nav class="nav">
-      <div class="nav-left">
-        <div class="logo">
-          <a class="logo-link" href="index.html">MikailSarpkaya</a>
-        </div>
-
-        <div class="social-icons" aria-label="Sosyal bağlantılar">
-          <a class="icon-btn" href="https://github.com/MikailSio" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 7.53c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.95.68 1.91 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.48A10.05 10.05 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-            </svg>
-          </a>
-          <a class="icon-btn" href="https://www.linkedin.com/in/mikailsarpkaya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.13zM3.56 20.45h3.56V9H3.56v11.45z"/>
-            </svg>
-          </a>
-          <a class="icon-btn" href="https://www.kaggle.com/mikailsarpkaya" target="_blank" rel="noopener noreferrer" aria-label="Kaggle">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path fill="currentColor" d="M7 4h3v7.2L15.2 4H19l-5.5 7 5.8 9h-3.7L12 14.3 10 16.6V20H7V4z"/>
-            </svg>
-          </a>
-        </div>
+      <div class="logo">
+        <a class="logo-link" href="index.html">MikailSarpkaya</a>
       </div>
 
-      <div class="nav-right">
-        <div class="links">
-          <!-- Certificates sayfasında "Sertifikalarım" YOK -->
-          <a href="index.html" data-i18n="nav.home">Ana Sayfa</a>
-          <a href="index.html#about" data-i18n="nav.about">Hakkımda</a>
-          <a href="index.html#contact" data-i18n="nav.contact">İletişim</a>
-          <a href="projects.html" data-i18n="nav.projectsPage">Projeler</a>
-        </div>
+      <div class="links">
+        <a href="index.html#projects" data-i18n="nav.projects">Projeler</a>
+        <a href="index.html#about" data-i18n="nav.about">Hakkımda</a>
+        <a href="index.html#contact" data-i18n="nav.contact">İletişim</a>
+        <a href="certificates.html" aria-current="page" data-i18n="nav.certificates">Sertifikalarım</a>
 
+        <!-- Sağ üst aksiyonlar (index ile aynı) -->
         <div class="nav-actions">
-          <button id="themeToggle" class="icon-btn" type="button"
-            data-i18n="theme.aria" data-i18n-attr="aria-label"
-            aria-label="Tema değiştir" title="Koyu / Açık Tema">🌙</button>
+          <button
+            id="themeToggle"
+            class="icon-btn"
+            type="button"
+            data-i18n="theme.aria"
+            data-i18n-attr="aria-label"
+            aria-label="Tema değiştir"
+            title="Koyu / Açık Tema"
+          >🌙</button>
 
-          <button id="langToggle" class="icon-btn"
-            data-i18n="lang.aria" data-i18n-attr="aria-label"
-            aria-label="Dili değiştir">EN</button>
+          <button
+            id="langToggle"
+            class="icon-btn"
+            data-i18n="lang.aria"
+            data-i18n-attr="aria-label"
+            aria-label="Dili değiştir"
+          >EN</button>
         </div>
       </div>
     </nav>
@@ -63,9 +51,16 @@
     <section class="hero hero-small">
       <h1 data-i18n="cert.title">Sertifikalarım</h1>
       <p data-i18n="cert.subtitle">Doğrulanabilir rozetler ve sertifika bağlantıları.</p>
+
       <div class="cta">
         <a class="btn" href="index.html" data-i18n="cert.cta.home">Ana Sayfa</a>
-        <a class="btn ghost" href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" rel="noopener noreferrer" data-i18n="cert.cta.credly">Credly Profilim</a>
+        <a
+          class="btn ghost"
+          href="https://www.credly.com/users/mikailsarpkaya/badges#credly"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n="cert.cta.credly"
+        >Credly Profilim</a>
       </div>
     </section>
   </header>
@@ -73,31 +68,47 @@
   <main class="wrap">
     <section class="card">
       <h2 data-i18n="cert.section.credly">Credly Rozetler</h2>
-      <p class="muted" data-i18n="cert.section.credly.desc">Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.</p>
+      <p class="muted" data-i18n="cert.section.credly.desc">
+        Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.
+      </p>
 
       <div class="grid">
         <article class="project">
           <h3 data-i18n="cert.card.credly.title">Credly Badges</h3>
           <p data-i18n="cert.card.credly.desc">Rozet koleksiyonum (doğrulama bağlantısı).</p>
-          <div class="tags"><span>Credly</span><span>Verification</span></div>
+          <div class="tags">
+            <span>Credly</span><span>Verification</span>
+          </div>
           <p style="margin-top:12px;">
-            <a class="btn" href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" rel="noopener noreferrer" data-i18n="cert.card.view">Görüntüle</a>
+            <a class="btn" href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" rel="noopener noreferrer"
+               data-i18n="cert.card.view">
+              Görüntüle
+            </a>
           </p>
         </article>
 
         <article class="project">
           <h3 data-i18n="cert.card.coursera.title">Coursera</h3>
           <p data-i18n="cert.card.coursera.desc">Coursera sertifikalarım (profil / doğrulama).</p>
-          <div class="tags"><span>Coursera</span><span>Certificates</span></div>
+          <div class="tags">
+            <span>Coursera</span><span>Certificates</span>
+          </div>
           <p style="margin-top:12px;">
-            <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cert.card.coursera.linkText">Coursera Profil Linki (burayı değiştir)</a>
+            <!-- TODO: Coursera profil linkini buraya koy -->
+            <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer"
+               data-i18n="cert.card.coursera.linkText">
+              Coursera Profil Linki (burayı değiştir)
+            </a>
           </p>
         </article>
 
         <article class="project">
           <h3 data-i18n="cert.card.other.title">Diğer</h3>
           <p data-i18n="cert.card.other.desc">İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz.</p>
-          <div class="tags"><span>Professional</span><span>Learning</span></div>
+          <div class="tags">
+            <span>Professional</span><span>Learning</span>
+          </div>
+          <!-- TODO: Yeni sertifika kartları ekleyebilirsin -->
         </article>
       </div>
     </section>
