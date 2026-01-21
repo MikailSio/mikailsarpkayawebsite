@@ -1,175 +1,225 @@
-/* MikailSarpkaya - Theme (dark default) + i18n + Dynamic nav */
-document.addEventListener("DOMContentLoaded", () => {
-  const root = document.documentElement;
+/* =====================================================
+   MikailSarpkaya Portfolio - Core Script
+   - Theme (dark/light)
+   - i18n (tr/en)
+   - Footer year
+   ===================================================== */
 
-  // ---------------- THEME (dark default) ----------------
-  const themeBtn = document.getElementById("themeToggle");
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ------------------------------
+     Footer yılı otomatik güncelle
+     ------------------------------ */
+  const yearSpan = document.getElementById("y");
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+  /* =====================================================
+     TEMA SİSTEMİ (KOYU / AÇIK)
+     ===================================================== */
+  const root = document.documentElement;
+  const themeToggleBtn = document.getElementById("themeToggle");
 
   function setTheme(theme) {
     if (theme === "light") root.setAttribute("data-theme", "light");
-    else root.removeAttribute("data-theme"); // dark default
+    else root.removeAttribute("data-theme");
+
     localStorage.setItem("theme", theme);
-    if (themeBtn) themeBtn.textContent = theme === "light" ? "☀️" : "🌙";
+    updateThemeIcon();
   }
 
+  function updateThemeIcon() {
+    if (!themeToggleBtn) return;
+    const isLight = root.getAttribute("data-theme") === "light";
+    themeToggleBtn.textContent = isLight ? "☀️" : "🌙";
+  }
+
+  // İlk açılış: kayıtlı temayı uygula
   const savedTheme = localStorage.getItem("theme") || "dark";
   setTheme(savedTheme);
 
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
+  // Buton tıklaması
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
       const isLight = root.getAttribute("data-theme") === "light";
       setTheme(isLight ? "dark" : "light");
     });
   }
 
-  // ---------------- i18n (TR/EN) ----------------
-  const langBtn = document.getElementById("langToggle");
+  /* =====================================================
+     DİL SİSTEMİ (TR / EN)
+     ===================================================== */
 
   const translations = {
     tr: {
-      "nav.home": "Ana Sayfa",
       "nav.projects": "Projeler",
-      "nav.certificates": "Sertifikalarım",
       "nav.about": "Hakkımda",
       "nav.contact": "İletişim",
+      "nav.certificates": "Sertifikalarım",
+
+      "lang.aria": "Dili değiştir",
+      "theme.aria": "Tema değiştir",
 
       "hero.title": "AI & Software-Oriented Engineer",
       "hero.subtitle": "Elektrik-Elektronik Mühendisi · Veri Bilimi · Otomasyon · Web",
       "hero.cta.projects": "Projelerimi Gör",
-      "hero.cta.certificates": "Sertifikalarımı Gör",
+      "hero.cta.github": "GitHub",
+
+      "projects.title": "Projeler",
+      "projects.wordapp.title": "Kelime Öğrenme Platformu",
+      "projects.wordapp.desc": "Kişiselleştirilmiş kelime çalışma mantığı (liste seviyeleri, tekrar sistemi).",
+      "projects.scraping.title": "Web Scraping & Veri Analizi",
+      "projects.scraping.desc": "IMDb benzeri kaynaklardan veri çekme, temizleme ve analiz akışları.",
+      "projects.portfolio.title": "Portföy Sitesi",
+      "projects.portfolio.desc": "Netlify + Cloudflare ile CDN/SSL, otomatik deploy (CI gibi).",
+      "projects.note": "Not: Proje linklerini birazdan tek tek ekleyeceğiz.",
 
       "about.title": "Hakkımda",
-      "about.p1": "Elektrik-Elektronik Mühendisiyim. Yazılım, veri bilimi ve yapay zeka alanlarında ürün odaklı projeler geliştiriyorum.",
-      "about.p2": "Odak alanlarım: Python ile otomasyon ve veri işleme, web uygulamaları, temel DevOps (VPS/Nginx/Cloudflare) ve analitik problem çözme.",
-      "about.focus": "Odak",
-      "about.stack": "Stack",
+      "about.text": "Elektrik-Elektronik Mühendisiyim. Yazılım, veri bilimi ve yapay zeka alanlarında projeler geliştiriyorum. Özellikle Python tabanlı otomasyon, veri işleme ve web sistemleriyle ilgileniyorum.",
 
       "contact.title": "İletişim",
-      "contact.text": "İş, freelance veya iş birliği için ulaşabilirsin.",
-      "contact.mail": "Mail gönder",
+      "contact.mail.label": "Mail:",
+      "contact.github.label": "GitHub:",
+      "contact.domain.label": "Domain:",
 
-      "projects.h1": "Projeler",
-      "projects.sub": "Öne çıkanlar + geliştirmekte olduklarım.",
+      "footer.credly": "🎓 Credly",
+      "footer.name": "Mikail Sarpkaya",
+
+      "cert.pageTitle": "Sertifikalarım · Mikail Sarpkaya",
+      "cert.title": "Sertifikalarım",
+      "cert.subtitle": "Doğrulanabilir rozetler ve sertifika bağlantıları.",
+      "cert.cta.home": "Ana Sayfa",
+      "cert.cta.credly": "Credly Profilim",
+
+      "cert.section.credly": "Credly Rozetler",
+      "cert.section.credly.desc": "Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.",
+      "cert.card.credly.title": "Credly Badges",
+      "cert.card.credly.desc": "Rozet koleksiyonum (doğrulama bağlantısı).",
+      "cert.card.view": "Görüntüle",
+
+      "cert.card.coursera.title": "Coursera",
+      "cert.card.coursera.desc": "Coursera sertifikalarım (profil / doğrulama).",
+      "cert.card.coursera.linkText": "Coursera Profil Linki (burayı değiştir)",
+
+      "cert.card.other.title": "Diğer",
+      "cert.card.other.desc": "İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz."
+      "projects.pageTitle": "Projeler · Mikail Sarpkaya",
+      "projects.pageTitleH1": "Projeler",
+      "projects.pageSubtitle": "Öne çıkanlar + geliştirmekte olduklarım.",
+      "projects.backHome": "Ana Sayfa",
       "projects.featured": "Öne Çıkan",
-      "projects.dev": "Geliştirme Aşamasında",
-      "projects.planned": "Planlanıyor",
-      "projects.open": "Siteyi Aç →",
-      "projects.note": "Not: Şu an sadece admin panel açık, kullanıcı arayüzü geliştirme aşamasında.",
-
-      "cert.h1": "Sertifikalarım",
-      "cert.sub": "Doğrulanabilir rozetler ve sertifika bağlantıları.",
-      "cert.credlyTitle": "Credly Rozetler",
-      "cert.credlyDesc": "Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.",
-      "cert.view": "Görüntüle"
+      "projects.viewAll": "Tüm projeler",
+      "projects.status.dev": "Geliştirme Aşamasında",
+      "projects.status.planned": "Planlanıyor",
+      "projects.abctohero.desc": "İngilizce kelimeleri zamanlar, modallar ve kalıplarla çalıştıran web uygulaması (Django + VPS).",
+      "projects.abctohero.long": "İngilizce kelimeleri; zamanlar, modallar ve kalıplar altında örnek cümlelerle çalıştıran web uygulaması. Django + Gunicorn + Nginx + Cloudflare altyapısıyla VPS üzerinde çalışıyor.",
+      "projects.abctohero.note": "Not: Şu an sadece admin panel açık, kullanıcı arayüzü geliştirme aşamasında."
     },
+
     en: {
-      "nav.home": "Home",
       "nav.projects": "Projects",
-      "nav.certificates": "Certificates",
       "nav.about": "About",
       "nav.contact": "Contact",
+      "nav.certificates": "Certificates",
+
+      "lang.aria": "Switch language",
+      "theme.aria": "Toggle theme",
 
       "hero.title": "AI & Software-Oriented Engineer",
-      "hero.subtitle": "Electrical-Electronics Engineer · Data Science · Automation · Web",
+      "hero.subtitle": "Electrical & Electronics Engineer · Data Science · Automation · Web",
       "hero.cta.projects": "View Projects",
-      "hero.cta.certificates": "View Certificates",
+      "hero.cta.github": "GitHub",
+
+      "projects.title": "Projects",
+      "projects.wordapp.title": "Vocabulary Learning Platform",
+      "projects.wordapp.desc": "Personalized vocabulary study (levels, spaced repetition logic).",
+      "projects.scraping.title": "Web Scraping & Data Analysis",
+      "projects.scraping.desc": "Data collection, cleaning and analysis pipelines from sources like IMDb.",
+      "projects.portfolio.title": "Portfolio Website",
+      "projects.portfolio.desc": "Netlify + Cloudflare CDN/SSL, automated deploy (CI-like).",
+      "projects.note": "Note: We will add project links one by one.",
 
       "about.title": "About",
-      "about.p1": "I’m an Electrical-Electronics Engineer building product-oriented projects in software, data science, and AI.",
-      "about.p2": "Focus: Python automation & data processing, web apps, basic DevOps (VPS/Nginx/Cloudflare), and analytical problem solving.",
-      "about.focus": "Focus",
-      "about.stack": "Stack",
+      "about.text": "I’m an Electrical & Electronics Engineer building projects in software, data science, and AI. I’m especially interested in Python-based automation, data processing, and web systems.",
 
       "contact.title": "Contact",
-      "contact.text": "Reach out for work, freelance, or collaboration.",
-      "contact.mail": "Send email",
+      "contact.mail.label": "Email:",
+      "contact.github.label": "GitHub:",
+      "contact.domain.label": "Website:",
 
-      "projects.h1": "Projects",
-      "projects.sub": "Highlights + work in progress.",
+      "footer.credly": "🎓 Credly",
+      "footer.name": "Mikail Sarpkaya",
+
+      "cert.pageTitle": "Certificates · Mikail Sarpkaya",
+      "cert.title": "Certificates",
+      "cert.subtitle": "Verifiable badges and certificate links.",
+      "cert.cta.home": "Home",
+      "cert.cta.credly": "My Credly Profile",
+
+      "cert.section.credly": "Credly Badges",
+      "cert.section.credly.desc": "You can view and verify my badges on Credly.",
+      "cert.card.credly.title": "Credly Badges",
+      "cert.card.credly.desc": "My badge collection (verification link).",
+      "cert.card.view": "Open",
+
+      "cert.card.coursera.title": "Coursera",
+      "cert.card.coursera.desc": "My Coursera certificates (profile / verification).",
+      "cert.card.coursera.linkText": "Coursera Profile Link (replace this)",
+
+      "cert.card.other.title": "Other",
+      "cert.card.other.desc": "We can add IBM, Google, Microsoft, etc."
+      "projects.pageTitle": "Projects · Mikail Sarpkaya",
+      "projects.pageTitleH1": "Projects",
+      "projects.pageSubtitle": "Featured + in-progress work.",
+      "projects.backHome": "Home",
       "projects.featured": "Featured",
-      "projects.dev": "In Development",
-      "projects.planned": "Planned",
-      "projects.open": "Open →",
-      "projects.note": "Note: Only admin panel is open for now; UI is in progress.",
+      "projects.viewAll": "All projects",
+      "projects.status.dev": "In Development",
+      "projects.status.planned": "Planned",
+      "projects.abctohero.desc": "An English-learning web app that groups vocabulary by tenses, modals and phrases (Django + VPS).",
+      "projects.abctohero.long": "A vocabulary learning web app that groups examples under tenses, modals and phrases. Runs on a VPS with Django + Gunicorn + Nginx + Cloudflare.",
+      "projects.abctohero.note": "Note: Currently only the admin panel is open; the user interface is under development."
 
-      "cert.h1": "Certificates",
-      "cert.sub": "Verifiable badges and certificate links.",
-      "cert.credlyTitle": "Credly Badges",
-      "cert.credlyDesc": "You can view and verify my badges via Credly.",
-      "cert.view": "View"
     }
   };
 
-  function applyLang(lang) {
-    localStorage.setItem("lang", lang);
-    const dict = translations[lang] || translations.tr;
+  const langToggleBtn = document.getElementById("langToggle");
+  let currentLang = localStorage.getItem("lang") || "tr";
 
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
+  function applyTranslations(lang) {
+    // 1) textContent çevirisi
+    document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
-      if (dict[key]) el.textContent = dict[key];
+      const attr = el.getAttribute("data-i18n-attr"); // varsa attribute çevirisi
+
+      const value = translations?.[lang]?.[key];
+      if (!value) return;
+
+      if (attr) {
+        el.setAttribute(attr, value);
+      } else {
+        el.textContent = value;
+      }
     });
 
-    if (langBtn) langBtn.textContent = lang === "tr" ? "EN" : "TR";
-  }
-
-  const savedLang = localStorage.getItem("lang") || "tr";
-  applyLang(savedLang);
-
-  if (langBtn) {
-    langBtn.addEventListener("click", () => {
-      const current = localStorage.getItem("lang") || "tr";
-      applyLang(current === "tr" ? "en" : "tr");
-    });
-  }
-
-  // ---------------- Dynamic NAV (your rules) ----------------
-  // - Icons stay left near name (HTML)
-  // - Right side: page buttons + language + theme
-  // - Current page's button is hidden
-  // - Projects/Certificates pages order: Home, About, then the other page (+ Contact)
-  function buildNav() {
-    const holder = document.getElementById("navPages");
-    if (!holder) return;
-
-    const page = document.body?.dataset?.page || "home";
-
-    const items = {
-      home: { href: "index.html", key: "nav.home" },
-      projects: { href: "projects.html", key: "nav.projects" },
-      certificates: { href: "certificates.html", key: "nav.certificates" },
-      about: { href: "index.html#about", key: "nav.about" },
-      contact: { href: "index.html#contact", key: "nav.contact" }
-    };
-
-    let order = [];
-    if (page === "home") {
-      order = ["projects", "certificates"]; // home page shows only these on the right
-    } else if (page === "projects") {
-      order = ["home", "about", "contact", "certificates"];
-    } else if (page === "certificates") {
-      order = ["home", "about", "contact", "projects"];
+    // 2) Lang butonu üstündeki yazı (TR iken EN yazsın)
+    if (langToggleBtn) {
+      langToggleBtn.textContent = lang === "tr" ? "EN" : "TR";
     }
 
-    holder.innerHTML = "";
+    // 3) html lang attribute
+    document.documentElement.setAttribute("lang", lang);
 
-    order.forEach((k) => {
-      if (k === page) return; // hide current page button
-      const a = document.createElement("a");
-      a.className = "pill";
-      a.href = items[k].href;
-      a.setAttribute("data-i18n", items[k].key);
-      // fallback text (will be replaced by applyLang anyway)
-      a.textContent = items[k].key;
-      holder.appendChild(a);
-    });
-
-    // After creating, re-apply language to update labels
-    applyLang(localStorage.getItem("lang") || "tr");
+    currentLang = lang;
+    localStorage.setItem("lang", lang);
   }
 
-  buildNav();
+  // İlk açılış uygula
+  applyTranslations(currentLang);
 
-  // ---------------- Footer year ----------------
-  const y = document.getElementById("y");
-  if (y) y.textContent = new Date().getFullYear();
+  // Buton tıklaması
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener("click", () => {
+      applyTranslations(currentLang === "tr" ? "en" : "tr");
+    });
+  }
 });
