@@ -475,3 +475,57 @@ header.wrap{
     margin-right:auto !important;
   }
 }
+/* ===== MOBILE: zoom ihtiyacını bitir (header sığsın) ===== */
+@media (max-width: 720px){
+
+  /* Logo biraz küçülsün */
+  .logo{
+    font-size: 14px !important;
+  }
+
+  /* Sosyal ikonlar küçülsün */
+  .icon{ width:24px !important; height:24px !important; }
+  .icon svg{ width:13px !important; height:13px !important; }
+
+  /* Menü linkleri kompakt */
+  .nav-right .links a{
+    font-size: 12px !important;
+    padding: 5px 8px !important;
+  }
+
+  /* Toggle butonları kompakt */
+  .chip{
+    padding: 5px 9px !important;
+    font-size: 12px !important;
+  }
+
+  /* Wrap daha geniş alan kullansın */
+  .wrap{
+    width: calc(100% - 16px) !important;
+  }
+}
+@media (max-width: 420px){
+  .nav{
+    flex-wrap: wrap !important;
+    row-gap: 10px !important;
+  }
+
+  /* Sağ tarafı alta it (menü linkleri) */
+  .nav-right{
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  /* Linkler ortalı tek satır scroll */
+  .nav-right .links{
+    justify-content: center !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    scrollbar-width: none !important;
+  }
+  .nav-right .links::-webkit-scrollbar{ display:none; }
+
+  .spacer{ display:none !important; }
+}
