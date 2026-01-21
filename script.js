@@ -45,6 +45,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+function buildNavPages() {
+  const holder = document.getElementById("navPages");
+  if (!holder) return;
+
+  const page = (document.body && document.body.dataset && document.body.dataset.page) || "home";
+
+  // Link tanımları
+  const items = {
+    home:        { href: "index.html",          key: "nav.home",        fallback: "Ana Sayfa" },
+    projects:    { href: "projects.html",       key: "nav.projects",    fallback: "Projeler" },
+    certificates:{ href: "certificates.html",   key: "nav.certificates",fallback: "Sertifikalarım" },
+    about:       { href: "index.html#about",    key: "nav.about",       fallback: "Hakkımda" },
+    contact:     { href: "index.html#contact",  key: "nav.contact",     fallback: "İletişim" }
+  };
+
+  // Sıralama kuralları (senin istediğine göre)
+  // Home: Projeler + Sertifikalar (istersen About/Contact ekli bırakıyorum)
+  // Projects/Certificates: önce Ana Sayfa, sonra Hakkımda, sonra diğerleri
+  let order = [];
+  if (page === "home") {
+    order = ["projects", "certificates", "about", "contact"];
+  } else if (page === "projects") {
+    order = ["home", "about", "contact", "certificates"];
+  } else if (page === "certificates") {
+    order = ["home", "about", "contact", "projects"];
+  }
+
+  // Bulunduğun sayfayı sağdaki menüden kaldır
+  const currentKey =
+    page === "home" ? "home" :
+    page === "projects" ? "projects" :
+    page === "certificates" ? "certificates" : null;
+
+  holder.innerHTML = "";
+  order
+    .filter(k => k !== currentKey)
+    .forEach(k => {
+      const a = document.createElement("a");
+      a.href = items[k].href;
+      a.textContent = items[k].fallback;
+      a.setAttribute("data-i18n", items[k].key); // i18n varsa otomatik çevirsin
+      holder.appendChild(a);
+    });
+}
+buildNavPages();
+   
   /* =====================================================
      DİL SİSTEMİ (TR / EN)
      ===================================================== */
