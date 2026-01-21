@@ -437,10 +437,98 @@ header.wrap{
     height: 14px;
   }
 }
-@media (max-width:720px){
+/* ===== MOBILE FIX (header tek satır + center) ===== */
+@media (max-width: 720px){
+
+  /* Header: tek satır, taşma yok */
+  .nav{
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+  }
+
+  /* Sol taraf: logo + ikonlar */
+  .nav-left{
+    gap: 10px !important;
+    min-width: 0 !important;
+  }
+
+  /* Sağ taraf: linkler + toggles aynı satır */
+  .nav-right{
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    min-width: 0 !important;
+  }
+
+  /* Linkler: tek satır, taşarsa yatay kaydır */
   .links{
-    overflow-x:auto;
-    white-space: nowrap;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;        /* firefox */
+  }
+  .links::-webkit-scrollbar{ display:none; } /* chrome */
+
+  /* Link görünümü mobilde daha kompakt */
+  .links a{
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Spacer kaldır */
+  .spacer{ display: none !important; }
+
+  /* Toggles: asla alt satıra düşmesin */
+  .toggles{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
+  }
+  .chip{
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+  }
+
+  /* İkonlar mobilde küçülsün */
+  .icon{
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 9px !important;
+  }
+  .icon svg{
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  /* Çizgi altı içerikler daha dengeli/ortada */
+  .hero-title,
+  .meta{
+    text-align: center !important;
+  }
+
+  .card{
+    padding: 16px !important;
+  }
+
+  /* Kart içindeki butonlar ortalı */
+  .actions{
+    justify-content: center !important;
+  }
+
+  /* Contact satırları taşmasın */
+  .contact-row{
+    align-items: flex-start !important;
   }
 }
-
