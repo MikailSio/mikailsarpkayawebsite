@@ -17,22 +17,22 @@
   <header class="wrap">
     <nav class="topnav">
   <div class="nav-container">
-    <a class="brand" href="index.html">MikailSarpkaya</a>
+    <div class="nav-left">
+      <a class="brand" href="index.html">MikailSarpkaya</a>
 
-    <div class="nav-links">
-      <a href="projects.html" data-i18n="nav.projects">Projeler</a>
-      <a href="index.html#about" data-i18n="nav.about">Hakkımda</a>
-      <a href="index.html#contact" data-i18n="nav.contact">İletişim</a>
-      <a href="certificates.html" data-i18n="nav.certificates">Sertifikalarım</a>
+      <div class="social">
+        <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+      </div>
     </div>
 
-    <div class="nav-actions">
-      <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-      <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-      <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+    <div class="nav-right">
+      <!-- Sayfa linkleri buraya JS ile gelecek -->
+      <div id="navPages" class="nav-pages"></div>
 
-      <button id="langToggle" class="chip" aria-label="Dili değiştir">EN</button>
-      <button id="themeToggle" class="chip" aria-label="Tema değiştir">☀️</button>
+      <button id="langToggle" class="chip" data-i18n-aria="lang.aria">EN</button>
+      <button id="themeToggle" class="chip" data-i18n-aria="theme.aria">☀️</button>
     </div>
   </div>
 </nav>
@@ -117,6 +117,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
