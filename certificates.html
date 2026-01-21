@@ -1,125 +1,81 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="cert.pageTitle">Sertifikalarım · Mikail Sarpkaya</title>
-  <meta name="description" content="Mikail Sarpkaya sertifikalar, rozetler ve doğrulama bağlantıları (Credly, Coursera vb.)." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="/assets/favicon/favicon.ico">
-  <link rel="manifest" href="/assets/favicon/site.webmanifest">
-  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
-  <meta name="theme-color" content="#000000">
+  <title>Certificates | Mikail Sarpkaya</title>
+  <meta name="description" content="Certificates by Mikail Sarpkaya." />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 
 <body>
   <header class="wrap">
     <nav class="nav">
-      <div class="logo">
-        <a class="logo-link" href="index.html">MikailSarpkaya</a>
+      <div class="nav-left">
+        <a class="logo" href="index.html">MikailSarpkaya</a>
+
+        <div class="social">
+          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5H4.5V24H.5V8.5zM8.5 8.5H12.3V10.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V24h-4V15.5c0-2.03-.04-4.65-2.83-4.65-2.83 0-3.27 2.21-3.27 4.5V24h-4V8.5z"/></svg>
+          </a>
+          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55 0-.27-.01-.98-.02-1.92-3.2.7-3.88-1.55-3.88-1.55-.52-1.33-1.27-1.68-1.27-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.72-1.54-2.56-.29-5.25-1.28-5.25-5.72 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.45-2.69 5.42-5.26 5.71.41.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .3.2.65.79.54 4.56-1.53 7.85-5.86 7.85-10.96C23.5 5.74 18.27.5 12 .5z"/></svg>
+          </a>
+          <a class="icon" href="https://www.kaggle.com/mikailsarpkaya" target="_blank" rel="noreferrer" aria-label="Kaggle" title="Kaggle">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4v8l6-8h5l-7.4 9.4L21 21h-5.2l-5.8-6.9V21H6V3z"/></svg>
+          </a>
+        </div>
       </div>
 
-      <div class="links">
-        <a href="index.html#projects" data-i18n="nav.projects">Projeler</a>
-        <a href="index.html#about" data-i18n="nav.about">Hakkımda</a>
-        <a href="index.html#contact" data-i18n="nav.contact">İletişim</a>
-        <a href="certificates.html" aria-current="page" data-i18n="nav.certificates">Sertifikalarım</a>
+      <div class="nav-right">
+        <div class="links">
+          <a class="nav-cta" href="https://abctohero.com" target="_blank" rel="noreferrer" data-i18n="nav.abctohero">AbcToHero</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="projects.html" data-i18n="nav.projects">Projects</a>
+          <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        </div>
 
-        <!-- Sağ üst aksiyonlar (index ile aynı) -->
-        <div class="nav-actions">
-          <button
-            id="themeToggle"
-            class="icon-btn"
-            type="button"
-            data-i18n="theme.aria"
-            data-i18n-attr="aria-label"
-            aria-label="Tema değiştir"
-            title="Koyu / Açık Tema"
-          >🌙</button>
+        <div class="spacer"></div>
 
-          <button
-            id="langToggle"
-            class="icon-btn"
-            data-i18n="lang.aria"
-            data-i18n-attr="aria-label"
-            aria-label="Dili değiştir"
-          >EN</button>
+        <div class="toggles">
+          <button id="langToggle" class="chip" type="button" aria-label="Change language">EN</button>
+          <button id="themeToggle" class="chip" type="button" aria-label="Toggle theme">🌙</button>
         </div>
       </div>
     </nav>
-
-    <section class="hero hero-small">
-      <h1 data-i18n="cert.title">Sertifikalarım</h1>
-      <p data-i18n="cert.subtitle">Doğrulanabilir rozetler ve sertifika bağlantıları.</p>
-
-      <div class="cta">
-        <a class="btn" href="index.html" data-i18n="cert.cta.home">Ana Sayfa</a>
-        <a
-          class="btn ghost"
-          href="https://www.credly.com/users/mikailsarpkaya/badges#credly"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-i18n="cert.cta.credly"
-        >Credly Profilim</a>
-      </div>
-    </section>
   </header>
 
   <main class="wrap">
-    <section class="card">
-      <h2 data-i18n="cert.section.credly">Credly Rozetler</h2>
-      <p class="muted" data-i18n="cert.section.credly.desc">
-        Rozetlerimi Credly üzerinden görebilir ve doğrulayabilirsin.
-      </p>
+    <section class="page-head cert-head">
+      <div class="cert-head-row">
+        <h1 data-i18n="certs.h">Certificates</h1>
 
-      <div class="grid">
-        <article class="project">
-          <h3 data-i18n="cert.card.credly.title">Credly Badges</h3>
-          <p data-i18n="cert.card.credly.desc">Rozet koleksiyonum (doğrulama bağlantısı).</p>
-          <div class="tags">
-            <span>Credly</span><span>Verification</span>
-          </div>
-          <p style="margin-top:12px;">
-            <a class="btn" href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" rel="noopener noreferrer"
-               data-i18n="cert.card.view">
-              Görüntüle
-            </a>
-          </p>
-        </article>
-
-        <article class="project">
-          <h3 data-i18n="cert.card.coursera.title">Coursera</h3>
-          <p data-i18n="cert.card.coursera.desc">Coursera sertifikalarım (profil / doğrulama).</p>
-          <div class="tags">
-            <span>Coursera</span><span>Certificates</span>
-          </div>
-          <p style="margin-top:12px;">
-            <!-- TODO: Coursera profil linkini buraya koy -->
-            <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer"
-               data-i18n="cert.card.coursera.linkText">
-              Coursera Profil Linki (burayı değiştir)
-            </a>
-          </p>
-        </article>
-
-        <article class="project">
-          <h3 data-i18n="cert.card.other.title">Diğer</h3>
-          <p data-i18n="cert.card.other.desc">İstersen buraya IBM, Google, Microsoft vb. ekleyebiliriz.</p>
-          <div class="tags">
-            <span>Professional</span><span>Learning</span>
-          </div>
-          <!-- TODO: Yeni sertifika kartları ekleyebilirsin -->
-        </article>
+        <a class="btn btn-primary cert-credly"
+           href="https://www.credly.com/users/mikailsarpkaya/badges#credly"
+           target="_blank" rel="noreferrer"
+           data-i18n="certs.credlyBtn">View on Credly</a>
       </div>
+
+      <p data-i18n="certs.p">Verified achievements and training.</p>
     </section>
 
-    <footer class="footer">
-      <span>© <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span></span>
-      <span class="footer-sep">•</span>
-      <a href="certificates.html" class="footer-link" data-i18n="nav.certificates">Sertifikalarım</a>
-    </footer>
+    <section class="grid">
+      <article class="card">
+        <h3>Certificate 1</h3>
+        <p>Short description…</p>
+      </article>
+
+      <article class="card">
+        <h3>Certificate 2</h3>
+        <p>Short description…</p>
+      </article>
+    </section>
   </main>
 
-  <script src="script.js"></script>
+  <footer class="wrap footer">
+    © <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span>
+  </footer>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>
