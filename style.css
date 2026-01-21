@@ -1,251 +1,382 @@
-/* =========================
-   TEMEL (Theme Variables)
-   ========================= */
-
-/* Varsayılan: koyu tema */
 :root {
   --bg: #0b0f14;
-  --text: #e6edf3;
-  --card: rgba(255,255,255,.03);
-  --muted: rgba(230,237,243,.7);
-  --border: rgba(230,237,243,.12);
-  --nav-border: rgba(230,237,243,.10);
-
-  --btn: rgba(230,237,243,.10);
-  --btn-border: rgba(230,237,243,.18);
-
-  /* Tarayıcı form kontrolleri (tema uyumu) */
-  color-scheme: dark;
+  --text: #e8eef6;
+  --muted: rgba(232,238,246,.72);
+  --card: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.12);
 }
 
-/* Açık tema */
 :root[data-theme="light"] {
-  --bg: #f6f7fb;
-  --text: #111827;
-  --card: #ffffff;
-  --muted: rgba(17, 24, 39, 0.65);
-  --border: rgba(17, 24, 39, 0.12);
-  --nav-border: rgba(17, 24, 39, 0.12);
-
-  --btn: rgba(17,24,39,.08);
-  --btn-border: rgba(17,24,39,.18);
-
-  color-scheme: light;
+  --bg: #ffffff;
+  --text: #0b0f14;
+  --muted: rgba(11,15,20,.65);
+  --card: rgba(0,0,0,.05);
+  --border: rgba(0,0,0,.12);
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
 
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: var(--bg);
-  color: var(--text);
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.06), transparent 60%),
+    radial-gradient(700px 500px at 80% 0%, rgba(255,255,255,0.04), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
 }
 
-a { color: inherit; text-decoration: none; }
-.wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
 
-/* =========================
-   NAVBAR
-   ========================= */
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--nav-border);
+.wrap{
+  width:min(1100px, calc(100% - 32px));
+  margin:0 auto;
 }
 
-.logo { font-weight: 700; letter-spacing: .3px; }
-.logo-link { color: inherit; text-decoration: none; }
+/* ===== HEADER ===== */
+header.wrap{ padding:18px 0; }
 
-.links {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.links a { opacity: .85; }
-.links a:hover { opacity: 1; }
-
-/* Tema + Dil butonları aynı “ikon buton” tarzı */
-.nav-actions{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px; /* ✅ Senin istediğin küçük açıklık */
-  margin-left: 6px;
-}
-
-/* Genel ikon butonu */
-.icon-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  border:1px solid var(--btn-border);
-  background: var(--btn);
-  color: var(--text);
-  opacity:.92;
-  transition: transform .12s ease, opacity .12s ease, background .12s ease;
-}
-
-.icon-btn:hover{
-  opacity:1;
-  transform: translateY(-1px);
-}
-
-/* Klavye ile gezenler için net fokus */
-.icon-btn:focus-visible{
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
-
-/* =========================
-   HERO
-   ========================= */
-
-.hero { padding: 44px 0 18px; }
-.hero h1 { font-size: 44px; margin: 0 0 10px; }
-.hero p { margin: 0 0 18px; opacity: .85; line-height: 1.5; }
-
-.hero-small h1 { margin-bottom: 8px; }
-.hero-small p { margin-top: 0; }
-
-.cta { display: flex; gap: 10px; flex-wrap: wrap; }
-
-/* =========================
-   BUTTONS
-   ========================= */
-
-.btn {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(46,160,67,.9);
-  border: 1px solid rgba(46,160,67,.7);
-}
-
-.btn.ghost {
-  background: transparent;
-  border: 1px solid var(--btn-border);
-}
-
-/* =========================
-   CARDS / GRID
-   ========================= */
-
-.card {
-  margin: 18px 0;
-  padding: 18px;
-  border-radius: 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
-}
-
-.card h2 { margin: 0 0 12px; }
-
-.grid {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-}
-
-.project {
-  padding: 14px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,.10);
-}
-
-:root[data-theme="light"] .project{
-  background: rgba(17,24,39,.03);
-}
-
-.project h3 { margin: 0 0 6px; }
-.project p { margin: 0 0 10px; opacity: .85; line-height: 1.45; }
-
-.tags span {
-  display: inline-block;
-  font-size: 12px;
-  padding: 5px 8px;
-  margin-right: 6px;
-  margin-bottom: 6px;
-  border-radius: 999px;
-  border: 1px solid var(--btn-border);
-  opacity: .9;
-}
-
-/* =========================
-   CONTACT / FOOTER
-   ========================= */
-
-.contact { list-style: none; padding: 0; margin: 0; }
-.contact li { padding: 8px 0; border-bottom: 1px dashed var(--border); }
-.contact li:last-child { border-bottom: 0; }
-
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-  opacity: .75;
-  text-align: center;
-  padding: 28px 0 10px;
-}
-
-.footer-link { opacity: .85; }
-.footer-link:hover { text-decoration: underline; opacity: 1; }
-.footer-sep { opacity: 0.5; }
-
-.footer-icons {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 6px;
-}
-
-.muted { color: var(--muted); }
-
-/* Header sosyal ikonlar */
-.social-icons{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 6px;
-}
-
-/* Proje kart başlığı + durum etiketi */
-.project-head{
+.nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
-  margin-bottom:6px;
+  gap:18px;
 }
 
-.pill{
-  font-size:12px;
-  padding:5px 10px;
-  border-radius:999px;
-  border:1px solid var(--btn-border);
-  opacity:.9;
-  white-space: nowrap;
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-.pill.warn{
-  border-color: rgba(245, 158, 11, .6);
+.logo{
+  font-weight:800;
+  letter-spacing:.2px;
+  font-size:16px;
 }
 
-/* Proje butonları */
-.project-actions{
+.social{
   display:flex;
   gap:10px;
-  flex-wrap: wrap;
-  margin-top: 12px;
+}
+
+.icon{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+  transition:.15s;
+}
+.icon:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.12);
+}
+.icon svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+  opacity:.92;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  box-shadow:0 18px 45px rgba(0,0,0,.28);
+  backdrop-filter:blur(10px);
+}
+
+.links{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.links a{
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  letter-spacing:.2px;
+  opacity:1;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.10);
+  transition:.15s;
+}
+.links a:hover{
+  background:rgba(255,255,255,0.12);
+  transform:translateY(-1px);
+}
+
+.nav-cta{
+  border:1px solid rgba(34,197,94,0.35) !important;
+  background:rgba(34,197,94,0.18) !important;
+}
+.nav-cta:hover{
+  background:rgba(34,197,94,0.26) !important;
+}
+
+.spacer{
+  width:10px;
+  height:26px;
+  border-left:1px solid var(--border);
+  opacity:.85;
+}
+
+.toggles{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.chip{
+  cursor:pointer;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.07);
+  color:var(--text);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  transition:.15s;
+}
+.chip:hover{
+  background:rgba(255,255,255,.12);
+  transform:translateY(-1px);
+}
+
+/* Navbar alt çizgisi */
+header.wrap{
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  padding-bottom: 14px; /* çizgiyle bar arasında nefes */
+}
+
+/* Light tema için de uyumlu olsun */
+:root[data-theme="light"] header.wrap{
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+
+/* ===== HERO ===== */
+.hero{ padding:26px 0 10px; }
+
+.hero-title{
+  font-size: clamp(38px, 4.2vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin: 10px 0 10px;
+}
+
+.meta{
+  margin:0;
+  margin-top:14px;
+  font-size:18px;            /* büyüttük */
+  font-weight:500;
+  color:var(--muted);
+  opacity:1;
+  letter-spacing:0.3px;
+}
+
+/* ===== CARDS ===== */
+.card{
+  margin-top:16px;
+  padding:22px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+  box-shadow:0 18px 45px rgba(0,0,0,.28);
+}
+
+.card h2{
+  font-size:22px;
+  margin:0 0 10px;
+}
+
+/* ===== PAGE HEAD ===== */
+.page-head{ padding:10px 0 6px; }
+.page-head h1{ margin: 0 0 6px; }
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:14px;
+  margin-top:12px;
+}
+
+/* ===== PROJECT CARD UI ===== */
+.project-card{
+  position:relative;
+  padding:22px;
+}
+
+.badge{
+  position:absolute;
+  top:18px;
+  right:18px;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.06);
+  color:rgba(255,255,255,0.92);
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+.tag{
+  font-size:12px;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.05);
+  color:rgba(255,255,255,0.86);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.06);
+  text-decoration:none;
+  font-weight:800;
+  opacity:.96;
+  transition:.15s;
+}
+.btn:hover{
+  background:rgba(255,255,255,0.12);
+  transform:translateY(-1px);
+  opacity:1;
+}
+.btn-primary{
+  background:rgba(34,197,94,0.18);
+  border-color:rgba(34,197,94,0.35);
+}
+.btn-primary:hover{
+  background:rgba(34,197,94,0.26);
+}
+
+/* ===== CERT HEAD (Credly button by title) ===== */
+.cert-head-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.cert-credly{
+  white-space:nowrap;
+}
+
+/* ===== CONTACT ICON ROW ===== */
+.contact-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:10px 0;
+}
+.contact-ico{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+.contact-ico svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+  opacity:.9;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  width:100%;
+  margin-top:34px;
+  padding:26px 0 30px;
+  color:var(--muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 820px){
+  .nav-right{
+    flex-wrap:wrap;
+    border-radius:18px;
+    padding:10px;
+    justify-content:flex-end;
+  }
+  .spacer{ display:none; }
+  .grid{ grid-template-columns:1fr; }
+  .cert-head-row{ flex-wrap:wrap; justify-content:flex-start; }
+}
+/* ===== NAV LINK RESTYLE (sade premium) ===== */
+.nav-right{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.links a{
+  background: none !important;
+  border: none !important;
+  padding: 6px 2px !important;
+  border-radius: 0 !important;
+  font-weight: 600 !important;
+  opacity: .85 !important;
+  position: relative;
+}
+
+/* hover underline animasyonu */
+.links a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width .2s ease;
+}
+
+.links a:hover{
+  opacity: 1 !important;
+}
+.links a:hover::after{
+  width: 100%;
+}
+
+/* CTA AbcToHero özel kalsın */
+.nav-cta{
+  padding: 6px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(34,197,94,.18) !important;
+  border: 1px solid rgba(34,197,94,.35) !important;
+  font-weight: 800 !important;
 }
