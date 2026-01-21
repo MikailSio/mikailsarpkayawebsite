@@ -2,29 +2,29 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mikail Sarpkaya</title>
-  <meta name="description" content="Mikail Sarpkaya - AI & Software-Oriented Engineer. Portfolio, projects, certificates and contact." />
+  <meta name="description" content="Mikail Sarpkaya - AI & Software-Oriented Engineer. Projects, certificates and contact." />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="/assets/favicon/favicon.ico">
 </head>
 
 <body data-page="home">
-  <nav class="topnav">
+  <nav>
     <div class="nav-container">
       <div class="nav-left">
-        <a class="brand" href="index.html">MikailSarpkaya</a>
+        <a class="logo" href="index.html">MikailSarpkaya</a>
         <div class="social">
-          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-          <a class="icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
+          <a class="btn-icon" href="https://github.com/MikailSio" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a class="btn-icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a class="btn-icon" href="https://www.kaggle.com/" target="_blank" rel="noopener" aria-label="Kaggle">K</a>
         </div>
       </div>
 
       <div class="nav-right">
-        <div id="navPages" class="nav-pages"></div>
-        <button id="langToggle" class="chip" aria-label="Dili değiştir">EN</button>
-        <button id="themeToggle" class="chip" aria-label="Tema değiştir">☀️</button>
+        <div id="navPages"></div>
+        <button id="langToggle" class="pill" aria-label="Dili değiştir">EN</button>
+        <button id="themeToggle" class="pill" aria-label="Tema değiştir">☀️</button>
       </div>
     </div>
   </nav>
@@ -32,13 +32,15 @@
   <main class="container">
     <section class="hero">
       <h1 data-i18n="hero.title">AI & Software-Oriented Engineer</h1>
-      <p class="sub" data-i18n="hero.sub">Elektrik-Elektronik Mühendisi · Veri Bilimi · Otomasyon · Web</p>
+      <p class="sub" data-i18n="hero.subtitle">Elektrik-Elektronik Mühendisi · Veri Bilimi · Otomasyon · Web</p>
 
-      <div class="cta-row">
-        <a class="btn primary" href="projects.html" data-i18n="hero.btnProjects">Projelerimi Gör</a>
-        <a class="btn" href="certificates.html" data-i18n="hero.btnCertificates">Sertifikalarımı Gör</a>
+      <div class="actions">
+        <a class="btn primary" href="projects.html" data-i18n="hero.cta.projects">Projelerimi Gör</a>
+        <a class="btn" href="certificates.html" data-i18n="hero.cta.certificates">Sertifikalarımı Gör</a>
       </div>
     </section>
+
+    <!-- Ana sayfadaki Projeler bölümü KALDIRILDI (senin isteğin) -->
 
     <section id="about" class="card">
       <h2 data-i18n="about.title">Hakkımda</h2>
@@ -53,16 +55,16 @@
 
       <div class="grid">
         <div class="card" style="margin:0;">
-          <h3 data-i18n="about.focusTitle">Odak</h3>
+          <h2 data-i18n="about.focus">Odak</h2>
           <ul>
-            <li data-i18n="about.focus1">Otomasyon & backend geliştirme</li>
-            <li data-i18n="about.focus2">Veri temizleme / analiz akışları</li>
-            <li data-i18n="about.focus3">Ürünleştirme: deploy, izleme, iyileştirme</li>
+            <li>Otomasyon & backend geliştirme</li>
+            <li>Veri temizleme / analiz akışları</li>
+            <li>Ürünleştirme: deploy, izleme, iyileştirme</li>
           </ul>
         </div>
 
         <div class="card" style="margin:0;">
-          <h3 data-i18n="about.stackTitle">Stack</h3>
+          <h2 data-i18n="about.stack">Stack</h2>
           <ul>
             <li>Python · Django · Pandas</li>
             <li>SQL · Git/GitHub</li>
@@ -74,17 +76,17 @@
 
     <section id="contact" class="card">
       <h2 data-i18n="contact.title">İletişim</h2>
-      <p data-i18n="contact.p1">İş, freelance veya iş birliği için ulaşabilirsin.</p>
-      <div class="cta-row">
+      <p data-i18n="contact.text">İş, freelance veya iş birliği için ulaşabilirsin.</p>
+      <div class="actions">
         <a class="btn primary" href="mailto:mikailsarpkaya09@gmail.com" data-i18n="contact.mail">Mail gönder</a>
       </div>
     </section>
-
-    <div class="footer">
-      <span data-i18n="footer">© MikailSarpkaya</span>
-    </div>
   </main>
 
-  <script src="script.js" defer></script>
+  <footer class="footer">
+    <span>© <span id="y">2026</span> Mikail Sarpkaya</span>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
