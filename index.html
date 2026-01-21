@@ -10,6 +10,7 @@
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
   <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -108,47 +109,36 @@
 
     <!-- PROJELER -->
     <section id="projects" class="card">
-      <h2 data-i18n="projects.title">Projeler</h2>
+  <h2 data-i18n="projects.title">Projeler</h2>
 
-      <div class="grid">
-        <article class="project">
-          <h3 data-i18n="projects.wordapp.title">Kelime Öğrenme Platformu</h3>
-          <p data-i18n="projects.wordapp.desc">
-            Kişiselleştirilmiş kelime çalışma mantığı (liste seviyeleri, tekrar sistemi).
-          </p>
-          <div class="tags">
-            <span>Python</span><span>C#</span><span>Web</span>
-          </div>
-          <!-- TODO: Proje linki eklenecek -->
-        </article>
-
-        <article class="project">
-          <h3 data-i18n="projects.scraping.title">Web Scraping & Veri Analizi</h3>
-          <p data-i18n="projects.scraping.desc">
-            IMDb benzeri kaynaklardan veri çekme, temizleme ve analiz akışları.
-          </p>
-          <div class="tags">
-            <span>BeautifulSoup</span><span>Pandas</span><span>Selenium</span>
-          </div>
-          <!-- TODO: Proje linki eklenecek -->
-        </article>
-
-        <article class="project">
-          <h3 data-i18n="projects.portfolio.title">Portföy Sitesi</h3>
-          <p data-i18n="projects.portfolio.desc">
-            Netlify + Cloudflare ile CDN/SSL, otomatik deploy (CI gibi).
-          </p>
-          <div class="tags">
-            <span>Netlify</span><span>Cloudflare</span><span>DNS</span>
-          </div>
-          <!-- TODO: Proje linki eklenecek -->
-        </article>
+  <div class="grid">
+    <article class="project">
+      <div class="project-head">
+        <h3>AbcToHero</h3>
+        <span class="pill warn" data-i18n="projects.status.dev">Geliştirme Aşamasında</span>
       </div>
 
-      <p class="muted" data-i18n="projects.note">
-        Not: Proje linklerini birazdan tek tek ekleyeceğiz.
+      <p data-i18n="projects.abctohero.desc">
+        İngilizce kelimeleri zamanlar, modallar ve kalıplarla çalıştıran web uygulaması (Django + VPS).
       </p>
-    </section>
+
+      <div class="tags">
+        <span>Django</span><span>Python</span><span>Nginx</span><span>VPS</span><span>Cloudflare</span>
+      </div>
+
+      <p class="project-actions">
+        <a class="btn ghost" href="https://www.abctohero.com" target="_blank" rel="noreferrer">
+          AbcToHero →
+        </a>
+        <a class="btn" href="projects.html" data-i18n="projects.viewAll">Tüm projeler</a>
+      </p>
+    </article>
+  </div>
+
+  <p class="muted" data-i18n="projects.note">
+    Not: Projeleri ayrı sayfada daha detaylı toparlıyorum.
+  </p>
+</section>
 
     <!-- HAKKIMDA -->
     <section id="about" class="card">
@@ -185,8 +175,6 @@
         class="footer-link"
         data-i18n="footer.credly"
       >🎓 Credly</a>
-
-      <div class="footer-icons" aria-label="Sosyal bağlantılar">
 
   <a class="icon-btn"
      href="https://github.com/MikailSio"
