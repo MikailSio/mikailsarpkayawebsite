@@ -1,0 +1,276 @@
+﻿/* ================== GENEL ================== */
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    min-height: 100vh;
+    /*  HER EKRANDA FULL ARKA PLAN */
+    background: linear-gradient( to bottom, #2a2140 0%, #2a2140 35vh, #120d1f 35vh, #120d1f 100% );
+    display: flex;
+    justify-content: center;
+}
+
+/* ================== SAHNE (CV'yi ortalamak için) ================== */
+.scene {
+    width: min(1200px, 96vw);
+    min-height: 100vh;
+    padding: 32px 0;
+    box-sizing: border-box;
+}
+
+/* ================== CV KAĞIDI ================== */
+.cv {
+    width: min(1000px, 92vw);
+    min-height: 1400px;
+    margin: 0 auto;
+    background: #f3f3f3;
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,.25), 0 8px 20px rgba(0,0,0,.12);
+}
+
+/* ================== KOLONLAR ================== */
+.solKolon {
+    flex: 0 0 350px;
+    background: #dfe9ec;
+    padding-bottom: 20px;
+}
+
+.sagKolon {
+    flex: 1;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* ================== FOTO ================== */
+.foto {
+    width: 200px;
+    margin: 25px auto 10px;
+}
+
+    .foto img {
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        object-fit: cover;
+        display: block;
+    }
+
+/* ================== KUTULAR ================== */
+/* ORTAK */
+.kutu {
+    margin: 25px auto;
+}
+
+/* SOL KOLON – dar kalsın */
+.solKolon .kutu {
+    width: 80%;
+}
+
+/* SAĞ KOLON – TAM GENİŞLİK */
+.sagKolon .kutu {
+    width: 100%;
+}
+
+/* BAŞLIK */
+.baslik {
+    font-size: 22px;
+    border-bottom: 3px solid #333;
+    padding-bottom: 8px;
+}
+
+/* İÇERİK */
+.icerik {
+    padding-top: 10px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* ================== CONTACT SATIRLARI ================== */
+.satir {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+    /* Ortak geçiş efekti */
+    .satir .ikon i {
+        transition: color .25s ease;
+    }
+
+    /* ADRES */
+    .satir:hover .fa-location-dot {
+        color: #dc2626; /* kırmızı */
+    }
+
+    /* WEB SITE */
+    .satir:hover .fa-globe {
+        color: #7c3aed; /* mor-mavi */
+    }
+
+    /* EMAIL */
+    .satir:hover .fa-envelope {
+        background: linear-gradient( 45deg, #ea4335, /* kırmızı */
+        #fbbc05, /* sarı */
+        #34a853, /* yeşil */
+        #4285f4 /* mavi */
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* PHONE */
+    .satir:hover .fa-phone {
+        color: #16a34a; /* yeşil */
+    }
+
+    /* LINKEDIN */
+    .satir:hover .fa-linkedin {
+        color: #0a66c2; /* LinkedIn mavisi */
+    }
+
+    /* GITHUB */
+    .satir:hover .fa-github {
+        color: #94a3b8; /* slate gray */
+    }
+
+.ikon {
+    width: 28px;
+    text-align: center;
+}
+
+    .ikon i {
+        font-size: 18px;
+    }
+
+.yazi {
+    font-size: 14px;
+    word-break: break-word;
+}
+
+    .yazi a {
+        color: #000;
+        text-decoration: none;
+    }
+
+        .yazi a:hover {
+            text-decoration: underline;
+        }
+
+/* ================== İSİM KUTUSU ================== */
+.isimKutusu {
+    background: #4b5563; /* slate gray */
+    color: #ffffff;
+    padding: 40px;
+    text-align: center;
+}
+
+.isim {
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+.cizgi {
+    width: 120px;
+    height: 4px;
+    background: white;
+    margin: 12px auto;
+}
+
+.unvan {
+    font-size: 18px;
+    opacity: .9;
+}
+
+/* ================== LİSTELER ================== */
+ul {
+    padding-left: 18px;
+    margin: 8px 0 0;
+}
+
+/* ================== EDUCATION ================== */
+.edu-item {
+    display: flex; 
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.edu-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.edu-right {
+    font-size: 12px;
+    color: #6a6a6a;
+    white-space: nowrap;
+    padding-top: 2px;
+}
+
+.edu-program {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+.edu-degree {
+    font-size: 13px;
+    margin-top: 3px;
+    color: #2c2c2c;
+}
+
+/****************** SKILLS****************************/
+/* SKILLS list */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Her skill satırı */
+.skill-item {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    color: #2f2f2f;
+    line-height: 1.4;
+    /* 🔥 layout kurtarıcılar */
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Parantez içi daha yumuşak */
+.skill-sub {
+    color: #6b7280;
+    font-size: 12px;
+}
+/****************** SKILLS****************************/
+
+
+
+/* PROFILE METNİ – TAM GENİŞLİK AKIŞ */
+.profile-text {
+    width: 100%; /* 🔥 sağa kadar uzasın */
+    max-width: 100%; /* kolon dışına çıkmasın */
+
+
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #3b3b3b;
+    margin-top: 10px;
+    text-align: left; /* justify YOK */
+    word-wrap: break-word; /* uzun kelime taşmasın */
+    white-space: normal; /* satır sonu doğal olsun */
+}
+
+
+.edu-school {
+    font-size: 13px;
+    margin-top: 3px;
+    color: #4a4a4a;
+}
