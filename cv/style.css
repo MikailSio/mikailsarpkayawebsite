@@ -191,36 +191,8 @@ ul {
 
 /* ================== EDUCATION ================== */
 .edu-item {
-    display: flex;                 /* ❗ EKSİK OLAN BUYDU */
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 14px;
-    margin-top: 12px;
-}
-
-.edu-left {
-    flex: 1;
-    min-width: 0;                  /* taşmayı engeller */
-}
-
-.edu-right {
-    font-size: 12px;
-    color: #6a6a6a;
-    white-space: nowrap;
-    padding-top: 2px;
-}
-
-/* Dar alanda BOZULMASIN */
-@media (max-width: 520px) {
-    .edu-item {
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .edu-right {
-        order: 3;                  /* tarihi en alta al */
-        white-space: normal;
-    }
+    display: block;        /* 🔥 TEK SÜTUN */
+    margin-top: 14px;
 }
 
 .edu-program {
@@ -241,6 +213,12 @@ ul {
     color: #4a4a4a;
 }
 
+.edu-right {
+    display: block;        /* tarih ALTTA */
+    font-size: 12px;
+    margin-top: 4px;
+    color: #6a6a6a;
+    white-space: normal;
 /****************** SKILLS****************************/
 /* SKILLS list */
 .skills-list {
@@ -293,4 +271,5 @@ ul {
     margin-top: 3px;
     color: #4a4a4a;
 }
+
 
