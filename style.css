@@ -60,9 +60,14 @@ header.wrap{ padding:18px 0; }
   transition: all .2s ease;
 }
 
-.cv-link:hover {
-  background: #fff;
-  color: #000;
+.cv-icon {
+  color: #aaa;
+  font-size: 16px;
+  transition: color .2s;
+}
+
+.cv-icon:hover {
+  color: #fff;
 }
 
 .logo{
