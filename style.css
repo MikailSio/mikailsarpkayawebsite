@@ -50,38 +50,6 @@ header.wrap{ padding:18px 0; }
   align-items:center;
   gap:12px;
 }
-.cv-link {
-  font-size: 13px;
-  padding: 4px 8px;
-  border: 1px solid rgba(255,255,255,.4);
-  border-radius: 6px;
-  color: #ddd;
-  text-decoration: none;
-  transition: all .2s ease;
-}
-
-.cv-icon{
-  width:34px;
-  height:34px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  box-shadow:0 10px 25px rgba(0,0,0,.18);
-
-  color:#aaa;
-  text-decoration:none;
-  transition:.15s;
-}
-
-.cv-icon:hover{
-  color:#fff;
-  transform: translateY(-1px);
-}
-
 
 .logo{
   font-weight:800;
