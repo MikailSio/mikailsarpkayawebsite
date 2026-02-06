@@ -191,8 +191,11 @@ ul {
 
 /* ================== EDUCATION ================== */
 .edu-item {
-    display: block;        /* 🔥 TEK SÜTUN */
     margin-top: 14px;
+}
+
+.edu-item > * {
+    display: block !important;
 }
 
 .edu-program {
@@ -214,14 +217,10 @@ ul {
 }
 
 .edu-right {
-    display: block;        /* tarih ALTTA */
     font-size: 12px;
     margin-top: 4px;
     color: #6a6a6a;
     white-space: normal;
-}
-.edu-item > * {
-    display: block !important;
 }
 /****************** SKILLS****************************/
 /* SKILLS list */
@@ -275,6 +274,7 @@ ul {
     margin-top: 3px;
     color: #4a4a4a;
 }
+
 
 
 
