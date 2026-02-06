@@ -220,6 +220,9 @@ ul {
     color: #6a6a6a;
     white-space: normal;
 }
+.edu-item > * {
+    display: block !important;
+}
 /****************** SKILLS****************************/
 /* SKILLS list */
 .skills-list {
@@ -272,6 +275,7 @@ ul {
     margin-top: 3px;
     color: #4a4a4a;
 }
+
 
 
 
