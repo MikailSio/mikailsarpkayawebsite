@@ -48,7 +48,21 @@ header.wrap{ padding:18px 0; }
 .nav-left{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
+}
+.cv-link {
+  font-size: 13px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 6px;
+  color: #ddd;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.cv-link:hover {
+  background: #fff;
+  color: #000;
 }
 
 .logo{
