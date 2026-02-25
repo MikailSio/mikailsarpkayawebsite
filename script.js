@@ -8,7 +8,7 @@ const i18n = {
     "nav.home":"Ana Sayfa","nav.about":"Hakkımda","nav.projects":"Projeler",
     "nav.certificates":"Sertifikalar","nav.contact":"İletişim",
 
-    "hero.tag":"⚡ Elektrik-Elektronik Müh. · AI Araştırmacısı",
+    "hero.tag":"⚡ Elektronik Mühendisi",
     "hero.greeting":"Merhaba, ben",
     "hero.sub":"alanlarında araştırma yapıyor, projeler geliştiriyorum.",
     "hero.cta1":"Projelerime Bak →","hero.cta2":"İletişime Geç",
@@ -19,7 +19,7 @@ const i18n = {
     "skill.ai":"Yapay Zeka (AI)","skill.ml":"Makine Öğrenmesi","skill.dl":"Derin Öğrenme",
     "skill.data":"Veri İşleme",    "skill.ee":"Elektrik & Elektronik Müh.",
     "skill.msc":"Yüksek Lisans (Devam)","skill.web":"Web Geliştirme",
-    "projects.label":"// Projeler","projects.title":"Öne Çıkan Çalışmalar",
+    "about.video.label":"// Tanıtım Videosu","about.video.soon":"Yakında eklenecek…","projects.title":"Öne Çıkan Çalışmalar",
     "proj.abc.title":"AbcToHero – İngilizce Öğrenme",
     "proj.abc.desc":"Sıfırdan İngilizce öğrenmek isteyenler için geliştirilen interaktif web platformu.",
     "proj1.title":"LLM Araştırma Projesi",
@@ -28,6 +28,9 @@ const i18n = {
     "proj3.desc":"Profesyonel profil, sertifikalar ve projeler için merkezi platform. Hetzner VPS üzerinde.",
     "cert.label":"// Sertifikalar","cert.title":"Eğitim & Sertifikalar",
     "cert.credly":"Credly Profilim","cert.verify":"✓ Sertifikayı Doğrula",
+    "cert.swe.name":"Introduction to Software Engineering","cert.swe.issuer":"Coursera / IBM",
+    "cert.sm1.name":"Temel Programlama Eğitimi","cert.sm1.issuer":"SiliconMade Academy",
+    "cert.sm2.name":"Yapay Zeka ve Veri Bilimi Eğitimi","cert.sm2.issuer":"SiliconMade Academy",
     "contact.label":"// İletişim","contact.title":"Birlikte Çalışalım",
     "contact.desc":"Proje fikirleri, iş birlikleri veya araştırma konularında benimle iletişime geçebilirsin.",
     "contact.email":"✉️ E-posta Gönder","contact.cv":"CV İndir",
@@ -40,7 +43,7 @@ const i18n = {
   en: {
     "nav.home":"Home","nav.about":"About","nav.projects":"Projects",
     "nav.certificates":"Certificates","nav.contact":"Contact",
-    "hero.tag":"⚡ Electrical & Electronics Eng. · AI Researcher",
+    "hero.tag":"⚡ Electronics Engineer",
     "hero.greeting":"Hi, I'm",
     "hero.sub":"I research and build projects in",
     "hero.cta1":"View Projects →","hero.cta2":"Get in Touch",
@@ -51,7 +54,7 @@ const i18n = {
     "skill.ai":"Artificial Intelligence","skill.ml":"Machine Learning","skill.dl":"Deep Learning",
     "skill.data":"Data Processing",    "skill.ee":"Electrical & Electronics Eng.",
     "skill.msc":"MSc (In Progress)","skill.web":"Web Development",
-    "projects.label":"// Projects","projects.title":"Featured Work",
+    "about.video.label":"// Introduction Video","about.video.soon":"Coming soon…","projects.title":"Featured Work",
     "proj.abc.title":"AbcToHero – English Learning",
     "proj.abc.desc":"An interactive web platform for learning English from scratch.",
     "proj1.title":"LLM Research Project",
@@ -60,6 +63,9 @@ const i18n = {
     "proj3.desc":"Central platform for professional profile, certificates and projects. Hosted on Hetzner VPS.",
     "cert.label":"// Certificates","cert.title":"Education & Certificates",
     "cert.credly":"My Credly Profile","cert.verify":"✓ Verify Certificate",
+    "cert.swe.name":"Introduction to Software Engineering","cert.swe.issuer":"Coursera / IBM",
+    "cert.sm1.name":"Introduction to Programming","cert.sm1.issuer":"SiliconMade Academy",
+    "cert.sm2.name":"AI & Data Science Training","cert.sm2.issuer":"SiliconMade Academy",
     "contact.label":"// Contact","contact.title":"Let's Work Together",
     "contact.desc":"Feel free to reach out for project ideas, collaborations, or research topics.",
     "contact.email":"✉️ Send Email","contact.cv":"Download CV",
@@ -72,7 +78,7 @@ const i18n = {
   de: {
     "nav.home":"Startseite","nav.about":"Über mich","nav.projects":"Projekte",
     "nav.certificates":"Zertifikate","nav.contact":"Kontakt",
-    "hero.tag":"⚡ Elektro- & Elektronikingenieur · KI-Forscher",
+    "hero.tag":"⚡ Elektronikingenieur",
     "hero.greeting":"Hallo, ich bin",
     "hero.sub":"Ich forsche und entwickle Projekte im Bereich",
     "hero.cta1":"Projekte ansehen →","hero.cta2":"Kontakt aufnehmen",
@@ -83,7 +89,7 @@ const i18n = {
     "skill.ai":"Künstliche Intelligenz","skill.ml":"Maschinelles Lernen","skill.dl":"Deep Learning",
     "skill.data":"Datenverarbeitung",    "skill.ee":"Elektro- & Elektroniktechnik",
     "skill.msc":"Master (Laufend)","skill.web":"Webentwicklung",
-    "projects.label":"// Projekte","projects.title":"Ausgewählte Arbeiten",
+    "about.video.label":"// Vorstellungsvideo","about.video.soon":"Demnächst verfügbar…","projects.title":"Ausgewählte Arbeiten",
     "proj.abc.title":"AbcToHero – Englisch lernen",
     "proj.abc.desc":"Interaktive Webplattform zum Englischlernen von Grund auf.",
     "proj1.title":"LLM-Forschungsprojekt",
@@ -92,6 +98,9 @@ const i18n = {
     "proj3.desc":"Zentrale Plattform für Profil, Zertifikate und Projekte. Auf Hetzner VPS gehostet.",
     "cert.label":"// Zertifikate","cert.title":"Ausbildung & Zertifikate",
     "cert.credly":"Mein Credly-Profil","cert.verify":"✓ Zertifikat verifizieren",
+    "cert.swe.name":"Einführung in Software Engineering","cert.swe.issuer":"Coursera / IBM",
+    "cert.sm1.name":"Grundlagen der Programmierung","cert.sm1.issuer":"SiliconMade Academy",
+    "cert.sm2.name":"KI & Datenwissenschaft","cert.sm2.issuer":"SiliconMade Academy",
     "contact.label":"// Kontakt","contact.title":"Lass uns zusammenarbeiten",
     "contact.desc":"Schreib mir für Projektideen, Kooperationen oder Forschungsthemen.",
     "contact.email":"✉️ E-Mail senden","contact.cv":"CV herunterladen",
@@ -199,9 +208,9 @@ function startTyped(words) {
   function type() {
     const w = typedWords[wi];
     el.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
-    if (!del && ci > w.length) { del = true; typedTimer = setTimeout(type, 1800); return; }
+    if (!del && ci > w.length) { del = true; typedTimer = setTimeout(type, 2800); return; }
     if (del && ci < 0) { del = false; wi = (wi + 1) % typedWords.length; }
-    typedTimer = setTimeout(type, del ? 55 : 95);
+    typedTimer = setTimeout(type, del ? 80 : 140);
   }
   type();
 }
