@@ -208,9 +208,9 @@ function startTyped(words) {
   function type() {
     const w = typedWords[wi];
     el.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
-    if (!del && ci > w.length) { del = true; typedTimer = setTimeout(type, 2800); return; }
+    if (!del && ci > w.length) { del = true; typedTimer = setTimeout(type, 3000); return; }
     if (del && ci < 0) { del = false; wi = (wi + 1) % typedWords.length; }
-    typedTimer = setTimeout(type, del ? 80 : 140);
+    typedTimer = setTimeout(type, del ? 100 : 160);
   }
   type();
 }
