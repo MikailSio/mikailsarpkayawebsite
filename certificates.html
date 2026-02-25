@@ -1,81 +1,237 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Certificates | Mikail Sarpkaya</title>
-  <meta name="description" content="Certificates by Mikail Sarpkaya." />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mikail Sarpkaya – Sertifikalar">
+  <title>Sertifikalar – Mikail Sarpkaya</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #cert-content { padding: 3rem 1.5rem 6rem; }
+    #cert-content .reveal { max-width: 960px; margin: 0 auto; }
+    .page-hero { text-align: center; }
+    .page-hero-inner { margin: 0 auto; }
+
+    /* Kategori filtresi */
+    .filter-bar {
+      display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: .4rem 1.1rem; border-radius: 50px; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted); font-size: .78rem; font-weight: 600;
+      cursor: pointer; transition: all .25s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent1); color: var(--accent1);
+      background: rgba(124,77,255,.1);
+    }
+
+    /* Credly header */
+    .cert-header { 
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+    }
+  </style>
 </head>
+<body data-theme="dark">
 
-<body>
-  <header class="wrap">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="logo" href="/">MikailSarpkaya</a>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<canvas id="bg-canvas"></canvas>
 
-        <div class="social">
-          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5H4.5V24H.5V8.5zM8.5 8.5H12.3V10.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V24h-4V15.5c0-2.03-.04-4.65-2.83-4.65-2.83 0-3.27 2.21-3.27 4.5V24h-4V8.5z"/></svg>
-          </a>
-          <a class="icon" href="https://github.com/MikailSio" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55 0-.27-.01-.98-.02-1.92-3.2.7-3.88-1.55-3.88-1.55-.52-1.33-1.27-1.68-1.27-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.72-1.54-2.56-.29-5.25-1.28-5.25-5.72 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.45-2.69 5.42-5.26 5.71.41.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .3.2.65.79.54 4.56-1.53 7.85-5.86 7.85-10.96C23.5 5.74 18.27.5 12 .5z"/></svg>
-          </a>
-          <a class="icon" href="https://www.kaggle.com/mikailsarpkaya" target="_blank" rel="noreferrer" aria-label="Kaggle" title="Kaggle">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4v8l6-8h5l-7.4 9.4L21 21h-5.2l-5.8-6.9V21H6V3z"/></svg>
-          </a>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/favicon/android-chrome-192x192.png" alt="MS" class="nav-logo-img"
+         onerror="this.style.display='none';">
+    <span class="nav-logo-text">Mikail Sarpkaya</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+      <li><a href="projects.html" data-i18n="nav.projects">Projeler</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-i18n-mob="nav.home" onclick="toggleMenu()">Ana Sayfa</a>
+  <a href="projects.html" data-i18n-mob="nav.projects" onclick="toggleMenu()">Projeler</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="page-hero-tag" data-i18n="page.cert.tag">Sertifikalar</div>
+    <h1 class="page-hero-title" data-i18n="page.cert.title">Eğitim & <span>Sertifikalar</span></h1>
+    <p class="page-hero-desc" data-i18n="page.cert.desc">Tamamladığım kurslar ve aldığım sertifikalar.</p>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="cert-content">
+  <div class="reveal">
+
+    <div class="cert-header">
+      <!-- Filtre -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">AI / ML</button>
+        <button class="filter-btn" data-filter="data">Data</button>
+        <button class="filter-btn" data-filter="engineering">Engineering</button>
+      </div>
+      <!-- Credly -->
+      <a href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" class="credly-btn">
+        🏅 <span data-i18n="cert.credly">Credly Profilim</span>
+      </a>
+    </div>
+
+    <div class="cert-grid" id="certGrid">
+
+      <!--
+      ════════════════════════════════════════════════════════
+      SERTİFİKA ŞABLONU — Nasıl yeni sertifika eklersin?
+
+      1. Sertifika görselini (JPG/PNG/WEBP) şu klasöre at:
+           assets/certs/DOSYAADI.jpg
+         → Dosya adını değiştirme! data-img ile eşleşmeli.
+
+      2. data-img  → görsel dosya yolu
+         data-verify → Coursera / Credly doğrulama linki
+         data-category → filtre kategorisi (ai, data, engineering)
+
+      3. Resim bulunamazsa otomatik emoji gösterilir.
+      ════════════════════════════════════════════════════════
+      -->
+
+      <!-- ── Machine Learning Specialization ── -->
+      <div class="cert-card"
+           data-img="assets/certs/machine-learning-stanford.jpg"
+           data-verify="https://coursera.org/verify/BURAYA_KOD_YAZIN"
+           data-category="ai">
+        <div class="cert-img-wrap">
+          <div class="cert-fallback">🎓</div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-name">Machine Learning Specialization</div>
+          <div class="cert-issuer">Coursera / Stanford University</div>
+          <a href="#" class="cert-verify" data-i18n="cert.verify">✓ Sertifikayı Doğrula</a>
         </div>
       </div>
 
-      <div class="nav-right">
-        <div class="links">
-          <a class="nav-cta" href="https://abctohero.com" target="_blank" rel="noreferrer" data-i18n="nav.abctohero">AbcToHero</a>
-          <a href="/" data-i18n="nav.home">Home</a>
-          <a href="/projects" data-i18n="nav.projects">Projects</a>
-          <a href="/#contact" data-i18n="nav.contact">Contact</a>
+      <!-- ── IBM AI Engineering ── -->
+      <div class="cert-card"
+           data-img="assets/certs/ibm-ai-engineering.jpg"
+           data-verify="https://coursera.org/verify/BURAYA_KOD_YAZIN"
+           data-category="ai engineering">
+        <div class="cert-img-wrap">
+          <div class="cert-fallback">🔵</div>
         </div>
-
-        <div class="spacer"></div>
-
-        <div class="toggles">
-          <button id="langToggle" class="chip" type="button" aria-label="Change language">EN</button>
-          <button id="themeToggle" class="chip" type="button" aria-label="Toggle theme">🌙</button>
+        <div class="cert-body">
+          <div class="cert-name">IBM AI Engineering Professional</div>
+          <div class="cert-issuer">IBM / Coursera</div>
+          <a href="#" class="cert-verify" data-i18n="cert.verify">✓ Sertifikayı Doğrula</a>
         </div>
       </div>
-    </nav>
-  </header>
 
-  <main class="wrap">
-    <section class="page-head cert-head">
-      <div class="cert-head-row">
-        <h1 data-i18n="certs.h">Certificates</h1>
-
-        <a class="btn btn-primary cert-credly"
-           href="https://www.credly.com/users/mikailsarpkaya/badges#credly"
-           target="_blank" rel="noreferrer"
-           data-i18n="certs.credlyBtn">View on Credly</a>
+      <!-- ── Google Data Analytics ── -->
+      <div class="cert-card"
+           data-img="assets/certs/google-data-analytics.jpg"
+           data-verify="https://coursera.org/verify/BURAYA_KOD_YAZIN"
+           data-category="data">
+        <div class="cert-img-wrap">
+          <div class="cert-fallback">🟡</div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-name">Google Data Analytics</div>
+          <div class="cert-issuer">Google / Coursera</div>
+          <a href="#" class="cert-verify" data-i18n="cert.verify">✓ Sertifikayı Doğrula</a>
+        </div>
       </div>
 
-      <p data-i18n="certs.p">Verified achievements and training.</p>
-    </section>
+      <!-- ── Deep Learning Specialization ── -->
+      <div class="cert-card"
+           data-img="assets/certs/deep-learning-specialization.jpg"
+           data-verify="https://coursera.org/verify/BURAYA_KOD_YAZIN"
+           data-category="ai">
+        <div class="cert-img-wrap">
+          <div class="cert-fallback">🧠</div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-name">Deep Learning Specialization</div>
+          <div class="cert-issuer">DeepLearning.AI</div>
+          <a href="#" class="cert-verify" data-i18n="cert.verify">✓ Sertifikayı Doğrula</a>
+        </div>
+      </div>
 
-    <section class="grid">
-      <article class="card">
-        <h3>Certificate 1</h3>
-        <p>Short description…</p>
-      </article>
+      <!-- ── NLP Specialization ── -->
+      <div class="cert-card"
+           data-img="assets/certs/nlp-specialization.jpg"
+           data-verify="https://coursera.org/verify/BURAYA_KOD_YAZIN"
+           data-category="ai">
+        <div class="cert-img-wrap">
+          <div class="cert-fallback">💬</div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-name">NLP Specialization</div>
+          <div class="cert-issuer">DeepLearning.AI / Coursera</div>
+          <a href="#" class="cert-verify" data-i18n="cert.verify">✓ Sertifikayı Doğrula</a>
+        </div>
+      </div>
 
-      <article class="card">
-        <h3>Certificate 2</h3>
-        <p>Short description…</p>
-      </article>
-    </section>
-  </main>
+      <!--
+      ════════════════════════════════════════════════════════
+      YENİ SERTİFİKA EKLEMEK İÇİN AŞAĞIYI KOPYALA:
+      ────────────────────────────────────────────────────────
+      <div class="cert-card"
+           data-img="assets/certs/DOSYAADI.jpg"
+           data-verify="https://DOGRULAMA_LINKI"
+           data-category="ai">
+        <div class="cert-img-wrap">
+          <div class="cert-fallback">🏅</div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-name">Sertifika Adı</div>
+          <div class="cert-issuer">Platform / Kurum</div>
+          <a href="#" class="cert-verify">✓ Sertifikayı Doğrula</a>
+        </div>
+      </div>
+      ════════════════════════════════════════════════════════
+      -->
 
-  <footer class="wrap footer">
-    © <span id="y"></span> <span data-i18n="footer.name">Mikail Sarpkaya</span>
-  </footer>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js?v=7"></script>
+<footer><p>© 2025 Mikail Sarpkaya</p></footer>
+
+<script src="script.js"></script>
+<script>
+  // ── SERTİFİKA FİLTRELEME ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      document.querySelectorAll('.cert-card').forEach(card => {
+        const cats = card.getAttribute('data-category') || '';
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? 'flex' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>
