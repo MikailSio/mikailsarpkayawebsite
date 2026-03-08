@@ -6,6 +6,9 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"/>
   <link rel="manifest" href="assets/favicon/site.webmanifest"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="site.css"/>
 </head>
 <body>
@@ -17,7 +20,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="projects.html" class="active">Projects</a></li>
     <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
-    <li><a href="index.html#research" data-i18n="nav.research">><span data-i18n-text="f.res">Research</span></a></li>
+    <li><a href="index.html#research" data-i18n="nav.research">Research</a></li>
     <li><a href="tutorials.html" data-i18n="nav.tutorials" class="nav-tut">Tutorials</a></li>
     <li><a href="cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
   </ul>
@@ -33,17 +36,17 @@
 
 <div class="page-hero">
   <div class="page-eyebrow sr"><span data-i18n-text="pp.eyebrow">02 — Works</span></div>
-  <h1 class="page-title sr">ALL<br><span class="outline">PROJECTS</span></h1>
-  <p class="page-sub sr">Software, research, and engineering projects — from production web apps to academic AI research.</p>
+  <h1 class="page-title sr"><span data-i18n-text="pp.t1">ALL</span><br><span class="outline" data-i18n-text="pp.t2">PROJECTS</span></h1>
+  <p class="page-sub sr" data-i18n="pp.desc">Software, research, and engineering projects — from production web apps to academic AI research.</p>
 </div>
 <div class="divider"></div>
 
 <section class="content-section">
   <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all"<span data-i18n-text="f.all">All</span></button>
-    <button class="filter-btn" data-filter="ai"<span data-i18n-text="f.ai">AI / ML</span></button>
+    <button class="filter-btn active" data-filter="all"><span data-i18n-text="f.all">All</span></button>
+    <button class="filter-btn" data-filter="ai"><span data-i18n-text="f.ai">AI / ML</span></button>
     <button class="filter-btn" data-filter="web"><span data-i18n-text="f.web">Web</span></button>
-    <button class="filter-btn" data-filter="education"<span data-i18n-text="f.edu">Education</span></button>
+    <button class="filter-btn" data-filter="education"><span data-i18n-text="f.edu">Education</span></button>
     <button class="filter-btn" data-filter="research"><span data-i18n-text="f.res">Research</span></button>
   </div>
 
