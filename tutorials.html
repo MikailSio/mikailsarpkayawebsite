@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutorials — Mikail Sarpkaya</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#05080d; --surface:#0a0f18; --surface2:#0f1824;
+      --border:#1a2030; --text:#e8e0d0; --muted:#7a7060;
+      --gold:#c8a96e; --cyan:#4de8cc;
+      --display:'Bebas Neue',sans-serif;
+      --serif:'DM Serif Display',serif;
+      --mono:'DM Mono',monospace;
+      --nav-h:62px; --sb-w:272px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--mono); overflow-x: hidden; }
+
+    /* ── LOADER ── */
+    #loader { position:fixed; inset:0; z-index:2000; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; transition:opacity .7s,visibility .7s; }
+    #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+    .ld-name { font-family:var(--display); font-size:clamp(2rem,5vw,4rem); letter-spacing:.15em; overflow:hidden; }
+    .ld-name span { display:inline-block; transform:translateY(110%); animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards; }
+    .ld-bar-wrap { width:150px; height:1px; background:rgba(255,255,255,.07); overflow:hidden; }
+    .ld-bar { height:100%; width:0; background:var(--gold); animation:loadBar 1.2s ease forwards; }
+    .ld-sub { font-size:.55rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); opacity:0; animation:fadeIn .5s .8s ease forwards; }
+
+    /* ── NAV ── */
+    nav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); z-index:1000; padding:0 5vw; display:flex; align-items:center; justify-content:space-between; background:rgba(5,8,13,.92); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
+    .nav-logo { font-family:var(--display); font-size:1.4rem; letter-spacing:.2em; color:var(--text); text-decoration:none; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; align-items:center; }
+    .nav-links a { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(232,224,208,.4); text-decoration:none; transition:color .3s; white-space:nowrap; }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); }
+    .nav-links .tut { color:rgba(200,169,110,.85); }
+    .nav-links .tut:hover { color:var(--gold); }
+    .nav-links .cv-link { color:var(--gold); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { display:block; width:20px; height:1px; background:var(--text); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4px,4px); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4px,-4px); }
+    .mobile-nav { display:none; position:fixed; inset:0; z-index:990; background:rgba(5,8,13,.98); backdrop-filter:blur(20px); flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
+    .mobile-nav.open { display:flex; }
+    .mobile-nav a { font-family:var(--display); font-size:2.2rem; letter-spacing:.1em; color:var(--text); text-decoration:none; }
+    .mobile-nav a:hover { color:var(--gold); }
+
+    /* ── LAYOUT ── */
+    .layout { display:flex; padding-top:var(--nav-h); min-height:100vh; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width:var(--sb-w); flex-shrink:0;
+      background:var(--surface);
+      border-right:1px solid var(--border);
+      position:sticky; top:var(--nav-h);
+      height:calc(100vh - var(--nav-h));
+      overflow-y:auto; overflow-x:hidden;
+    }
+    .sidebar::-webkit-scrollbar { width:2px; }
+    .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
+
+    .sb-head { padding:1.6rem 1.4rem 1rem; border-bottom:1px solid var(--border); }
+    .sb-title { font-family:var(--display); font-size:1rem; letter-spacing:.15em; }
+    .sb-sub { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; }
+
+    /* Category groups */
+    .sb-group { border-bottom:1px solid var(--border); }
+    .sb-group-label { padding:.55rem 1.4rem; font-size:.48rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); background:rgba(255,255,255,.015); }
+
+    /* Sidebar links */
+    .sb-link {
+      display:flex; align-items:center; gap:.75rem;
+      padding:.65rem 1.4rem; text-decoration:none;
+      transition:background .15s;
+      cursor:pointer; border-left:2px solid transparent;
+    }
+    .sb-link:hover { background:rgba(255,255,255,.025); }
+    .sb-link.active { background:rgba(200,169,110,.07); border-left-color:var(--gold); }
+    .sb-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .sb-link-text { font-size:.62rem; letter-spacing:.08em; color:rgba(232,224,208,.5); transition:color .2s; line-height:1.2; }
+    .sb-link:hover .sb-link-text, .sb-link.active .sb-link-text { color:var(--text); }
+    .sb-badge { font-size:.44rem; letter-spacing:.1em; text-transform:uppercase; padding:.1rem .4rem; margin-left:auto; flex-shrink:0; }
+    .sb-live { border:1px solid rgba(77,232,122,.35); color:#4de87a; }
+    .sb-new  { border:1px solid rgba(200,169,110,.4); color:var(--gold); }
+    .sb-soon { border:1px solid rgba(255,255,255,.1); color:var(--muted); }
+
+    /* ── MAIN ── */
+    .main { flex:1; min-width:0; padding:3.5rem 4vw 8rem; }
+
+    /* Hero */
+    .page-hero { margin-bottom:4rem; padding-bottom:2.5rem; border-bottom:1px solid var(--border); }
+    .eyebrow { font-size:.58rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:.8rem; }
+    .eyebrow::before { content:''; width:28px; height:1px; background:var(--gold); }
+    .page-title { font-family:var(--display); font-size:clamp(3rem,6vw,7rem); line-height:.88; letter-spacing:.04em; }
+    .page-title .outline { color:transparent; -webkit-text-stroke:1.5px var(--gold); }
+    .page-desc { font-size:.75rem; color:var(--muted); line-height:1.95; max-width:540px; margin-top:1.2rem; }
+    .page-desc em { color:var(--cyan); font-style:normal; }
+
+    /* Category cards grid */
+    .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--border); margin-bottom:4rem; }
+    .cat-card {
+      background:var(--bg); padding:2rem 1.8rem;
+      text-decoration:none; display:flex; flex-direction:column; gap:.6rem;
+      position:relative; overflow:hidden;
+      transition:background .25s;
+      border-bottom:2px solid transparent;
+    }
+    .cat-card:hover { background:var(--surface); }
+    .cat-card-accent { position:absolute; top:0; left:0; right:0; height:2px; transform:scaleX(0); transform-origin:left; transition:transform .4s ease; }
+    .cat-card:hover .cat-card-accent { transform:scaleX(1); }
+    .cat-icon { font-size:1.5rem; margin-bottom:.4rem; }
+    .cat-name { font-family:var(--display); font-size:1.8rem; letter-spacing:.06em; line-height:1; }
+    .cat-sub { font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    .cat-count { font-size:.52rem; color:var(--muted); margin-top:auto; padding-top:.8rem; border-top:1px solid var(--border); }
+
+    /* Divider */
+    .divider { height:1px; background:linear-gradient(90deg,transparent,rgba(200,169,110,.15) 40%,rgba(200,169,110,.15) 60%,transparent); margin:2rem 0; }
+
+    /* Footer */
+    footer { border-top:1px solid var(--border); padding:1.5rem 6vw; display:flex; justify-content:space-between; align-items:center; }
+    .f-copy { font-size:.55rem; letter-spacing:.1em; color:var(--muted); }
+    .f-site span { color:var(--gold); }
+
+    /* Keyframes */
+    @keyframes loadBar  { to { width:100%; } }
+    @keyframes slideUp  { to { transform:translateY(0); } }
+    @keyframes fadeIn   { to { opacity:1; } }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .sidebar { position:fixed; top:var(--nav-h); left:-100%; width:80vw; max-width:300px; height:calc(100vh - var(--nav-h)); z-index:700; transition:left .3s ease; box-shadow:8px 0 30px rgba(0,0,0,.6); }
+      .sidebar.open { left:0; }
+      .sb-toggle { display:flex !important; }
+      .main { padding:2rem 1.5rem 6rem; }
+      .cat-grid { grid-template-columns:repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-name"><span>TUTORIALS</span></div>
+  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
+  <div class="ld-sub">mikailsarpkaya.com</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-i18n="nav.about">Home</a></li>
+    <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="tutorials.html" class="tut active" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="cv/index.html" class="cv-link" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html"       onclick="toggleMobile()">Home</a>
+  <a href="projects.html"    onclick="toggleMobile()">Projects</a>
+  <a href="certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="tutorials.html"   onclick="toggleMobile()">Tutorials</a>
+  <a href="cv/index.html"    onclick="toggleMobile()">CV</a>
+</div>
+
+<div class="layout">
+
+  <!-- ══════════════ SIDEBAR ══════════════ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sb-head">
+      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
+      <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
+    </div>
+
+    <!-- Systems -->
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.sys">Systems &amp; Languages</div>
+      <a class="sb-link" href="tut-c.html">
+        <div class="sb-dot" style="background:#4de8cc"></div>
+        <span class="sb-link-text">C Language</span>
+        <span class="sb-badge sb-live">6</span>
+      </a>
+      <a class="sb-link" href="tut-cpp.html">
+        <div class="sb-dot" style="background:#f09638"></div>
+        <span class="sb-link-text">C++</span>
+        <span class="sb-badge sb-live">7</span>
+      </a>
+      <a class="sb-link" href="tut-csharp.html">
+        <div class="sb-dot" style="background:#7c55cc"></div>
+        <span class="sb-link-text">C#</span>
+        <span class="sb-badge sb-live">6</span>
+      </a>
+    </div>
+
+    <!-- Python -->
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.py">Python Ecosystem</div>
+      <a class="sb-link" href="tut-python.html">
+        <div class="sb-dot" style="background:#4de87a"></div>
+        <span class="sb-link-text">Python Core</span>
+        <span class="sb-badge sb-live">6</span>
+      </a>
+      <a class="sb-link" href="tut-pandas.html">
+        <div class="sb-dot" style="background:#4de87a"></div>
+        <span class="sb-link-text">Pandas</span>
+        <span class="sb-badge sb-live">5</span>
+      </a>
+      <a class="sb-link" href="tut-numpy.html">
+        <div class="sb-dot" style="background:#4de8cc"></div>
+        <span class="sb-link-text">NumPy</span>
+        <span class="sb-badge sb-live">4</span>
+      </a>
+      <a class="sb-link" href="tut-sklearn.html">
+        <div class="sb-dot" style="background:#f09638"></div>
+        <span class="sb-link-text">Scikit-Learn</span>
+        <span class="sb-badge sb-live">5</span>
+      </a>
+    </div>
+
+    <!-- AI / ML -->
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.ai">AI &amp; Machine Learning</div>
+      <a class="sb-link" href="tut-ml.html">
+        <div class="sb-dot" style="background:#c8a96e"></div>
+        <span class="sb-link-text">Machine Learning</span>
+        <span class="sb-badge sb-live">5</span>
+      </a>
+      <a class="sb-link" href="tut-dl.html">
+        <div class="sb-dot" style="background:#e84d80"></div>
+        <span class="sb-link-text">Deep Learning</span>
+        <span class="sb-badge sb-new">5</span>
+      </a>
+      <a class="sb-link" href="tut-nlp.html">
+        <div class="sb-dot" style="background:#e84d4d"></div>
+        <span class="sb-link-text">NLP &amp; Transformers</span>
+        <span class="sb-badge sb-new">5</span>
+      </a>
+    </div>
+
+    <!-- Coming -->
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.soon">Coming Soon</div>
+      <a class="sb-link" href="#">
+        <div class="sb-dot" style="background:var(--muted)"></div>
+        <span class="sb-link-text"><span data-i18n-text="tp.linux">Linux &amp; Bash</span></span>
+        <span class="sb-badge sb-soon">Soon</span>
+      </a>
+      <a class="sb-link" href="#">
+        <div class="sb-dot" style="background:var(--muted)"></div>
+        <span class="sb-link-text"><span data-i18n-text="tp.git">Git &amp; GitHub</span></span>
+        <span class="sb-badge sb-soon">Soon</span>
+      </a>
+      <a class="sb-link" href="#">
+        <div class="sb-dot" style="background:var(--muted)"></div>
+        <span class="sb-link-text"><span data-i18n-text="tp.scr">Web Scraping</span></span>
+        <span class="sb-badge sb-soon">Soon</span>
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ══════════════ MAIN ══════════════ -->
+  <main class="main">
+
+    <div class="page-hero">
+      <div class="eyebrow" data-i18n-text="tp.eyebrow">05 — Knowledge Base</div>
+      <h1 class="page-title"><span data-i18n-text="tp.t1">SOFTWARE</span><br><span class="outline" data-i18n-text="tp.t2">TUTORIALS</span></h1>
+      <p class="page-desc">
+        Practical guides written from real engineering and research experience.
+        From <em>C fundamentals</em> to <em>Transformer architectures</em>.
+        Each topic is a separate deep-dive page.
+      </p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="cat-grid">
+
+      <a class="cat-card" href="tut-c.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">⚙️</div>
+        <div class="cat-name" style="color:#4de8cc">C</div>
+        <div class="cat-sub">Systems Programming</div>
+        <div class="cat-count">6 lessons · Pointers, Memory, I/O</div>
+      </a>
+
+      <a class="cat-card" href="tut-cpp.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
+        <div class="cat-icon">🔧</div>
+        <div class="cat-name" style="color:#f09638">C++</div>
+        <div class="cat-sub">OOP · STL · Modern C++</div>
+        <div class="cat-count">7 lessons · Classes, Templates, Smart Ptrs</div>
+      </a>
+
+      <a class="cat-card" href="tut-csharp.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#7c55cc,transparent)"></div>
+        <div class="cat-icon">🟣</div>
+        <div class="cat-name" style="color:#7c55cc">C#</div>
+        <div class="cat-sub">.NET · LINQ · async/await</div>
+        <div class="cat-count">6 lessons · Properties, DI, LINQ</div>
+      </a>
+
+      <a class="cat-card" href="tut-python.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="cat-icon">🐍</div>
+        <div class="cat-name" style="color:#4de87a">Python</div>
+        <div class="cat-sub">Core · OOP · Decorators</div>
+        <div class="cat-count">6 lessons · Syntax, Functions, Scraping</div>
+      </a>
+
+      <a class="cat-card" href="tut-pandas.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="cat-icon">📊</div>
+        <div class="cat-name" style="color:#4de87a">Pandas</div>
+        <div class="cat-sub">Data Analysis</div>
+        <div class="cat-count">5 lessons · DataFrame, Cleaning, NLP prep</div>
+      </a>
+
+      <a class="cat-card" href="tut-numpy.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">🔢</div>
+        <div class="cat-name" style="color:#4de8cc">NumPy</div>
+        <div class="cat-sub">Scientific Computing</div>
+        <div class="cat-count">4 lessons · Arrays, LinAlg, Broadcasting</div>
+      </a>
+
+      <a class="cat-card" href="tut-sklearn.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
+        <div class="cat-icon">🤖</div>
+        <div class="cat-name" style="color:#f09638">Sklearn</div>
+        <div class="cat-sub">Classical ML</div>
+        <div class="cat-count">5 lessons · Pipeline, Evaluation, CV</div>
+      </a>
+
+      <a class="cat-card" href="tut-ml.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
+        <div class="cat-icon">📈</div>
+        <div class="cat-name" style="color:#c8a96e">ML</div>
+        <div class="cat-sub">Machine Learning Theory</div>
+        <div class="cat-count">5 lessons · GD, Regularization, Clustering</div>
+      </a>
+
+      <a class="cat-card" href="tut-dl.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
+        <div class="cat-icon">🧠</div>
+        <div class="cat-name" style="color:#e84d80">Deep L.</div>
+        <div class="cat-sub">Neural Networks · PyTorch</div>
+        <div class="cat-count">5 lessons · CNN, RNN, Backprop</div>
+      </a>
+
+      <a class="cat-card" href="tut-nlp.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d4d,transparent)"></div>
+        <div class="cat-icon">💬</div>
+        <div class="cat-name" style="color:#e84d4d">NLP</div>
+        <div class="cat-sub">Transformers · BERT · HuggingFace</div>
+        <div class="cat-count">5 lessons · Attention, Fine-tuning, Turkish NLP</div>
+      </a>
+
+    </div><!-- /cat-grid -->
+
+    <div class="divider"></div>
+    <p style="font-size:.65rem;color:var(--muted);line-height:1.9;max-width:500px;">
+      All tutorials are written by <span style="color:var(--text)">Mikail Sarpkaya</span> based on hands-on experience in software engineering, AI research, and system administration.
+      Content is updated regularly as new lessons are completed.
+    </p>
+
+  </main>
+</div><!-- /layout -->
+
+<footer>
+  <div class="f-copy"><span data-i18n-text="footer">© 2025 Mikail Sarpkaya. All rights reserved.</span></div>
+  <div class="f-site" style="font-size:.55rem;letter-spacing:.1em;color:var(--muted)">mikailsarpkaya<span>.com</span></div>
+</footer>
+
+<!-- Mobile sidebar toggle -->
+<button onclick="document.getElementById('sidebar').classList.toggle('open')"
+  style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--gold);color:#050810;border:none;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.65rem 1.1rem;cursor:pointer;"
+  id="sbToggle">☰ Menu</button>
+
+<script>
+  window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400));
+  function toggleMobile() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  // Show sidebar toggle on mobile
+  if (window.innerWidth <= 768) document.getElementById('sbToggle').style.display = 'block';
+  window.addEventListener('resize', () => {
+    document.getElementById('sbToggle').style.display = window.innerWidth <= 768 ? 'block' : 'none';
+  });
+</script>
+<script src="i18n.js"></script>
+</body>
+</html>
