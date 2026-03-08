@@ -17,10 +17,10 @@ const T = {
   "nav.cv":           {en:"CV ↗",           tr:"CV ↗",             de:"Lebenslauf ↗",      es:"CV ↗"},
   /* HERO */
   "hero.eyebrow":     {
-    en:"Electrical & Electronics Engineer — M.Sc. Candidate",
-    tr:"Elektrik & Elektronik Mühendisi — Yüksek Lisans Öğrencisi",
-    de:"Elektro- & Elektronikingenieur — M.Sc.-Kandidat",
-    es:"Ingeniero Eléctrico y Electrónico — Estudiante de Máster"},
+    en:"Electrical & Electronics Engineer — M.Sc.",
+    tr:"Elektrik & Elektronik Mühendisi — M.Sc.",
+    de:"Elektro- & Elektronikingenieur — M.Sc.",
+    es:"Ingeniero Eléctrico y Electrónico — M.Sc."},
   "hero.desc":        {
     en:"<strong>AI & Software-Oriented Engineer</strong> building intelligent systems at the intersection of <em>NLP</em>, <em>Deep Learning</em> &amp; <em>Data Science</em>.<br><br>Osmaniye Korkut Ata University<br>Based in Turkey — Osmaniye",
     tr:"<strong>Yapay Zeka & Yazılım Odaklı Mühendis</strong> — <em>NLP</em>, <em>Derin Öğrenme</em> ve <em>Veri Bilimi</em> kesişiminde akıllı sistemler geliştiriyor.<br><br>Osmaniye Korkut Ata Üniversitesi<br>Türkiye — Osmaniye",
@@ -28,7 +28,7 @@ const T = {
     es:"<strong>Ingeniero orientado a IA y Software</strong> construyendo sistemas inteligentes en la intersección de <em>NLP</em>, <em>Deep Learning</em> &amp; <em>Data Science</em>.<br><br>Universidad Osmaniye Korkut Ata<br>Turquía — Osmaniye"},
   "hero.scroll":      {en:"Scroll to explore",tr:"Keşfetmek için kaydır",de:"Scrollen zum Erkunden",es:"Desplázate para explorar"},
   /* STATS */
-  "stat.msc":  {en:"Graduate Student", tr:"Yüksek Lisans Öğrencisi",  de:"Masterstudent",       es:"Estudiante de Posgrado"},
+  "stat.msc":  {en:"M.Sc.", tr:"M.Sc.",  de:"M.Sc.",       es:"M.Sc."},
   "stat.lang": {en:"Languages",          tr:"Programlama Dili",      de:"Sprachen",            es:"Lenguajes"},
   "stat.proj": {en:"Active Projects",    tr:"Aktif Proje",           de:"Aktive Projekte",     es:"Proyectos Activos"},
   "stat.cert": {en:"Certificates",       tr:"Sertifika",             de:"Zertifikate",         es:"Certificados"},
