@@ -1,269 +1,187 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mikail Sarpkaya – Elektrik & Elektronik Mühendisi, Yapay Zeka ve Makine Öğrenmesi araştırmacısı.">
-  <title>Mikail Sarpkaya</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
-  <link rel="manifest" href="assets/favicon/site.webmanifest">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 0 1.5rem; padding-top: 70px; text-align: center;
-    }
-    .hero-inner { max-width: 800px; width: 100%; }
-    .hero-tag { margin-left: auto; margin-right: auto; }
-    .hero-sub { margin-left: auto; margin-right: auto; }
-    .hero-btns { justify-content: center; }
-    .hero-tag {
-      display: inline-block; padding: .35rem 1rem;
-      border: 1px solid var(--accent1); color: var(--accent1);
-      font-size: .72rem; letter-spacing: 2px; text-transform: uppercase;
-      border-radius: 50px; margin-bottom: 1.5rem;
-      animation: fadeUp .8s ease both;
-    }
-    .hero-title {
-      font-size: clamp(2rem,8vw,5rem); font-weight: 800; line-height: 1.1;
-      animation: fadeUp .8s .15s ease both;
-    }
-    .hero-title span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-sub {
-      margin-top: 1.2rem; font-size: clamp(.9rem,2.5vw,1.05rem);
-      color: var(--muted); max-width: 550px; line-height: 1.7;
-      animation: fadeUp .8s .3s ease both;
-    }
-    #typed { color: var(--accent2); border-right: 2px solid var(--accent2); padding-right: 3px; }
-    .hero-btns {
-      margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;
-      animation: fadeUp .8s .45s ease both;
-    }
-
-    /* ── ABOUT ── */
-    #about { padding: 5rem 1.5rem; text-align: center; }
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 720px; margin: 0 auto; }
-    .about-text { color: var(--muted); line-height: 1.9; font-size: .93rem; text-align: left; }
-    .about-text p + p { margin-top: 1rem; }
-    .skills-grid { grid-template-columns: repeat(4, 1fr); }
-
-    /* ── VIDEO ── */
-    .video-wrap {
-      margin-top: 3rem; max-width: 720px; margin-left: auto; margin-right: auto;
-    }
-    .video-label { font-size: .72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent1); margin-bottom: 1rem; }
-    .video-container {
-      position: relative; width: 100%; aspect-ratio: 16/9;
-      border-radius: 16px; overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--card);
-    }
-    .video-container iframe, .video-container video {
-      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
-    }
-    /* Video henüz yoksa placeholder */
-    .video-placeholder {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .8rem;
-      color: var(--muted); font-size: .9rem;
-    }
-    .video-placeholder span { font-size: 2.5rem; }
-
-    /* ── PROJECTS PREVIEW ── */
-    #projects-preview { padding: 5rem 1.5rem; text-align: center; }
-    .view-all-wrap { text-align: center; margin-top: 2.5rem; }
-
-    /* ── CONTACT ── */
-    #contact { padding: 5rem 1.5rem; text-align: center; }
-
-    /* ── MAX WIDTH WRAPPER ── */
-    #about .reveal, #projects-preview .reveal {
-      max-width: 960px; margin: 0 auto;
-    }
-
-    @media(max-width:900px) {
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media(max-width:768px) {
-      .hero-btns { flex-direction: column; }
-      .hero-btns .btn { text-align: center; }
-    }
-  </style>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Mikail Sarpkaya – Electrical & Electronics Engineer, AI & NLP Researcher, M.Sc. Candidate at Osmaniye Korkut Ata University."/>
+  <title>Mikail Sarpkaya — AI & NLP Researcher</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"/>
+  <link rel="manifest" href="assets/favicon/site.webmanifest"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="site.css"/>
 </head>
-<body data-theme="dark">
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<canvas id="bg-canvas"></canvas>
-
-<!-- ── NAV ── -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="assets/favicon/android-chrome-192x192.png" alt="Mikail Sarpkaya" class="nav-logo-img">
-  </a>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="projects.html" data-i18n="nav.projects">Projeler</a></li>
-      <li><a href="certificates.html" data-i18n="nav.certificates">Sertifikalar</a></li>
-      <li><a href="#about" data-i18n="nav.about">Hakkımda</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">İletişim</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <button class="lang-btn" onclick="setLang('tr')">TR</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('de')">DE</button>
-    </div>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
+<body>
+<div id="loader"><div class="loader-name"><span>MIKAIL</span><span>SARPKAYA</span></div><div class="loader-bar-wrap"><div class="loader-bar"></div></div><div class="loader-sub">AI &amp; NLP Researcher</div></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="tutorials.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="projects.html" data-i18n-mob="nav.projects" onclick="toggleMenu()">Projeler</a>
-  <a href="certificates.html" data-i18n-mob="nav.certificates" onclick="toggleMenu()">Sertifikalar</a>
-  <a href="#about" data-i18n-mob="nav.about" onclick="toggleMenu()">Hakkımda</a>
-  <a href="#contact" data-i18n-mob="nav.contact" onclick="toggleMenu()">İletişim</a>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="toggleMobile()" data-i18n="nav.about">About</a>
+  <a href="projects.html" onclick="toggleMobile()" data-i18n="nav.projects">Projects</a>
+  <a href="certificates.html" onclick="toggleMobile()" data-i18n="nav.certificates">Certificates</a>
+  <a href="#research" onclick="toggleMobile()" data-i18n="nav.research">Research</a>
+  <a href="tutorials.html" onclick="toggleMobile()" style="color:var(--gold)" data-i18n="nav.tutorials">Tutorials</a>
+  <a href="cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
 </div>
 
-<!-- ── HERO ── -->
 <section id="hero">
-  <div class="hero-inner">
-    <div class="hero-tag">
-      <span data-i18n="hero.tag">⚡ Elektronik Mühendisi</span><br>
-      <span class="hero-tag-path">EEE ➔ ML ➔ NN ➔ DL ➔ 🕸️ NLP</span>
-    </div>
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Electrical &amp; Electronics Engineer — M.Sc. Candidate</div>
     <h1 class="hero-title">
-      <span data-i18n="hero.greeting">Merhaba, ben</span><br>
-      <span>Mikail Sarpkaya</span>
+      <div class="word w1"><span class="word-inner">MIKAIL</span></div>
+      <div class="word w2"><span class="word-inner">SARPKAYA</span></div>
     </h1>
-    <p class="hero-sub">
-      <span id="typed"></span>
-      <span data-i18n="hero.sub"> alanlarında araştırma yapıyor, projeler geliştiriyorum.</span>
-    </p>
-    <div class="hero-btns">
-      <a href="projects.html" class="btn btn-primary" data-i18n="hero.cta1">Projelerime Bak →</a>
-      <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">İletişime Geç</a>
-    </div>
+  </div>
+  <div class="hero-footer">
+    <p class="hero-desc" data-i18n="hero.desc"><strong>AI &amp; Software-Oriented Engineer</strong> building intelligent systems at the intersection of <em>NLP</em>, <em>Deep Learning</em> &amp; <em>Data Science</em>.<br><br>Osmaniye Korkut Ata University<br>Based in Turkey — Osmaniye</p>
+    <div class="hero-scroll"><div class="scroll-line"></div data-i18n-text="hero.scroll">Scroll to explore</div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<div class="divider"></div>
+<div class="stats-row sr">
+  <div class="stat-box"><div class="stat-num">M.Sc.</div><div class="stat-label" data-i18n-text="stat.msc">Graduate Candidate</div></div>
+  <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label" data-i18n-text="stat.lang">Languages</div></div>
+  <div class="stat-box"><div class="stat-num">3+</div><div class="stat-label" data-i18n-text="stat.proj">Active Projects</div></div>
+  <div class="stat-box"><div class="stat-num">8+</div><div class="stat-label" data-i18n-text="stat.cert">Certificates</div></div>
+</div>
+<div class="divider"></div>
+
 <section id="about">
-  <div class="reveal">
-    <p class="section-label" data-i18n="about.label">// Hakkımda</p>
-    <h2 class="section-title" data-i18n="about.title">Yapay Zeka & Mühendislik</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p data-i18n="about.p1">Elektrik & Elektronik Mühendisliği geçmişime sahip, Yapay Zeka ve Makine Öğrenmesi alanında uzmanlaşmaya odaklanmış bir mühendisim.</p>
-        <p data-i18n="about.p2">Büyük Dil Modelleri (LLM), Derin Öğrenme mimarileri ve veri işleme pipeline'ları üzerine aktif olarak çalışıyorum.</p>
-        <p data-i18n="about.p3">Sürekli öğrenme anlayışıyla Coursera, IBM ve Google gibi platformlardan sertifikalar alarak bilgimi güncel tutuyorum.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span>🤖</span><span data-i18n="skill.ai">Yapay Zeka (AI)</span></div>
-        <div class="skill-chip"><span>🧠</span><span data-i18n="skill.ml">Makine Öğrenmesi</span></div>
-        <div class="skill-chip"><span>🔬</span><span data-i18n="skill.dl">Derin Öğrenme</span></div>
-        <div class="skill-chip"><span>💬</span>LLM / GPT</div>
-        <div class="skill-chip"><span>📊</span><span data-i18n="skill.data">Veri İşleme</span></div>
-        <div class="skill-chip"><span>⚡</span><span data-i18n="skill.ee">Elektrik & Elektronik Müh.</span></div>
-        <div class="skill-chip"><span>🎓</span><span data-i18n="skill.msc">Yüksek Lisans (Devam)</span></div>
-        <div class="skill-chip"><span>🐍</span>Python</div>
-        <div class="skill-chip"><span>🌐</span><span data-i18n="skill.web">Web Geliştirme</span></div>
-      </div>
-    </div>
-      <!-- VIDEO ALANI -->
-      <div class="video-wrap reveal">
-        <p class="video-label" data-i18n="about.video.label">// Tanıtım Videosu</p>
-        <div class="video-container">
-          <!--
-            YouTube embed için şunu kullan:
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-
-            Direkt dosya için:
-            <video controls poster="assets/video-poster.jpg">
-              <source src="assets/intro.mp4" type="video/mp4">
-            </video>
-
-            Şimdilik placeholder gösteriliyor:
-          -->
-          <div class="video-placeholder">
-            <span>🎬</span>
-            <p data-i18n="about.video.soon">Yakında eklenecek…</p>
-          </div>
-        </div>
-      </div>
-
-
-<section id="projects-preview">
-  <div class="reveal">
-    <p class="section-label" data-i18n="projects.label">// Projeler</p>
-    <h2 class="section-title" data-i18n="projects.title">Öne Çıkan Çalışmalar</h2>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-icon">📚</div>
-        <div class="project-title" data-i18n="proj.abc.title">AbcToHero – İngilizce Öğrenme</div>
-        <p class="project-desc" data-i18n="proj.abc.desc">Sıfırdan İngilizce öğrenmek isteyenler için geliştirilen interaktif web platformu.</p>
-        <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Education</span></div>
-        <a href="https://abctohero.com" target="_blank" class="project-link">abctohero.com →</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-icon">🤖</div>
-        <div class="project-title" data-i18n="proj1.title">LLM Araştırma Projesi</div>
-        <p class="project-desc" data-i18n="proj1.desc">Büyük Dil Modelleri üzerine yapılan araştırma ve fine-tuning deneyleri.</p>
-        <div class="project-tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">PyTorch</span></div>
-        <a href="https://github.com/MikailSio" target="_blank" class="project-link">GitHub →</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-icon">🌐</div>
-        <div class="project-title" data-i18n="proj3.title">Kişisel Web Sitesi</div>
-        <p class="project-desc" data-i18n="proj3.desc">Profesyonel profil, sertifikalar ve projeler için merkezi platform. Hetzner VPS üzerinde.</p>
-        <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
-        <a href="https://github.com/MikailSio/mikailsarpkayawebsite" target="_blank" class="project-link">GitHub →</a>
-      </div>
-
-    </div>
-    <div class="view-all-wrap">
-      <a href="projects.html" class="btn btn-outline" data-i18n="projects.title">Tüm Projeleri Gör →</a>
+  <div class="about-art">
+    <div class="art-label" data-i18n-text="about.art">// Neural Architecture</div>
+    <svg class="art-svg" viewBox="0 0 600 800" fill="none">
+      <line x1="300" y1="0" x2="300" y2="800" stroke="#4de8cc" stroke-width="0.5"/>
+      <line x1="0" y1="400" x2="600" y2="400" stroke="#c8a96e" stroke-width="0.5"/>
+      <circle cx="300" cy="400" r="90" stroke="#4de8cc" stroke-width="0.6"/>
+      <circle cx="300" cy="400" r="170" stroke="#c8a96e" stroke-width="0.35"/>
+      <circle cx="300" cy="400" r="260" stroke="#4de8cc" stroke-width="0.2"/>
+      <circle cx="300" cy="400" r="7" fill="#4de8cc" opacity="0.9"/>
+      <circle cx="300" cy="230" r="4" fill="#c8a96e" opacity="0.7"/><circle cx="470" cy="400" r="4" fill="#c8a96e" opacity="0.7"/>
+      <circle cx="300" cy="570" r="4" fill="#c8a96e" opacity="0.7"/><circle cx="130" cy="400" r="4" fill="#c8a96e" opacity="0.7"/>
+      <line x1="300" y1="230" x2="470" y2="400" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
+      <line x1="470" y1="400" x2="300" y2="570" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
+      <line x1="300" y1="570" x2="130" y2="400" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
+      <line x1="130" y1="400" x2="300" y2="230" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
+      <circle cx="300" cy="400" r="90" stroke="#4de8cc" stroke-width="1.2" opacity="0"><animate attributeName="r" values="90;135;90" dur="3.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0;0.25" dur="3.5s" repeatCount="indefinite"/></circle>
+    </svg>
+    <div class="art-quote sr from-left" data-i18n="about.quote">"Engineering intelligence,<br>one model at a time."</div>
+  </div>
+  <div class="about-text">
+    <div class="section-eyebrow sr" data-i18n-text="about.eyebrow">02 — Profile</div>
+    <h2 class="section-title sr"><span data-i18n-text="about.t1">ENGINEER</span><br><span class="gold" data-i18n-text="about.t2">RESEARCHER</span><br><span data-i18n-text="about.t3">BUILDER</span></h2>
+    <p class="body-text sr"><span data-i18n="about.p1">I'm an <strong>Electrical &amp; Electronics Engineer</strong> (B.Sc. 2020, Korkut Ata University) currently pursuing my Master's degree at the same institution, focused on NLP and Deep Learning.</span></p>
+    <p class="body-text sr"><span data-i18n="about.p2">I work at the intersection of <strong>academic research</strong> and production software — from transformer-based NLP models to web apps deployed on Hetzner VPS with Nginx &amp; Cloudflare.</span></p>
+    <p class="body-text sr"><span data-i18n="about.p3">Continuously expanding knowledge through Coursera, IBM, Google, Stanford and DeepLearning.AI certifications — and building things that matter.</span></p>
+    <div class="tech-grid sr">
+      <div class="tech-pill">Python</div><div class="tech-pill">NLP / LLMs</div><div class="tech-pill">Deep Learning</div><div class="tech-pill">PyTorch</div><div class="tech-pill">JavaScript</div><div class="tech-pill">C / C++ / C#</div><div class="tech-pill">Web Scraping</div><div class="tech-pill">Linux / Nginx</div><div class="tech-pill">Cloudflare</div><div class="tech-pill">Git / GitHub</div>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<div class="divider"></div>
+
+<!-- PROJECT 1 -->
+<div class="proj-scene">
+  <div class="proj-bg bg-1"></div>
+  <div class="proj-deco"><svg viewBox="0 0 500 600" fill="none"><circle cx="250" cy="300" r="200" stroke="#4de8cc" stroke-width="0.6"/><circle cx="250" cy="300" r="145" stroke="#4de8cc" stroke-width="0.5" stroke-dasharray="9 9"/><circle cx="250" cy="300" r="90" stroke="#4de8cc" stroke-width="0.9"/><circle cx="250" cy="300" r="14" fill="#4de8cc" opacity="0.9"/><line x1="250" y1="110" x2="250" y2="490" stroke="#4de8cc" stroke-width="0.4"/><line x1="60" y1="300" x2="440" y2="300" stroke="#4de8cc" stroke-width="0.4"/></svg></div>
+  <div class="proj-body">
+    <div class="proj-idx sr"><span>001</span> — <span data-i18n-text="p1.label">Featured</span></div>
+    <h3 class="proj-h sr">ABC TO<br><span class="c">HERO</span></h3>
+    <blockquote class="proj-pull cc sr" data-i18n="p1.pull">"From zero to fluent — an AI-powered path through English."</blockquote>
+    <p class="proj-p sr" data-i18n="p1.desc">An interactive English learning platform for learners starting from scratch. Features vocabulary, grammar, and practice exercises. Deployed live at abctohero.com with a companion mobile app in development.</p>
+    <div class="tag-row sr"><span class="tag-c">HTML / CSS / JS</span><span class="tag-c">Education</span><span class="tag-c">Mobile App</span><span class="tag-c">Hetzner VPS</span><span class="tag-c">Nginx</span></div>
+    <a href="https://abctohero.com" target="_blank" class="cta-btn sr"><span data-i18n-text="p1.cta">Visit abctohero.com</span> →</a>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- PROJECT 2 -->
+<div class="proj-scene">
+  <div class="proj-bg bg-2"></div>
+  <div class="proj-deco"><svg viewBox="0 0 500 600" fill="none"><rect x="100" y="150" width="300" height="300" stroke="#c8a96e" stroke-width="0.6" transform="rotate(12 250 300)"/><rect x="125" y="175" width="250" height="250" stroke="#c8a96e" stroke-width="0.5" transform="rotate(28 250 300)"/><rect x="155" y="205" width="190" height="190" stroke="#c8a96e" stroke-width="0.4" transform="rotate(44 250 300)"/><circle cx="250" cy="300" r="7" fill="#c8a96e" opacity="0.85"/></svg></div>
+  <div class="proj-body">
+    <div class="proj-idx sr"><span>002</span> — <span data-i18n-text="p2.label">M.Sc. Thesis</span></div>
+    <h3 class="proj-h sr">NLP<br><span class="g">THESIS</span></h3>
+    <blockquote class="proj-pull sr" data-i18n="p2.pull">"Teaching machines to understand Turkish language at scale."</blockquote>
+    <p class="proj-p sr" data-i18n="p2.desc">Graduate research combining automated web scraping pipelines, data cleaning, and transformer-based deep learning architectures for Turkish text analysis. Co-authoring journal papers with faculty at Korkut Ata University.</p>
+    <div class="tag-row sr"><span class="tag-g">Transformers</span><span class="tag-g">PyTorch</span><span class="tag-g">HuggingFace</span><span class="tag-g">BeautifulSoup</span><span class="tag-g">Pandas</span></div>
+    <a href="#research" class="cta-btn sr" style="border-color:rgba(200,169,110,0.18)"><span data-i18n-text="p2.cta">See Research</span> →</a>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- PROJECT 3 -->
+<div class="proj-scene">
+  <div class="proj-bg bg-3"></div>
+  <div class="proj-deco"><svg viewBox="0 0 500 600" fill="none"><polygon points="250,80 460,420 40,420" stroke="#7c55cc" stroke-width="0.6" fill="none"/><polygon points="250,140 410,390 90,390" stroke="#7c55cc" stroke-width="0.4" fill="none" stroke-dasharray="6 6"/><polygon points="250,200 360,360 140,360" stroke="#7c55cc" stroke-width="0.3" fill="none"/><circle cx="250" cy="300" r="6" fill="#7c55cc" opacity="0.8"/></svg></div>
+  <div class="proj-body">
+    <div class="proj-idx sr"><span>003</span> — <span data-i18n-text="p3.label">Research</span></div>
+    <h3 class="proj-h sr">LLM<br><span class="w">RESEARCH</span></h3>
+    <blockquote class="proj-pull sr" style="border-color:#7c55cc" data-i18n="p3.pull">"Exploring the limits of large language models through fine-tuning experiments."</blockquote>
+    <p class="proj-p sr" data-i18n="p3.desc">Research and fine-tuning experiments on Large Language Models. Investigating model performance, prompt engineering, and domain adaptation for Turkish language tasks.</p>
+    <div class="tag-row sr"><span class="tag-c" style="border-color:rgba(124,85,204,0.3);color:#9d7ee0">Python</span><span class="tag-c" style="border-color:rgba(124,85,204,0.3);color:#9d7ee0">LLM</span><span class="tag-c" style="border-color:rgba(124,85,204,0.3);color:#9d7ee0">PyTorch</span><span class="tag-c" style="border-color:rgba(124,85,204,0.3);color:#9d7ee0">HuggingFace</span></div>
+    <a href="https://github.com/MikailSio" target="_blank" class="cta-btn sr"><span>GitHub</span> →</a>
+  </div>
+</div>
+<div class="divider"></div>
+
+<section id="research">
+  <div class="research-top">
+    <div><div class="section-eyebrow sr" data-i18n-text="res.eyebrow">03</div><h2 class="research-h sr"><span data-i18n-text="res.t1">RESEARCH</span><br>&amp;<br><span class="gold" data-i18n-text="res.t2">PAPERS</span></h2></div>
+    <p class="research-intro sr" data-i18n="res.intro">Academic work at the intersection of Natural Language Processing and Deep Learning. Focused on Turkish language understanding and intelligent text classification. M.Sc. candidate at Osmaniye Korkut Ata University.</p>
+  </div>
+  <div class="r-list">
+    <div class="r-row sr"><div class="r-year">2024–2025</div><div class="r-title" data-i18n-text="r1.title">Deep Learning &amp; NLP Integration for Turkish Text Analysis</div><div class="r-desc" data-i18n="r1.desc">M.Sc. thesis — transformer architectures with domain-specific corpus construction via automated web scraping and data cleaning pipelines.</div><span class="badge b-on" data-i18n-text="r1.badge">Ongoing</span></div>
+    <div class="r-row sr"><div class="r-year">2024</div><div class="r-title" data-i18n-text="r2.title">NLP-Based Text Classification Model — Journal Paper</div><div class="r-desc" data-i18n="r2.desc">Co-authored paper combining NLP methods and deep learning for text classification. Collaboration with university faculty at Korkut Ata University.</div><span class="badge b-prep" data-i18n-text="r2.badge">In Preparation</span></div>
+    <div class="r-row sr"><div class="r-year">2023</div><div class="r-title" data-i18n-text="r3.title">Automated Web Scraping &amp; Data Preprocessing Pipelines</div><div class="r-desc" data-i18n="r3.desc">Design and implementation of automated data collection systems for Turkish language corpora used in downstream NLP tasks.</div><span class="badge b-done" data-i18n-text="r3.badge">Completed</span></div>
+  </div>
+</section>
+<div class="divider"></div>
+
 <section id="contact">
-  <div class="reveal">
-    <div class="contact-box">
-      <p class="section-label" data-i18n="contact.label">// İletişim</p>
-      <h2 class="section-title" style="text-align:center;margin-bottom:0" data-i18n="contact.title">Birlikte Çalışalım</h2>
-      <p class="contact-desc" data-i18n="contact.desc">Proje fikirleri, iş birlikleri veya araştırma konularında benimle iletişime geçebilirsin.</p>
-      <a href="mailto:info@mikailsarpkaya.com" class="btn btn-primary" data-i18n="contact.email">✉️ E-posta Gönder</a>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/mikailsarpkaya/" target="_blank" class="social-link">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/MikailSio" target="_blank" class="social-link">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.kaggle.com/mikailsarpkaya" target="_blank" class="social-link">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.334z"/></svg>
-          Kaggle
-        </a>
-        <a href="/cv/cv.pdf" class="social-link">📄 <span data-i18n="contact.cv">CV İndir</span></a>
-      </div>
-    </div>
+  <div class="contact-ghost">CONNECT</div>
+  <div class="contact-eyebrow sr" data-i18n-text="con.eyebrow">04 — Get In Touch</div>
+  <h2 class="contact-h sr"><span data-i18n-text="con.t1">LET'S</span><br><span class="outline" data-i18n-text="con.t2">TALK</span></h2>
+  <p class="contact-sub sr" data-i18n="con.sub">Open to research collaborations, academic discussions,<br>freelance projects, and interesting engineering challenges.</p>
+  <div class="contact-row sr">
+    <a href="/cdn-cgi/l/email-protection#066b6f6d676f6a756774766d677f67363f46616b676f6a2865696b" class="c-btn primary" data-i18n-text="con.email">Email Me</a>
+    <a href="https://www.linkedin.com/in/mikailsarpkaya/" target="_blank" class="c-btn">LinkedIn</a>
+    <a href="https://github.com/MikailSio" target="_blank" class="c-btn">GitHub</a>
+    <a href="https://www.kaggle.com/mikailsarpkaya" target="_blank" class="c-btn">Kaggle</a>
+    <a href="cv/index.html" class="c-btn" data-i18n-text="con.cv">View CV</a>
   </div>
 </section>
 
-<footer><p>© 2025 Mikail Sarpkaya</p></footer>
+<footer><div class="f-copy" data-i18n-text="footer">© 2025 Mikail Sarpkaya. All rights reserved.</div><div class="f-site">mikailsarpkaya<span>.com</span></div></footer>
 
-<script src="script.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1900));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+function toggleMobile(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');}
+const pc=document.getElementById('particles');
+for(let i=0;i<45;i++){const p=document.createElement('div');p.className='particle';const sz=Math.random()*2.5+0.8;p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${80+Math.random()*20}%;--dx:${(Math.random()-0.5)*180}px;animation-duration:${Math.random()*9+7}s;animation-delay:${Math.random()*9}s;`;pc.appendChild(p);}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.1});
+document.querySelectorAll('.sr').forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.09+'s';obs.observe(el);});
+window.addEventListener('scroll',()=>{
+  const links=document.querySelectorAll('.sb-link');
+  // no sidebar on index
+});
+</script>
+<script src="i18n.js"></script>
 </body>
 </html>
