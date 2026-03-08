@@ -18,9 +18,9 @@ const T = {
   /* HERO */
   "hero.eyebrow":     {
     en:"Electrical & Electronics Engineer — M.Sc. Candidate",
-    tr:"Elektrik & Elektronik Mühendisi — Yüksek Lisans Adayı",
+    tr:"Elektrik & Elektronik Mühendisi — Yüksek Lisans Öğrencisi",
     de:"Elektro- & Elektronikingenieur — M.Sc.-Kandidat",
-    es:"Ingeniero Eléctrico y Electrónico — Candidato M.Sc."},
+    es:"Ingeniero Eléctrico y Electrónico — Estudiante de Máster"},
   "hero.desc":        {
     en:"<strong>AI & Software-Oriented Engineer</strong> building intelligent systems at the intersection of <em>NLP</em>, <em>Deep Learning</em> &amp; <em>Data Science</em>.<br><br>Osmaniye Korkut Ata University<br>Based in Turkey — Osmaniye",
     tr:"<strong>Yapay Zeka & Yazılım Odaklı Mühendis</strong> — <em>NLP</em>, <em>Derin Öğrenme</em> ve <em>Veri Bilimi</em> kesişiminde akıllı sistemler geliştiriyor.<br><br>Osmaniye Korkut Ata Üniversitesi<br>Türkiye — Osmaniye",
@@ -28,7 +28,7 @@ const T = {
     es:"<strong>Ingeniero orientado a IA y Software</strong> construyendo sistemas inteligentes en la intersección de <em>NLP</em>, <em>Deep Learning</em> &amp; <em>Data Science</em>.<br><br>Universidad Osmaniye Korkut Ata<br>Turquía — Osmaniye"},
   "hero.scroll":      {en:"Scroll to explore",tr:"Keşfetmek için kaydır",de:"Scrollen zum Erkunden",es:"Desplázate para explorar"},
   /* STATS */
-  "stat.msc":  {en:"Graduate Candidate", tr:"Yüksek Lisans Adayı",  de:"Masterstudent",       es:"Candidato de Posgrado"},
+  "stat.msc":  {en:"Graduate Student", tr:"Yüksek Lisans Öğrencisi",  de:"Masterstudent",       es:"Estudiante de Posgrado"},
   "stat.lang": {en:"Languages",          tr:"Programlama Dili",      de:"Sprachen",            es:"Lenguajes"},
   "stat.proj": {en:"Active Projects",    tr:"Aktif Proje",           de:"Aktive Projekte",     es:"Proyectos Activos"},
   "stat.cert": {en:"Certificates",       tr:"Sertifika",             de:"Zertifikate",         es:"Certificados"},
@@ -54,9 +54,9 @@ const T = {
     es:"Ampliando continuamente el conocimiento con certificaciones de Coursera, IBM, Google, Stanford y DeepLearning.AI."},
   "about.quote":   {
     en:"\"Engineering intelligence,<br>one model at a time.\"",
-    tr:"\"Zekayı mühendislik etmek,<br>bir model adımında.\"",
+    tr:"\"Her model,<br>bir adım daha ileri.\"",
     de:"\"Intelligenz entwickeln,<br>ein Modell nach dem anderen.\"",
-    es:"\"Ingeniería de inteligencia,<br>un modelo a la vez.\""},
+    es:"\"Ingeniería de inteligencia,<br>un modelo a la vez.\""},,
   "about.art":     {en:"// Neural Architecture",tr:"// Sinir Mimarisi",de:"// Neuronale Architektur",es:"// Arquitectura Neuronal"},
   /* INDEX PROJECTS */
   "p1.label": {en:"001 — Featured",    tr:"001 — Öne Çıkan",      de:"001 — Highlight",    es:"001 — Destacado"},
@@ -99,7 +99,7 @@ const T = {
     en:"Academic work at the intersection of Natural Language Processing and Deep Learning. Focused on Turkish language understanding and intelligent text classification. M.Sc. candidate at Osmaniye Korkut Ata University.",
     tr:"Doğal Dil İşleme ve Derin Öğrenme kesişiminde akademik çalışmalar. Türkçe dil anlama ve akıllı metin sınıflandırması odaklı. Osmaniye Korkut Ata Üniversitesi yüksek lisans adayı.",
     de:"Akademische Arbeit an der Schnittstelle von NLP und Deep Learning. Schwerpunkt auf türkischem Sprachverständnis. M.Sc.-Kandidat an der Osmaniye Korkut Ata Universität.",
-    es:"Trabajo académico en la intersección de NLP y Deep Learning. Enfocado en la comprensión del turco. Candidato M.Sc. en la Universidad Osmaniye Korkut Ata."},
+    es:"Trabajo académico en la intersección de NLP y Deep Learning. Enfocado en la comprensión del turco. Estudiante de Máster en la Universidad Osmaniye Korkut Ata."},
   "r1.title": {en:"Deep Learning & NLP Integration for Turkish Text Analysis",
                tr:"Türkçe Metin Analizi için Derin Öğrenme ve NLP Entegrasyonu",
                de:"Deep Learning & NLP-Integration für türkische Textanalyse",
