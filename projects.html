@@ -1,208 +1,147 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mikail Sarpkaya – Projeler">
-  <title>Projeler – Mikail Sarpkaya</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
-  <link rel="manifest" href="assets/favicon/site.webmanifest">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    #projects-content { padding: 3rem 1.5rem 6rem; }
-    #projects-content .reveal { max-width: 960px; margin: 0 auto; }
-    .page-hero { text-align: center; }
-    .page-hero-inner { margin: 0 auto; }
-
-    /* Filtre butonları */
-    .filter-bar {
-      display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.5rem;
-    }
-    .filter-btn {
-      padding: .4rem 1.1rem; border-radius: 50px; border: 1px solid var(--border);
-      background: var(--card); color: var(--muted); font-size: .78rem; font-weight: 600;
-      cursor: pointer; transition: all .25s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      border-color: var(--accent1); color: var(--accent1);
-      background: rgba(124,77,255,.1);
-    }
-
-    /* Proje kartı — genişletilmiş */
-    .project-card .project-meta {
-      display: flex; align-items: center; gap: .6rem;
-      margin-bottom: .9rem;
-    }
-    .project-status {
-      padding: .2rem .7rem; border-radius: 50px; font-size: .68rem; font-weight: 700;
-    }
-    .status-live   { background: rgba(0,229,100,.12); color: #00e564; border: 1px solid rgba(0,229,100,.2); }
-    .status-wip    { background: rgba(255,193,7,.12);  color: #ffc107; border: 1px solid rgba(255,193,7,.2); }
-    .status-research { background: rgba(124,77,255,.12); color: var(--accent1); border: 1px solid rgba(124,77,255,.2); }
-
-    @media(max-width:480px) {
-      .filter-bar { gap: .4rem; }
-      .filter-btn { font-size: .72rem; padding: .35rem .85rem; }
-    }
-  </style>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Mikail Sarpkaya</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"/>
+  <link rel="manifest" href="assets/favicon/site.webmanifest"/>
+  <link rel="stylesheet" href="site.css"/>
 </head>
-<body data-theme="dark">
+<body>
+<div id="loader"><div class="loader-name"><span>PROJECTS</span></div><div class="loader-bar-wrap"><div class="loader-bar"></div></div><div class="loader-sub">mikailsarpkaya.com</div></div>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<canvas id="bg-canvas"></canvas>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="assets/favicon/android-chrome-192x192.png" alt="MS" class="nav-logo-img"
-         onerror="this.style.display='none';">
-    <span class="nav-logo-text">Mikail Sarpkaya</span>
-  </a>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="index.html" data-i18n="nav.home">Ana Sayfa</a></li>
-      <li><a href="certificates.html" data-i18n="nav.certificates">Sertifikalar</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <button class="lang-btn" onclick="setLang('tr')">TR</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('de')">DE</button>
-    </div>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="index.html#research" data-i18n="nav.research">><span data-i18n-text="f.res">Research</span></a></li>
+    <li><a href="tutorials.html" data-i18n="nav.tutorials" class="nav-tut">Tutorials</a></li>
+    <li><a href="cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" data-i18n-mob="nav.home" onclick="toggleMenu()">Ana Sayfa</a>
-  <a href="certificates.html" data-i18n-mob="nav.certificates" onclick="toggleMenu()">Sertifikalar</a>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="toggleMobile()">Home</a>
+  <a href="projects.html" onclick="toggleMobile()">Projects</a>
+  <a href="certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="tutorials.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-inner reveal">
-    <div class="page-hero-tag" data-i18n="page.projects.tag">Projeler</div>
-    <h1 class="page-hero-title" data-i18n="page.projects.title">Tüm <span>Projeler</span></h1>
-    <p class="page-hero-desc" data-i18n="page.projects.desc">Üzerinde çalıştığım projeler ve araştırmalar.</p>
+<div class="page-hero">
+  <div class="page-eyebrow sr"><span data-i18n-text="pp.eyebrow">02 — Works</span></div>
+  <h1 class="page-title sr">ALL<br><span class="outline">PROJECTS</span></h1>
+  <p class="page-sub sr">Software, research, and engineering projects — from production web apps to academic AI research.</p>
+</div>
+<div class="divider"></div>
+
+<section class="content-section">
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all"<span data-i18n-text="f.all">All</span></button>
+    <button class="filter-btn" data-filter="ai"<span data-i18n-text="f.ai">AI / ML</span></button>
+    <button class="filter-btn" data-filter="web"><span data-i18n-text="f.web">Web</span></button>
+    <button class="filter-btn" data-filter="education"<span data-i18n-text="f.edu">Education</span></button>
+    <button class="filter-btn" data-filter="research"><span data-i18n-text="f.res">Research</span></button>
+  </div>
+
+  <div class="cards-grid" id="projectsGrid">
+
+    <div class="card sr" data-category="web education">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div class="card-idx">001 — Featured</div>
+        <span class="card-status s-live" data-i18n-text="st.live">Live</span>
+      </div>
+      <div class="card-title" data-i18n-text="pa.abc.t">AbcToHero — English Learning Platform</div>
+      <p class="card-desc" data-i18n="pa.abc.d">Interactive English learning platform for learners starting from scratch. Vocabulary, grammar, practice exercises, and adaptive learning paths. Deployed at abctohero.com.</p>
+      <div class="card-tags">
+        <span class="card-tag">HTML</span><span class="card-tag">CSS</span><span class="card-tag">JavaScript</span><span class="card-tag">Education</span><span class="card-tag">Hetzner VPS</span><span class="card-tag">Nginx</span>
+      </div>
+      <a href="https://abctohero.com" target="_blank" class="card-link">Visit abctohero.com →</a>
+    </div>
+
+    <div class="card sr" data-category="ai research">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div class="card-idx">002 — M.Sc. Thesis</div>
+        <span class="card-status s-wip" data-i18n-text="st.wip">In Progress</span>
+      </div>
+      <div class="card-title" data-i18n-text="pa.nlp.t">NLP Thesis — Turkish Text Analysis</div>
+      <p class="card-desc" data-i18n="pa.nlp.d">Graduate research combining automated web scraping pipelines, data cleaning, and transformer-based deep learning architectures for Turkish text analysis and classification.</p>
+      <div class="card-tags">
+        <span class="card-tag">Python</span><span class="card-tag">Transformers</span><span class="card-tag">PyTorch</span><span class="card-tag">HuggingFace</span><span class="card-tag">BeautifulSoup</span><span class="card-tag">Pandas</span>
+      </div>
+      <a href="index.html#research" class="card-link">See Research →</a>
+    </div>
+
+    <div class="card sr" data-category="ai research">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div class="card-idx">003 — Research</div>
+        <span class="card-status s-research" data-i18n-text="st.res">Research</span>
+      </div>
+      <div class="card-title" data-i18n-text="pa.llm.t">LLM Fine-Tuning Experiments</div>
+      <p class="card-desc" data-i18n="pa.llm.d">Research and fine-tuning experiments on Large Language Models. Investigating model performance, prompt engineering, and domain adaptation for Turkish language tasks.</p>
+      <div class="card-tags">
+        <span class="card-tag">Python</span><span class="card-tag">LLM</span><span class="card-tag">PyTorch</span><span class="card-tag">HuggingFace</span>
+      </div>
+      <a href="https://github.com/MikailSio" target="_blank" class="card-link">GitHub →</a>
+    </div>
+
+    <div class="card sr" data-category="web">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div class="card-idx">004 — Web</div>
+        <span class="card-status s-live">Live</span>
+      </div>
+      <div class="card-title">Personal Website — mikailsarpkaya.com</div>
+      <p class="card-desc">Professional portfolio site showcasing projects, certificates, and research. Custom-built with vanilla HTML/CSS/JS, deployed on Hetzner VPS with Nginx and Cloudflare.</p>
+      <div class="card-tags">
+        <span class="card-tag">HTML5</span><span class="card-tag">CSS3</span><span class="card-tag">JS</span><span class="card-tag">Linux VPS</span><span class="card-tag">Cloudflare</span>
+      </div>
+      <a href="https://github.com/MikailSio/mikailsarpkayawebsite" target="_blank" class="card-link">Source Code →</a>
+    </div>
+
+    <div class="card sr" data-category="ai">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div class="card-idx">005 — AI</div>
+        <span class="card-status s-wip">In Progress</span>
+      </div>
+      <div class="card-title">Web Scraping & Data Pipeline</div>
+      <p class="card-desc">Automated data collection systems for Turkish language corpora. Multi-source scraping, cleaning, deduplication, and preprocessing for downstream NLP tasks.</p>
+      <div class="card-tags">
+        <span class="card-tag">Python</span><span class="card-tag">BeautifulSoup</span><span class="card-tag">Scrapy</span><span class="card-tag">Pandas</span><span class="card-tag">NLP</span>
+      </div>
+      <a href="https://github.com/MikailSio" target="_blank" class="card-link">GitHub →</a>
+    </div>
+
+    <!-- ADD NEW PROJECTS BELOW THIS LINE -->
+    <!-- Copy a .card block and fill in the content -->
+
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects-content">
-  <div class="reveal">
+<footer><div class="f-copy">© 2025 Mikail Sarpkaya</div><div class="f-site">mikailsarpkaya<span>.com</span></div></footer>
 
-    <!-- Filtre -->
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="ai">AI / ML</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="education">Education</button>
-    </div>
-
-    <div class="projects-grid" id="projectsGrid">
-
-      <!-- ════════════════════════════════
-           PROJE 1 — AbcToHero
-           data-category: filtreleme için
-           ════════════════════════════════ -->
-      <div class="project-card" data-category="web education">
-        <div class="project-meta">
-          <div class="project-icon" style="margin:0;font-size:1.6rem">📚</div>
-          <span class="project-status status-wip">In Progress</span>
-        </div>
-        <div class="project-title" data-i18n="proj.abc.title">AbcToHero – İngilizce Öğrenme</div>
-        <p class="project-desc" data-i18n="proj.abc.desc">Sıfırdan İngilizce öğrenmek isteyenler için geliştirilen interaktif web platformu. Kelime, gramer ve pratik alıştırmalarla öğrenmeyi kolaylaştırıyor.</p>
-        <div class="project-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Education</span>
-        </div>
-        <a href="https://abctohero.com" target="_blank" class="project-link">abctohero.com →</a>
-      </div>
-
-      <!-- ════════════════════════════════
-           PROJE 2 — LLM Araştırma
-           ════════════════════════════════ -->
-      <div class="project-card" data-category="ai">
-        <div class="project-meta">
-          <div class="project-icon" style="margin:0;font-size:1.6rem">🤖</div>
-          <span class="project-status status-research">Research</span>
-        </div>
-        <div class="project-title" data-i18n="proj1.title">LLM Araştırma Projesi</div>
-        <p class="project-desc" data-i18n="proj1.desc">Büyük Dil Modelleri üzerine yapılan araştırma ve fine-tuning deneyleri. Model performansını artırmaya yönelik deneyler.</p>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">LLM</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">HuggingFace</span>
-        </div>
-        <a href="https://github.com/MikailSio" target="_blank" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- ════════════════════════════════
-           PROJE 3 — Kişisel Web Sitesi
-           ════════════════════════════════ -->
-      <div class="project-card" data-category="web">
-        <div class="project-meta">
-          <div class="project-icon" style="margin:0;font-size:1.6rem">🌐</div>
-          <span class="project-status status-live">Live</span>
-        </div>
-        <div class="project-title" data-i18n="proj3.title">Kişisel Web Sitesi</div>
-        <p class="project-desc" data-i18n="proj3.desc">Profesyonel profil, sertifikalar ve projeler için merkezi platform. Hetzner VPS üzerinde çalışıyor.</p>
-        <div class="project-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JS</span>
-          <span class="tag">Linux VPS</span>
-        </div>
-        <a href="https://github.com/MikailSio/mikailsarpkayawebsite" target="_blank" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- ════════════════════════════════
-           YENİ PROJE EKLEMEK İÇİN KOPYALA:
-           ────────────────────────────────
-      <div class="project-card" data-category="ai web education">
-        <div class="project-meta">
-          <div class="project-icon" style="margin:0;font-size:1.6rem">🔬</div>
-          <span class="project-status status-wip">In Progress</span>
-          (status-live / status-wip / status-research)
-        </div>
-        <div class="project-title">Proje Adı</div>
-        <p class="project-desc">Proje açıklaması.</p>
-        <div class="project-tags">
-          <span class="tag">Tag1</span>
-        </div>
-        <a href="https://..." target="_blank" class="project-link">Linke Git →</a>
-      </div>
-           ════════════════════════════════ -->
-
-    </div>
-  </div>
-</section>
-
-<footer><p>© 2025 Mikail Sarpkaya</p></footer>
-
-<script src="script.js"></script>
 <script>
-  // ── PROJE FİLTRELEME ──
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      document.querySelectorAll('.project-card').forEach(card => {
-        const cats = card.getAttribute('data-category') || '';
-        const show = filter === 'all' || cats.includes(filter);
-        card.style.display = show ? 'flex' : 'none';
-      });
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1200));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+function toggleMobile(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');}
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.card[data-category]').forEach(c=>{
+      c.style.display=(f==='all'||c.dataset.category.includes(f))?'flex':'none';
     });
   });
+});
+// Reveal
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.08});
+document.querySelectorAll('.sr').forEach((el,i)=>{el.style.transitionDelay=(i%4)*0.1+'s';obs.observe(el);});
 </script>
+<script src="i18n.js"></script>
 </body>
 </html>
