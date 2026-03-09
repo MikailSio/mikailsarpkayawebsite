@@ -56,7 +56,7 @@ const T = {
     en:"\"Engineering intelligence,<br>one model at a time.\"",
     tr:"\"Her model,<br>bir adım daha ileri.\"",
     de:"\"Intelligenz entwickeln,<br>ein Modell nach dem anderen.\"",
-    es:"\"Ingeniería de inteligencia,<br>un modelo a la vez.\""},,
+    es:"\"Ingeniería de inteligencia,<br>un modelo a la vez.\""},
   "about.art":     {en:"// Neural Architecture",tr:"// Sinir Mimarisi",de:"// Neuronale Architektur",es:"// Arquitectura Neuronal"},
   /* INDEX PROJECTS */
   "p1.label": {en:"001 — Featured",    tr:"001 — Öne Çıkan",      de:"001 — Highlight",    es:"001 — Destacado"},
