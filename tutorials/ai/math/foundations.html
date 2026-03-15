@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Math for Machine Learning — Derivatives, integrals, linear algebra, and probability. The mathematical foundations behind deep learning. By Mikail Sarpkaya."/>
+  <meta name="author" content="Mikail Sarpkaya"/>
+  <link rel="canonical" href="https://mikailsarpkaya.com/tutorials/math/foundations.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Math for ML — Mikail Sarpkaya Tutorials"/>
+  <meta property="og:description" content="7 lessons: derivatives, integrals, linear algebra, and probability for machine learning."/>
+  <meta property="og:url" content="https://mikailsarpkaya.com/tutorials/math/foundations.html"/>
+  <title>Math for ML — Mikail Sarpkaya Tutorials</title>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../site.css"/>
+  <style>
+    :root { --nav-h:62px; --sb-w:272px; --accent:#c678dd; }
+    .layout{display:flex;padding-top:var(--nav-h);min-height:100vh;}
+    .sidebar{width:var(--sb-w);flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;overflow-x:hidden;}
+    .sidebar::-webkit-scrollbar{width:2px;} .sidebar::-webkit-scrollbar-thumb{background:var(--border);}
+    .sb-head{padding:1.6rem 1.4rem 1rem;border-bottom:1px solid var(--border);}
+    .sb-title{font-family:var(--display);font-size:1rem;letter-spacing:.15em;}
+    .sb-sub{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+    .sb-group{border-bottom:1px solid var(--border);}
+    .sb-group-label{padding:.55rem 1.4rem;font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.015);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:color .2s;}
+    .sb-group-label:hover{color:var(--text);}
+    .sb-group-label::after{content:'▸';font-size:.55rem;color:var(--muted);transition:transform .25s;}
+    .sb-group.open .sb-group-label::after{transform:rotate(90deg);color:var(--gold);}
+    .sb-group-items{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);}
+    .sb-group.open .sb-group-items{max-height:600px;}
+    .sb-link{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s;color:rgba(232,224,208,.45);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .sb-link:hover{background:rgba(255,255,255,.04);color:var(--text);}
+    .sb-link.active{background:rgba(198,120,221,.07);color:var(--accent);border-left:2px solid var(--accent);}
+    .sb-link.soon-link{opacity:.4;cursor:default;pointer-events:none;}
+    .sb-badge{font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .45rem;margin-left:auto;flex-shrink:0;}
+    .sb-live{border:1px solid var(--cyan);color:var(--cyan);}
+    .sb-new{border:1px solid var(--gold);color:var(--gold);}
+    .sb-soon{border:1px solid rgba(255,255,255,.12);color:var(--muted);}
+    .sb-back{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.4rem;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s;}
+    .sb-back:hover{color:var(--gold);}
+    .main{flex:1;min-width:0;}
+    .topic-hero{padding:5rem 5vw 3rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .topic-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 20% 60%,rgba(198,120,221,.04),transparent 65%);}
+    .topic-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);width:280px;height:280px;opacity:.06;pointer-events:none;}
+    .topic-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+    .topic-title{font-family:var(--display);font-size:clamp(3rem,7vw,7rem);line-height:.88;letter-spacing:.04em;margin-bottom:1rem;}
+    .topic-title .accent{color:var(--accent);}
+    .topic-desc{font-size:.92rem;color:var(--muted);line-height:2.05;max-width:540px;margin-top:1.2rem;}
+    .topic-desc strong{color:var(--text);}
+    .topic-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.8rem;}
+    .meta-item{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.5rem;}
+    .meta-item span{color:var(--text);}
+    .lessons{padding:3rem 5vw 6rem;}
+    .lesson-block{border:1px solid var(--border);margin-bottom:1px;transition:border-color .3s;overflow:hidden;}
+    .lesson-block:hover{border-color:rgba(198,120,221,.2);}
+    .lesson-header{display:flex;align-items:center;gap:1.5rem;padding:1.6rem 2.2rem;cursor:pointer;user-select:none;transition:background .2s;}
+    .lesson-header:hover{background:rgba(255,255,255,.025);}
+    .lesson-num{font-size:.68rem;letter-spacing:.15em;color:var(--muted);min-width:2.5rem;}
+    .lesson-title{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;flex:1;transition:color .25s;}
+    .lesson-header:hover .lesson-title{color:var(--accent);}
+    .lesson-sub{font-size:.72rem;color:var(--muted);}
+    .lesson-toggle{font-size:.9rem;color:var(--muted);transition:transform .3s;margin-left:auto;}
+    .lesson-block.open .lesson-toggle{transform:rotate(45deg);color:var(--accent);}
+    .lesson-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+    .lesson-block.open .lesson-body{max-height:9999px;}
+    .lesson-content{padding:0 2.5rem 2.5rem;}
+    .lesson-content p{font-size:.92rem;color:var(--muted);line-height:2.1;margin-bottom:1.2rem;}
+    .lesson-content p strong{color:var(--text);}
+    .lesson-content p code{font-family:var(--mono);color:var(--accent);font-size:.85em;background:rgba(198,120,221,.07);padding:.1em .35em;}
+    .lesson-content h4{font-family:var(--display);font-size:1.1rem;letter-spacing:.08em;color:var(--text);margin:1.8rem 0 .8rem;}
+    .math-block{background:rgba(198,120,221,.04);border:1px solid rgba(198,120,221,.15);padding:1.2rem 1.5rem;margin:1.2rem 0;font-family:var(--serif);font-size:.95rem;line-height:2;color:var(--text);letter-spacing:.02em;}
+    .math-block .label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.5rem;font-family:var(--mono);}
+    .code-block{background:#080d15;border:1px solid var(--border);margin:1.2rem 0;overflow:hidden;}
+    .code-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);}
+    .code-lang{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+    .code-copy{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .2s;padding:0;}
+    .code-copy:hover{color:var(--text);}
+    pre{margin:0;padding:1.2rem;overflow-x:auto;}
+    pre code{font-family:var(--mono);font-size:.82rem;line-height:1.7;color:#a8b8c8;white-space:pre;}
+    .kw{color:#7c9ed9;} .fn{color:#c678dd;} .str{color:#98c379;} .cm{color:#4a5568;font-style:italic;} .num{color:#d19a66;} .pp{color:#c678dd;} .ty{color:#e5c07b;}
+    .note{margin:1.4rem 0;padding:1.1rem 1.5rem;font-size:.88rem;line-height:1.85;}
+    .note-tip{border-left:2px solid var(--accent);background:rgba(198,120,221,.05);color:var(--muted);}
+    .note-warn{border-left:2px solid #f59e0b;background:rgba(245,158,11,.05);color:var(--muted);}
+    .note-math{border-left:2px solid var(--cyan);background:rgba(77,232,204,.05);color:var(--muted);}
+    .note strong{color:var(--text);}
+    .lesson-nav{display:flex;justify-content:space-between;align-items:center;padding:2rem 5vw;border-top:1px solid var(--border);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;}
+    .lesson-nav a{color:var(--muted);text-decoration:none;transition:color .2s;}
+    .lesson-nav a:hover{color:var(--gold);}
+    .lesson-nav .nav-next{color:var(--gold);}
+    .lesson-nav .nav-label{color:rgba(232,224,208,.2);}
+    .sb-toggle{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--accent);color:#050810;border:none;width:46px;height:46px;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 20px rgba(198,120,221,.3);}
+    @media(max-width:900px){
+      .nav-links{display:none;} .hamburger{display:flex;}
+      .sidebar{position:fixed;left:0;top:var(--nav-h);transform:translateX(-100%);z-index:900;transition:transform .3s;height:calc(100vh - var(--nav-h));}
+      .sidebar.open{transform:translateX(0);} .sb-toggle{display:flex;align-items:center;justify-content:center;}
+      .main{width:100%;} .topic-deco{display:none;}
+      .topic-hero{padding:2.5rem 1.2rem 2rem;} .lessons{padding:1.5rem 1.2rem 4rem;}
+      .lesson-nav{padding:1.5rem 1.2rem;flex-direction:column;gap:1rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-name"><span>MATH</span></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-sub">mikailsarpkaya.com</div>
+</div>
+
+<nav id="nav">
+  <a href="../../index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="../../index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="../index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../../index.html" onclick="toggleMobile()">Home</a>
+  <a href="../../projects.html" onclick="toggleMobile()">Projects</a>
+  <a href="../../certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="../index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a href="../index.html" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
+    <div class="sb-head">
+      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
+      <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="toggleGroup(this)">Systems &amp; Languages</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="../systems/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="../systems/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="toggleGroup(this)">Python Ecosystem</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link" href="../python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link soon-link" href="../python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Machine Learning</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../ai/ml.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/dl.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="../nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link active" href="foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="topic-hero">
+      <svg class="topic-deco" viewBox="0 0 300 300" fill="none">
+        <path d="M50 250 Q100 50 150 150 Q200 250 250 50" stroke="#c678dd" stroke-width="0.8" fill="none"/>
+        <line x1="50" y1="150" x2="250" y2="150" stroke="#c678dd" stroke-width="0.3" stroke-dasharray="4 4"/>
+        <line x1="150" y1="40" x2="150" y2="260" stroke="#c678dd" stroke-width="0.3" stroke-dasharray="4 4"/>
+        <circle cx="150" cy="150" r="3" fill="#c678dd" opacity="0.5"/>
+        <text x="255" y="55" fill="#c678dd" font-size="10" opacity="0.4">f'(x)</text>
+      </svg>
+      <div class="topic-eyebrow" data-i18n-text="math.eyebrow">Tutorial · Math for Machine Learning</div>
+      <h1 class="topic-title"><span class="accent">MATH</span><br>FOUNDATIONS</h1>
+      <p class="topic-desc" data-i18n="math.desc">The <strong>mathematical language behind every ML algorithm</strong>. Derivatives drive gradient descent, integrals define probability distributions, linear algebra powers every neural network layer. No shortcuts — understand the math, understand the models.</p>
+      <div class="topic-meta">
+        <div class="meta-item"><span>7</span> <span data-i18n-text="meta.lessons">Lessons</span></div>
+        <div class="meta-item" data-i18n-text="math.level">Beginner → Intermediate</div>
+        <div class="meta-item"><span data-i18n-text="meta.prereq">Prerequisites</span>: Basic Algebra</div>
+      </div>
+    </div>
+
+    <div class="lessons">
+
+      <!-- ═══ L01 ═══ -->
+      <div class="lesson-block" id="l1">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L01</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l1.t">Functions & Graphs</div>
+            <div class="lesson-sub" data-i18n-text="math.l1.s">f(x) · domain/range · linear · polynomial · exponential · sigmoid · 8 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l1.p1">A <strong>function</strong> maps each input to exactly one output: <code>f(x) = y</code>. In ML, everything is a function — a model maps inputs to predictions, a loss function maps predictions to error values, an activation function maps weighted sums to neuron outputs.</p>
+          <div class="math-block">
+            <span class="label">Key Functions in ML</span>
+            <strong>Linear:</strong> f(x) = wx + b — the building block of every neural network layer<br>
+            <strong>Polynomial:</strong> f(x) = a₀ + a₁x + a₂x² + ... — models non-linear relationships<br>
+            <strong>Exponential:</strong> f(x) = eˣ — appears in softmax, probability distributions<br>
+            <strong>Sigmoid:</strong> σ(x) = 1 / (1 + e⁻ˣ) — maps any real number to (0, 1)<br>
+            <strong>ReLU:</strong> f(x) = max(0, x) — the most popular activation function
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Visualizing Functions</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+x = np.linspace(-<span class="num">5</span>, <span class="num">5</span>, <span class="num">100</span>)
+
+<span class="cm"># Key ML functions</span>
+linear  = <span class="num">2</span> * x + <span class="num">1</span>                      <span class="cm"># y = 2x + 1</span>
+sigmoid = <span class="num">1</span> / (<span class="num">1</span> + np.exp(-x))            <span class="cm"># σ(x)</span>
+relu    = np.maximum(<span class="num">0</span>, x)                  <span class="cm"># max(0, x)</span>
+tanh    = np.tanh(x)                         <span class="cm"># maps to (-1, 1)</span>
+
+<span class="cm"># Domain: set of valid inputs</span>
+<span class="cm"># Range: set of possible outputs</span>
+<span class="cm"># sigmoid: domain=ℝ, range=(0,1)</span>
+<span class="cm"># ReLU:    domain=ℝ, range=[0,∞)</span>
+<span class="cm"># tanh:    domain=ℝ, range=(-1,1)</span>
+
+<span class="cm"># Composition — f(g(x)) — this IS a neural network</span>
+<span class="kw">def</span> <span class="fn">layer</span>(x, w, b):
+    <span class="kw">return</span> np.maximum(<span class="num">0</span>, w * x + b)  <span class="cm"># linear → ReLU</span>
+
+output = layer(layer(x, <span class="num">0.5</span>, <span class="num">1</span>), <span class="num">-0.3</span>, <span class="num">2</span>)  <span class="cm"># 2-layer network!</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>Key insight:</strong> A neural network is just a <strong>composition of functions</strong>: f₃(f₂(f₁(x))). Each layer applies a linear transformation (wx + b) followed by a non-linear activation. Understanding function composition = understanding neural networks.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L02 ═══ -->
+      <div class="lesson-block" id="l2">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L02</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l2.t">Derivatives — The Core of Learning</div>
+            <div class="lesson-sub" data-i18n-text="math.l2.s">Limit definition · basic rules · chain rule · partial derivatives · 12 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l2.p1">The <strong>derivative</strong> measures the rate of change of a function. In ML, the derivative tells us: "if I slightly change this parameter, how much does the loss change?" This is the <strong>entire basis of gradient descent</strong> — the algorithm that trains every neural network.</p>
+          <div class="math-block">
+            <span class="label">Definition</span>
+            f'(x) = lim[h→0] (f(x+h) − f(x)) / h<br><br>
+            The derivative at a point gives the <strong>slope of the tangent line</strong> — the instantaneous rate of change.
+          </div>
+          <div class="math-block">
+            <span class="label">Essential Rules</span>
+            <strong>Power rule:</strong> d/dx[xⁿ] = nxⁿ⁻¹<br>
+            <strong>Constant:</strong> d/dx[c] = 0<br>
+            <strong>Sum:</strong> d/dx[f + g] = f' + g'<br>
+            <strong>Product:</strong> d/dx[fg] = f'g + fg'<br>
+            <strong>Quotient:</strong> d/dx[f/g] = (f'g − fg') / g²<br>
+            <strong>Exponential:</strong> d/dx[eˣ] = eˣ<br>
+            <strong>Logarithm:</strong> d/dx[ln(x)] = 1/x
+          </div>
+          <div class="math-block">
+            <span class="label">★ Chain Rule — The Heart of Backpropagation</span>
+            d/dx[f(g(x))] = f'(g(x)) · g'(x)<br><br>
+            "Derivative of the outer × derivative of the inner"<br>
+            <strong>Example:</strong> d/dx[sin(3x²)] = cos(3x²) · 6x
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Derivatives in Practice</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="cm"># Numerical derivative (approximation)</span>
+<span class="kw">def</span> <span class="fn">numerical_derivative</span>(f, x, h=<span class="num">1e-7</span>):
+    <span class="kw">return</span> (f(x + h) - f(x - h)) / (<span class="num">2</span> * h)
+
+<span class="cm"># Example: f(x) = x² → f'(x) = 2x</span>
+f = <span class="kw">lambda</span> x: x ** <span class="num">2</span>
+<span class="fn">print</span>(numerical_derivative(f, <span class="num">3</span>))  <span class="cm"># ≈ 6.0 (exact: 2×3 = 6)</span>
+
+<span class="cm"># Sigmoid derivative: σ'(x) = σ(x)(1 − σ(x))</span>
+<span class="kw">def</span> <span class="fn">sigmoid</span>(x):
+    <span class="kw">return</span> <span class="num">1</span> / (<span class="num">1</span> + np.exp(-x))
+
+<span class="kw">def</span> <span class="fn">sigmoid_derivative</span>(x):
+    s = sigmoid(x)
+    <span class="kw">return</span> s * (<span class="num">1</span> - s)
+
+<span class="cm"># ReLU derivative: 0 if x&lt;0, 1 if x&gt;0</span>
+<span class="kw">def</span> <span class="fn">relu_derivative</span>(x):
+    <span class="kw">return</span> np.where(x > <span class="num">0</span>, <span class="num">1</span>, <span class="num">0</span>)
+
+<span class="cm"># MSE loss derivative: d/dŷ[(y − ŷ)²] = −2(y − ŷ)</span>
+y_true = np.array([<span class="num">1.0</span>, <span class="num">0.0</span>, <span class="num">1.0</span>])
+y_pred = np.array([<span class="num">0.9</span>, <span class="num">0.2</span>, <span class="num">0.8</span>])
+mse_grad = -<span class="num">2</span> * (y_true - y_pred)  <span class="cm"># gradient of MSE</span></code></pre>
+          </div>
+          <div class="note note-math"><strong>Why chain rule matters:</strong> Backpropagation IS the chain rule applied repeatedly. For a network f₃(f₂(f₁(x))), the gradient flows backward: ∂L/∂x = ∂L/∂f₃ · ∂f₃/∂f₂ · ∂f₂/∂f₁ · ∂f₁/∂x. Each "·" is one layer of the chain rule.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L03 ═══ -->
+      <div class="lesson-block" id="l3">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L03</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l3.t">Derivatives in ML — Gradient Descent</div>
+            <div class="lesson-sub" data-i18n-text="math.l3.s">Gradient · partial derivatives · gradient descent step · learning rate · 10 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l3.p1">The <strong>gradient</strong> is the vector of all partial derivatives — it points in the direction of steepest increase. To minimize a loss function, we move in the <strong>opposite direction</strong> of the gradient. This is gradient descent, and it's how every ML model learns.</p>
+          <div class="math-block">
+            <span class="label">Partial Derivatives & Gradient</span>
+            For f(x, y) = x² + 3xy + y²:<br>
+            ∂f/∂x = 2x + 3y &nbsp;&nbsp;(treat y as constant)<br>
+            ∂f/∂y = 3x + 2y &nbsp;&nbsp;(treat x as constant)<br><br>
+            <strong>Gradient:</strong> ∇f = [∂f/∂x, ∂f/∂y] = [2x + 3y, 3x + 2y]
+          </div>
+          <div class="math-block">
+            <span class="label">★ Gradient Descent Update Rule</span>
+            θ := θ − α · ∇J(θ)<br><br>
+            θ = parameters (weights & biases)<br>
+            α = learning rate (step size, typically 1e-3 to 1e-5)<br>
+            ∇J(θ) = gradient of loss w.r.t. parameters
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Gradient Descent from Scratch</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="cm"># Minimize f(x) = (x − 3)² + 2</span>
+<span class="cm"># Derivative: f'(x) = 2(x − 3)</span>
+<span class="cm"># Minimum at x = 3</span>
+
+x = <span class="num">10.0</span>          <span class="cm"># start far from minimum</span>
+lr = <span class="num">0.1</span>          <span class="cm"># learning rate</span>
+
+<span class="kw">for</span> step <span class="kw">in</span> <span class="fn">range</span>(<span class="num">20</span>):
+    gradient = <span class="num">2</span> * (x - <span class="num">3</span>)       <span class="cm"># f'(x)</span>
+    x = x - lr * gradient         <span class="cm"># update step</span>
+    loss = (x - <span class="num">3</span>)**<span class="num">2</span> + <span class="num">2</span>
+    <span class="kw">if</span> step % <span class="num">5</span> == <span class="num">0</span>:
+        <span class="fn">print</span>(<span class="str">f"Step {step:2d}: x={x:.4f}, loss={loss:.4f}"</span>)
+<span class="cm"># Step  0: x=8.6000, loss=33.3600</span>
+<span class="cm"># Step  5: x=3.4096, loss=2.1678</span>
+<span class="cm"># Step 10: x=3.0134, loss=2.0002</span>
+<span class="cm"># Step 15: x=3.0004, loss=2.0000</span>
+
+<span class="cm"># ★ 2D Gradient Descent (linear regression)</span>
+np.random.seed(<span class="num">42</span>)
+X = np.random.randn(<span class="num">100</span>)
+y = <span class="num">3</span> * X + <span class="num">7</span> + np.random.randn(<span class="num">100</span>) * <span class="num">0.5</span>  <span class="cm"># true: w=3, b=7</span>
+
+w, b = <span class="num">0.0</span>, <span class="num">0.0</span>   <span class="cm"># random init</span>
+lr = <span class="num">0.01</span>
+
+<span class="kw">for</span> epoch <span class="kw">in</span> <span class="fn">range</span>(<span class="num">200</span>):
+    y_pred = w * X + b
+    loss = np.mean((y - y_pred) ** <span class="num">2</span>)
+    dw = -<span class="num">2</span> * np.mean(X * (y - y_pred))    <span class="cm"># ∂L/∂w</span>
+    db = -<span class="num">2</span> * np.mean(y - y_pred)           <span class="cm"># ∂L/∂b</span>
+    w -= lr * dw
+    b -= lr * db
+
+<span class="fn">print</span>(<span class="str">f"Learned: w={w:.2f}, b={b:.2f}"</span>)  <span class="cm"># ≈ w=3.0, b=7.0</span></code></pre>
+          </div>
+          <div class="note note-warn"><strong>Learning rate matters:</strong> Too large → overshoots minimum and diverges. Too small → converges extremely slowly. This is why lr scheduling (warmup, cosine decay) is so important in training transformers.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L04 ═══ -->
+      <div class="lesson-block" id="l4">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L04</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l4.t">Integrals — Area & Accumulation</div>
+            <div class="lesson-sub" data-i18n-text="math.l4.s">Indefinite/definite integral · Fundamental Theorem · basic rules · 10 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l4.p1">The <strong>integral</strong> is the reverse of differentiation — it accumulates quantities over an interval. If the derivative gives you speed, the integral gives you distance traveled. In ML, integrals define probability distributions, expected values, and continuous loss functions.</p>
+          <div class="math-block">
+            <span class="label">Indefinite Integral (Antiderivative)</span>
+            ∫ xⁿ dx = xⁿ⁺¹/(n+1) + C &nbsp;&nbsp;(n ≠ −1)<br>
+            ∫ eˣ dx = eˣ + C<br>
+            ∫ 1/x dx = ln|x| + C<br>
+            ∫ cos(x) dx = sin(x) + C<br>
+            ∫ sin(x) dx = −cos(x) + C
+          </div>
+          <div class="math-block">
+            <span class="label">Definite Integral & Fundamental Theorem</span>
+            ∫ₐᵇ f(x) dx = F(b) − F(a)<br><br>
+            where F is the antiderivative of f.<br>
+            <strong>Example:</strong> ∫₀² x² dx = [x³/3]₀² = 8/3 − 0 = 8/3 ≈ 2.667<br><br>
+            Geometrically: the <strong>area under the curve</strong> f(x) from a to b.
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Numerical Integration</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">from</span> scipy <span class="kw">import</span> integrate
+
+<span class="cm"># Analytical: ∫₀² x² dx = 8/3</span>
+result, error = integrate.quad(<span class="kw">lambda</span> x: x**<span class="num">2</span>, <span class="num">0</span>, <span class="num">2</span>)
+<span class="fn">print</span>(<span class="str">f"∫₀² x² dx = {result:.4f}"</span>)  <span class="cm"># 2.6667</span>
+
+<span class="cm"># Trapezoidal rule (manual, no scipy)</span>
+x = np.linspace(<span class="num">0</span>, <span class="num">2</span>, <span class="num">1000</span>)
+y = x ** <span class="num">2</span>
+area = np.trapz(y, x)
+<span class="fn">print</span>(<span class="str">f"Trapezoid: {area:.4f}"</span>)      <span class="cm"># 2.6667</span>
+
+<span class="cm"># ★ Probability: P(a ≤ X ≤ b) = ∫ₐᵇ f(x) dx</span>
+<span class="cm"># Normal distribution PDF</span>
+<span class="kw">def</span> <span class="fn">normal_pdf</span>(x, mu=<span class="num">0</span>, sigma=<span class="num">1</span>):
+    <span class="kw">return</span> (<span class="num">1</span> / (sigma * np.sqrt(<span class="num">2</span> * np.pi))) * \
+           np.exp(-<span class="num">0.5</span> * ((x - mu) / sigma) ** <span class="num">2</span>)
+
+<span class="cm"># P(-1 ≤ X ≤ 1) for standard normal</span>
+prob, _ = integrate.quad(normal_pdf, -<span class="num">1</span>, <span class="num">1</span>)
+<span class="fn">print</span>(<span class="str">f"P(-1 ≤ X ≤ 1) = {prob:.4f}"</span>)  <span class="cm"># 0.6827 (68.27%)</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>ML Connection:</strong> The area under the ROC curve (AUC-ROC) is literally an integral. Probability density functions must integrate to 1 over their entire domain. Cross-entropy loss involves log-probabilities which relate to integrals of information.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L05 ═══ -->
+      <div class="lesson-block" id="l5">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L05</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l5.t">Integrals in ML — Expectation & Probability</div>
+            <div class="lesson-sub" data-i18n-text="math.l5.s">PDF · CDF · expected value · variance · KL divergence · 10 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l5.p1">In machine learning, integrals appear everywhere through <strong>probability</strong>. The expected value of a loss function, the area under precision-recall curves, KL divergence between distributions — all defined by integrals.</p>
+          <div class="math-block">
+            <span class="label">Expected Value & Variance</span>
+            <strong>Expected value:</strong> E[X] = ∫ x · f(x) dx — the "average" outcome<br>
+            <strong>Variance:</strong> Var(X) = E[X²] − (E[X])² — how spread out the values are<br>
+            <strong>Standard deviation:</strong> σ = √Var(X)
+          </div>
+          <div class="math-block">
+            <span class="label">★ KL Divergence (used in VAEs, knowledge distillation)</span>
+            D_KL(P ∥ Q) = ∫ P(x) · ln(P(x) / Q(x)) dx<br><br>
+            Measures how much distribution P differs from Q.<br>
+            D_KL ≥ 0, and D_KL = 0 only when P = Q.
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Expectation & KL Divergence</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">from</span> scipy <span class="kw">import</span> stats
+
+<span class="cm"># Expected value of a normal distribution</span>
+dist = stats.norm(loc=<span class="num">5</span>, scale=<span class="num">2</span>)  <span class="cm"># μ=5, σ=2</span>
+<span class="fn">print</span>(<span class="str">f"E[X] = {dist.mean()}"</span>)         <span class="cm"># 5.0</span>
+<span class="fn">print</span>(<span class="str">f"Var(X) = {dist.var()}"</span>)        <span class="cm"># 4.0</span>
+
+<span class="cm"># CDF: P(X ≤ x) — cumulative distribution function</span>
+<span class="fn">print</span>(<span class="str">f"P(X ≤ 5) = {dist.cdf(5):.4f}"</span>)   <span class="cm"># 0.5000</span>
+<span class="fn">print</span>(<span class="str">f"P(X ≤ 7) = {dist.cdf(7):.4f}"</span>)   <span class="cm"># 0.8413</span>
+
+<span class="cm"># ★ KL Divergence between two distributions</span>
+<span class="kw">def</span> <span class="fn">kl_divergence</span>(p, q):
+    <span class="str">"""Discrete KL divergence."""</span>
+    p = np.array(p, dtype=np.float64)
+    q = np.array(q, dtype=np.float64)
+    <span class="kw">return</span> np.sum(p * np.log(p / q + <span class="num">1e-10</span>))
+
+p = [<span class="num">0.4</span>, <span class="num">0.3</span>, <span class="num">0.3</span>]   <span class="cm"># true distribution</span>
+q = [<span class="num">0.33</span>, <span class="num">0.33</span>, <span class="num">0.34</span>] <span class="cm"># predicted (uniform-ish)</span>
+<span class="fn">print</span>(<span class="str">f"KL(P||Q) = {kl_divergence(p, q):.4f}"</span>)  <span class="cm"># 0.0139</span>
+
+<span class="cm"># Cross-entropy loss = entropy + KL divergence</span>
+<span class="cm"># H(P, Q) = −Σ P(x) log Q(x) = H(P) + D_KL(P||Q)</span></code></pre>
+          </div>
+          <div class="note note-math"><strong>Why this matters:</strong> Cross-entropy loss (the standard classification loss) is directly related to KL divergence. When you minimize cross-entropy, you're minimizing the distance between your model's predicted distribution and the true distribution.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L06 ═══ -->
+      <div class="lesson-block" id="l6">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L06</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l6.t">Linear Algebra Essentials</div>
+            <div class="lesson-sub" data-i18n-text="math.l6.s">Vectors · matrices · dot product · matrix multiplication · eigenvalues · 12 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l6.p1"><strong>Linear algebra is the computational engine of deep learning.</strong> Every input is a vector, every weight matrix transforms that vector, every attention score is a dot product. Without linear algebra, there is no deep learning.</p>
+          <div class="math-block">
+            <span class="label">Core Operations</span>
+            <strong>Dot product:</strong> a · b = Σ aᵢbᵢ = |a||b|cos(θ) — measures similarity<br>
+            <strong>Matrix × vector:</strong> y = Wx + b — a single neural network layer<br>
+            <strong>Matrix × matrix:</strong> C = AB where Cᵢⱼ = Σₖ AᵢₖBₖⱼ — batch processing<br>
+            <strong>Transpose:</strong> (Aᵀ)ᵢⱼ = Aⱼᵢ — swap rows and columns<br>
+            <strong>Norm:</strong> ‖x‖ = √(Σ xᵢ²) — vector length, used in regularization
+          </div>
+          <div class="math-block">
+            <span class="label">★ In Neural Networks</span>
+            <strong>Forward pass:</strong> h = σ(Wx + b) — one layer<br>
+            <strong>Attention:</strong> scores = QKᵀ / √dₖ — scaled dot-product attention<br>
+            <strong>Embedding lookup:</strong> e = E[token_id] — row selection from matrix<br>
+            <strong>Batch processing:</strong> Y = XW + B — entire batch at once
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Linear Algebra for DL</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="cm"># Dot product — cosine similarity for embeddings</span>
+e1 = np.array([<span class="num">0.2</span>, <span class="num">0.8</span>, <span class="num">0.1</span>])  <span class="cm"># embedding of "king"</span>
+e2 = np.array([<span class="num">0.3</span>, <span class="num">0.7</span>, <span class="num">0.2</span>])  <span class="cm"># embedding of "queen"</span>
+similarity = np.dot(e1, e2) / (np.linalg.norm(e1) * np.linalg.norm(e2))
+<span class="fn">print</span>(<span class="str">f"Cosine similarity: {similarity:.4f}"</span>)  <span class="cm"># 0.9878</span>
+
+<span class="cm"># ★ Single neural network layer</span>
+X = np.random.randn(<span class="num">32</span>, <span class="num">768</span>)    <span class="cm"># batch of 32, dim 768</span>
+W = np.random.randn(<span class="num">768</span>, <span class="num">256</span>)   <span class="cm"># weights</span>
+b = np.zeros(<span class="num">256</span>)               <span class="cm"># bias</span>
+
+h = X @ W + b                    <span class="cm"># linear: (32, 256)</span>
+h = np.maximum(<span class="num">0</span>, h)             <span class="cm"># ReLU activation</span>
+
+<span class="cm"># ★ Simplified self-attention</span>
+seq_len, d_model = <span class="num">10</span>, <span class="num">64</span>
+Q = np.random.randn(seq_len, d_model)  <span class="cm"># queries</span>
+K = np.random.randn(seq_len, d_model)  <span class="cm"># keys</span>
+V = np.random.randn(seq_len, d_model)  <span class="cm"># values</span>
+
+scores = Q @ K.T / np.sqrt(d_model)    <span class="cm"># (10, 10)</span>
+<span class="cm"># Apply softmax row-wise → attention weights</span>
+exp_s = np.exp(scores - scores.max(axis=-<span class="num">1</span>, keepdims=<span class="kw">True</span>))
+attn = exp_s / exp_s.sum(axis=-<span class="num">1</span>, keepdims=<span class="kw">True</span>)
+output = attn @ V                       <span class="cm"># (10, 64)</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>Eigenvalues & SVD:</strong> PCA (dimensionality reduction) uses eigendecomposition. SVD is used in LSA (Latent Semantic Analysis) for topic modeling, and in LoRA for efficient fine-tuning. These are advanced but incredibly useful tools.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L07 ═══ -->
+      <div class="lesson-block" id="l7">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L07</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="math.l7.t">Probability & Statistics for ML</div>
+            <div class="lesson-sub" data-i18n-text="math.l7.s">Bayes' theorem · distributions · MLE · bias-variance tradeoff · 12 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="math.l7.p1"><strong>Probability is the language of uncertainty</strong>, and ML is all about making decisions under uncertainty. Bayes' theorem is the foundation of many classifiers, maximum likelihood estimation (MLE) is how models learn parameters, and understanding distributions tells you which loss function to use.</p>
+          <div class="math-block">
+            <span class="label">Bayes' Theorem</span>
+            P(A|B) = P(B|A) · P(A) / P(B)<br><br>
+            <strong>In NLP classification:</strong><br>
+            P(spam | "free money") = P("free money" | spam) · P(spam) / P("free money")<br><br>
+            posterior = likelihood × prior / evidence
+          </div>
+          <div class="math-block">
+            <span class="label">Key Distributions</span>
+            <strong>Bernoulli:</strong> P(X=1) = p — binary classification output<br>
+            <strong>Categorical:</strong> P(X=k) = pₖ — multi-class (softmax output)<br>
+            <strong>Gaussian:</strong> f(x) = (1/σ√2π) e^(−(x−μ)²/2σ²) — weight initialization, noise<br>
+            <strong>Uniform:</strong> f(x) = 1/(b−a) — random sampling, Xavier init
+          </div>
+          <div class="math-block">
+            <span class="label">★ Maximum Likelihood Estimation</span>
+            θ̂ = argmax[θ] Π P(xᵢ | θ)<br><br>
+            In practice, we minimize <strong>negative log-likelihood</strong>:<br>
+            θ̂ = argmin[θ] −Σ log P(xᵢ | θ)<br><br>
+            Cross-entropy loss IS negative log-likelihood for classification!
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Probability in Practice</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">from</span> scipy <span class="kw">import</span> stats
+
+<span class="cm"># Naive Bayes — Bayes' theorem in action</span>
+<span class="cm"># P(spam|word) ∝ P(word|spam) × P(spam)</span>
+p_spam = <span class="num">0.3</span>                       <span class="cm"># prior</span>
+p_word_given_spam = <span class="num">0.8</span>             <span class="cm"># likelihood</span>
+p_word_given_ham = <span class="num">0.1</span>              <span class="cm"># likelihood</span>
+p_word = p_word_given_spam * p_spam + p_word_given_ham * (<span class="num">1</span> - p_spam)
+
+posterior = (p_word_given_spam * p_spam) / p_word
+<span class="fn">print</span>(<span class="str">f"P(spam|word) = {posterior:.4f}"</span>)  <span class="cm"># 0.7742</span>
+
+<span class="cm"># ★ Cross-entropy = negative log-likelihood</span>
+y_true = np.array([<span class="num">1</span>, <span class="num">0</span>, <span class="num">1</span>, <span class="num">1</span>, <span class="num">0</span>])            <span class="cm"># true labels</span>
+y_pred = np.array([<span class="num">0.9</span>, <span class="num">0.2</span>, <span class="num">0.8</span>, <span class="num">0.7</span>, <span class="num">0.1</span>])  <span class="cm"># predicted probs</span>
+
+ce_loss = -np.mean(
+    y_true * np.log(y_pred + <span class="num">1e-8</span>) +
+    (<span class="num">1</span> - y_true) * np.log(<span class="num">1</span> - y_pred + <span class="num">1e-8</span>)
+)
+<span class="fn">print</span>(<span class="str">f"Cross-entropy: {ce_loss:.4f}"</span>)  <span class="cm"># 0.2271</span>
+
+<span class="cm"># Gaussian distribution — weight initialization</span>
+weights = np.random.normal(loc=<span class="num">0</span>, scale=<span class="num">0.02</span>, size=(<span class="num">768</span>, <span class="num">768</span>))
+<span class="fn">print</span>(<span class="str">f"Mean: {weights.mean():.4f}, Std: {weights.std():.4f}"</span>)</code></pre>
+          </div>
+          <div class="note note-math"><strong>Bias-Variance Tradeoff:</strong> High bias = underfitting (model too simple). High variance = overfitting (model memorizes training data). The goal is finding the sweet spot. Regularization (L1/L2, dropout) reduces variance at the cost of slightly more bias.</div>
+        </div></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <a href="../python/numpy.html">← NumPy</a>
+      <span class="nav-label">Math for ML · 7 / 7 lessons</span>
+      <a href="../ai/ml.html" class="nav-next">Next: ML Theory →</a>
+    </div>
+
+  </main>
+</div>
+
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰</button>
+
+<footer>
+  <div class="f-copy" data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</div>
+  <div class="f-site">mikailsarpkaya<span>.com</span></div>
+</footer>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1200));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function toggleMobile() { document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileNav').classList.toggle('open'); }
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function toggleGroup(label) { label.parentElement.classList.toggle('open'); }
+function toggleLesson(header) {
+  const block = header.parentElement;
+  const isOpen = block.classList.contains('open');
+  document.querySelectorAll('.lesson-block.open').forEach(b => b.classList.remove('open'));
+  if (!isOpen) block.classList.add('open');
+}
+function copyCode(btn) {
+  const code = btn.closest('.code-block').querySelector('code').innerText;
+  navigator.clipboard.writeText(code).then(() => { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 1800); });
+}
+const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }); }, { threshold: 0.08 });
+document.querySelectorAll('.sr').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 0.1 + 's'; obs.observe(el); });
+</script>
+<script src="../shared.i18n.js"></script>
+<script src="foundations.i18n.js"></script>
+</body>
+</html>

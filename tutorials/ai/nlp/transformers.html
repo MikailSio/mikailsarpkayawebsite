@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Transformers — Self-Attention, BERT, RoBERTa, GPT, Fine-Tuning, LoRA. The architecture behind modern NLP. By Mikail Sarpkaya."/>
+  <title>Transformers — Mikail Sarpkaya Tutorials</title>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../site.css"/>
+  <style>
+    :root{--nav-h:62px;--sb-w:272px;--accent:#a855f7;}
+    .layout{display:flex;padding-top:var(--nav-h);min-height:100vh;}
+    .sidebar{width:var(--sb-w);flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;overflow-x:hidden;}
+    .sidebar::-webkit-scrollbar{width:2px;}.sidebar::-webkit-scrollbar-thumb{background:var(--border);}
+    .sb-head{padding:1.6rem 1.4rem 1rem;border-bottom:1px solid var(--border);}
+    .sb-title{font-family:var(--display);font-size:1rem;letter-spacing:.15em;}
+    .sb-sub{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+    .sb-group{border-bottom:1px solid var(--border);}
+    .sb-group-label{padding:.55rem 1.4rem;font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.015);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:color .2s;}
+    .sb-group-label:hover{color:var(--text);}
+    .sb-group-label::after{content:'▸';font-size:.55rem;color:var(--muted);transition:transform .25s;}
+    .sb-group.open .sb-group-label::after{transform:rotate(90deg);color:var(--gold);}
+    .sb-group-items{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);}
+    .sb-group.open .sb-group-items{max-height:600px;}
+    .sb-link{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s;color:rgba(232,224,208,.45);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .sb-link:hover{background:rgba(255,255,255,.04);color:var(--text);}
+    .sb-link.soon-link{opacity:.4;cursor:default;pointer-events:none;}
+    .sb-link.active{background:rgba(168,85,247,.07);color:var(--accent);border-left:2px solid var(--accent);}
+.sb-badge{font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .45rem;margin-left:auto;flex-shrink:0;}
+    .sb-live{border:1px solid var(--cyan);color:var(--cyan);}.sb-new{border:1px solid var(--gold);color:var(--gold);}
+    .sb-soon{border:1px solid rgba(255,255,255,.12);color:var(--muted);}
+    .sb-back{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.4rem;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s;}
+    .sb-back:hover{color:var(--gold);}
+    .main{flex:1;min-width:0;}
+    .topic-hero{padding:5rem 5vw 3rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .topic-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 20% 60%,rgba(168,85,247,.04),transparent 65%);}
+    .topic-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);width:280px;height:280px;opacity:.06;pointer-events:none;}
+    .topic-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+    .topic-title{font-family:var(--display);font-size:clamp(2.5rem,6vw,6rem);line-height:.88;letter-spacing:.04em;margin-bottom:1rem;}
+    .topic-title .accent{color:var(--accent);}
+    .topic-desc{font-size:.92rem;color:var(--muted);line-height:2.05;max-width:540px;margin-top:1.2rem;}.topic-desc strong{color:var(--text);}
+    .topic-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.8rem;}
+    .meta-item{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.5rem;}.meta-item span{color:var(--text);}
+    .lessons{padding:3rem 5vw 6rem;}
+    .lesson-block{border:1px solid var(--border);margin-bottom:1px;transition:border-color .3s;overflow:hidden;}
+    .lesson-block:hover{border-color:rgba(168,85,247,.2);}
+    .lesson-header{display:flex;align-items:center;gap:1.5rem;padding:1.6rem 2.2rem;cursor:pointer;user-select:none;transition:background .2s;}
+    .lesson-header:hover{background:rgba(255,255,255,.025);}
+    .lesson-num{font-size:.68rem;letter-spacing:.15em;color:var(--muted);min-width:2.5rem;}
+    .lesson-title{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;flex:1;transition:color .25s;}
+    .lesson-header:hover .lesson-title{color:var(--accent);}
+    .lesson-sub{font-size:.72rem;color:var(--muted);}
+    .lesson-toggle{font-size:.9rem;color:var(--muted);transition:transform .3s;margin-left:auto;}
+    .lesson-block.open .lesson-toggle{transform:rotate(45deg);color:var(--accent);}
+    .lesson-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+    .lesson-block.open .lesson-body{max-height:9999px;}
+    .lesson-content{padding:0 2.5rem 2.5rem;}
+    .lesson-content p{font-size:.92rem;color:var(--muted);line-height:2.1;margin-bottom:1.2rem;}.lesson-content p strong{color:var(--text);}
+    .lesson-content p code{font-family:var(--mono);color:var(--accent);font-size:.85em;background:rgba(168,85,247,.07);padding:.1em .35em;}
+    .code-block{background:#080d15;border:1px solid var(--border);margin:1.2rem 0;overflow:hidden;}
+    .code-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);}
+    .code-lang{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+    .code-copy{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .2s;padding:0;}.code-copy:hover{color:var(--text);}
+    pre{margin:0;padding:1.2rem;overflow-x:auto;}
+    pre code{font-family:var(--mono);font-size:.82rem;line-height:1.7;color:#a8b8c8;white-space:pre;}
+    .kw{color:#7c9ed9;}.fn{color:#a855f7;}.str{color:#98c379;}.cm{color:#4a5568;font-style:italic;}.num{color:#d19a66;}.pp{color:#c678dd;}.ty{color:#e5c07b;}
+    .note{margin:1.4rem 0;padding:1.1rem 1.5rem;font-size:.88rem;line-height:1.85;}
+    .note-tip{border-left:2px solid var(--accent);background:rgba(168,85,247,.05);color:var(--muted);}
+    .note-warn{border-left:2px solid #f59e0b;background:rgba(245,158,11,.05);color:var(--muted);}
+    .note-math{border-left:2px solid var(--cyan);background:rgba(77,232,204,.05);color:var(--muted);}
+    .note strong{color:var(--text);}
+    .lesson-nav{display:flex;justify-content:space-between;align-items:center;padding:2rem 5vw;border-top:1px solid var(--border);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;}
+    .lesson-nav a{color:var(--muted);text-decoration:none;transition:color .2s;}.lesson-nav a:hover{color:var(--gold);}
+    .lesson-nav .nav-next{color:var(--gold);}.lesson-nav .nav-label{color:rgba(232,224,208,.2);}
+    @media(max-width:900px){
+      .nav-links{display:none;}.hamburger{display:flex;}
+      .sidebar{position:fixed;left:0;top:var(--nav-h);transform:translateX(-100%);z-index:900;transition:transform .3s;height:calc(100vh - var(--nav-h));}
+      .sidebar.open{transform:translateX(0);} .sb-toggle{display:flex;align-items:center;justify-content:center;}
+      .main{width:100%;}.topic-deco{display:none;}.topic-hero{padding:2.5rem 1.2rem 2rem;}.lessons{padding:1.5rem 1.2rem 4rem;}
+      .lesson-nav{padding:1.5rem 1.2rem;flex-direction:column;gap:1rem;text-align:center;}
+    }
+    @keyframes loadBar{to{width:100%;}}@keyframes slideUp{to{transform:translateY(0);}}@keyframes fadeIn{to{opacity:1;}}
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,5vw,4.5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;"><span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">TRANSFORMERS</span></div>
+  <div class="ld-bar-wrap" style="width:200px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2rem;"><div class="ld-bar" style="height:100%;width:0;background:var(--accent);animation:loadBar 1.5s ease forwards;"></div></div>
+  <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
+</div>
+
+<nav id="nav">
+  <a href="../../index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="../../index.html">Home</a></li><li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li><li><a href="index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="../index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li><li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav"><a href="../../index.html" onclick="toggleMobile()">Home</a><a href="../../projects.html" onclick="toggleMobile()">Projects</a><a href="../index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a><a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a href="../index.html" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
+    <div class="sb-head">
+      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
+      <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="toggleGroup(this)">Systems &amp; Languages</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="../systems/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="../systems/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="toggleGroup(this)">Python Ecosystem</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link" href="../python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link soon-link" href="../python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Machine Learning</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../ai/ml.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/dl.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
+      <div class="sb-group-items">
+        <a class="sb-link active" href="transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topic-hero">
+      <svg class="topic-deco" viewBox="0 0 300 300" fill="none">
+        <rect x="50" y="50" width="200" height="200" rx="8" stroke="#a855f7" stroke-width="0.5"/>
+        <line x1="50" y1="120" x2="250" y2="120" stroke="#a855f7" stroke-width="0.3"/>
+        <text x="150" y="95" text-anchor="middle" fill="#a855f7" font-size="10" opacity=".5">Q K V</text>
+        <text x="150" y="160" text-anchor="middle" fill="#a855f7" font-size="8" opacity=".4">Attention(Q,K,V)</text>
+        <circle cx="100" cy="200" r="15" stroke="#a855f7" stroke-width="0.4"/><circle cx="150" cy="200" r="15" stroke="#a855f7" stroke-width="0.4"/><circle cx="200" cy="200" r="15" stroke="#a855f7" stroke-width="0.4"/>
+      </svg>
+      <div class="topic-eyebrow" data-i18n-text="tf.eyebrow">Tutorial · NLP Architecture</div>
+      <h1 class="topic-title"><span data-i18n-text="tf.t1">TRANS</span><br><span class="accent" data-i18n-text="tf.t2">FORMERS</span></h1>
+      <p class="topic-desc" data-i18n="tf.desc">The architecture that revolutionized NLP. From the <strong>attention mechanism</strong> to <strong>BERT</strong>, <strong>RoBERTa</strong>, and <strong>GPT</strong> — understand how self-attention, positional encoding, and pre-training transformed natural language understanding. Includes hands-on <strong>fine-tuning with HuggingFace</strong> and parameter-efficient methods like <strong>LoRA</strong>.</p>
+      <div class="topic-meta">
+        <div class="meta-item">Level: <span>Intermediate → Advanced</span></div>
+        <div class="meta-item">Lessons: <span>8</span></div>
+        <div class="meta-item">Framework: <span>HuggingFace / PyTorch</span></div>
+      </div>
+    </div>
+
+    <div class="lessons">
+
+      <!-- L1 -->
+      <div class="lesson-block" id="l1">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L01</span>
+          <div><div class="lesson-title">Attention Mechanism</div><div class="lesson-sub">Bahdanau attention · Query-Key-Value · Why attention replaced RNNs · 10 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p>The <strong>attention mechanism</strong> (Bahdanau et al., 2014) was introduced to solve the Seq2Seq bottleneck: instead of compressing the entire input into a single vector, the decoder can <strong>attend to all encoder hidden states</strong> at each decoding step, focusing on the most relevant parts.</p>
+          <p>Core idea: compute a <strong>weighted sum</strong> of encoder outputs, where weights (attention scores) indicate relevance to the current decoding step. This allows the model to dynamically focus on different parts of the input for each output token.</p>
+          <div class="note note-math"><strong>Attention score:</strong> eᵢⱼ = align(sᵢ, hⱼ) — how well input position j matches output position i.<br><strong>Attention weight:</strong> αᵢⱼ = softmax(eᵢⱼ) — normalized to sum to 1.<br><strong>Context vector:</strong> cᵢ = Σ αᵢⱼ · hⱼ — weighted sum of encoder states.</div>
+          <p>This was the conceptual foundation. The Transformer (Vaswani et al., 2017) took this further by using attention as the <strong>only</strong> mechanism — removing recurrence entirely.</p>
+        </div></div>
+      </div>
+
+      <!-- L2 -->
+      <div class="lesson-block" id="l2">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L02</span>
+          <div><div class="lesson-title">Self-Attention & Multi-Head Attention</div><div class="lesson-sub">Scaled Dot-Product · Q, K, V projections · Multi-head · Parallelization · 12 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p><strong>Self-attention</strong> lets each token in a sequence attend to <strong>every other token</strong> (including itself). Unlike RNNs, there's no sequential bottleneck — all positions are processed in parallel.</p>
+          <p>Each token is projected into three vectors: <strong>Query (Q)</strong> — what am I looking for? <strong>Key (K)</strong> — what do I contain? <strong>Value (V)</strong> — what information do I carry?</p>
+          <div class="note note-math"><strong>Scaled Dot-Product Attention:</strong><br>Attention(Q, K, V) = softmax(QKᵀ / √dₖ) · V<br>The √dₖ scaling prevents dot products from growing too large, which would push softmax into regions with tiny gradients.</div>
+          <p><strong>Multi-Head Attention</strong> runs h parallel attention heads with different learned projections, then concatenates and projects the results. This allows the model to attend to information from different representation subspaces — one head might capture syntax, another semantics.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Self-Attention from Scratch</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> torch
+<span class="kw">import</span> torch.nn.functional <span class="kw">as</span> F
+<span class="kw">import</span> math
+
+<span class="kw">def</span> <span class="fn">scaled_dot_product_attention</span>(Q, K, V, mask=<span class="kw">None</span>):
+    d_k = Q.size(-<span class="num">1</span>)
+    scores = Q @ K.transpose(-<span class="num">2</span>, -<span class="num">1</span>) / math.sqrt(d_k)
+    <span class="kw">if</span> mask <span class="kw">is not None</span>:
+        scores = scores.masked_fill(mask == <span class="num">0</span>, <span class="num">-1e9</span>)
+    attn_weights = F.softmax(scores, dim=-<span class="num">1</span>)
+    <span class="kw">return</span> attn_weights @ V, attn_weights
+
+<span class="cm"># Example: seq_len=5, d_model=64</span>
+Q = torch.randn(<span class="num">1</span>, <span class="num">5</span>, <span class="num">64</span>)
+K = torch.randn(<span class="num">1</span>, <span class="num">5</span>, <span class="num">64</span>)
+V = torch.randn(<span class="num">1</span>, <span class="num">5</span>, <span class="num">64</span>)
+
+output, weights = <span class="fn">scaled_dot_product_attention</span>(Q, K, V)
+<span class="fn">print</span>(<span class="str">f"Output: <span class="fn">{output.shape}</span>"</span>)   <span class="cm"># (1, 5, 64)</span>
+<span class="fn">print</span>(<span class="str">f"Weights: <span class="fn">{weights.shape}</span>"</span>)  <span class="cm"># (1, 5, 5) — attention matrix</span></code></pre>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- L3 -->
+      <div class="lesson-block" id="l3">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L03</span>
+          <div><div class="lesson-title">Transformer Architecture</div><div class="lesson-sub">Encoder-Decoder · Positional Encoding · Layer Norm · Feed-Forward · 12 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p>The Transformer (Vaswani et al., 2017) uses <strong>only attention</strong> — no recurrence, no convolution. The architecture has an encoder stack and decoder stack, each made of identical layers:</p>
+          <p><strong>Encoder layer:</strong> Multi-Head Self-Attention → Add & Norm → Feed-Forward Network → Add & Norm. <strong>Decoder layer:</strong> Masked Self-Attention → Add & Norm → Cross-Attention (attend to encoder) → Add & Norm → FFN → Add & Norm.</p>
+          <p><strong>Positional Encoding</strong> is added to embeddings because self-attention has no inherent notion of order. The original paper uses sinusoidal functions; modern models often use learned positional embeddings.</p>
+          <div class="note note-math"><strong>Positional Encoding:</strong><br>PE(pos, 2i) = sin(pos / 10000^(2i/d_model))<br>PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))<br>This allows the model to learn relative positions because PE(pos+k) can be represented as a linear function of PE(pos).</div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Transformer Encoder Layer</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> torch.nn <span class="kw">as</span> nn
+
+<span class="cm"># PyTorch's built-in Transformer encoder</span>
+encoder_layer = nn.TransformerEncoderLayer(
+    d_model=<span class="num">512</span>,       <span class="cm"># embedding dimension</span>
+    nhead=<span class="num">8</span>,           <span class="cm"># number of attention heads</span>
+    dim_feedforward=<span class="num">2048</span>,  <span class="cm"># FFN hidden dimension</span>
+    dropout=<span class="num">0.1</span>,
+    activation=<span class="str">'gelu'</span>,
+    batch_first=<span class="kw">True</span>
+)
+
+encoder = nn.TransformerEncoder(encoder_layer, num_layers=<span class="num">6</span>)
+
+<span class="cm"># Input: (batch=8, seq_len=128, d_model=512)</span>
+x = torch.randn(<span class="num">8</span>, <span class="num">128</span>, <span class="num">512</span>)
+output = encoder(x)
+<span class="fn">print</span>(<span class="str">f"Output: <span class="fn">{output.shape}</span>"</span>)  <span class="cm"># (8, 128, 512)</span></code></pre>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- L4: Tokenization -->
+      <div class="lesson-block" id="l4">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L04</span>
+          <div><div class="lesson-title">Tokenization & Subword Methods</div><div class="lesson-sub">WordPiece · BPE · SentencePiece · Special tokens · 10 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p>Transformers don't process raw text — they need <strong>tokenization</strong>. Modern models use <strong>subword tokenization</strong> that splits rare words into smaller, known pieces while keeping common words intact.</p>
+          <p><strong>WordPiece</strong> (BERT): vocabulary-driven — greedily splits words into longest matching subwords. "tokenization" → ["token", "##ization"]. <strong>BPE</strong> (GPT): byte-pair encoding — iteratively merges most frequent character pairs. <strong>SentencePiece</strong> (multilingual models): language-agnostic, treats text as raw bytes.</p>
+          <p>Special tokens: <code>[CLS]</code> — sentence-level representation (classification), <code>[SEP]</code> — sentence boundary, <code>[PAD]</code> — padding, <code>[MASK]</code> — masked token for MLM pre-training.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — HuggingFace Tokenizer</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">from</span> transformers <span class="kw">import</span> AutoTokenizer
+
+<span class="cm"># Load BERT tokenizer</span>
+tokenizer = <span class="fn">AutoTokenizer</span>.from_pretrained(<span class="str">"bert-base-uncased"</span>)
+
+text = <span class="str">"Transformers revolutionized NLP research."</span>
+tokens = tokenizer.tokenize(text)
+<span class="fn">print</span>(<span class="str">f"Tokens: <span class="fn">{tokens}</span>"</span>)
+<span class="cm"># ['transformers', 'revolution', '##ized', 'nl', '##p', 'research', '.']</span>
+
+<span class="cm"># Full encoding with special tokens</span>
+encoded = tokenizer(text, return_tensors=<span class="str">"pt"</span>)
+<span class="fn">print</span>(<span class="str">f"Input IDs: <span class="fn">{encoded['input_ids']}</span>"</span>)
+<span class="fn">print</span>(<span class="str">f"Attention Mask: <span class="fn">{encoded['attention_mask']}</span>"</span>)
+
+<span class="cm"># Decode back</span>
+decoded = tokenizer.decode(encoded[<span class="str">'input_ids'</span>][<span class="num">0</span>])
+<span class="fn">print</span>(<span class="str">f"Decoded: <span class="fn">{decoded}</span>"</span>)
+
+<span class="cm"># Turkish model</span>
+tk_tr = <span class="fn">AutoTokenizer</span>.from_pretrained(<span class="str">"dbmdz/bert-base-turkish-cased"</span>)
+<span class="fn">print</span>(tk_tr.tokenize(<span class="str">"Doğal dil işleme araştırması"</span>))</code></pre>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- L5: BERT -->
+      <div class="lesson-block" id="l5">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L05</span>
+          <div><div class="lesson-title">BERT — Bidirectional Encoder Representations</div><div class="lesson-sub">MLM · NSP · [CLS] token · Pre-training vs Fine-tuning · 12 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p><strong>BERT</strong> (Devlin et al., 2018) is a <strong>bidirectional transformer encoder</strong> pre-trained on two tasks: <strong>Masked Language Modeling (MLM)</strong> — randomly mask 15% of tokens and predict them. <strong>Next Sentence Prediction (NSP)</strong> — predict whether sentence B follows sentence A.</p>
+          <p>BERT reads the entire sequence bidirectionally (unlike GPT which is left-to-right). The <code>[CLS]</code> token's final hidden state serves as a sentence-level representation for classification tasks.</p>
+          <p>Key variants: <strong>BERT-base</strong>: 12 layers, 768 hidden, 12 heads, 110M params. <strong>BERT-large</strong>: 24 layers, 1024 hidden, 16 heads, 340M params.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Using BERT with HuggingFace</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">from</span> transformers <span class="kw">import</span> AutoModel, AutoTokenizer
+<span class="kw">import</span> torch
+
+<span class="cm"># Load pre-trained BERT</span>
+tokenizer = <span class="fn">AutoTokenizer</span>.from_pretrained(<span class="str">"bert-base-uncased"</span>)
+model = <span class="fn">AutoModel</span>.from_pretrained(<span class="str">"bert-base-uncased"</span>)
+
+<span class="cm"># Encode text</span>
+text = <span class="str">"Natural language processing is fascinating."</span>
+inputs = tokenizer(text, return_tensors=<span class="str">"pt"</span>)
+
+<span class="cm"># Forward pass</span>
+<span class="kw">with</span> torch.no_grad():
+    outputs = model(**inputs)
+
+<span class="cm"># outputs.last_hidden_state: (1, seq_len, 768)</span>
+<span class="cm"># outputs.pooler_output:     (1, 768) — [CLS] processed</span>
+<span class="fn">print</span>(<span class="str">f"Hidden states: <span class="fn">{outputs.last_hidden_state.shape}</span>"</span>)
+<span class="fn">print</span>(<span class="str">f"[CLS] vector:  <span class="fn">{outputs.pooler_output.shape}</span>"</span>)
+
+<span class="cm"># For Turkish: use a Turkish BERT</span>
+tk_tr = <span class="fn">AutoTokenizer</span>.from_pretrained(<span class="str">"dbmdz/bert-base-turkish-cased"</span>)
+model_tr = <span class="fn">AutoModel</span>.from_pretrained(<span class="str">"dbmdz/bert-base-turkish-cased"</span>)</code></pre>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- L6: RoBERTa & Variants -->
+      <div class="lesson-block" id="l6">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L06</span>
+          <div><div class="lesson-title">RoBERTa, DistilBERT & Model Variants</div><div class="lesson-sub">Training improvements · Knowledge distillation · Model selection · 10 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p><strong>RoBERTa</strong> (Liu et al., 2019) improves BERT's pre-training by: removing NSP (not helpful), using dynamic masking (different mask each epoch), training longer with more data, and using larger batches. Result: consistently outperforms BERT on all benchmarks.</p>
+          <p><strong>DistilBERT:</strong> 40% smaller, 60% faster than BERT while retaining 97% of its performance. Uses knowledge distillation — the smaller model learns to mimic the larger model's outputs. <strong>ALBERT:</strong> Factorized embeddings and cross-layer parameter sharing for memory efficiency. <strong>ELECTRA:</strong> Replaced token detection instead of masked prediction — more sample-efficient pre-training.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Model Comparison</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">from</span> transformers <span class="kw">import</span> AutoModel
+
+models = {
+    <span class="str">"BERT-base"</span>:      <span class="str">"bert-base-uncased"</span>,
+    <span class="str">"RoBERTa-base"</span>:   <span class="str">"roberta-base"</span>,
+    <span class="str">"DistilBERT"</span>:     <span class="str">"distilbert-base-uncased"</span>,
+    <span class="str">"Turkish BERT"</span>:   <span class="str">"dbmdz/bert-base-turkish-cased"</span>,
+}
+
+<span class="kw">for</span> name, model_name <span class="kw">in</span> models.items():
+    model = <span class="fn">AutoModel</span>.from_pretrained(model_name)
+    params = <span class="fn">sum</span>(p.numel() <span class="kw">for</span> p <span class="kw">in</span> model.parameters())
+    <span class="fn">print</span>(<span class="str">f"<span class="fn">{name:18s}</span> → <span class="fn">{params/1e6:.1f}</span>M parameters"</span>)
+
+<span class="cm"># Output:</span>
+<span class="cm"># BERT-base          → 109.5M parameters</span>
+<span class="cm"># RoBERTa-base       → 124.6M parameters</span>
+<span class="cm"># DistilBERT         → 66.4M parameters</span>
+<span class="cm"># Turkish BERT       → 110.6M parameters</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>For Turkish NLP:</strong> Start with <code>dbmdz/bert-base-turkish-cased</code> or <code>dbmdz/bert-base-turkish-uncased</code>. For multilingual tasks, consider <code>xlm-roberta-base</code>.</div>
+        </div></div>
+      </div>
+
+      <!-- L7: Fine-Tuning -->
+      <div class="lesson-block" id="l7">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L07</span>
+          <div><div class="lesson-title">Fine-Tuning for Text Classification</div><div class="lesson-sub">HuggingFace Trainer · Dataset loading · Hyperparameters · Evaluation · 12 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p><strong>Fine-tuning</strong> takes a pre-trained model and adapts it to a specific downstream task by training on task-specific labeled data. The pre-trained weights provide a powerful initialization — you typically need much less data and fewer epochs than training from scratch.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Fine-Tuning BERT for Classification</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">from</span> transformers <span class="kw">import</span> (
+    AutoTokenizer, AutoModelForSequenceClassification,
+    TrainingArguments, Trainer
+)
+<span class="kw">from</span> datasets <span class="kw">import</span> load_dataset
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> f1_score, accuracy_score
+
+<span class="cm"># 1. Load model & tokenizer</span>
+model_name = <span class="str">"dbmdz/bert-base-turkish-cased"</span>
+tokenizer = <span class="fn">AutoTokenizer</span>.from_pretrained(model_name)
+model = <span class="fn">AutoModelForSequenceClassification</span>.from_pretrained(
+    model_name, num_labels=<span class="num">5</span>
+)
+
+<span class="cm"># 2. Prepare dataset</span>
+dataset = <span class="fn">load_dataset</span>(<span class="str">"csv"</span>, data_files={
+    <span class="str">"train"</span>: <span class="str">"train.csv"</span>, <span class="str">"test"</span>: <span class="str">"test.csv"</span>
+})
+
+<span class="kw">def</span> <span class="fn">tokenize_fn</span>(examples):
+    <span class="kw">return</span> tokenizer(
+        examples[<span class="str">"text"</span>], truncation=<span class="kw">True</span>,
+        padding=<span class="str">"max_length"</span>, max_length=<span class="num">256</span>
+    )
+
+dataset = dataset.map(tokenize_fn, batched=<span class="kw">True</span>)
+
+<span class="cm"># 3. Define metrics</span>
+<span class="kw">def</span> <span class="fn">compute_metrics</span>(eval_pred):
+    logits, labels = eval_pred
+    preds = np.argmax(logits, axis=-<span class="num">1</span>)
+    <span class="kw">return</span> {
+        <span class="str">"accuracy"</span>: accuracy_score(labels, preds),
+        <span class="str">"f1_macro"</span>: f1_score(labels, preds, average=<span class="str">"macro"</span>)
+    }
+
+<span class="cm"># 4. Training arguments</span>
+args = <span class="fn">TrainingArguments</span>(
+    output_dir=<span class="str">"./results"</span>,
+    num_train_epochs=<span class="num">3</span>,
+    per_device_train_batch_size=<span class="num">16</span>,
+    per_device_eval_batch_size=<span class="num">32</span>,
+    learning_rate=<span class="num">2e-5</span>,
+    weight_decay=<span class="num">0.01</span>,
+    evaluation_strategy=<span class="str">"epoch"</span>,
+    save_strategy=<span class="str">"epoch"</span>,
+    load_best_model_at_end=<span class="kw">True</span>,
+    metric_for_best_model=<span class="str">"f1_macro"</span>,
+)
+
+<span class="cm"># 5. Train</span>
+trainer = <span class="fn">Trainer</span>(
+    model=model, args=args,
+    train_dataset=dataset[<span class="str">"train"</span>],
+    eval_dataset=dataset[<span class="str">"test"</span>],
+    compute_metrics=compute_metrics,
+)
+trainer.train()</code></pre>
+          </div>
+          <div class="note note-warn"><strong>Common fine-tuning recipe:</strong> lr=2e-5, epochs=3-5, batch_size=16-32, warmup=10% of steps, weight_decay=0.01. Monitor validation F1 — stop if it plateaus or drops.</div>
+        </div></div>
+      </div>
+
+      <!-- L8: LoRA -->
+      <div class="lesson-block" id="l8">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L08</span>
+          <div><div class="lesson-title">LoRA & Parameter-Efficient Fine-Tuning</div><div class="lesson-sub">Low-Rank Adaptation · QLoRA · PEFT library · When to use LoRA vs full fine-tuning · 10 min</div></div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p><strong>LoRA</strong> (Hu et al., 2021) freezes the pre-trained model weights and injects small <strong>low-rank decomposition matrices</strong> into each transformer layer. Instead of updating all 110M+ parameters, you only train ~0.1-1% of them — dramatically reducing memory and compute requirements.</p>
+          <p>Core idea: weight update ΔW is approximated as the product of two small matrices: ΔW = BA, where B is (d × r) and A is (r × d), with rank r ≪ d (typically r=4,8,16). <strong>QLoRA</strong> goes further by quantizing the base model to 4-bit precision — enabling fine-tuning of 7B+ models on a single GPU.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — LoRA with PEFT</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">from</span> peft <span class="kw">import</span> LoraConfig, get_peft_model, TaskType
+<span class="kw">from</span> transformers <span class="kw">import</span> AutoModelForSequenceClassification
+
+<span class="cm"># Load base model</span>
+model = <span class="fn">AutoModelForSequenceClassification</span>.from_pretrained(
+    <span class="str">"dbmdz/bert-base-turkish-cased"</span>, num_labels=<span class="num">5</span>
+)
+
+<span class="cm"># Configure LoRA</span>
+lora_config = <span class="fn">LoraConfig</span>(
+    task_type=TaskType.SEQ_CLS,
+    r=<span class="num">8</span>,                  <span class="cm"># rank (4, 8, 16 common)</span>
+    lora_alpha=<span class="num">16</span>,         <span class="cm"># scaling factor</span>
+    lora_dropout=<span class="num">0.1</span>,
+    target_modules=[<span class="str">"query"</span>, <span class="str">"value"</span>],  <span class="cm"># which layers to adapt</span>
+)
+
+<span class="cm"># Apply LoRA</span>
+model = <span class="fn">get_peft_model</span>(model, lora_config)
+model.print_trainable_parameters()
+<span class="cm"># Output: trainable params: 294,912 || all params: 108,605,957</span>
+<span class="cm"># → only 0.27% of parameters are trained!</span>
+
+<span class="cm"># Train with HuggingFace Trainer as usual</span>
+<span class="cm"># trainer = Trainer(model=model, args=args, ...)</span>
+<span class="cm"># trainer.train()</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>When to use LoRA:</strong> Limited GPU memory, large models (7B+), many domain-specific tasks (train one LoRA adapter per task), or when you want to experiment quickly. <strong>When to use full fine-tuning:</strong> Small models (BERT-base), ample compute, maximum performance needed, single target task.</div>
+        </div></div>
+      </div>
+
+    </div>
+
+    <div class="lesson-nav">
+      <a href="../ai/rnn.html">← RNN / LSTM</a>
+      <span class="nav-label">Transformers · 8 lessons</span>
+      <a href="fundamentals.html" class="nav-next">NLP Fundamentals →</a>
+    </div>
+  <button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰</button>
+</main>
+</div>
+
+<footer><div class="f-copy">© 2026 Mikail Sarpkaya</div><div class="f-site">mikailsarpkaya<span>.com</span></div></footer>
+
+
+<script>
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1400));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+function toggleMobile(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');}
+function toggleLesson(el){el.closest('.lesson-block').classList.toggle('open');}
+function copyCode(btn){const code=btn.closest('.code-block').querySelector('code');navigator.clipboard.writeText(code.textContent).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',1500);});}
+</script>
+<script src="../shared.i18n.js"></script>
+<script src="transformers.i18n.js">
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+function toggleGroup(label) {
+  label.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>
