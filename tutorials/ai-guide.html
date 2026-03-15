@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AI & Data Science Guide — Terms, tools, libraries, languages, roadmap, and concept relationships. Start here before diving into tutorials."/>
+  <title>AI Guide — Mikail Sarpkaya Tutorials</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../site.css"/>
+  <style>
+    :root { --nav-h:62px; --accent:#c8a96e; }
+    .page-wrap { padding-top:var(--nav-h); min-height:100vh; max-width:900px; margin:0 auto; padding-left:2rem; padding-right:2rem; }
+
+    /* Hero */
+    .hero { padding:5rem 0 3rem; border-bottom:1px solid var(--border); position:relative; }
+    .hero-eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .hero-title { font-family:var(--display); font-size:clamp(2.5rem,6vw,5rem); line-height:.9; letter-spacing:.04em; margin-bottom:1.2rem; }
+    .hero-title .accent { color:var(--accent); }
+    .hero-desc { font-size:.85rem; color:var(--muted); line-height:2; max-width:600px; }
+    .hero-desc strong { color:var(--text); }
+
+    /* TOC */
+    .toc { padding:2rem 0; border-bottom:1px solid var(--border); }
+    .toc-title { font-size:.5rem; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; }
+    .toc-list { display:flex; flex-wrap:wrap; gap:.6rem; }
+    .toc-link { font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; padding:.4rem .8rem; border:1px solid var(--border); transition:all .2s; }
+    .toc-link:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* Section */
+    .guide-section { padding:3rem 0; border-bottom:1px solid var(--border); }
+    .section-num { font-size:.5rem; letter-spacing:.25em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
+    .section-title { font-family:var(--display); font-size:clamp(1.5rem,3vw,2.2rem); letter-spacing:.06em; margin-bottom:1.5rem; }
+    .section-intro { font-size:.82rem; color:var(--muted); line-height:2; margin-bottom:2rem; max-width:650px; }
+    .section-intro strong { color:var(--text); }
+
+    /* Hierarchy diagram */
+    .hierarchy { display:flex; flex-direction:column; gap:0; margin:2rem 0; }
+    .h-level { padding:1.2rem 1.6rem; border:1px solid var(--border); position:relative; }
+    .h-level-name { font-family:var(--display); font-size:1.2rem; letter-spacing:.06em; margin-bottom:.3rem; }
+    .h-level-desc { font-size:.72rem; color:var(--muted); line-height:1.8; }
+    .h-level-examples { font-size:.62rem; color:var(--muted); letter-spacing:.06em; margin-top:.4rem; }
+    .h-level-examples code { font-family:var(--mono); color:var(--accent); background:rgba(200,169,110,.07); padding:.1em .3em; font-size:.58rem; }
+    .h-indent-0 { margin-left:0; border-left:3px solid #c8a96e; }
+    .h-indent-1 { margin-left:2rem; border-left:3px solid #e84d80; }
+    .h-indent-2 { margin-left:4rem; border-left:3px solid #a855f7; }
+    .h-indent-3 { margin-left:6rem; border-left:3px solid #4de8cc; }
+    .h-connector { width:2rem; height:1px; background:var(--border); margin-left:1rem; }
+
+    /* Term grid */
+    .term-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; background:var(--border); margin:1.5rem 0; }
+    .term-card { background:var(--bg); padding:1.4rem 1.4rem; }
+    .term-name { font-family:var(--display); font-size:1rem; letter-spacing:.06em; margin-bottom:.3rem; }
+    .term-abbr { font-family:var(--mono); font-size:.55rem; color:var(--accent); letter-spacing:.08em; margin-bottom:.5rem; }
+    .term-desc { font-size:.72rem; color:var(--muted); line-height:1.85; }
+    .term-rel { font-size:.58rem; color:rgba(232,224,208,.3); margin-top:.5rem; letter-spacing:.06em; }
+
+    /* Tool grid */
+    .tool-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1px; background:var(--border); margin:1.5rem 0; }
+    .tool-card { background:var(--bg); padding:1.2rem 1.2rem; }
+    .tool-name { font-family:var(--display); font-size:1rem; letter-spacing:.06em; margin-bottom:.2rem; }
+    .tool-type { font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:.4rem; }
+    .tool-desc { font-size:.68rem; color:var(--muted); line-height:1.8; }
+    .tool-tag { display:inline-block; font-size:.45rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .4rem; margin-top:.4rem; margin-right:.3rem; }
+    .tag-lang { border:1px solid #4de87a; color:#4de87a; }
+    .tag-lib { border:1px solid #a855f7; color:#a855f7; }
+    .tag-framework { border:1px solid #e84d80; color:#e84d80; }
+    .tag-tool { border:1px solid #38bdf8; color:#38bdf8; }
+
+    /* Comparison table */
+    .cmp-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:.72rem; }
+    .cmp-table th { text-align:left; padding:.7rem 1rem; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); font-weight:400; }
+    .cmp-table td { padding:.7rem 1rem; border-bottom:1px solid var(--border); color:var(--muted); line-height:1.7; }
+    .cmp-table td:first-child { color:var(--text); font-family:var(--mono); font-size:.7rem; }
+    .cmp-table tr:hover td { background:rgba(255,255,255,.02); }
+
+    /* Roadmap */
+    .roadmap { margin:2rem 0; }
+    .rm-step { display:flex; gap:1.5rem; padding:1.5rem 0; border-bottom:1px solid var(--border); }
+    .rm-num { font-family:var(--display); font-size:1.8rem; color:var(--accent); min-width:2.5rem; line-height:1; }
+    .rm-content { flex:1; }
+    .rm-title { font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.4rem; }
+    .rm-desc { font-size:.72rem; color:var(--muted); line-height:1.85; }
+    .rm-tools { font-size:.6rem; color:var(--muted); margin-top:.4rem; }
+    .rm-tools code { font-family:var(--mono); color:var(--accent); background:rgba(200,169,110,.07); padding:.1em .3em; }
+    .rm-link { font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); text-decoration:none; margin-top:.5rem; display:inline-block; }
+    .rm-link:hover { text-decoration:underline; }
+
+    /* Back link */
+    .back-link { display:inline-block; font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); text-decoration:none; padding:2rem 0; transition:color .2s; }
+    .back-link:hover { color:var(--gold); }
+
+    @media(max-width:768px) {
+      .page-wrap { padding-left:1.2rem; padding-right:1.2rem; }
+      .hero { padding:2.5rem 0 2rem; }
+      .h-indent-1 { margin-left:1rem; }
+      .h-indent-2 { margin-left:2rem; }
+      .h-indent-3 { margin-left:3rem; }
+      .term-grid, .tool-grid { grid-template-columns:1fr; }
+      .rm-step { flex-direction:column; gap:.8rem; }
+    }
+    @keyframes loadBar { to { width:100%; } }
+    @keyframes slideUp { to { transform:translateY(0); } }
+    @keyframes fadeIn  { to { opacity:1; } }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;">
+    <span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">AI GUIDE</span>
+  </div>
+  <div class="ld-bar-wrap" style="width:200px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2rem;">
+    <div class="ld-bar" style="height:100%;width:0;background:var(--accent);animation:loadBar 1.5s ease forwards;"></div>
+  </div>
+  <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
+</div>
+
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="../index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html" onclick="toggleMobile()">Home</a>
+  <a href="../projects.html" onclick="toggleMobile()">Projects</a>
+  <a href="../certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <div class="hero">
+    <div class="hero-eyebrow">Before You Begin</div>
+    <h1 class="hero-title">AI & DATA SCIENCE<br><span class="accent">GUIDE</span></h1>
+    <p class="hero-desc">
+      New to AI? Start here. This page maps out every <strong>term</strong>, <strong>tool</strong>, <strong>library</strong>, and <strong>concept</strong> you'll encounter in the tutorials. Understand the big picture before diving into code.
+    </p>
+  </div>
+
+  <!-- ══════════════ TOC ══════════════ -->
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <div class="toc-list">
+      <a class="toc-link" href="#hierarchy">Concept Hierarchy</a>
+      <a class="toc-link" href="#glossary">Glossary</a>
+      <a class="toc-link" href="#tools">Tools & Libraries</a>
+      <a class="toc-link" href="#comparison">Language Comparison</a>
+      <a class="toc-link" href="#roadmap">Learning Roadmap</a>
+    </div>
+  </div>
+
+  <!-- ══════════════ 1. CONCEPT HIERARCHY ══════════════ -->
+  <div class="guide-section" id="hierarchy">
+    <div class="section-num">01</div>
+    <div class="section-title">CONCEPT HIERARCHY</div>
+    <p class="section-intro">
+      AI is a broad field. Everything nests inside it like Russian dolls. Understanding <strong>what contains what</strong> is the first step.
+    </p>
+
+    <div class="hierarchy">
+      <div class="h-level h-indent-0">
+        <div class="h-level-name" style="color:#c8a96e">Artificial Intelligence (AI)</div>
+        <div class="h-level-desc">Any system that mimics human intelligence — reasoning, planning, learning, perception.</div>
+        <div class="h-level-examples">Includes: rule-based systems, expert systems, search algorithms, <code>ML</code>, <code>DL</code>, <code>NLP</code>, robotics</div>
+      </div>
+      <div class="h-level h-indent-1">
+        <div class="h-level-name" style="color:#e84d80">Machine Learning (ML)</div>
+        <div class="h-level-desc">Systems that learn patterns from data instead of being explicitly programmed. The core of modern AI.</div>
+        <div class="h-level-examples">Methods: <code>Linear Regression</code>, <code>SVM</code>, <code>Decision Trees</code>, <code>Random Forest</code>, <code>K-Means</code></div>
+      </div>
+      <div class="h-level h-indent-2">
+        <div class="h-level-name" style="color:#a855f7">Deep Learning (DL)</div>
+        <div class="h-level-desc">ML with multi-layered neural networks. Learns hierarchical features automatically from raw data.</div>
+        <div class="h-level-examples">Architectures: <code>CNN</code>, <code>RNN</code>, <code>LSTM</code>, <code>GAN</code>, <code>Transformer</code>, <code>Autoencoder</code></div>
+      </div>
+      <div class="h-level h-indent-3">
+        <div class="h-level-name" style="color:#4de8cc">Natural Language Processing (NLP)</div>
+        <div class="h-level-desc">Applying ML/DL to human language — understanding, generating, translating, and classifying text.</div>
+        <div class="h-level-examples">Models: <code>BERT</code>, <code>GPT</code>, <code>RoBERTa</code>, <code>T5</code> — Tasks: sentiment, NER, translation, QA</div>
+      </div>
+      <div class="h-level h-indent-3">
+        <div class="h-level-name" style="color:#38bdf8">Computer Vision (CV)</div>
+        <div class="h-level-desc">Applying DL to images and video — detection, segmentation, recognition, generation.</div>
+        <div class="h-level-examples">Models: <code>ResNet</code>, <code>YOLO</code>, <code>U-Net</code>, <code>ViT</code> — Tasks: classification, object detection, OCR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ 2. GLOSSARY ══════════════ -->
+  <div class="guide-section" id="glossary">
+    <div class="section-num">02</div>
+    <div class="section-title">GLOSSARY</div>
+    <p class="section-intro">
+      Key terms you'll see repeatedly. Each card = one concept. <strong>Bold names</strong> link to tutorials where available.
+    </p>
+
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-name">Neural Network</div>
+        <div class="term-abbr">NN</div>
+        <div class="term-desc">A computing system inspired by biological neurons. Input → hidden layers → output. The building block of deep learning.</div>
+        <div class="term-rel">→ Deep Learning, Perceptron, Backpropagation</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Convolutional Neural Network</div>
+        <div class="term-abbr">CNN</div>
+        <div class="term-desc">A neural network with convolutional layers that detect spatial patterns — edges, textures, shapes. Dominant in image tasks.</div>
+        <div class="term-rel">→ Computer Vision, Filters, Pooling</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Recurrent Neural Network</div>
+        <div class="term-abbr">RNN</div>
+        <div class="term-desc">A neural network with memory — each step feeds into the next. Built for sequential data like text or time series.</div>
+        <div class="term-rel">→ LSTM, GRU, Seq2Seq, Vanishing Gradient</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Long Short-Term Memory</div>
+        <div class="term-abbr">LSTM</div>
+        <div class="term-desc">An advanced RNN with gates (forget, input, output) that can learn long-range dependencies without vanishing gradients.</div>
+        <div class="term-rel">→ RNN, GRU, Sequence Modeling</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Transformer</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">Architecture using self-attention instead of recurrence. Processes all tokens in parallel. Powers BERT, GPT, and modern LLMs.</div>
+        <div class="term-rel">→ Attention, BERT, GPT, Positional Encoding</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Attention Mechanism</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">A method that lets a model "focus" on relevant parts of the input. Self-attention compares every token to every other token.</div>
+        <div class="term-rel">→ Transformer, Multi-Head Attention, Q/K/V</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">BERT</div>
+        <div class="term-abbr">Bidirectional Encoder Representations from Transformers</div>
+        <div class="term-desc">A pre-trained language model that reads text in both directions. Fine-tuned for classification, NER, QA, and more.</div>
+        <div class="term-rel">→ Transformer, Masked Language Model, Fine-Tuning</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">GPT</div>
+        <div class="term-abbr">Generative Pre-trained Transformer</div>
+        <div class="term-desc">An autoregressive language model — predicts the next token. Trained on massive text data. Powers ChatGPT and similar systems.</div>
+        <div class="term-rel">→ Transformer, Autoregressive, LLM</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Large Language Model</div>
+        <div class="term-abbr">LLM</div>
+        <div class="term-desc">A model with billions of parameters trained on internet-scale text. Can generate, translate, summarize, and reason about language.</div>
+        <div class="term-rel">→ GPT, BERT, Fine-Tuning, LoRA, RLHF</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Fine-Tuning</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">Taking a pre-trained model and training it further on a specific dataset for a specific task. Much cheaper than training from scratch.</div>
+        <div class="term-rel">→ Transfer Learning, LoRA, PEFT</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Backpropagation</div>
+        <div class="term-abbr">Backprop</div>
+        <div class="term-desc">The algorithm that calculates how much each weight contributed to the error, then adjusts weights to reduce it. How neural networks learn.</div>
+        <div class="term-rel">→ Gradient Descent, Loss Function, Chain Rule</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Gradient Descent</div>
+        <div class="term-abbr">GD / SGD / Adam</div>
+        <div class="term-desc">An optimization algorithm — repeatedly steps in the direction that reduces the loss function. Variants: SGD, Adam, RMSprop.</div>
+        <div class="term-rel">→ Learning Rate, Loss Function, Optimizer</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Overfitting</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">When a model memorizes training data but fails on new data. The gap between train accuracy and test accuracy is the signal.</div>
+        <div class="term-rel">→ Regularization, Dropout, Cross-Validation</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Tokenization</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">Breaking text into smaller pieces (tokens) — words, subwords, or characters. The first step in any NLP pipeline.</div>
+        <div class="term-rel">→ BPE, WordPiece, SentencePiece, Vocabulary</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Embedding</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">Converting words/tokens into dense numerical vectors. Similar meanings → similar vectors. The foundation of modern NLP.</div>
+        <div class="term-rel">→ Word2Vec, GloVe, BERT Embeddings</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Epoch / Batch / Iteration</div>
+        <div class="term-abbr">—</div>
+        <div class="term-desc">Epoch = one full pass through the dataset. Batch = subset processed together. Iteration = one weight update. 1000 samples, batch 100 = 10 iterations per epoch.</div>
+        <div class="term-rel">→ Training Loop, Batch Size, Mini-Batch</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ 3. TOOLS & LIBRARIES ══════════════ -->
+  <div class="guide-section" id="tools">
+    <div class="section-num">03</div>
+    <div class="section-title">TOOLS & LIBRARIES</div>
+    <p class="section-intro">
+      The ecosystem you'll work with. Each tool has a specific role — <strong>don't try to learn all of them at once</strong>. Follow the roadmap at the bottom.
+    </p>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-name" style="color:#4de87a">Python</div>
+        <div class="tool-type">Language</div>
+        <div class="tool-desc">The default language for AI/ML. 90%+ of tutorials, papers, and production code use Python.</div>
+        <span class="tool-tag tag-lang">Language</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#e5c07b">NumPy</div>
+        <div class="tool-type">Library</div>
+        <div class="tool-desc">N-dimensional arrays and math operations. The foundation under every other data library.</div>
+        <span class="tool-tag tag-lib">Library</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#e5c07b">Pandas</div>
+        <div class="tool-type">Library</div>
+        <div class="tool-desc">DataFrames for tabular data. Loading, cleaning, filtering, grouping — the data wrangling workhorse.</div>
+        <span class="tool-tag tag-lib">Library</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#e5c07b">Matplotlib / Seaborn</div>
+        <div class="tool-type">Library</div>
+        <div class="tool-desc">Plotting and visualization. Matplotlib is flexible, Seaborn adds beautiful statistical charts on top.</div>
+        <span class="tool-tag tag-lib">Library</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#f09638">Scikit-Learn</div>
+        <div class="tool-type">Library</div>
+        <div class="tool-desc">Classical ML: regression, classification, clustering, pipelines, cross-validation. Your first ML library.</div>
+        <span class="tool-tag tag-lib">Library</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#ff6b6b">PyTorch</div>
+        <div class="tool-type">Framework</div>
+        <div class="tool-desc">Deep learning framework by Meta. Dynamic computation graphs, intuitive API. The research standard.</div>
+        <span class="tool-tag tag-framework">Framework</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#ff6b6b">TensorFlow / Keras</div>
+        <div class="tool-type">Framework</div>
+        <div class="tool-desc">Deep learning framework by Google. Keras provides a high-level API. Strong in production and mobile deployment.</div>
+        <span class="tool-tag tag-framework">Framework</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#a855f7">HuggingFace</div>
+        <div class="tool-type">Platform + Library</div>
+        <div class="tool-desc">Hub for pre-trained models (BERT, GPT, etc.) + Transformers library. The npm of NLP.</div>
+        <span class="tool-tag tag-lib">Library</span><span class="tool-tag tag-tool">Platform</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#38bdf8">Jupyter Notebook</div>
+        <div class="tool-type">Tool</div>
+        <div class="tool-desc">Interactive coding environment. Write code, see output, add notes — all in one document. Essential for data exploration.</div>
+        <span class="tool-tag tag-tool">Tool</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#38bdf8">Google Colab</div>
+        <div class="tool-type">Tool</div>
+        <div class="tool-desc">Free cloud Jupyter with GPU access. No setup needed — open a browser and start training models.</div>
+        <span class="tool-tag tag-tool">Tool</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#4de8cc">SQL</div>
+        <div class="tool-type">Language</div>
+        <div class="tool-desc">Query language for databases. Essential for extracting and preparing data before any ML pipeline.</div>
+        <span class="tool-tag tag-lang">Language</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name" style="color:#4de8cc">Git</div>
+        <div class="tool-type">Tool</div>
+        <div class="tool-desc">Version control. Track changes, collaborate, roll back mistakes. Every project needs Git.</div>
+        <span class="tool-tag tag-tool">Tool</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ 4. LANGUAGE COMPARISON ══════════════ -->
+  <div class="guide-section" id="comparison">
+    <div class="section-num">04</div>
+    <div class="section-title">LANGUAGE & FRAMEWORK COMPARISON</div>
+    <p class="section-intro">
+      Not all languages are equal for AI. Here's where each one fits.
+    </p>
+
+    <table class="cmp-table">
+      <tr><th>Tool</th><th>Best For</th><th>AI Role</th><th>Speed</th></tr>
+      <tr><td>Python</td><td>ML, DL, NLP, data science</td><td>Primary — 90% of AI work</td><td>Slow (but C under the hood)</td></tr>
+      <tr><td>C / C++</td><td>Systems, performance, embedded</td><td>Backend of frameworks (PyTorch, TensorFlow)</td><td>Very fast</td></tr>
+      <tr><td>JavaScript</td><td>Web, browser ML (TensorFlow.js)</td><td>Deployment, demos, edge inference</td><td>Medium</td></tr>
+      <tr><td>SQL</td><td>Data extraction, ETL</td><td>Data pipeline — feeding data to models</td><td>—</td></tr>
+      <tr><td>R</td><td>Statistics, biostatistics</td><td>Academic research, statistical analysis</td><td>Slow</td></tr>
+    </table>
+
+    <table class="cmp-table" style="margin-top:2rem;">
+      <tr><th>Framework</th><th>Creator</th><th>Strength</th><th>When to Use</th></tr>
+      <tr><td>PyTorch</td><td>Meta (Facebook)</td><td>Research, flexibility, debugging</td><td>Custom models, papers, experiments</td></tr>
+      <tr><td>TensorFlow</td><td>Google</td><td>Production, mobile, scalability</td><td>Deployment, TFLite, TPU training</td></tr>
+      <tr><td>Scikit-Learn</td><td>Community</td><td>Classical ML, simplicity</td><td>Tabular data, first models, baselines</td></tr>
+      <tr><td>HuggingFace</td><td>Community</td><td>Pre-trained NLP models</td><td>Text tasks, fine-tuning BERT/GPT</td></tr>
+      <tr><td>Keras</td><td>Google (inside TF)</td><td>High-level API, fast prototyping</td><td>Quick experiments, beginners</td></tr>
+    </table>
+  </div>
+
+  <!-- ══════════════ 5. LEARNING ROADMAP ══════════════ -->
+  <div class="guide-section" id="roadmap">
+    <div class="section-num">05</div>
+    <div class="section-title">LEARNING ROADMAP</div>
+    <p class="section-intro">
+      Follow this order. Each step builds on the previous one. <strong>Don't skip the math.</strong>
+    </p>
+
+    <div class="roadmap">
+      <div class="rm-step">
+        <div class="rm-num">1</div>
+        <div class="rm-content">
+          <div class="rm-title">Python Core</div>
+          <div class="rm-desc">Variables, functions, OOP, file handling, virtual environments. You need fluent Python before anything else.</div>
+          <div class="rm-tools">Tools: <code>Python 3.x</code>, <code>pip</code>, <code>venv</code></div>
+          <a class="rm-link" href="languages/python/core.html">Start Python →</a>
+        </div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num">2</div>
+        <div class="rm-content">
+          <div class="rm-title">Math Foundations</div>
+          <div class="rm-desc">Linear algebra (vectors, matrices, eigenvalues), probability, statistics. Then calculus — derivatives, gradients, optimization. This is what makes ML work.</div>
+          <div class="rm-tools">Tools: <code>NumPy</code>, pen & paper</div>
+          <a class="rm-link" href="ai/math/foundations.html">Start Math →</a>
+        </div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num">3</div>
+        <div class="rm-content">
+          <div class="rm-title">Data Tools</div>
+          <div class="rm-desc">Learn to load, clean, explore, and visualize data. Pandas for tabular data, NumPy for arrays, Matplotlib for charts. 80% of ML time is spent on data.</div>
+          <div class="rm-tools">Tools: <code>Pandas</code>, <code>NumPy</code>, <code>Matplotlib</code>, <code>Jupyter</code></div>
+          <a class="rm-link" href="ai/data/pandas.html">Start Pandas →</a>
+        </div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num">4</div>
+        <div class="rm-content">
+          <div class="rm-title">Classical Machine Learning</div>
+          <div class="rm-desc">Linear/logistic regression, SVM, decision trees, random forest, k-means. Understand bias-variance tradeoff, cross-validation, evaluation metrics.</div>
+          <div class="rm-tools">Tools: <code>Scikit-Learn</code>, <code>Pandas</code></div>
+          <a class="rm-link" href="ai/ml/theory.html">Start ML Theory →</a>
+        </div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num">5</div>
+        <div class="rm-content">
+          <div class="rm-title">Deep Learning</div>
+          <div class="rm-desc">Neural networks, backpropagation, CNNs, optimization (Adam, dropout, batch norm). Build and train models with PyTorch.</div>
+          <div class="rm-tools">Tools: <code>PyTorch</code>, <code>Google Colab</code></div>
+          <a class="rm-link" href="ai/ml/deep.html">Start Deep Learning →</a>
+        </div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num">6</div>
+        <div class="rm-content">
+          <div class="rm-title">Sequence Models (RNN/LSTM)</div>
+          <div class="rm-desc">Recurrent networks for sequential data — text, time series. LSTM gates, bidirectional models, Seq2Seq. The bridge to NLP.</div>
+          <div class="rm-tools">Tools: <code>PyTorch</code></div>
+          <a class="rm-link" href="ai/ml/rnn.html">Start RNN →</a>
+        </div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num">7</div>
+        <div class="rm-content">
+          <div class="rm-title">NLP & Transformers</div>
+          <div class="rm-desc">Tokenization, embeddings, attention mechanism, BERT, GPT, fine-tuning. The current state of the art in language AI.</div>
+          <div class="rm-tools">Tools: <code>HuggingFace Transformers</code>, <code>PyTorch</code></div>
+          <a class="rm-link" href="ai/nlp/transformers.html">Start Transformers →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="back-link" href="index.html">← Back to Tutorials</a>
+
+</div>
+
+<footer>
+  <div class="f-copy"><span data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</span></div>
+  <div class="f-site" style="font-size:.55rem;letter-spacing:.1em;color:var(--muted)">mikailsarpkaya<span>.com</span></div>
+</footer>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function toggleMobile() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+</script>
+<script src="shared.i18n.js"></script>
+</body>
+</html>
