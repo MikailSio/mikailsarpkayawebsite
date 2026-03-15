@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tutorials — Mikail Sarpkaya</title>
+  <meta name="description" content="Software & AI Tutorials — AI & Data Science, Web Development, Programming Languages. By Mikail Sarpkaya."/>
   <link rel="icon" type="image/x-icon" href="../favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -31,126 +32,57 @@
     .sb-group.open .sb-group-items { max-height:600px; }
     .sb-link { display:flex; align-items:center; gap:.75rem; padding:.65rem 1.4rem; text-decoration:none; transition:background .15s; color:rgba(232,224,208,.45); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .sb-link:hover { background:rgba(255,255,255,.04); color:var(--text); }
-    .sb-link.active { background:rgba(200,169,110,.07); color:var(--gold); border-left:2px solid var(--gold); }
     .sb-link.soon-link { opacity:.4; cursor:default; pointer-events:none; }
-    .sb-num { font-size:.5rem; color:var(--muted); min-width:1.4rem; }
     .sb-badge { font-size:.42rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .45rem; margin-left:auto; flex-shrink:0; }
     .sb-live { border:1px solid var(--cyan); color:var(--cyan); }
     .sb-new  { border:1px solid var(--gold); color:var(--gold); }
     .sb-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
-    .sb-back { display:flex; align-items:center; gap:.6rem; padding:.9rem 1.4rem; font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border); transition:color .2s; }
-    .sb-back:hover { color:var(--gold); }
 
-    /* ── MAIN CONTENT ── */
+    /* ── MAIN ── */
     .main { flex:1; min-width:0; }
-    .topic-hero { padding:5rem 5vw 3rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
-    .topic-hero::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 70% 80% at 20% 60%, rgba(77,232,204,.04), transparent 65%); }
-    .topic-deco { position:absolute; right:3vw; top:50%; transform:translateY(-50%); width:280px; height:280px; opacity:.06; pointer-events:none; }
-    .topic-eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--cyan); margin-bottom:1rem; }
-    .topic-title { font-family:var(--display); font-size:clamp(3rem,7vw,7rem); line-height:.88; letter-spacing:.04em; margin-bottom:1rem; }
-    .topic-title .accent { color:var(--cyan); }
-    .topic-desc { font-size:.78rem; color:var(--muted); line-height:1.9; max-width:500px; margin-top:1.2rem; }
-    .topic-desc strong { color:var(--text); }
-    .topic-meta { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1.8rem; }
-    .meta-item { font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:.5rem; }
-    .meta-item span { color:var(--text); }
 
-    /* ── LESSONS ── */
-    .lessons { padding:3rem 5vw 6rem; }
-    .lesson-block { border:1px solid var(--border); margin-bottom:1px; transition:border-color .3s; overflow:hidden; }
-    .lesson-block:hover { border-color:rgba(77,232,204,.2); }
-    .lesson-header { display:flex; align-items:center; gap:1.5rem; padding:1.4rem 1.8rem; cursor:pointer; user-select:none; transition:background .2s; }
-    .lesson-header:hover { background:rgba(255,255,255,.025); }
-    .lesson-num { font-size:.58rem; letter-spacing:.15em; color:var(--muted); min-width:2.5rem; }
-    .lesson-title { font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; flex:1; transition:color .25s; }
-    .lesson-header:hover .lesson-title { color:var(--cyan); }
-    .lesson-sub { font-size:.6rem; color:var(--muted); }
-    .lesson-toggle { font-size:.9rem; color:var(--muted); transition:transform .3s; margin-left:auto; }
-    .lesson-block.open .lesson-toggle { transform:rotate(45deg); color:var(--cyan); }
-    .lesson-body { max-height:0; overflow:hidden; transition:max-height .5s cubic-bezier(.16,1,.3,1); }
-    .lesson-block.open .lesson-body { max-height:9999px; }
-    .lesson-content { padding:0 1.8rem 2rem; }
-    .lesson-content p { font-size:.78rem; color:var(--muted); line-height:1.95; margin-bottom:1.2rem; }
-    .lesson-content p strong { color:var(--text); }
-    .lesson-content p code { font-family:var(--mono); color:var(--cyan); font-size:.85em; background:rgba(77,232,204,.07); padding:.1em .35em; }
+    /* ── HERO ── */
+    .page-hero { padding:5rem 5vw 3rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 60% 70% at 30% 50%, rgba(200,169,110,.04), transparent 60%); }
+    .eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+    .page-title { font-family:var(--display); font-size:clamp(3rem,7vw,7rem); line-height:.88; letter-spacing:.04em; margin-bottom:1rem; }
+    .page-title .outline { -webkit-text-stroke:1px var(--text); color:transparent; }
+    .page-desc { font-size:.82rem; color:var(--muted); line-height:1.95; max-width:520px; margin-top:1.2rem; }
+    .page-desc em { color:var(--text); font-style:normal; }
 
-    /* Code blocks */
-    .code-block { background:#080d15; border:1px solid var(--border); margin:1.2rem 0; overflow:hidden; }
-    .code-header { display:flex; justify-content:space-between; align-items:center; padding:.5rem 1rem; background:rgba(255,255,255,.03); border-bottom:1px solid var(--border); }
-    .code-lang { font-size:.52rem; letter-spacing:.15em; text-transform:uppercase; color:var(--cyan); }
-    .code-copy { font-size:.52rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); cursor:pointer; background:none; border:none; transition:color .2s; padding:0; }
-    .code-copy:hover { color:var(--text); }
-    pre { margin:0; padding:1.2rem; overflow-x:auto; }
-    pre code { font-family:var(--mono); font-size:.75rem; line-height:1.7; color:#a8b8c8; white-space:pre; }
-    .kw { color:#7c9ed9; } .fn { color:var(--cyan); } .str { color:#98c379; }
-    .cm { color:#4a5568; font-style:italic; } .num { color:#d19a66; } .pp { color:#c678dd; }
-    .ty { color:#e5c07b; }
+    /* ── HUB GRID ── */
+    .hub-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:0; padding:3rem 5vw 4rem; }
+    .hub-card { display:block; text-decoration:none; padding:2.8rem 2.4rem; border:1px solid var(--border); position:relative; overflow:hidden; transition:border-color .3s, background .3s; }
+    .hub-card:hover { border-color:rgba(200,169,110,.25); background:rgba(255,255,255,.015); }
+    .hub-card-accent { position:absolute; top:0; left:0; width:100%; height:3px; }
+    .hub-icon { font-size:2.2rem; margin-bottom:1.2rem; }
+    .hub-name { font-family:var(--display); font-size:2rem; letter-spacing:.08em; margin-bottom:.6rem; }
+    .hub-desc { font-size:.75rem; color:var(--muted); line-height:1.85; margin-bottom:1rem; max-width:380px; }
+    .hub-topics { font-size:.6rem; color:var(--muted); letter-spacing:.08em; line-height:1.8; margin-bottom:1.2rem; }
+    .hub-topics strong { color:var(--text); }
+    .hub-meta { display:flex; gap:1.2rem; align-items:center; margin-top:auto; }
+    .hub-badge { font-size:.48rem; letter-spacing:.14em; text-transform:uppercase; padding:.2rem .6rem; }
+    .hub-badge-live { border:1px solid var(--cyan); color:var(--cyan); }
+    .hub-badge-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
+    .hub-count { font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+    .hub-card.soon { opacity:.4; pointer-events:none; }
 
-    /* Notes */
-    .note { margin:1.2rem 0; padding:.9rem 1.2rem; font-size:.74rem; line-height:1.7; }
-    .note-tip  { border-left:2px solid var(--cyan); background:rgba(77,232,204,.05); color:var(--muted); }
-    .note-warn { border-left:2px solid #f59e0b; background:rgba(245,158,11,.05); color:var(--muted); }
-    .note strong { color:var(--text); }
+    /* ── BOTTOM ── */
+    .bottom-note { padding:2rem 5vw 4rem; }
+    .bottom-note p { font-size:.65rem; color:var(--muted); line-height:1.9; max-width:500px; }
+    .bottom-note span { color:var(--text); }
 
-    /* Nav bottom */
-    .lesson-nav { display:flex; justify-content:space-between; align-items:center; padding:2rem 5vw; border-top:1px solid var(--border); font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; }
-    .lesson-nav a { color:var(--muted); text-decoration:none; transition:color .2s; }
-    .lesson-nav a:hover { color:var(--gold); }
-    .lesson-nav .nav-next { color:var(--gold); }
-    .lesson-nav .nav-label { color:rgba(232,224,208,.2); }
+    /* ── MOBILE ── */
+    .sb-toggle { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:800; background:var(--gold); color:#050810; border:none; font-family:var(--mono); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; padding:.65rem 1.1rem; cursor:pointer; }
 
-    /* Tut hub cards */
-    .tut-hub { padding:3rem 4vw 6rem; }
-
-    /* Category Grid (main page) */
-    .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--border); padding:0 4vw 4rem; }
-    .cat-card { background:var(--bg); padding:1.8rem 1.6rem; text-decoration:none; display:flex; flex-direction:column; gap:.5rem; position:relative; overflow:hidden; transition:background .25s; }
-    .cat-card:hover { background:var(--surface); }
-    .cat-card-accent { position:absolute; top:0; left:0; right:0; height:2px; transform:scaleX(0); transform-origin:left; transition:transform .4s; }
-    .cat-card:hover .cat-card-accent { transform:scaleX(1); }
-    .cat-icon { font-size:1.4rem; margin-bottom:.3rem; }
-    .cat-name { font-family:var(--display); font-size:1.5rem; letter-spacing:.06em; line-height:1; }
-    .cat-sub { font-size:.62rem; color:var(--muted); line-height:1.6; }
-    .cat-count { font-size:.55rem; letter-spacing:.1em; color:rgba(232,224,208,.2); margin-top:auto; }
-
-    .hub-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1px; background:var(--border); }
-    .hub-card { background:var(--bg); padding:2rem 1.8rem; text-decoration:none; display:flex; flex-direction:column; gap:.9rem; position:relative; overflow:hidden; transition:background .25s; }
-    .hub-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; transform:scaleX(0); transform-origin:left; transition:transform .4s; }
-    .hub-card:hover { background:var(--surface); }
-    .hub-card:hover::before { transform:scaleX(1); }
-    .hub-c::before { background:linear-gradient(90deg,var(--cyan),transparent); }
-    .hub-g::before { background:linear-gradient(90deg,var(--gold),transparent); }
-    .hub-p::before { background:linear-gradient(90deg,#c678dd,transparent); }
-    .hub-card-num { font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
-    .hub-card-title { font-family:var(--display); font-size:1.6rem; letter-spacing:.06em; line-height:1; }
-    .hub-c .hub-card-title { color:var(--cyan); }
-    .hub-g .hub-card-title { color:var(--gold); }
-    .hub-p .hub-card-title { color:#c678dd; }
-    .hub-card-desc { font-size:.68rem; color:var(--muted); line-height:1.75; flex:1; }
-    .hub-card-meta { font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(232,224,208,.2); }
-    .hub-card-badge { font-size:.5rem; letter-spacing:.12em; text-transform:uppercase; padding:.2rem .6rem; width:fit-content; }
-    .hub-live { border:1px solid var(--cyan); color:var(--cyan); }
-    .hub-soon { border:1px solid rgba(255,255,255,.1); color:var(--muted); }
-    .hub-section-title { font-family:var(--display); font-size:clamp(1.5rem,3vw,2.5rem); letter-spacing:.06em; margin-bottom:1.5rem; padding-bottom:.8rem; border-bottom:1px solid var(--border); }
-
-    /* Mobile toggle */
-    .sb-toggle { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:800; background:var(--gold); color:#050810; border:none; width:46px; height:46px; border-radius:50%; font-size:1.1rem; cursor:pointer; box-shadow:0 4px 20px rgba(200,169,110,.3); }
-
-    /* Responsive */
-    @media(max-width:900px){
-      nav { padding:0 1.2rem; }
-      .nav-links { display:none; }
-      .hamburger { display:flex; }
+    @media(max-width:900px) {
+      .nav-links { display:none; } .hamburger { display:flex; }
       .sidebar { position:fixed; left:0; top:var(--nav-h); transform:translateX(-100%); z-index:900; transition:transform .3s; height:calc(100vh - var(--nav-h)); }
       .sidebar.open { transform:translateX(0); }
-      .sb-toggle { display:flex; align-items:center; justify-content:center; }
+      .sb-toggle { display:block; }
       .main { width:100%; }
-      .topic-deco { display:none; }
-      .topic-hero { padding:2.5rem 1.2rem 2rem; }
-      .lessons { padding:1.5rem 1.2rem 4rem; }
-      .lesson-nav { padding:1.5rem 1.2rem; flex-direction:column; gap:1rem; text-align:center; }
-      .tut-hub { padding:2rem 1.2rem 4rem; }
-      .cat-grid { padding:0 1.2rem 3rem; grid-template-columns:1fr; }
+      .page-hero { padding:2.5rem 1.2rem 2rem; }
+      .hub-grid { padding:2rem 1.2rem 3rem; grid-template-columns:1fr; }
     }
     @keyframes loadBar  { to { width:100%; } }
     @keyframes slideUp  { to { transform:translateY(0); } }
@@ -161,101 +93,86 @@
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="ld-name"><span>TUTORIALS</span></div>
-  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
-  <div class="ld-sub">mikailsarpkaya.com</div>
+  <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;">
+    <span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">TUTORIALS</span>
+  </div>
+  <div class="ld-bar-wrap" style="width:200px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2rem;">
+    <div class="ld-bar" style="height:100%;width:0;background:var(--gold);animation:loadBar 1.5s ease forwards;"></div>
+  </div>
+  <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
 </div>
 
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <a href="../index.html" class="nav-logo">MS</a>
   <ul class="nav-links">
-    <li><a href="../index.html" data-i18n="nav.about">Home</a></li>
+    <li><a href="../index.html">Home</a></li>
     <li><a href="../projects.html" data-i18n="nav.projects">Projects</a></li>
     <li><a href="../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
     <li><a href="../index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="index.html" class="tut active" data-i18n="nav.tutorials">Tutorials</a></li>
-    <li><a href="../cv/index.html" class="cv-link" data-i18n="nav.cv">CV ↗</a></li>
+    <li><a href="index.html" class="nav-tut active" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="../index.html"       onclick="toggleMobile()">Home</a>
-  <a href="../projects.html"    onclick="toggleMobile()">Projects</a>
+  <a href="../index.html" onclick="toggleMobile()">Home</a>
+  <a href="../projects.html" onclick="toggleMobile()">Projects</a>
   <a href="../certificates.html" onclick="toggleMobile()">Certificates</a>
-  <a href="index.html"   onclick="toggleMobile()">Tutorials</a>
-  <a href="../cv/index.html"    onclick="toggleMobile()">CV</a>
+  <a href="index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
 </div>
 
 <div class="layout">
 
   <!-- ══════════════ SIDEBAR ══════════════ -->
   <aside class="sidebar" id="sidebar">
-
     <div class="sb-head">
       <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
       <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
     </div>
 
-    <!-- Systems -->
+    <!-- AI & Data Science -->
     <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="this.parentElement.classList.toggle('open')">Systems &amp; Languages</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Data Science</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="systems/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="systems/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link" href="ai/ml/theory.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/ml/deep.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/ml/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="ai/nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link" href="ai/math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
       </div>
     </div>
 
-    <!-- Python -->
+    <!-- Web Development -->
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.web" onclick="toggleGroup(this)">Web Development</div>
+      <div class="sb-group-items">
+        <a class="sb-link soon-link" href="web/frontend/html.html"><span>HTML</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/frontend/css.html"><span>CSS</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/frontend/js.html"><span>JavaScript</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/django/basics.html"><span>Django Basics</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/devops/nginx.html"><span>Nginx</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/devops/vps.html"><span>VPS Setup</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/git/basics.html"><span>Git Basics</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <!-- Programming Languages -->
     <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="this.parentElement.classList.toggle('open')">Python Ecosystem</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.lang" onclick="toggleGroup(this)">Programming Languages</div>
       <div class="sb-group-items">
         <a class="sb-link" href="python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
-        <a class="sb-link" href="python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link" href="python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-live">Live</span></a>
         <a class="sb-link soon-link" href="python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link" href="systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="languages/c-family/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="languages/c-family/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
       </div>
     </div>
-
-    <!-- AI / ML -->
-    <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="this.parentElement.classList.toggle('open')">AI &amp; Machine Learning</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="ai/ml.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ai/dl.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ai/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
-    </div>
-
-    <!-- NLP & Transformers -->
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="this.parentElement.classList.toggle('open')">NLP &amp; Transformers</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
-    </div>
-
-    <!-- Math & Foundations -->
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="this.parentElement.classList.toggle('open')">Math &amp; Foundations</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
-    </div>
-
-    <!-- Coming -->
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.soon" onclick="this.parentElement.classList.toggle('open')">Coming Soon</div>
-      <div class="sb-group-items">
-        <a class="sb-link soon-link" href="#"><span data-i18n-text="tp.linux">Linux &amp; Bash</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="#"><span data-i18n-text="tp.git">Git &amp; GitHub</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="#"><span data-i18n-text="tp.scr">Web Scraping</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
-    </div>
-
   </aside>
 
   <!-- ══════════════ MAIN ══════════════ -->
@@ -267,159 +184,88 @@
       <p class="page-desc">
         Practical guides written from real engineering and research experience.
         From <em>C fundamentals</em> to <em>Transformer architectures</em>.
-        Each topic is a separate deep-dive page.
+        Pick a track and dive in.
       </p>
     </div>
 
-    <!-- Category Grid -->
-    <div class="cat-grid">
+    <!-- ══════════════ 3 HUB CARDS ══════════════ -->
+    <div class="hub-grid">
 
-      <a class="cat-card" href="systems/c.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
-        <div class="cat-icon">⚙️</div>
-        <div class="cat-name" style="color:#4de8cc">C</div>
-        <div class="cat-sub">Systems Programming</div>
-        <div class="cat-count">6 lessons · Pointers, Memory, I/O</div>
+      <a class="hub-card" href="ai/index.html">
+        <div class="hub-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
+        <div class="hub-icon">🧠</div>
+        <div class="hub-name" style="color:#c8a96e">AI & Data Science</div>
+        <div class="hub-desc">Machine Learning, Deep Learning, NLP, Transformers, and the math behind it all. Theory + hands-on Python code.</div>
+        <div class="hub-topics">
+          <strong>ML Theory</strong> · <strong>Deep Learning</strong> · <strong>RNN/LSTM</strong> · <strong>Transformers</strong> · <strong>Calculus</strong> · <strong>Math for ML</strong>
+        </div>
+        <div class="hub-meta">
+          <span class="hub-badge hub-badge-live">Live</span>
+          <span class="hub-count">6 topics · 43 lessons</span>
+        </div>
       </a>
 
-      <a class="cat-card" href="systems/cpp.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
-        <div class="cat-icon">🔧</div>
-        <div class="cat-name" style="color:#f09638">C++</div>
-        <div class="cat-sub">OOP · STL · Modern C++</div>
-        <div class="cat-count">7 lessons · Classes, Templates, Smart Ptrs</div>
+      <a class="hub-card soon" href="web/index.html">
+        <div class="hub-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="hub-icon">🌐</div>
+        <div class="hub-name" style="color:#4de8cc">Web Development</div>
+        <div class="hub-desc">Frontend, Django, DevOps, and Git. From HTML basics to deploying on a Linux VPS with Nginx & Cloudflare.</div>
+        <div class="hub-topics">
+          <strong>HTML</strong> · <strong>CSS</strong> · <strong>JavaScript</strong> · <strong>Django</strong> · <strong>Nginx</strong> · <strong>VPS</strong> · <strong>Git</strong>
+        </div>
+        <div class="hub-meta">
+          <span class="hub-badge hub-badge-soon">Coming Soon</span>
+        </div>
       </a>
 
-      <a class="cat-card" href="systems/csharp.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#7c55cc,transparent)"></div>
-        <div class="cat-icon">🟣</div>
-        <div class="cat-name" style="color:#7c55cc">C#</div>
-        <div class="cat-sub">.NET · LINQ · async/await</div>
-        <div class="cat-count">6 lessons · Properties, DI, LINQ</div>
+      <a class="hub-card" href="languages/index.html" style="pointer-events:auto;opacity:1;">
+        <div class="hub-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="hub-icon">⌨️</div>
+        <div class="hub-name" style="color:#4de87a">Languages</div>
+        <div class="hub-desc">Python ecosystem, C family, and more. Core syntax, data libraries, and systems programming.</div>
+        <div class="hub-topics">
+          <strong>Python Core</strong> · <strong>Pandas</strong> · <strong>NumPy</strong> · <strong>C Language</strong> · C++ · C#
+        </div>
+        <div class="hub-meta">
+          <span class="hub-badge hub-badge-live">Live</span>
+          <span class="hub-count">4 topics · 34 lessons</span>
+        </div>
       </a>
 
-      <a class="cat-card" href="python/core.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
-        <div class="cat-icon">🐍</div>
-        <div class="cat-name" style="color:#4de87a">Python</div>
-        <div class="cat-sub">Core · OOP · Decorators</div>
-        <div class="cat-count">6 lessons · Syntax, Functions, venv</div>
-        <span style="font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .6rem;border:1px solid #4de87a;color:#4de87a;width:fit-content;margin-top:.3rem;">Live</span>
-      </a>
+    </div>
 
-      <a class="cat-card" href="python/pandas/pandas.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
-        <div class="cat-icon">📊</div>
-        <div class="cat-name" style="color:#4de87a">Pandas</div>
-        <div class="cat-sub">Data Analysis</div>
-        <div class="cat-count">5 lessons · DataFrame, Cleaning, NLP prep</div>
-      </a>
-
-      <a class="cat-card" href="python/numpy/numpy.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
-        <div class="cat-icon">🔢</div>
-        <div class="cat-name" style="color:#4de8cc">NumPy</div>
-        <div class="cat-sub">Scientific Computing</div>
-        <div class="cat-count">4 lessons · Arrays, LinAlg, Broadcasting</div>
-      </a>
-
-      <a class="cat-card" href="python/sklearn.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
-        <div class="cat-icon">🤖</div>
-        <div class="cat-name" style="color:#f09638">Sklearn</div>
-        <div class="cat-sub">Classical ML</div>
-        <div class="cat-count">5 lessons · Pipeline, Evaluation, CV</div>
-      </a>
-
-      <a class="cat-card" href="ai/ml.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
-        <div class="cat-icon">📈</div>
-        <div class="cat-name" style="color:#c8a96e">ML Theory</div>
-        <div class="cat-sub">Linear Regression · Logistic Regression · SVM · Decision Trees</div>
-        <div class="cat-count">7 lessons · GD, Regularization, Clustering, Ensemble</div>
-      </a>
-
-      <a class="cat-card" href="ai/dl.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
-        <div class="cat-icon">🧠</div>
-        <div class="cat-name" style="color:#e84d80">Deep Learning</div>
-        <div class="cat-sub">Neural Networks · CNN · RNN · PyTorch</div>
-        <div class="cat-count">7 lessons · Perceptron, Backprop, CNN, Optimization</div>
-      </a>
-
-      <a class="cat-card" href="ai/rnn.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
-        <div class="cat-icon">🔄</div>
-        <div class="cat-name" style="color:#ff6b6b">RNN / LSTM</div>
-        <div class="cat-sub">Sequence Modeling · LSTM · BiLSTM · GRU</div>
-        <div class="cat-count">6 lessons · Vanishing Gradient, Gates, Bidirectional, Seq2Seq</div>
-      </a>
-
-      <a class="cat-card" href="nlp/transformers.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
-        <div class="cat-icon">⚡</div>
-        <div class="cat-name" style="color:#a855f7">Transformers</div>
-        <div class="cat-sub">Attention · BERT · RoBERTa · GPT · Fine-Tuning</div>
-        <div class="cat-count">8 lessons · Self-Attention, Positional Enc, Tokenization, LoRA</div>
-      </a>
-
-      <a class="cat-card" href="nlp/fundamentals.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d4d,transparent)"></div>
-        <div class="cat-icon">💬</div>
-        <div class="cat-name" style="color:#e84d4d">NLP</div>
-        <div class="cat-sub">Text Processing · TF-IDF · Word Embeddings · HuggingFace</div>
-        <div class="cat-count">7 lessons · Tokenization, Word2Vec, Sentiment, Turkish NLP</div>
-      </a>
-
-      <a class="cat-card" href="math/calculus.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
-        <div class="cat-icon">∫</div>
-        <div class="cat-name" style="color:#38bdf8">Calculus</div>
-        <div class="cat-sub">Limits · Derivatives · Integrals · Taylor Series</div>
-        <div class="cat-count">8 lessons · Chain Rule, Gradient, Optimization</div>
-      </a>
-
-      <a class="cat-card" href="math/foundations.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
-        <div class="cat-icon">📐</div>
-        <div class="cat-name" style="color:#38bdf8">Math for ML</div>
-        <div class="cat-sub">Linear Algebra · Calculus · Probability · Statistics</div>
-        <div class="cat-count">5 lessons · Matrices, Derivatives, Bayes, Distributions</div>
-      </a>
-
-    </div><!-- /cat-grid -->
-
-    <div class="divider"></div>
-    <p style="font-size:.65rem;color:var(--muted);line-height:1.9;max-width:500px;">
-      All tutorials are written by <span style="color:var(--text)">Mikail Sarpkaya</span> based on hands-on experience in software engineering, AI research, and system administration.
-      Content is updated regularly as new lessons are completed.
-    </p>
+    <div class="bottom-note">
+      <p>
+        All tutorials are written by <span>Mikail Sarpkaya</span> based on hands-on experience in software engineering, AI research, and system administration.
+        Content is updated regularly as new lessons are completed.
+      </p>
+    </div>
 
   </main>
-</div><!-- /layout -->
+</div>
 
 <footer>
   <div class="f-copy"><span data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</span></div>
   <div class="f-site" style="font-size:.55rem;letter-spacing:.1em;color:var(--muted)">mikailsarpkaya<span>.com</span></div>
 </footer>
 
-<!-- Mobile sidebar toggle -->
-<button onclick="document.getElementById('sidebar').classList.toggle('open')"
-  style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--gold);color:#050810;border:none;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.65rem 1.1rem;cursor:pointer;"
-  id="sbToggle">☰ Menu</button>
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰ Menu</button>
 
 <script>
-  window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400));
-  function toggleMobile() {
-    document.getElementById('hamburger').classList.toggle('open');
-    document.getElementById('mobileNav').classList.toggle('open');
-  }
-  // Show sidebar toggle on mobile
-  if (window.innerWidth <= 768) document.getElementById('sbToggle').style.display = 'block';
-  window.addEventListener('resize', () => {
-    document.getElementById('sbToggle').style.display = window.innerWidth <= 768 ? 'block' : 'none';
-  });
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function toggleMobile() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+function toggleGroup(label) {
+  label.parentElement.classList.toggle('open');
+}
 </script>
-<script src="../i18n.js"></script>
+<script src="shared.i18n.js"></script>
 </body>
 </html>
