@@ -12,14 +12,9 @@
   <link rel="stylesheet" href="../site.css"/>
   <style>
     :root { --nav-h:62px; --sb-w:272px; }
-
-    /* ── LAYOUT ── */
     .layout { display:flex; padding-top:var(--nav-h); min-height:100vh; }
-
-    /* ── SIDEBAR ── */
     .sidebar { width:var(--sb-w); flex-shrink:0; background:var(--surface); border-right:1px solid var(--border); position:sticky; top:var(--nav-h); height:calc(100vh - var(--nav-h)); overflow-y:auto; overflow-x:hidden; }
-    .sidebar::-webkit-scrollbar { width:2px; }
-    .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
+    .sidebar::-webkit-scrollbar { width:2px; } .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
     .sb-head { padding:1.6rem 1.4rem 1rem; border-bottom:1px solid var(--border); }
     .sb-title { font-family:var(--display); font-size:1rem; letter-spacing:.15em; }
     .sb-sub { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; }
@@ -35,13 +30,9 @@
     .sb-link.soon-link { opacity:.4; cursor:default; pointer-events:none; }
     .sb-badge { font-size:.42rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .45rem; margin-left:auto; flex-shrink:0; }
     .sb-live { border:1px solid var(--cyan); color:var(--cyan); }
-    .sb-new  { border:1px solid var(--gold); color:var(--gold); }
     .sb-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
-
-    /* ── MAIN ── */
+    .sb-divider { font-size:.4rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(232,224,208,.15); padding:.4rem 1.4rem 0; }
     .main { flex:1; min-width:0; }
-
-    /* ── HERO ── */
     .page-hero { padding:5rem 5vw 3rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
     .page-hero::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 60% 70% at 30% 50%, rgba(200,169,110,.04), transparent 60%); }
     .eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
@@ -49,8 +40,6 @@
     .page-title .outline { -webkit-text-stroke:1px var(--text); color:transparent; }
     .page-desc { font-size:.82rem; color:var(--muted); line-height:1.95; max-width:520px; margin-top:1.2rem; }
     .page-desc em { color:var(--text); font-style:normal; }
-
-    /* ── HUB GRID ── */
     .hub-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:0; padding:3rem 5vw 4rem; }
     .hub-card { display:block; text-decoration:none; padding:2.8rem 2.4rem; border:1px solid var(--border); position:relative; overflow:hidden; transition:border-color .3s, background .3s; }
     .hub-card:hover { border-color:rgba(200,169,110,.25); background:rgba(255,255,255,.015); }
@@ -60,38 +49,31 @@
     .hub-desc { font-size:.75rem; color:var(--muted); line-height:1.85; margin-bottom:1rem; max-width:380px; }
     .hub-topics { font-size:.6rem; color:var(--muted); letter-spacing:.08em; line-height:1.8; margin-bottom:1.2rem; }
     .hub-topics strong { color:var(--text); }
-    .hub-meta { display:flex; gap:1.2rem; align-items:center; margin-top:auto; }
+    .hub-meta { display:flex; gap:1.2rem; align-items:center; }
     .hub-badge { font-size:.48rem; letter-spacing:.14em; text-transform:uppercase; padding:.2rem .6rem; }
     .hub-badge-live { border:1px solid var(--cyan); color:var(--cyan); }
     .hub-badge-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
     .hub-count { font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
     .hub-card.soon { opacity:.4; pointer-events:none; }
-
-    /* ── BOTTOM ── */
     .bottom-note { padding:2rem 5vw 4rem; }
     .bottom-note p { font-size:.65rem; color:var(--muted); line-height:1.9; max-width:500px; }
     .bottom-note span { color:var(--text); }
-
-    /* ── MOBILE ── */
     .sb-toggle { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:800; background:var(--gold); color:#050810; border:none; font-family:var(--mono); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; padding:.65rem 1.1rem; cursor:pointer; }
-
     @media(max-width:900px) {
       .nav-links { display:none; } .hamburger { display:flex; }
       .sidebar { position:fixed; left:0; top:var(--nav-h); transform:translateX(-100%); z-index:900; transition:transform .3s; height:calc(100vh - var(--nav-h)); }
-      .sidebar.open { transform:translateX(0); }
-      .sb-toggle { display:block; }
+      .sidebar.open { transform:translateX(0); } .sb-toggle { display:block; }
       .main { width:100%; }
       .page-hero { padding:2.5rem 1.2rem 2rem; }
       .hub-grid { padding:2rem 1.2rem 3rem; grid-template-columns:1fr; }
     }
-    @keyframes loadBar  { to { width:100%; } }
-    @keyframes slideUp  { to { transform:translateY(0); } }
-    @keyframes fadeIn   { to { opacity:1; } }
+    @keyframes loadBar { to { width:100%; } }
+    @keyframes slideUp { to { transform:translateY(0); } }
+    @keyframes fadeIn  { to { opacity:1; } }
   </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;">
     <span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">TUTORIALS</span>
@@ -102,7 +84,6 @@
   <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="../index.html" class="nav-logo">MS</a>
   <ul class="nav-links">
@@ -132,47 +113,63 @@
       <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
     </div>
 
-    <!-- AI & Data Science -->
+    <!-- 1. LANGUAGES -->
     <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Data Science</div>
+      <div class="sb-group-label" onclick="toggleGroup(this)">Programming Languages</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="ai/ml/theory.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ai/ml/deep.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ai/ml/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ai/nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="ai/nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link" href="ai/math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ai/math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+        <div class="sb-divider">C Family</div>
+        <a class="sb-link" href="languages/c-family/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="languages/c-family/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="languages/c-family/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+        <div class="sb-divider">Python</div>
+        <a class="sb-link" href="languages/python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
       </div>
     </div>
 
-    <!-- Web Development -->
+    <!-- 2. WEB -->
     <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.web" onclick="toggleGroup(this)">Web Development</div>
+      <div class="sb-group-label" onclick="toggleGroup(this)">Web Development</div>
       <div class="sb-group-items">
+        <div class="sb-divider">Frontend</div>
         <a class="sb-link soon-link" href="web/frontend/html.html"><span>HTML</span><span class="sb-badge sb-soon">Soon</span></a>
         <a class="sb-link soon-link" href="web/frontend/css.html"><span>CSS</span><span class="sb-badge sb-soon">Soon</span></a>
         <a class="sb-link soon-link" href="web/frontend/js.html"><span>JavaScript</span><span class="sb-badge sb-soon">Soon</span></a>
+        <div class="sb-divider">Backend</div>
         <a class="sb-link soon-link" href="web/django/basics.html"><span>Django Basics</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/django/models.html"><span>Django Models</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/django/views.html"><span>Django Views</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/django/rest-api.html"><span>Django REST API</span><span class="sb-badge sb-soon">Soon</span></a>
+        <div class="sb-divider">DevOps</div>
+        <a class="sb-link soon-link" href="web/git/basics.html"><span>Git Basics</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/git/github.html"><span>GitHub</span><span class="sb-badge sb-soon">Soon</span></a>
         <a class="sb-link soon-link" href="web/devops/nginx.html"><span>Nginx</span><span class="sb-badge sb-soon">Soon</span></a>
         <a class="sb-link soon-link" href="web/devops/vps.html"><span>VPS Setup</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="web/git/basics.html"><span>Git Basics</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/devops/cloudflare.html"><span>Cloudflare</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="web/devops/docker.html"><span>Docker</span><span class="sb-badge sb-soon">Soon</span></a>
       </div>
     </div>
 
-    <!-- Programming Languages -->
+    <!-- 3. AI & DATA SCIENCE -->
     <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.lang" onclick="toggleGroup(this)">Programming Languages</div>
+      <div class="sb-group-label" onclick="toggleGroup(this)">AI &amp; Data Science</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link" href="systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="languages/c-family/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="languages/c-family/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+        <div class="sb-divider">Math (start here)</div>
+        <a class="sb-link" href="ai/math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <div class="sb-divider">Data Tools</div>
+        <a class="sb-link" href="ai/data/pandas.html"><span>Pandas</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/data/numpy.html"><span>NumPy</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="ai/data/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+        <div class="sb-divider">Machine Learning</div>
+        <a class="sb-link" href="ai/ml/theory.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/ml/deep.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/ml/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
+        <div class="sb-divider">NLP</div>
+        <a class="sb-link soon-link" href="ai/nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link" href="ai/nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
       </div>
     </div>
+
   </aside>
 
   <!-- ══════════════ MAIN ══════════════ -->
@@ -191,44 +188,47 @@
     <!-- ══════════════ 3 HUB CARDS ══════════════ -->
     <div class="hub-grid">
 
-      <a class="hub-card" href="ai/index.html">
-        <div class="hub-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
-        <div class="hub-icon">🧠</div>
-        <div class="hub-name" style="color:#c8a96e">AI & Data Science</div>
-        <div class="hub-desc">Machine Learning, Deep Learning, NLP, Transformers, and the math behind it all. Theory + hands-on Python code.</div>
+      <!-- 1. Languages (temel — ilk sıra) -->
+      <a class="hub-card" href="languages/">
+        <div class="hub-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="hub-icon">⌨️</div>
+        <div class="hub-name" style="color:#4de87a">Languages</div>
+        <div class="hub-desc">Start here. Core programming — C family for systems, Python for everything else. Build your foundation before moving forward.</div>
         <div class="hub-topics">
-          <strong>ML Theory</strong> · <strong>Deep Learning</strong> · <strong>RNN/LSTM</strong> · <strong>Transformers</strong> · <strong>Calculus</strong> · <strong>Math for ML</strong>
+          <strong>C Language</strong> · C++ · C# · <strong>Python Core</strong>
         </div>
         <div class="hub-meta">
           <span class="hub-badge hub-badge-live">Live</span>
-          <span class="hub-count">6 topics · 43 lessons</span>
+          <span class="hub-count">2 live · 2 coming · 16+ lessons</span>
         </div>
       </a>
 
-      <a class="hub-card soon" href="web/index.html">
+      <!-- 2. Web (orta seviye) -->
+      <a class="hub-card soon" href="web/">
         <div class="hub-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
         <div class="hub-icon">🌐</div>
         <div class="hub-name" style="color:#4de8cc">Web Development</div>
-        <div class="hub-desc">Frontend, Django, DevOps, and Git. From HTML basics to deploying on a Linux VPS with Nginx & Cloudflare.</div>
+        <div class="hub-desc">Frontend, Django, DevOps, and Git. From HTML basics to deploying on a Linux VPS with Nginx &amp; Cloudflare.</div>
         <div class="hub-topics">
-          <strong>HTML</strong> · <strong>CSS</strong> · <strong>JavaScript</strong> · <strong>Django</strong> · <strong>Nginx</strong> · <strong>VPS</strong> · <strong>Git</strong>
+          <strong>HTML</strong> · <strong>CSS</strong> · <strong>JavaScript</strong> · <strong>Django</strong> · <strong>Git</strong> · <strong>Nginx</strong> · <strong>VPS</strong> · <strong>Docker</strong>
         </div>
         <div class="hub-meta">
           <span class="hub-badge hub-badge-soon">Coming Soon</span>
         </div>
       </a>
 
-      <a class="hub-card" href="languages/index.html" style="pointer-events:auto;opacity:1;">
-        <div class="hub-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
-        <div class="hub-icon">⌨️</div>
-        <div class="hub-name" style="color:#4de87a">Languages</div>
-        <div class="hub-desc">Python ecosystem, C family, and more. Core syntax, data libraries, and systems programming.</div>
+      <!-- 3. AI (ileri seviye — son sıra) -->
+      <a class="hub-card" href="ai/">
+        <div class="hub-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
+        <div class="hub-icon">🧠</div>
+        <div class="hub-name" style="color:#c8a96e">AI &amp; Data Science</div>
+        <div class="hub-desc">Math foundations first, then data tools, machine learning, deep learning, and NLP. Theory + hands-on Python code.</div>
         <div class="hub-topics">
-          <strong>Python Core</strong> · <strong>Pandas</strong> · <strong>NumPy</strong> · <strong>C Language</strong> · C++ · C#
+          <strong>Math for ML</strong> · <strong>Calculus</strong> · <strong>Pandas</strong> · <strong>NumPy</strong> · Scikit-Learn · <strong>ML Theory</strong> · <strong>Deep Learning</strong> · <strong>RNN/LSTM</strong> · <strong>Transformers</strong>
         </div>
         <div class="hub-meta">
           <span class="hub-badge hub-badge-live">Live</span>
-          <span class="hub-count">4 topics · 34 lessons</span>
+          <span class="hub-count">9 topics · 51+ lessons</span>
         </div>
       </a>
 

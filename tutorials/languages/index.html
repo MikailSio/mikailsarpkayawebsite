@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Programming Languages Tutorials — C, C++, C#, Python Core. By Mikail Sarpkaya."/>
+  <title>Languages — Mikail Sarpkaya Tutorials</title>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../site.css"/>
+  <style>
+    :root { --nav-h:62px; --sb-w:272px; --accent:#4de87a; }
+    .layout { display:flex; padding-top:var(--nav-h); min-height:100vh; }
+    .sidebar { width:var(--sb-w); flex-shrink:0; background:var(--surface); border-right:1px solid var(--border); position:sticky; top:var(--nav-h); height:calc(100vh - var(--nav-h)); overflow-y:auto; overflow-x:hidden; }
+    .sidebar::-webkit-scrollbar { width:2px; } .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
+    .sb-head { padding:1.6rem 1.4rem 1rem; border-bottom:1px solid var(--border); }
+    .sb-title { font-family:var(--display); font-size:1rem; letter-spacing:.15em; }
+    .sb-sub { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; }
+    .sb-group { border-bottom:1px solid var(--border); }
+    .sb-group-label { padding:.55rem 1.4rem; font-size:.48rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); background:rgba(255,255,255,.015); cursor:pointer; display:flex; align-items:center; justify-content:space-between; user-select:none; transition:color .2s; }
+    .sb-group-label:hover { color:var(--text); }
+    .sb-group-label::after { content:'▸'; font-size:.55rem; color:var(--muted); transition:transform .25s; }
+    .sb-group.open .sb-group-label::after { transform:rotate(90deg); color:var(--gold); }
+    .sb-group-items { max-height:0; overflow:hidden; transition:max-height .35s cubic-bezier(.16,1,.3,1); }
+    .sb-group.open .sb-group-items { max-height:600px; }
+    .sb-link { display:flex; align-items:center; gap:.75rem; padding:.65rem 1.4rem; text-decoration:none; transition:background .15s; color:rgba(232,224,208,.45); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .sb-link:hover { background:rgba(255,255,255,.04); color:var(--text); }
+    .sb-link.soon-link { opacity:.4; cursor:default; pointer-events:none; }
+    .sb-badge { font-size:.42rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .45rem; margin-left:auto; flex-shrink:0; }
+    .sb-live { border:1px solid var(--cyan); color:var(--cyan); }
+    .sb-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
+    .sb-back { display:flex; align-items:center; gap:.6rem; padding:.9rem 1.4rem; font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border); transition:color .2s; }
+    .sb-back:hover { color:var(--gold); }
+    .main { flex:1; min-width:0; }
+    .page-hero { padding:5rem 5vw 3rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 70% 80% at 20% 60%, rgba(77,232,122,.04), transparent 65%); }
+    .hero-deco { position:absolute; right:3vw; top:50%; transform:translateY(-50%); width:300px; height:300px; opacity:.05; pointer-events:none; }
+    .eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .page-title { font-family:var(--display); font-size:clamp(3rem,7vw,7rem); line-height:.88; letter-spacing:.04em; margin-bottom:1rem; }
+    .page-title .accent { color:var(--accent); }
+    .page-desc { font-size:.82rem; color:var(--muted); line-height:1.95; max-width:520px; margin-top:1.2rem; }
+    .page-desc strong { color:var(--text); }
+    .page-meta { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1.8rem; }
+    .meta-item { font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:.5rem; }
+    .meta-item span { color:var(--text); }
+    .section-label { padding:2.5rem 5vw 1rem; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); }
+    .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; padding:0 5vw 3rem; }
+    .cat-card { display:block; text-decoration:none; padding:2rem 1.8rem; border:1px solid var(--border); position:relative; overflow:hidden; transition:border-color .3s, background .3s; }
+    .cat-card:hover { border-color:rgba(77,232,122,.25); background:rgba(255,255,255,.015); }
+    .cat-card-accent { position:absolute; top:0; left:0; width:100%; height:2px; opacity:.6; }
+    .cat-icon { font-size:1.6rem; margin-bottom:.8rem; }
+    .cat-name { font-family:var(--display); font-size:1.4rem; letter-spacing:.08em; margin-bottom:.4rem; }
+    .cat-sub { font-size:.65rem; color:var(--muted); letter-spacing:.06em; line-height:1.7; margin-bottom:.6rem; }
+    .cat-count { font-size:.55rem; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+    .cat-badge { display:inline-block; font-size:.45rem; letter-spacing:.12em; text-transform:uppercase; padding:.18rem .55rem; margin-top:.5rem; }
+    .cat-badge-live { border:1px solid var(--cyan); color:var(--cyan); }
+    .cat-badge-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
+    .cat-card.soon { opacity:.45; pointer-events:none; }
+    .sb-toggle { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:800; background:var(--accent); color:#050810; border:none; font-family:var(--mono); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; padding:.65rem 1.1rem; cursor:pointer; }
+    @media(max-width:900px) {
+      .nav-links { display:none; } .hamburger { display:flex; }
+      .sidebar { position:fixed; left:0; top:var(--nav-h); transform:translateX(-100%); z-index:900; transition:transform .3s; height:calc(100vh - var(--nav-h)); }
+      .sidebar.open { transform:translateX(0); } .sb-toggle { display:block; }
+      .main { width:100%; } .hero-deco { display:none; }
+      .page-hero { padding:2.5rem 1.2rem 2rem; }
+      .cat-grid { padding:0 1.2rem 3rem; grid-template-columns:1fr; }
+      .section-label { padding:2rem 1.2rem .8rem; }
+    }
+    @keyframes loadBar { to { width:100%; } }
+    @keyframes slideUp { to { transform:translateY(0); } }
+    @keyframes fadeIn  { to { opacity:1; } }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;">
+    <span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">LANGUAGES</span>
+  </div>
+  <div class="ld-bar-wrap" style="width:200px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2rem;">
+    <div class="ld-bar" style="height:100%;width:0;background:var(--accent);animation:loadBar 1.5s ease forwards;"></div>
+  </div>
+  <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
+</div>
+
+<nav id="nav">
+  <a href="../../index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="../../index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="../" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../../index.html" onclick="toggleMobile()">Home</a>
+  <a href="../../projects.html" onclick="toggleMobile()">Projects</a>
+  <a href="../../certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="../" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a href="../" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
+    <div class="sb-head">
+      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
+      <div class="sb-sub">Programming Languages</div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" onclick="toggleGroup(this)">C Family</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="c-family/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="c-family/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="c-family/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" onclick="toggleGroup(this)">Python</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="page-hero">
+      <svg class="hero-deco" viewBox="0 0 300 300" fill="none">
+        <text x="150" y="160" text-anchor="middle" fill="#4de87a" font-family="monospace" font-size="120" opacity=".4">{}</text>
+      </svg>
+      <div class="eyebrow">Tutorials · Programming Languages</div>
+      <h1 class="page-title"><span>PROGRAMMING</span><br><span class="accent">LANGUAGES</span></h1>
+      <p class="page-desc">
+        Build your foundation. Master <strong>C</strong> for systems programming, then move to <strong>Python</strong> for scripting, automation, and data work. Every other tutorial builds on these skills.
+      </p>
+      <div class="page-meta">
+        <div class="meta-item">Topics: <span>4</span></div>
+        <div class="meta-item">Live: <span>2</span></div>
+        <div class="meta-item">Level: <span>Beginner</span></div>
+      </div>
+    </div>
+
+    <!-- C Family -->
+    <div class="section-label">C Family — Systems & Low-Level Programming</div>
+    <div class="cat-grid">
+
+      <a class="cat-card" href="c-family/c.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">⚙️</div>
+        <div class="cat-name" style="color:#4de8cc">C Language</div>
+        <div class="cat-sub">Pointers · Memory Management · Structs · File I/O</div>
+        <div class="cat-count">6 lessons</div>
+        <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+
+      <a class="cat-card soon" href="c-family/cpp.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
+        <div class="cat-icon">🔧</div>
+        <div class="cat-name" style="color:#f09638">C++</div>
+        <div class="cat-sub">OOP · STL · Templates · Smart Pointers · Modern C++</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+
+      <a class="cat-card soon" href="c-family/csharp.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#7c55cc,transparent)"></div>
+        <div class="cat-icon">🟣</div>
+        <div class="cat-name" style="color:#7c55cc">C#</div>
+        <div class="cat-sub">.NET · LINQ · async/await · Properties · DI</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+
+    </div>
+
+    <!-- Python -->
+    <div class="section-label">Python — Core Language</div>
+    <div class="cat-grid">
+
+      <a class="cat-card" href="python/core.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="cat-icon">🐍</div>
+        <div class="cat-name" style="color:#4de87a">Python Core</div>
+        <div class="cat-sub">Syntax · Functions · OOP · Decorators · venv · File Handling</div>
+        <div class="cat-count">10 lessons</div>
+        <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+
+    </div>
+
+    <div style="padding:2rem 5vw 4rem;">
+      <p style="font-size:.65rem;color:var(--muted);line-height:1.9;max-width:500px;">
+        Once you're comfortable with Python, head to <a href="../ai/" style="color:var(--gold);text-decoration:none;">AI &amp; Data Science</a> for Pandas, NumPy, and machine learning.
+      </p>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="f-copy"><span data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</span></div>
+  <div class="f-site" style="font-size:.55rem;letter-spacing:.1em;color:var(--muted)">mikailsarpkaya<span>.com</span></div>
+</footer>
+
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰ Menu</button>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function toggleMobile() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+function toggleGroup(label) {
+  label.parentElement.classList.toggle('open');
+}
+</script>
+<script src="../shared.i18n.js"></script>
+</body>
+</html>

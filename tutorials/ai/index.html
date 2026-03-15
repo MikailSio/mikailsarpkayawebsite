@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="AI & Data Science Tutorials — Machine Learning, Deep Learning, RNN/LSTM, NLP Transformers, Calculus, Math for ML. By Mikail Sarpkaya."/>
+  <meta name="description" content="AI & Data Science Tutorials — Math, Pandas, NumPy, Machine Learning, Deep Learning, NLP, Transformers. By Mikail Sarpkaya."/>
   <title>AI & Data Science — Mikail Sarpkaya Tutorials</title>
   <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -12,14 +12,9 @@
   <link rel="stylesheet" href="../../site.css"/>
   <style>
     :root { --nav-h:62px; --sb-w:272px; --accent:#c8a96e; }
-
-    /* ── LAYOUT ── */
     .layout { display:flex; padding-top:var(--nav-h); min-height:100vh; }
-
-    /* ── SIDEBAR ── */
     .sidebar { width:var(--sb-w); flex-shrink:0; background:var(--surface); border-right:1px solid var(--border); position:sticky; top:var(--nav-h); height:calc(100vh - var(--nav-h)); overflow-y:auto; overflow-x:hidden; }
-    .sidebar::-webkit-scrollbar { width:2px; }
-    .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
+    .sidebar::-webkit-scrollbar { width:2px; } .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
     .sb-head { padding:1.6rem 1.4rem 1rem; border-bottom:1px solid var(--border); }
     .sb-title { font-family:var(--display); font-size:1rem; letter-spacing:.15em; }
     .sb-sub { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; }
@@ -32,36 +27,25 @@
     .sb-group.open .sb-group-items { max-height:600px; }
     .sb-link { display:flex; align-items:center; gap:.75rem; padding:.65rem 1.4rem; text-decoration:none; transition:background .15s; color:rgba(232,224,208,.45); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .sb-link:hover { background:rgba(255,255,255,.04); color:var(--text); }
-    .sb-link.active { background:rgba(200,169,110,.07); color:var(--gold); border-left:2px solid var(--gold); }
     .sb-link.soon-link { opacity:.4; cursor:default; pointer-events:none; }
     .sb-badge { font-size:.42rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .45rem; margin-left:auto; flex-shrink:0; }
     .sb-live { border:1px solid var(--cyan); color:var(--cyan); }
-    .sb-new  { border:1px solid var(--gold); color:var(--gold); }
     .sb-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
     .sb-back { display:flex; align-items:center; gap:.6rem; padding:.9rem 1.4rem; font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border); transition:color .2s; }
     .sb-back:hover { color:var(--gold); }
-
-    /* ── MAIN ── */
     .main { flex:1; min-width:0; }
-
-    /* ── HERO ── */
     .page-hero { padding:5rem 5vw 3rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
     .page-hero::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 70% 80% at 20% 60%, rgba(200,169,110,.04), transparent 65%); }
     .hero-deco { position:absolute; right:3vw; top:50%; transform:translateY(-50%); width:300px; height:300px; opacity:.05; pointer-events:none; }
     .eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
     .page-title { font-family:var(--display); font-size:clamp(3rem,7vw,7rem); line-height:.88; letter-spacing:.04em; margin-bottom:1rem; }
     .page-title .accent { color:var(--accent); }
-    .page-title .outline { -webkit-text-stroke:1px var(--accent); color:transparent; }
     .page-desc { font-size:.82rem; color:var(--muted); line-height:1.95; max-width:520px; margin-top:1.2rem; }
     .page-desc strong { color:var(--text); }
     .page-meta { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1.8rem; }
     .meta-item { font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:.5rem; }
     .meta-item span { color:var(--text); }
-
-    /* ── SECTION HEADERS ── */
     .section-label { padding:2.5rem 5vw 1rem; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); }
-
-    /* ── CARD GRID ── */
     .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; padding:0 5vw 3rem; }
     .cat-card { display:block; text-decoration:none; padding:2rem 1.8rem; border:1px solid var(--border); position:relative; overflow:hidden; transition:border-color .3s, background .3s; }
     .cat-card:hover { border-color:rgba(200,169,110,.25); background:rgba(255,255,255,.015); }
@@ -74,31 +58,23 @@
     .cat-badge-live { border:1px solid var(--cyan); color:var(--cyan); }
     .cat-badge-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
     .cat-card.soon { opacity:.45; pointer-events:none; }
-
-    /* ── MOBILE SIDEBAR TOGGLE ── */
     .sb-toggle { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:800; background:var(--accent); color:#050810; border:none; font-family:var(--mono); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; padding:.65rem 1.1rem; cursor:pointer; }
-
-    /* ── RESPONSIVE ── */
     @media(max-width:900px) {
       .nav-links { display:none; } .hamburger { display:flex; }
       .sidebar { position:fixed; left:0; top:var(--nav-h); transform:translateX(-100%); z-index:900; transition:transform .3s; height:calc(100vh - var(--nav-h)); }
-      .sidebar.open { transform:translateX(0); }
-      .sb-toggle { display:block; }
-      .main { width:100%; }
-      .hero-deco { display:none; }
+      .sidebar.open { transform:translateX(0); } .sb-toggle { display:block; }
+      .main { width:100%; } .hero-deco { display:none; }
       .page-hero { padding:2.5rem 1.2rem 2rem; }
       .cat-grid { padding:0 1.2rem 3rem; grid-template-columns:1fr; }
       .section-label { padding:2rem 1.2rem .8rem; }
     }
-
-    @keyframes loadBar  { to { width:100%; } }
-    @keyframes slideUp  { to { transform:translateY(0); } }
-    @keyframes fadeIn   { to { opacity:1; } }
+    @keyframes loadBar { to { width:100%; } }
+    @keyframes slideUp { to { transform:translateY(0); } }
+    @keyframes fadeIn  { to { opacity:1; } }
   </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;">
     <span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">AI & DATA SCIENCE</span>
@@ -109,7 +85,6 @@
   <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="../../index.html" class="nav-logo">MS</a>
   <ul class="nav-links">
@@ -117,7 +92,7 @@
     <li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
     <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
     <li><a href="../../index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="../index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
     <li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
@@ -126,23 +101,45 @@
   <a href="../../index.html" onclick="toggleMobile()">Home</a>
   <a href="../../projects.html" onclick="toggleMobile()">Projects</a>
   <a href="../../certificates.html" onclick="toggleMobile()">Certificates</a>
-  <a href="../index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
   <a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
 </div>
 
 <div class="layout">
 
-  <!-- ══════════════ SIDEBAR ══════════════ -->
   <aside class="sidebar" id="sidebar">
-    <a href="../index.html" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
+    <a href="../" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
     <div class="sb-head">
       <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
-      <div class="sb-sub">AI & Data Science</div>
+      <div class="sb-sub">AI &amp; Data Science</div>
     </div>
 
-    <!-- AI & ML -->
+    <!-- 1. Math (start here) -->
     <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI & Machine Learning</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <!-- 2. Data Tools -->
+    <div class="sb-group open">
+      <div class="sb-group-label" onclick="toggleGroup(this)">Data Tools</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="data/pandas.html"><span>Pandas</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="data/numpy.html"><span>NumPy</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="data/matplotlib.html"><span>Matplotlib / Seaborn</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="data/sql.html"><span>SQL for Data Science</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="data/preprocessing.html"><span>Data Preprocessing</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="data/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="data/pytorch.html"><span>PyTorch Basics</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <!-- 3. Machine Learning -->
+    <div class="sb-group open">
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">Machine Learning</div>
       <div class="sb-group-items">
         <a class="sb-link" href="ml/theory.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
         <a class="sb-link" href="ml/deep.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
@@ -150,30 +147,19 @@
       </div>
     </div>
 
-    <!-- NLP -->
+    <!-- 4. NLP -->
     <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP & Transformers</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
         <a class="sb-link soon-link" href="nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
-    </div>
-
-    <!-- Math -->
-    <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math & Foundations</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
       </div>
     </div>
   </aside>
 
-  <!-- ══════════════ MAIN ══════════════ -->
   <main class="main">
 
     <div class="page-hero">
-      <!-- Deco SVG -->
       <svg class="hero-deco" viewBox="0 0 300 300" fill="none">
         <circle cx="150" cy="150" r="120" stroke="#c8a96e" stroke-width="0.4" stroke-dasharray="4 4"/>
         <circle cx="150" cy="150" r="80" stroke="#c8a96e" stroke-width="0.3" stroke-dasharray="6 6"/>
@@ -184,66 +170,133 @@
         <line x1="200" y1="90" x2="170" y2="210" stroke="#c8a96e" stroke-width="0.3" opacity=".3"/>
         <line x1="170" y1="210" x2="90" y2="120" stroke="#c8a96e" stroke-width="0.3" opacity=".3"/>
       </svg>
-      <div class="eyebrow" data-i18n-text="ai.eyebrow">Tutorials · AI & Data Science</div>
-      <h1 class="page-title"><span>AI &</span><br><span class="accent">DATA SCIENCE</span></h1>
+      <div class="eyebrow">Tutorials · AI &amp; Data Science</div>
+      <h1 class="page-title"><span>AI &amp;</span><br><span class="accent">DATA SCIENCE</span></h1>
       <p class="page-desc">
-        From <strong>linear regression</strong> to <strong>Transformer architectures</strong>.
-        Master the mathematical foundations, classical ML algorithms, deep learning,
-        and modern NLP — all with hands-on Python code.
+        Start with <strong>math foundations</strong>, then learn to handle data with <strong>Pandas</strong> and <strong>NumPy</strong>.
+        Build up to <strong>machine learning</strong>, <strong>deep learning</strong>, and modern <strong>NLP</strong> with Transformers — all with hands-on Python code.
       </p>
       <div class="page-meta">
-        <div class="meta-item">Topics: <span>6</span></div>
-        <div class="meta-item">Lessons: <span>43</span></div>
-        <div class="meta-item">Level: <span>Beginner → Advanced</span></div>
+        <div class="meta-item">Topics: <span>9</span></div>
+        <div class="meta-item">Lessons: <span>51+</span></div>
+        <div class="meta-item">Level: <span>Intermediate → Advanced</span></div>
       </div>
     </div>
 
-    <!-- ── ML Section ── -->
-    <div class="section-label">AI & Machine Learning — 3 Topics · 20 Lessons</div>
+    <!-- 1. Math -->
+    <div class="section-label">① Math & Foundations — Start Here</div>
     <div class="cat-grid">
+      <a class="cat-card" href="math/foundations.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">📐</div>
+        <div class="cat-name" style="color:#38bdf8">Math for ML</div>
+        <div class="cat-sub">Linear Algebra · Probability · Statistics · Eigenvalues</div>
+        <div class="cat-count">7 lessons</div>
+        <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+      <a class="cat-card" href="math/calculus.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">∫</div>
+        <div class="cat-name" style="color:#38bdf8">Calculus</div>
+        <div class="cat-sub">Limits · Derivatives · Integrals · Taylor Series · Optimization</div>
+        <div class="cat-count">8 lessons</div>
+        <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+    </div>
 
+    <!-- 2. Data Tools -->
+    <div class="section-label">② Data Tools — Wrangle & Explore</div>
+    <div class="cat-grid">
+      <a class="cat-card" href="data/pandas.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
+        <div class="cat-icon">📊</div>
+        <div class="cat-name" style="color:#e5c07b">Pandas</div>
+        <div class="cat-sub">DataFrame · Cleaning · Groupby · Merge · NLP Data Prep</div>
+        <div class="cat-count">10 lessons</div>
+        <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+      <a class="cat-card" href="data/numpy.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">🔢</div>
+        <div class="cat-name" style="color:#4de8cc">NumPy</div>
+        <div class="cat-sub">Arrays · Broadcasting · Linear Algebra · Random</div>
+        <div class="cat-count">8 lessons</div>
+        <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+      <a class="cat-card soon" href="data/matplotlib.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
+        <div class="cat-icon">📉</div>
+        <div class="cat-name" style="color:#e5c07b">Matplotlib / Seaborn</div>
+        <div class="cat-sub">Charts · Plots · Heatmaps · Statistical Visualization</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="data/sql.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">🗄️</div>
+        <div class="cat-name" style="color:#38bdf8">SQL for Data Science</div>
+        <div class="cat-sub">Queries · Joins · Aggregation · Window Functions</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="data/preprocessing.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">🧹</div>
+        <div class="cat-name" style="color:#4de8cc">Data Preprocessing</div>
+        <div class="cat-sub">Cleaning · Encoding · Scaling · Missing Values · Feature Engineering</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="data/sklearn.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
+        <div class="cat-icon">🤖</div>
+        <div class="cat-name" style="color:#f09638">Scikit-Learn</div>
+        <div class="cat-sub">Pipeline · Cross-Validation · Feature Engineering · Metrics</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="data/pytorch.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
+        <div class="cat-icon">🔥</div>
+        <div class="cat-name" style="color:#ff6b6b">PyTorch Basics</div>
+        <div class="cat-sub">Tensors · Autograd · DataLoader · Training Loop</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+    </div>
+
+    <!-- 3. Machine Learning -->
+    <div class="section-label">③ Machine Learning — Models & Training</div>
+    <div class="cat-grid">
       <a class="cat-card" href="ml/theory.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
         <div class="cat-icon">📈</div>
         <div class="cat-name" style="color:#c8a96e">ML Theory</div>
-        <div class="cat-sub">Linear Regression · Logistic Regression · SVM · Decision Trees · Ensemble Methods</div>
-        <div class="cat-count">7 lessons · Gradient Descent, Regularization, Clustering</div>
+        <div class="cat-sub">Linear Regression · Logistic Regression · SVM · Decision Trees · Ensemble</div>
+        <div class="cat-count">7 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-
       <a class="cat-card" href="ml/deep.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
         <div class="cat-icon">🧠</div>
         <div class="cat-name" style="color:#e84d80">Deep Learning</div>
         <div class="cat-sub">Neural Networks · CNN · Backpropagation · PyTorch · Optimization</div>
-        <div class="cat-count">7 lessons · Perceptron, Activation, Dropout, BatchNorm</div>
+        <div class="cat-count">7 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-
       <a class="cat-card" href="ml/rnn.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
         <div class="cat-icon">🔄</div>
         <div class="cat-name" style="color:#ff6b6b">RNN / LSTM</div>
         <div class="cat-sub">Sequence Modeling · LSTM · BiLSTM · GRU · Seq2Seq</div>
-        <div class="cat-count">6 lessons · Vanishing Gradient, Gates, Bidirectional</div>
+        <div class="cat-count">6 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-
     </div>
 
-    <!-- ── NLP Section ── -->
-    <div class="section-label">NLP & Transformers — 2 Topics</div>
+    <!-- 4. NLP -->
+    <div class="section-label">④ NLP — Language Understanding</div>
     <div class="cat-grid">
-
-      <a class="cat-card" href="nlp/transformers.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
-        <div class="cat-icon">⚡</div>
-        <div class="cat-name" style="color:#a855f7">Transformers</div>
-        <div class="cat-sub">Attention · BERT · RoBERTa · GPT · Fine-Tuning · LoRA</div>
-        <div class="cat-count">8 lessons · Self-Attention, Positional Encoding, Tokenization</div>
-        <span class="cat-badge cat-badge-live">Live</span>
-      </a>
-
       <a class="cat-card soon" href="nlp/fundamentals.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d4d,transparent)"></div>
         <div class="cat-icon">💬</div>
@@ -252,37 +305,19 @@
         <div class="cat-count">Coming soon</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
-
-    </div>
-
-    <!-- ── Math Section ── -->
-    <div class="section-label">Math & Foundations — 2 Topics · 15 Lessons</div>
-    <div class="cat-grid">
-
-      <a class="cat-card" href="math/calculus.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
-        <div class="cat-icon">∫</div>
-        <div class="cat-name" style="color:#38bdf8">Calculus</div>
-        <div class="cat-sub">Limits · Derivatives · Integrals · Taylor Series · Optimization</div>
-        <div class="cat-count">8 lessons · Chain Rule, Gradient, Multivariate</div>
+      <a class="cat-card" href="nlp/transformers.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
+        <div class="cat-icon">⚡</div>
+        <div class="cat-name" style="color:#a855f7">Transformers</div>
+        <div class="cat-sub">Attention · BERT · RoBERTa · GPT · Fine-Tuning · LoRA</div>
+        <div class="cat-count">8 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-
-      <a class="cat-card" href="math/foundations.html">
-        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
-        <div class="cat-icon">📐</div>
-        <div class="cat-name" style="color:#38bdf8">Math for ML</div>
-        <div class="cat-sub">Linear Algebra · Probability · Statistics · Eigenvalues</div>
-        <div class="cat-count">7 lessons · Matrices, Bayes, Distributions</div>
-        <span class="cat-badge cat-badge-live">Live</span>
-      </a>
-
     </div>
 
     <div style="padding:2rem 5vw 4rem;">
       <p style="font-size:.65rem;color:var(--muted);line-height:1.9;max-width:500px;">
-        All tutorials are written by <span style="color:var(--text)">Mikail Sarpkaya</span> based on hands-on experience in AI research, NLP studies, and deep learning projects.
-        Content is updated regularly as new lessons are completed.
+        Prerequisite: <a href="../languages/python/core.html" style="color:var(--gold);text-decoration:none;">Python Core</a> — make sure you're comfortable with Python before starting this track.
       </p>
     </div>
 
