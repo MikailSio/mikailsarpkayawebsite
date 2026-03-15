@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mikailsarpkaya.com/sitemap.xml

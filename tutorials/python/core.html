@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Python Core — 10 comprehensive lessons covering syntax, data structures, OOP, file I/O, generators, regex, and text processing. By Mikail Sarpkaya."/>
+  <meta name="author" content="Mikail Sarpkaya"/>
+  <link rel="canonical" href="https://mikailsarpkaya.com/tutorials/python/core.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Python Core — Mikail Sarpkaya Tutorials"/>
+  <meta property="og:description" content="10 lessons from syntax basics to regex and NLP text processing."/>
+  <meta property="og:url" content="https://mikailsarpkaya.com/tutorials/python/core.html"/>
+  <title>Python Core — Mikail Sarpkaya Tutorials</title>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../site.css"/>
+  <style>
+    :root { --nav-h:62px; --sb-w:272px; --accent:#4de87a; }
+    .layout{display:flex;padding-top:var(--nav-h);min-height:100vh;}
+    .sidebar{width:var(--sb-w);flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;overflow-x:hidden;}
+    .sidebar::-webkit-scrollbar{width:2px;} .sidebar::-webkit-scrollbar-thumb{background:var(--border);}
+    .sb-head{padding:1.6rem 1.4rem 1rem;border-bottom:1px solid var(--border);}
+    .sb-title{font-family:var(--display);font-size:1rem;letter-spacing:.15em;}
+    .sb-sub{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+    .sb-group{border-bottom:1px solid var(--border);}
+    .sb-group-label{padding:.55rem 1.4rem;font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.015);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:color .2s;}
+    .sb-group-label:hover{color:var(--text);}
+    .sb-group-label::after{content:'▸';font-size:.55rem;color:var(--muted);transition:transform .25s;}
+    .sb-group.open .sb-group-label::after{transform:rotate(90deg);color:var(--gold);}
+    .sb-group-items{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);}
+    .sb-group.open .sb-group-items{max-height:600px;}
+    .sb-link{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s;color:rgba(232,224,208,.45);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .sb-link:hover{background:rgba(255,255,255,.04);color:var(--text);}
+    .sb-link.active{background:rgba(77,232,122,.07);color:var(--accent);border-left:2px solid var(--accent);}
+    .sb-link.soon-link{opacity:.4;cursor:default;pointer-events:none;}
+    .sb-badge{font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .45rem;margin-left:auto;flex-shrink:0;}
+    .sb-live{border:1px solid var(--cyan);color:var(--cyan);}
+    .sb-new{border:1px solid var(--gold);color:var(--gold);}
+    .sb-soon{border:1px solid rgba(255,255,255,.12);color:var(--muted);}
+    .sb-back{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.4rem;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s;}
+    .sb-back:hover{color:var(--gold);}
+    .main{flex:1;min-width:0;}
+    .topic-hero{padding:5rem 5vw 3rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .topic-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 20% 60%,rgba(77,232,122,.04),transparent 65%);}
+    .topic-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);width:280px;height:280px;opacity:.06;pointer-events:none;}
+    .topic-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+    .topic-title{font-family:var(--display);font-size:clamp(3rem,7vw,7rem);line-height:.88;letter-spacing:.04em;margin-bottom:1rem;}
+    .topic-title .accent{color:var(--accent);}
+    .topic-desc{font-size:.92rem;color:var(--muted);line-height:2.05;max-width:540px;margin-top:1.2rem;}
+    .topic-desc strong{color:var(--text);}
+    .topic-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.8rem;}
+    .meta-item{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.5rem;}
+    .meta-item span{color:var(--text);}
+    .lessons{padding:3rem 5vw 6rem;}
+    .lesson-block{border:1px solid var(--border);margin-bottom:1px;transition:border-color .3s;overflow:hidden;}
+    .lesson-block:hover{border-color:rgba(77,232,122,.2);}
+    .lesson-header{display:flex;align-items:center;gap:1.5rem;padding:1.6rem 2.2rem;cursor:pointer;user-select:none;transition:background .2s;}
+    .lesson-header:hover{background:rgba(255,255,255,.025);}
+    .lesson-num{font-size:.68rem;letter-spacing:.15em;color:var(--muted);min-width:2.5rem;}
+    .lesson-title{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;flex:1;transition:color .25s;}
+    .lesson-header:hover .lesson-title{color:var(--accent);}
+    .lesson-sub{font-size:.72rem;color:var(--muted);}
+    .lesson-toggle{font-size:.9rem;color:var(--muted);transition:transform .3s;margin-left:auto;}
+    .lesson-block.open .lesson-toggle{transform:rotate(45deg);color:var(--accent);}
+    .lesson-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+    .lesson-block.open .lesson-body{max-height:9999px;}
+    .lesson-content{padding:0 2.5rem 2.5rem;}
+    .lesson-content p{font-size:.92rem;color:var(--muted);line-height:2.1;margin-bottom:1.2rem;}
+    .lesson-content p strong{color:var(--text);}
+    .lesson-content p code{font-family:var(--mono);color:var(--accent);font-size:.85em;background:rgba(77,232,122,.07);padding:.1em .35em;}
+    .lesson-content h4{font-family:var(--display);font-size:1.1rem;letter-spacing:.08em;color:var(--text);margin:1.8rem 0 .8rem;}
+    .code-block{background:#080d15;border:1px solid var(--border);margin:1.2rem 0;overflow:hidden;}
+    .code-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);}
+    .code-lang{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+    .code-copy{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .2s;padding:0;}
+    .code-copy:hover{color:var(--text);}
+    pre{margin:0;padding:1.2rem;overflow-x:auto;}
+    pre code{font-family:var(--mono);font-size:.82rem;line-height:1.7;color:#a8b8c8;white-space:pre;}
+    .kw{color:#7c9ed9;} .fn{color:#4de87a;} .str{color:#98c379;} .cm{color:#4a5568;font-style:italic;} .num{color:#d19a66;} .pp{color:#c678dd;} .ty{color:#e5c07b;} .op{color:#56b6c2;}
+    .note{margin:1.4rem 0;padding:1.1rem 1.5rem;font-size:.88rem;line-height:1.85;}
+    .note-tip{border-left:2px solid var(--accent);background:rgba(77,232,122,.05);color:var(--muted);}
+    .note-warn{border-left:2px solid #f59e0b;background:rgba(245,158,11,.05);color:var(--muted);}
+    .note-math{border-left:2px solid var(--cyan);background:rgba(77,232,204,.05);color:var(--muted);}
+    .note strong{color:var(--text);}
+    .lesson-nav{display:flex;justify-content:space-between;align-items:center;padding:2rem 5vw;border-top:1px solid var(--border);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;}
+    .lesson-nav a{color:var(--muted);text-decoration:none;transition:color .2s;}
+    .lesson-nav a:hover{color:var(--gold);}
+    .lesson-nav .nav-next{color:var(--gold);}
+    .lesson-nav .nav-label{color:rgba(232,224,208,.2);}
+    .sb-toggle{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--accent);color:#050810;border:none;width:46px;height:46px;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 20px rgba(77,232,122,.3);}
+    @media(max-width:900px){
+      .nav-links{display:none;} .hamburger{display:flex;}
+      .sidebar{position:fixed;left:0;top:var(--nav-h);transform:translateX(-100%);z-index:900;transition:transform .3s;height:calc(100vh - var(--nav-h));}
+      .sidebar.open{transform:translateX(0);} .sb-toggle{display:flex;align-items:center;justify-content:center;}
+      .main{width:100%;} .topic-deco{display:none;}
+      .topic-hero{padding:2.5rem 1.2rem 2rem;} .lessons{padding:1.5rem 1.2rem 4rem;}
+      .lesson-nav{padding:1.5rem 1.2rem;flex-direction:column;gap:1rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-name"><span>PYTHON</span></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-sub">mikailsarpkaya.com</div>
+</div>
+
+<nav id="nav">
+  <a href="../../index.html" class="nav-logo">MS</a>
+  <ul class="nav-links">
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="../../index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="../index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../../index.html" onclick="toggleMobile()">Home</a>
+  <a href="../../projects.html" onclick="toggleMobile()">Projects</a>
+  <a href="../../certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="../index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../index.html" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
+    <div class="sb-head">
+      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
+      <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="toggleGroup(this)">Systems &amp; Languages</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="../systems/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="../systems/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="toggleGroup(this)">Python Ecosystem</div>
+      <div class="sb-group-items">
+        <a class="sb-link active" href="core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link" href="numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link soon-link" href="sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Machine Learning</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../ai/ml.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/dl.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="../nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPIC HERO -->
+    <div class="topic-hero">
+      <svg class="topic-deco" viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="120" stroke="#4de87a" stroke-width="0.6"/>
+        <circle cx="150" cy="150" r="80"  stroke="#4de87a" stroke-width="0.4" stroke-dasharray="8 8"/>
+        <circle cx="150" cy="150" r="40"  stroke="#4de87a" stroke-width="0.8"/>
+        <path d="M150 30 L150 270 M30 150 L270 150" stroke="#4de87a" stroke-width="0.3" opacity="0.5"/>
+      </svg>
+      <div class="topic-eyebrow" data-i18n-text="py.eyebrow">Tutorial · Python Core</div>
+      <h1 class="topic-title"><span class="accent">PYTHON</span><br>CORE</h1>
+      <p class="topic-desc" data-i18n="py.desc">The language of <strong>AI, data science, and automation</strong>. Master Python from variables to generators — with real-world patterns used in NLP pipelines, ML experiments, and web scraping workflows. Every example is practical, every concept connects to real engineering.</p>
+      <div class="topic-meta">
+        <div class="meta-item"><span>10</span> <span data-i18n-text="meta.lessons">Lessons</span></div>
+        <div class="meta-item" data-i18n-text="py.level">Beginner → Intermediate</div>
+        <div class="meta-item"><span data-i18n-text="meta.prereq">Prerequisites</span>: None</div>
+      </div>
+    </div>
+
+    <!-- LESSONS -->
+    <div class="lessons">
+
+      <!-- ═══ L01 ═══ -->
+      <div class="lesson-block" id="l1">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L01</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l1.t">Syntax, Variables & Data Types</div>
+            <div class="lesson-sub" data-i18n-text="py.l1.s">int · float · str · bool · None · type() · f-strings · type conversion · 8 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l1.p1">Python is a <strong>dynamically typed</strong>, interpreted language. You don't declare types — Python infers them at runtime. This makes prototyping fast, which is why it dominates AI/ML research.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Variables & Types</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Variables — no type declaration needed</span>
+name    = <span class="str">"Mikail"</span>          <span class="cm"># str</span>
+age     = <span class="num">25</span>                 <span class="cm"># int</span>
+gpa     = <span class="num">3.85</span>               <span class="cm"># float</span>
+is_grad = <span class="kw">True</span>               <span class="cm"># bool</span>
+thesis  = <span class="kw">None</span>               <span class="cm"># NoneType (no value yet)</span>
+
+<span class="cm"># Check types</span>
+<span class="fn">print</span>(<span class="fn">type</span>(name))   <span class="cm"># &lt;class 'str'&gt;</span>
+<span class="fn">print</span>(<span class="fn">type</span>(gpa))    <span class="cm"># &lt;class 'float'&gt;</span>
+
+<span class="cm"># Type conversion</span>
+x = <span class="fn">int</span>(<span class="str">"42"</span>)          <span class="cm"># str → int</span>
+y = <span class="fn">float</span>(<span class="str">"3.14"</span>)      <span class="cm"># str → float</span>
+z = <span class="fn">str</span>(<span class="num">100</span>)            <span class="cm"># int → str</span>
+b = <span class="fn">bool</span>(<span class="num">0</span>)             <span class="cm"># 0 → False, any non-zero → True</span></code></pre>
+          </div>
+          <p data-i18n="py.l1.p2"><strong>f-strings</strong> (Python 3.6+) are the cleanest way to embed variables in strings. They're faster than <code>format()</code> and <code>%</code> formatting.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — f-strings & String Methods</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># f-strings — embed expressions directly</span>
+model = <span class="str">"BERT"</span>
+acc   = <span class="num">0.9234</span>
+<span class="fn">print</span>(<span class="str">f"</span><span class="str">{model} accuracy: {acc:.2%}</span><span class="str">"</span>)  <span class="cm"># BERT accuracy: 92.34%</span>
+<span class="fn">print</span>(<span class="str">f"</span><span class="str">{model:>10} | {acc:.4f}</span><span class="str">"</span>)      <span class="cm">#       BERT | 0.9234</span>
+
+<span class="cm"># Useful string methods</span>
+text = <span class="str">"  Hello, World!  "</span>
+text.strip()           <span class="cm"># "Hello, World!" — remove whitespace</span>
+text.lower()           <span class="cm"># "  hello, world!  "</span>
+text.upper()           <span class="cm"># "  HELLO, WORLD!  "</span>
+text.replace(<span class="str">"World"</span>, <span class="str">"Python"</span>)  <span class="cm"># "  Hello, Python!  "</span>
+text.split(<span class="str">","</span>)         <span class="cm"># ['  Hello', ' World!  ']</span>
+
+<span class="cm"># Check content</span>
+<span class="str">"hello"</span>.isalpha()      <span class="cm"># True</span>
+<span class="str">"123"</span>.isdigit()        <span class="cm"># True</span>
+<span class="str">"hello world"</span>.startswith(<span class="str">"hello"</span>)  <span class="cm"># True</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>NLP Pattern:</strong> In text preprocessing, you'll chain these methods constantly: <code>text.strip().lower().replace("\n", " ")</code> is a common first step before tokenization.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L02 ═══ -->
+      <div class="lesson-block" id="l2">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L02</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l2.t">Lists, Tuples, Dicts & Sets</div>
+            <div class="lesson-sub" data-i18n-text="py.l2.s">Slicing · comprehensions · dict operations · word frequency · set ops · 10 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l2.p1">Python's <strong>built-in data structures</strong> are the foundation of everything. Lists are ordered and mutable, tuples are immutable, dicts map keys to values, and sets store unique items. You'll use all four constantly in data science and NLP.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Lists & Slicing</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Lists — ordered, mutable</span>
+scores = [<span class="num">0.92</span>, <span class="num">0.87</span>, <span class="num">0.95</span>, <span class="num">0.78</span>, <span class="num">0.91</span>]
+scores.append(<span class="num">0.88</span>)        <span class="cm"># add to end</span>
+scores.insert(<span class="num">0</span>, <span class="num">0.99</span>)    <span class="cm"># insert at index</span>
+best = scores.pop(<span class="num">0</span>)       <span class="cm"># remove & return: 0.99</span>
+
+<span class="cm"># Slicing — [start:stop:step]</span>
+nums = [<span class="num">0</span>, <span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>, <span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>]
+nums[<span class="num">2</span>:<span class="num">5</span>]      <span class="cm"># [2, 3, 4]</span>
+nums[::<span class="num">2</span>]       <span class="cm"># [0, 2, 4, 6, 8] — every 2nd</span>
+nums[::-<span class="num">1</span>]      <span class="cm"># [9, 8, 7, ...] — reverse</span>
+nums[-<span class="num">3</span>:]       <span class="cm"># [7, 8, 9] — last 3</span>
+
+<span class="cm"># List comprehension — concise & Pythonic</span>
+squares = [x**<span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>)]
+evens   = [x <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">20</span>) <span class="kw">if</span> x % <span class="num">2</span> == <span class="num">0</span>]</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Dicts, Sets & Word Frequency</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Dictionary — key:value mapping</span>
+model = {
+    <span class="str">"name"</span>: <span class="str">"BERT"</span>,
+    <span class="str">"params"</span>: <span class="num">110_000_000</span>,
+    <span class="str">"layers"</span>: <span class="num">12</span>,
+    <span class="str">"type"</span>: <span class="str">"transformer"</span>
+}
+model[<span class="str">"accuracy"</span>] = <span class="num">0.93</span>    <span class="cm"># add new key</span>
+model.get(<span class="str">"lr"</span>, <span class="num">3e-5</span>)        <span class="cm"># safe access with default</span>
+
+<span class="cm"># Dict comprehension</span>
+word_len = {w: <span class="fn">len</span>(w) <span class="kw">for</span> w <span class="kw">in</span> [<span class="str">"hello"</span>, <span class="str">"world"</span>, <span class="str">"python"</span>]}
+
+<span class="cm"># ★ Word Frequency Pattern (NLP essential)</span>
+text = <span class="str">"the cat sat on the mat the cat"</span>
+freq = {}
+<span class="kw">for</span> word <span class="kw">in</span> text.split():
+    freq[word] = freq.get(word, <span class="num">0</span>) + <span class="num">1</span>
+<span class="cm"># {'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}</span>
+
+<span class="cm"># Sets — unique elements, fast membership testing</span>
+stopwords = {<span class="str">"the"</span>, <span class="str">"is"</span>, <span class="str">"a"</span>, <span class="str">"an"</span>, <span class="str">"on"</span>}
+tokens = {<span class="str">"the"</span>, <span class="str">"cat"</span>, <span class="str">"sat"</span>, <span class="str">"on"</span>}
+tokens - stopwords        <span class="cm"># {'cat', 'sat'} — difference</span>
+tokens & stopwords        <span class="cm"># {'the', 'on'} — intersection</span>
+tokens | stopwords        <span class="cm"># union of both sets</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>Tuples</strong> are immutable lists: <code>point = (3, 4)</code>. Use them for fixed data like coordinates, RGB colors, or function return values. They're also hashable, so you can use them as dict keys.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L03 ═══ -->
+      <div class="lesson-block" id="l3">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L03</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l3.t">Control Flow</div>
+            <div class="lesson-sub" data-i18n-text="py.l3.s">if/elif/else · for · while · enumerate · zip · walrus operator · 8 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l3.p1">Python uses <strong>indentation</strong> to define code blocks — no curly braces. This enforces clean, readable code. Combined with <code>enumerate</code>, <code>zip</code>, and the <strong>walrus operator</strong>, Python's control flow is both powerful and elegant.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Conditionals & Loops</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># if / elif / else</span>
+accuracy = <span class="num">0.87</span>
+<span class="kw">if</span> accuracy >= <span class="num">0.95</span>:
+    <span class="fn">print</span>(<span class="str">"Excellent"</span>)
+<span class="kw">elif</span> accuracy >= <span class="num">0.85</span>:
+    <span class="fn">print</span>(<span class="str">"Good"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="str">"Needs improvement"</span>)
+
+<span class="cm"># Ternary expression</span>
+label = <span class="str">"pass"</span> <span class="kw">if</span> accuracy > <span class="num">0.5</span> <span class="kw">else</span> <span class="str">"fail"</span>
+
+<span class="cm"># for loop with range</span>
+<span class="kw">for</span> epoch <span class="kw">in</span> <span class="fn">range</span>(<span class="num">5</span>):
+    <span class="fn">print</span>(<span class="str">f"Epoch {epoch + 1}/5"</span>)
+
+<span class="cm"># enumerate — index + value (essential for ML)</span>
+models = [<span class="str">"BERT"</span>, <span class="str">"RoBERTa"</span>, <span class="str">"LSTM"</span>]
+<span class="kw">for</span> i, m <span class="kw">in</span> <span class="fn">enumerate</span>(models):
+    <span class="fn">print</span>(<span class="str">f"{i}: {m}"</span>)
+
+<span class="cm"># zip — iterate multiple lists in parallel</span>
+names  = [<span class="str">"BERT"</span>, <span class="str">"RoBERTa"</span>, <span class="str">"LSTM"</span>]
+scores = [<span class="num">0.92</span>, <span class="num">0.94</span>, <span class="num">0.87</span>]
+<span class="kw">for</span> name, score <span class="kw">in</span> <span class="fn">zip</span>(names, scores):
+    <span class="fn">print</span>(<span class="str">f"{name}: {score:.2%}"</span>)
+
+<span class="cm"># Walrus operator := (Python 3.8+)</span>
+data = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>]
+<span class="kw">if</span> (n := <span class="fn">len</span>(data)) > <span class="num">3</span>:
+    <span class="fn">print</span>(<span class="str">f"Large dataset: {n} items"</span>)</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — while & break/continue</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># while loop — training until convergence</span>
+loss = <span class="num">10.0</span>
+epoch = <span class="num">0</span>
+<span class="kw">while</span> loss > <span class="num">0.01</span>:
+    loss *= <span class="num">0.7</span>      <span class="cm"># simulate decreasing loss</span>
+    epoch += <span class="num">1</span>
+    <span class="kw">if</span> epoch > <span class="num">100</span>:
+        <span class="fn">print</span>(<span class="str">"Max epochs reached"</span>)
+        <span class="kw">break</span>
+<span class="fn">print</span>(<span class="str">f"Converged at epoch {epoch}, loss={loss:.4f}"</span>)
+
+<span class="cm"># continue — skip an iteration</span>
+<span class="kw">for</span> word <span class="kw">in</span> [<span class="str">"hello"</span>, <span class="str">""</span>, <span class="str">"world"</span>, <span class="str">""</span>, <span class="str">"python"</span>]:
+    <span class="kw">if not</span> word:
+        <span class="kw">continue</span>     <span class="cm"># skip empty strings</span>
+    <span class="fn">print</span>(word)</code></pre>
+          </div>
+          <div class="note note-tip"><strong>ML Pattern:</strong> <code>enumerate</code> + <code>zip</code> are used in every training loop. You'll see <code>for batch_idx, (inputs, labels) in enumerate(dataloader)</code> in PyTorch constantly.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L04 ═══ -->
+      <div class="lesson-block" id="l4">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L04</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l4.t">Functions, Lambdas & Decorators</div>
+            <div class="lesson-sub" data-i18n-text="py.l4.s">def · *args/**kwargs · lambda · sorted with key · @decorator · type hints · 10 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l4.p1">Functions are the building blocks of clean Python code. Combined with <strong>lambda expressions</strong>, <strong>decorators</strong>, and <strong>type hints</strong>, they let you write maintainable, self-documenting code — essential for collaborative research projects.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Functions & Args</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Basic function with type hints</span>
+<span class="kw">def</span> <span class="fn">compute_f1</span>(precision: <span class="ty">float</span>, recall: <span class="ty">float</span>) -> <span class="ty">float</span>:
+    <span class="str">"""Compute F1 score from precision and recall."""</span>
+    <span class="kw">if</span> precision + recall == <span class="num">0</span>:
+        <span class="kw">return</span> <span class="num">0.0</span>
+    <span class="kw">return</span> <span class="num">2</span> * (precision * recall) / (precision + recall)
+
+f1 = compute_f1(<span class="num">0.91</span>, <span class="num">0.88</span>)  <span class="cm"># 0.8947...</span>
+
+<span class="cm"># Default arguments</span>
+<span class="kw">def</span> <span class="fn">train</span>(model, epochs=<span class="num">10</span>, lr=<span class="num">3e-5</span>, verbose=<span class="kw">True</span>):
+    <span class="kw">if</span> verbose:
+        <span class="fn">print</span>(<span class="str">f"Training {model} for {epochs} epochs at lr={lr}"</span>)
+
+train(<span class="str">"BERT"</span>)                     <span class="cm"># uses defaults</span>
+train(<span class="str">"RoBERTa"</span>, epochs=<span class="num">20</span>, lr=<span class="num">2e-5</span>)  <span class="cm"># override</span>
+
+<span class="cm"># *args and **kwargs</span>
+<span class="kw">def</span> <span class="fn">log</span>(*args, **kwargs):
+    <span class="fn">print</span>(<span class="str">"[LOG]"</span>, *args)
+    <span class="kw">for</span> k, v <span class="kw">in</span> kwargs.items():
+        <span class="fn">print</span>(<span class="str">f"  {k}={v}"</span>)
+
+log(<span class="str">"Training started"</span>, model=<span class="str">"BERT"</span>, gpu=<span class="num">0</span>)</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Lambda, sorted & Decorators</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Lambda — anonymous functions</span>
+square = <span class="kw">lambda</span> x: x ** <span class="num">2</span>
+<span class="fn">print</span>(square(<span class="num">5</span>))  <span class="cm"># 25</span>
+
+<span class="cm"># sorted with key — extremely common in ML</span>
+results = [
+    {<span class="str">"model"</span>: <span class="str">"BERT"</span>, <span class="str">"f1"</span>: <span class="num">0.92</span>},
+    {<span class="str">"model"</span>: <span class="str">"LSTM"</span>, <span class="str">"f1"</span>: <span class="num">0.87</span>},
+    {<span class="str">"model"</span>: <span class="str">"RoBERTa"</span>, <span class="str">"f1"</span>: <span class="num">0.94</span>},
+]
+best = <span class="fn">sorted</span>(results, key=<span class="kw">lambda</span> r: r[<span class="str">"f1"</span>], reverse=<span class="kw">True</span>)
+<span class="cm"># [{'model': 'RoBERTa', ...}, {'model': 'BERT', ...}, ...]</span>
+
+<span class="cm"># Decorator — wraps a function with extra behavior</span>
+<span class="kw">import</span> time
+
+<span class="kw">def</span> <span class="fn">timer</span>(func):
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        elapsed = time.time() - start
+        <span class="fn">print</span>(<span class="str">f"{func.__name__} took {elapsed:.2f}s"</span>)
+        <span class="kw">return</span> result
+    <span class="kw">return</span> wrapper
+
+<span class="pp">@timer</span>
+<span class="kw">def</span> <span class="fn">preprocess</span>(texts):
+    <span class="kw">return</span> [t.lower().strip() <span class="kw">for</span> t <span class="kw">in</span> texts]
+
+preprocess([<span class="str">"  Hello  "</span>, <span class="str">"WORLD"</span>])
+<span class="cm"># preprocess took 0.00s</span></code></pre>
+          </div>
+          <div class="note note-warn"><strong>Never use a mutable default:</strong> <code>def func(items=[])</code> shares the same list across calls. Use <code>def func(items=None)</code> and set <code>items = items or []</code> inside.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L05 ═══ -->
+      <div class="lesson-block" id="l5">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L05</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l5.t">OOP — Classes & Inheritance</div>
+            <div class="lesson-sub" data-i18n-text="py.l5.s">__init__ · self · inheritance · __repr__ · __len__ · @property · dataclass · 12 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l5.p1"><strong>Object-Oriented Programming</strong> is how PyTorch, HuggingFace, and Scikit-learn are built. Every model is a class, every dataset is a class. Understanding OOP means understanding the tools you use daily in ML.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Classes</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">class</span> <span class="ty">TextDataset</span>:
+    <span class="str">"""A simple text dataset for NLP tasks."""</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, texts: <span class="ty">list</span>[<span class="ty">str</span>], labels: <span class="ty">list</span>[<span class="ty">int</span>]):
+        self.texts  = texts
+        self.labels = labels
+
+    <span class="kw">def</span> <span class="fn">__len__</span>(self):
+        <span class="kw">return</span> <span class="fn">len</span>(self.texts)
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(self):
+        <span class="kw">return</span> <span class="str">f"TextDataset({len(self)} samples)"</span>
+
+    <span class="kw">def</span> <span class="fn">__getitem__</span>(self, idx):
+        <span class="kw">return</span> self.texts[idx], self.labels[idx]
+
+    <span class="pp">@property</span>
+    <span class="kw">def</span> <span class="fn">num_classes</span>(self):
+        <span class="kw">return</span> <span class="fn">len</span>(<span class="fn">set</span>(self.labels))
+
+<span class="cm"># Usage</span>
+ds = TextDataset([<span class="str">"great movie"</span>, <span class="str">"bad film"</span>], [<span class="num">1</span>, <span class="num">0</span>])
+<span class="fn">print</span>(ds)            <span class="cm"># TextDataset(2 samples)</span>
+<span class="fn">print</span>(<span class="fn">len</span>(ds))        <span class="cm"># 2</span>
+<span class="fn">print</span>(ds[<span class="num">0</span>])          <span class="cm"># ('great movie', 1)</span>
+<span class="fn">print</span>(ds.num_classes) <span class="cm"># 2</span></code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Inheritance & Dataclass</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Inheritance</span>
+<span class="kw">class</span> <span class="ty">ClassificationDataset</span>(<span class="ty">TextDataset</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, texts, labels, label_names):
+        <span class="fn">super</span>().__init__(texts, labels)
+        self.label_names = label_names
+
+    <span class="kw">def</span> <span class="fn">get_label_name</span>(self, idx):
+        <span class="kw">return</span> self.label_names[self.labels[idx]]
+
+<span class="cm"># dataclass — auto-generates __init__, __repr__, etc.</span>
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
+
+<span class="pp">@dataclass</span>
+<span class="kw">class</span> <span class="ty">TrainingConfig</span>:
+    model_name: <span class="ty">str</span>   = <span class="str">"bert-base-uncased"</span>
+    epochs: <span class="ty">int</span>       = <span class="num">10</span>
+    lr: <span class="ty">float</span>         = <span class="num">3e-5</span>
+    batch_size: <span class="ty">int</span>   = <span class="num">32</span>
+    max_length: <span class="ty">int</span>   = <span class="num">128</span>
+
+config = TrainingConfig(epochs=<span class="num">20</span>)
+<span class="fn">print</span>(config)
+<span class="cm"># TrainingConfig(model_name='bert-base-uncased', epochs=20, lr=3e-05, ...)</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>PyTorch Pattern:</strong> Every model inherits from <code>nn.Module</code> and every dataset from <code>torch.utils.data.Dataset</code>. The <code>__getitem__</code> and <code>__len__</code> methods you see above are exactly what PyTorch requires.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L06 ═══ -->
+      <div class="lesson-block" id="l6">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L06</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l6.t">Error Handling & Exceptions</div>
+            <div class="lesson-sub" data-i18n-text="py.l6.s">try/except/finally · raise · custom exceptions · assert · common ML errors · 8 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l6.p1">Robust code handles errors gracefully. In ML projects, you'll encounter <code>FileNotFoundError</code> when loading datasets, <code>ValueError</code> when shapes mismatch, and <code>KeyError</code> when config keys are missing. Proper exception handling makes debugging faster.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Exception Handling</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Basic try/except/finally</span>
+<span class="kw">try</span>:
+    data = <span class="fn">open</span>(<span class="str">"corpus.txt"</span>).read()
+<span class="kw">except</span> <span class="ty">FileNotFoundError</span>:
+    <span class="fn">print</span>(<span class="str">"File not found — using empty corpus"</span>)
+    data = <span class="str">""</span>
+<span class="kw">except</span> <span class="ty">Exception</span> <span class="kw">as</span> e:
+    <span class="fn">print</span>(<span class="str">f"Unexpected error: {e}"</span>)
+    data = <span class="str">""</span>
+<span class="kw">finally</span>:
+    <span class="fn">print</span>(<span class="str">"Cleanup complete"</span>)
+
+<span class="cm"># Raise exceptions</span>
+<span class="kw">def</span> <span class="fn">load_model</span>(name: <span class="ty">str</span>):
+    valid = [<span class="str">"bert"</span>, <span class="str">"roberta"</span>, <span class="str">"lstm"</span>]
+    <span class="kw">if</span> name <span class="kw">not in</span> valid:
+        <span class="kw">raise</span> <span class="ty">ValueError</span>(<span class="str">f"Unknown model '{name}'. Choose from {valid}"</span>)
+    <span class="fn">print</span>(<span class="str">f"Loading {name}..."</span>)
+
+<span class="cm"># Custom exception</span>
+<span class="kw">class</span> <span class="ty">DataPipelineError</span>(<span class="ty">Exception</span>):
+    <span class="str">"""Raised when data pipeline fails."""</span>
+    <span class="kw">pass</span>
+
+<span class="kw">def</span> <span class="fn">validate_data</span>(df):
+    <span class="kw">if</span> df.empty:
+        <span class="kw">raise</span> <span class="ty">DataPipelineError</span>(<span class="str">"DataFrame is empty after cleaning"</span>)
+
+<span class="cm"># Assert — quick sanity checks (disabled with python -O)</span>
+<span class="kw">assert</span> <span class="fn">len</span>(train_texts) == <span class="fn">len</span>(train_labels), <span class="str">"Mismatch!"</span></code></pre>
+          </div>
+          <div class="note note-warn"><strong>Common ML Errors:</strong> <code>RuntimeError: CUDA out of memory</code> — reduce batch size. <code>ValueError: shapes not aligned</code> — check tensor dimensions with <code>.shape</code>. <code>KeyError</code> in config — use <code>.get()</code> with defaults.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L07 ═══ -->
+      <div class="lesson-block" id="l7">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L07</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l7.t">File I/O, JSON & CSV</div>
+            <div class="lesson-sub" data-i18n-text="py.l7.s">open() · context manager · json · csv.DictReader · pathlib · UTF-8 · 8 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l7.p1">Every ML project starts with <strong>reading data</strong>. Text files, JSON configs, CSV datasets — you need to handle them all fluently. Python's <code>pathlib</code> and context managers make file operations clean and safe.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — File I/O & pathlib</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">from</span> pathlib <span class="kw">import</span> Path
+
+<span class="cm"># Context manager — auto-closes file</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"corpus.txt"</span>, <span class="str">"r"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
+    text = f.read()
+
+<span class="cm"># Write file</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"output.txt"</span>, <span class="str">"w"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
+    f.write(<span class="str">"Processed text here"</span>)
+
+<span class="cm"># Read line by line (memory efficient for large files)</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"large_corpus.txt"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
+    <span class="kw">for</span> line <span class="kw">in</span> f:
+        process(line.strip())
+
+<span class="cm"># pathlib — modern file path handling</span>
+p = Path(<span class="str">"data"</span>) / <span class="str">"corpus"</span> / <span class="str">"train.txt"</span>
+p.parent.mkdir(parents=<span class="kw">True</span>, exist_ok=<span class="kw">True</span>)
+p.write_text(<span class="str">"sample text"</span>, encoding=<span class="str">"utf-8"</span>)
+content = p.read_text(encoding=<span class="str">"utf-8"</span>)
+
+<span class="cm"># List all .txt files recursively</span>
+txt_files = <span class="fn">list</span>(Path(<span class="str">"."</span>).rglob(<span class="str">"*.txt"</span>))
+<span class="fn">print</span>(<span class="str">f"Found {len(txt_files)} text files"</span>)</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — JSON & CSV</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> json
+<span class="kw">import</span> csv
+
+<span class="cm"># JSON — config files, API responses, model metadata</span>
+config = {
+    <span class="str">"model"</span>: <span class="str">"bert-base-uncased"</span>,
+    <span class="str">"epochs"</span>: <span class="num">10</span>,
+    <span class="str">"lr"</span>: <span class="num">3e-5</span>,
+    <span class="str">"labels"</span>: [<span class="str">"positive"</span>, <span class="str">"negative"</span>, <span class="str">"neutral"</span>]
+}
+
+<span class="cm"># Write JSON</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"config.json"</span>, <span class="str">"w"</span>) <span class="kw">as</span> f:
+    json.dump(config, f, indent=<span class="num">2</span>, ensure_ascii=<span class="kw">False</span>)
+
+<span class="cm"># Read JSON</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"config.json"</span>) <span class="kw">as</span> f:
+    loaded = json.load(f)
+
+<span class="cm"># String ↔ JSON</span>
+json_str = json.dumps(config)       <span class="cm"># dict → string</span>
+obj      = json.loads(json_str)     <span class="cm"># string → dict</span>
+
+<span class="cm"># CSV — tabular data</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"dataset.csv"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
+    reader = csv.DictReader(f)
+    <span class="kw">for</span> row <span class="kw">in</span> reader:
+        <span class="fn">print</span>(row[<span class="str">"text"</span>], row[<span class="str">"label"</span>])</code></pre>
+          </div>
+          <div class="note note-warn"><strong>Encoding:</strong> Always specify <code>encoding="utf-8"</code> when working with Turkish or non-ASCII text. This is critical for NLP corpora — missing encoding declarations cause garbled characters (mojibake).</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L08 ═══ -->
+      <div class="lesson-block" id="l8">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L08</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l8.t">Modules & Virtual Environments</div>
+            <div class="lesson-sub" data-i18n-text="py.l8.s">import · __init__.py · pip · venv · requirements.txt · project structure · 6 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l8.p1">Every Python project should have its own <strong>virtual environment</strong>. This isolates dependencies so different projects don't interfere with each other — critical for reproducible ML experiments where version mismatches break everything.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — venv & pip</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Create virtual environment</span>
+python3 -m venv venv
+
+<span class="cm"># Activate (Linux / macOS)</span>
+source venv/bin/activate
+
+<span class="cm"># Activate (Windows)</span>
+venv\Scripts\activate
+
+<span class="cm"># Install packages</span>
+pip install numpy pandas torch transformers scikit-learn
+
+<span class="cm"># Save current packages</span>
+pip freeze > requirements.txt
+
+<span class="cm"># Install from file (reproducible)</span>
+pip install -r requirements.txt
+
+<span class="cm"># Deactivate</span>
+deactivate</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Project Structure & Imports</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Typical ML project structure</span>
+<span class="cm"># my_project/</span>
+<span class="cm"># ├── data/</span>
+<span class="cm"># │   ├── raw/</span>
+<span class="cm"># │   └── processed/</span>
+<span class="cm"># ├── src/</span>
+<span class="cm"># │   ├── __init__.py</span>
+<span class="cm"># │   ├── model.py</span>
+<span class="cm"># │   ├── dataset.py</span>
+<span class="cm"># │   └── utils.py</span>
+<span class="cm"># ├── notebooks/</span>
+<span class="cm"># ├── config.json</span>
+<span class="cm"># ├── train.py</span>
+<span class="cm"># ├── requirements.txt</span>
+<span class="cm"># └── README.md</span>
+
+<span class="cm"># Imports</span>
+<span class="kw">import</span> os                          <span class="cm"># standard library</span>
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path           <span class="cm"># specific import</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np                 <span class="cm"># alias (convention)</span>
+<span class="kw">from</span> src.model <span class="kw">import</span> BertClassifier  <span class="cm"># local module</span>
+<span class="kw">from</span> src <span class="kw">import</span> utils               <span class="cm"># package import</span>
+
+<span class="cm"># Conditional import (useful for optional deps)</span>
+<span class="kw">try</span>:
+    <span class="kw">import</span> torch
+    HAS_TORCH = <span class="kw">True</span>
+<span class="kw">except</span> <span class="ty">ImportError</span>:
+    HAS_TORCH = <span class="kw">False</span></code></pre>
+          </div>
+          <div class="note note-tip"><strong>Best practice:</strong> Add <code>venv/</code> and <code>__pycache__/</code> to <code>.gitignore</code>. Commit only <code>requirements.txt</code> — never the virtual environment itself.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L09 ═══ -->
+      <div class="lesson-block" id="l9">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L09</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l9.t">Iterators & Generators</div>
+            <div class="lesson-sub" data-i18n-text="py.l9.s">yield · generator expressions · batch_generator · memory efficiency · 8 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l9.p1"><strong>Generators</strong> produce items one at a time using <code>yield</code> instead of building entire lists in memory. This is essential when processing large NLP corpora — you can iterate through millions of text samples without loading them all into RAM.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Generators</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="cm"># Generator function — yields one item at a time</span>
+<span class="kw">def</span> <span class="fn">read_lines</span>(filepath):
+    <span class="str">"""Memory-efficient line reader for large files."""</span>
+    <span class="kw">with</span> <span class="fn">open</span>(filepath, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
+        <span class="kw">for</span> line <span class="kw">in</span> f:
+            <span class="kw">yield</span> line.strip()
+
+<span class="cm"># Usage — processes one line at a time</span>
+<span class="kw">for</span> line <span class="kw">in</span> read_lines(<span class="str">"huge_corpus.txt"</span>):
+    tokens = line.split()
+
+<span class="cm"># Generator expression — like list comp but lazy</span>
+squares_list = [x**<span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1_000_000</span>)]  <span class="cm"># uses ~8MB RAM</span>
+squares_gen  = (x**<span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1_000_000</span>))  <span class="cm"># uses ~0 RAM</span>
+
+<span class="cm"># ★ Batch Generator — critical pattern for ML training</span>
+<span class="kw">def</span> <span class="fn">batch_generator</span>(data, batch_size=<span class="num">32</span>):
+    <span class="str">"""Yield successive batches from data."""</span>
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">0</span>, <span class="fn">len</span>(data), batch_size):
+        <span class="kw">yield</span> data[i : i + batch_size]
+
+<span class="cm"># Usage</span>
+texts = [<span class="str">f"sample {i}"</span> <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1000</span>)]
+<span class="kw">for</span> batch <span class="kw">in</span> batch_generator(texts, batch_size=<span class="num">64</span>):
+    <span class="fn">print</span>(<span class="str">f"Processing batch of {len(batch)} items"</span>)
+
+<span class="cm"># Chain generators — build processing pipelines</span>
+<span class="kw">def</span> <span class="fn">clean_texts</span>(lines):
+    <span class="kw">for</span> line <span class="kw">in</span> lines:
+        cleaned = line.strip().lower()
+        <span class="kw">if</span> cleaned:
+            <span class="kw">yield</span> cleaned
+
+<span class="kw">def</span> <span class="fn">tokenize</span>(texts):
+    <span class="kw">for</span> text <span class="kw">in</span> texts:
+        <span class="kw">yield</span> text.split()
+
+<span class="cm"># Pipeline: file → clean → tokenize (zero extra memory)</span>
+pipeline = tokenize(clean_texts(read_lines(<span class="str">"corpus.txt"</span>)))
+<span class="kw">for</span> tokens <span class="kw">in</span> pipeline:
+    process(tokens)</code></pre>
+          </div>
+          <div class="note note-math"><strong>Memory:</strong> A list of 10M strings can use 1GB+ RAM. A generator uses constant memory regardless of dataset size. PyTorch's <code>DataLoader</code> is essentially a sophisticated batch generator.</div>
+        </div></div>
+      </div>
+
+      <!-- ═══ L10 ═══ -->
+      <div class="lesson-block" id="l10">
+        <div class="lesson-header" onclick="toggleLesson(this)">
+          <span class="lesson-num">L10</span>
+          <div>
+            <div class="lesson-title" data-i18n-text="py.l10.t">Regex & Text Processing</div>
+            <div class="lesson-sub" data-i18n-text="py.l10.s">re module · findall · sub · NLP text cleaning · Turkish character handling · 10 min</div>
+          </div>
+          <span class="lesson-toggle">+</span>
+        </div>
+        <div class="lesson-body"><div class="lesson-content">
+          <p data-i18n="py.l10.p1"><strong>Regular expressions</strong> are the surgeon's scalpel of text processing. In NLP pipelines, they handle URL removal, number normalization, special character cleaning, and language-specific preprocessing — especially important for Turkish text with its unique characters.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Regex Basics</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> re
+
+text = <span class="str">"Contact us at info@example.com or visit https://example.com"</span>
+
+<span class="cm"># findall — extract all matches</span>
+emails = re.findall(<span class="str">r'[\w.+-]+@[\w-]+\.[\w.]+'</span>, text)
+<span class="cm"># ['info@example.com']</span>
+
+urls = re.findall(<span class="str">r'https?://\S+'</span>, text)
+<span class="cm"># ['https://example.com']</span>
+
+<span class="cm"># sub — replace patterns</span>
+clean = re.sub(<span class="str">r'https?://\S+'</span>, <span class="str">''</span>, text)     <span class="cm"># remove URLs</span>
+clean = re.sub(<span class="str">r'[\w.+-]+@[\w-]+\.[\w.]+'</span>, <span class="str">''</span>, clean)  <span class="cm"># remove emails</span>
+clean = re.sub(<span class="str">r'\s+'</span>, <span class="str">' '</span>, clean).strip()    <span class="cm"># normalize whitespace</span>
+
+<span class="cm"># Common patterns</span>
+digits  = re.findall(<span class="str">r'\d+'</span>, <span class="str">"epoch 5, loss 0.03"</span>)  <span class="cm"># ['5', '03']</span>
+words   = re.findall(<span class="str">r'\b\w+\b'</span>, <span class="str">"Hello, World!"</span>)  <span class="cm"># ['Hello', 'World']</span>
+hashtag = re.findall(<span class="str">r'#\w+'</span>, <span class="str">"#NLP #AI #Python"</span>)  <span class="cm"># ['#NLP', '#AI', '#Python']</span></code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — NLP Text Cleaning Function</span><button class="code-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span class="kw">import</span> re
+<span class="kw">import</span> unicodedata
+
+<span class="kw">def</span> <span class="fn">clean_text</span>(text: <span class="ty">str</span>, lang: <span class="ty">str</span> = <span class="str">"tr"</span>) -> <span class="ty">str</span>:
+    <span class="str">"""Clean text for NLP pipeline.
+    
+    Handles Turkish characters, removes noise,
+    normalizes whitespace.
+    """</span>
+    <span class="cm"># Normalize unicode (important for Turkish ı/İ, ö/Ö, etc.)</span>
+    text = unicodedata.normalize(<span class="str">"NFC"</span>, text)
+
+    <span class="cm"># Lowercase (Turkish-aware)</span>
+    <span class="kw">if</span> lang == <span class="str">"tr"</span>:
+        <span class="cm"># Turkish: I → ı, İ → i (not I → i)</span>
+        text = text.replace(<span class="str">"I"</span>, <span class="str">"ı"</span>).replace(<span class="str">"İ"</span>, <span class="str">"i"</span>)
+    text = text.lower()
+
+    <span class="cm"># Remove URLs</span>
+    text = re.sub(<span class="str">r'https?://\S+'</span>, <span class="str">''</span>, text)
+
+    <span class="cm"># Remove email addresses</span>
+    text = re.sub(<span class="str">r'[\w.+-]+@[\w-]+\.[\w.]+'</span>, <span class="str">''</span>, text)
+
+    <span class="cm"># Remove HTML tags</span>
+    text = re.sub(<span class="str">r'&lt;[^>]+&gt;'</span>, <span class="str">''</span>, text)
+
+    <span class="cm"># Remove numbers (optional — depends on task)</span>
+    <span class="cm"># text = re.sub(r'\d+', '', text)</span>
+
+    <span class="cm"># Keep only letters, digits, spaces, and Turkish chars</span>
+    text = re.sub(<span class="str">r'[^\w\sçğıöşüÇĞİÖŞÜ]'</span>, <span class="str">' '</span>, text)
+
+    <span class="cm"># Normalize whitespace</span>
+    text = re.sub(<span class="str">r'\s+'</span>, <span class="str">' '</span>, text).strip()
+
+    <span class="kw">return</span> text
+
+<span class="cm"># Usage</span>
+raw = <span class="str">"  &lt;p&gt;Merhaba Dünya! 🌍 Visit https://example.com  &lt;/p&gt;  "</span>
+<span class="fn">print</span>(clean_text(raw))
+<span class="cm"># "merhaba dünya visit"</span>
+
+<span class="cm"># Batch processing</span>
+corpus = [<span class="str">"Text 1..."</span>, <span class="str">"Text 2..."</span>, <span class="str">"Text 3..."</span>]
+cleaned = [clean_text(t) <span class="kw">for</span> t <span class="kw">in</span> corpus]</code></pre>
+          </div>
+          <div class="note note-warn"><strong>Turkish I/ı Problem:</strong> Python's <code>.lower()</code> converts <code>I → i</code>, but in Turkish <code>I → ı</code> and <code>İ → i</code>. Always handle this explicitly when processing Turkish text — it directly affects tokenization and model accuracy.</div>
+        </div></div>
+      </div>
+
+    </div><!-- /lessons -->
+
+    <!-- BOTTOM NAV -->
+    <div class="lesson-nav">
+      <a href="../index.html" data-i18n-text="tp.back">← All Tutorials</a>
+      <span class="nav-label">Python Core · 10 / 10 lessons</span>
+      <a href="pandas.html" class="nav-next">Next: Pandas →</a>
+    </div>
+
+  </main>
+</div>
+
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰</button>
+
+<footer>
+  <div class="f-copy" data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</div>
+  <div class="f-site">mikailsarpkaya<span>.com</span></div>
+</footer>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1200));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function toggleMobile() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+function toggleGroup(label) {
+  label.parentElement.classList.toggle('open');
+}
+function toggleLesson(header) {
+  const block = header.parentElement;
+  const isOpen = block.classList.contains('open');
+  document.querySelectorAll('.lesson-block.open').forEach(b => b.classList.remove('open'));
+  if (!isOpen) block.classList.add('open');
+}
+function copyCode(btn) {
+  const code = btn.closest('.code-block').querySelector('code').innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1800);
+  });
+}
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.sr').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 0.1 + 's'; obs.observe(el); });
+</script>
+<script src="../shared.i18n.js"></script>
+<script src="core.i18n.js"></script>
+</body>
+</html>

@@ -4,11 +4,11 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tutorials — Mikail Sarpkaya</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="site.css"/>
+  <link rel="stylesheet" href="../site.css"/>
   <style>
     :root { --nav-h:62px; --sb-w:272px; }
 
@@ -168,23 +168,23 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">MS</a>
+  <a href="../index.html" class="nav-logo">MS</a>
   <ul class="nav-links">
-    <li><a href="index.html" data-i18n="nav.about">Home</a></li>
-    <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
-    <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
-    <li><a href="index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="tutorials.html" class="tut active" data-i18n="nav.tutorials">Tutorials</a></li>
-    <li><a href="cv/index.html" class="cv-link" data-i18n="nav.cv">CV ↗</a></li>
+    <li><a href="../index.html" data-i18n="nav.about">Home</a></li>
+    <li><a href="../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="../index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="index.html" class="tut active" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../cv/index.html" class="cv-link" data-i18n="nav.cv">CV ↗</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html"       onclick="toggleMobile()">Home</a>
-  <a href="projects.html"    onclick="toggleMobile()">Projects</a>
-  <a href="certificates.html" onclick="toggleMobile()">Certificates</a>
-  <a href="tutorials.html"   onclick="toggleMobile()">Tutorials</a>
-  <a href="cv/index.html"    onclick="toggleMobile()">CV</a>
+  <a href="../index.html"       onclick="toggleMobile()">Home</a>
+  <a href="../projects.html"    onclick="toggleMobile()">Projects</a>
+  <a href="../certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="index.html"   onclick="toggleMobile()">Tutorials</a>
+  <a href="../cv/index.html"    onclick="toggleMobile()">CV</a>
 </div>
 
 <div class="layout">
@@ -201,21 +201,9 @@
     <div class="sb-group open">
       <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="this.parentElement.classList.toggle('open')">Systems &amp; Languages</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="tut-c.html">
-          <div class="sb-dot" style="background:#4de8cc"></div>
-          <span class="sb-link-text">C Language</span>
-          <span class="sb-badge sb-live">6</span>
-        </a>
-        <a class="sb-link" href="tut-cpp.html">
-          <div class="sb-dot" style="background:#f09638"></div>
-          <span class="sb-link-text">C++</span>
-          <span class="sb-badge sb-live">7</span>
-        </a>
-        <a class="sb-link" href="tut-csharp.html">
-          <div class="sb-dot" style="background:#7c55cc"></div>
-          <span class="sb-link-text">C#</span>
-          <span class="sb-badge sb-live">6</span>
-        </a>
+        <a class="sb-link" href="systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="systems/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="systems/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
       </div>
     </div>
 
@@ -223,77 +211,38 @@
     <div class="sb-group open">
       <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="this.parentElement.classList.toggle('open')">Python Ecosystem</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="tut-python.html">
-          <div class="sb-dot" style="background:#4de87a"></div>
-          <span class="sb-link-text">Python Core</span>
-          <span class="sb-badge sb-live">6</span>
-        </a>
-        <a class="sb-link" href="tut-pandas.html">
-          <div class="sb-dot" style="background:#4de87a"></div>
-          <span class="sb-link-text">Pandas</span>
-          <span class="sb-badge sb-live">5</span>
-        </a>
-        <a class="sb-link" href="tut-numpy.html">
-          <div class="sb-dot" style="background:#4de8cc"></div>
-          <span class="sb-link-text">NumPy</span>
-          <span class="sb-badge sb-live">4</span>
-        </a>
-        <a class="sb-link" href="tut-sklearn.html">
-          <div class="sb-dot" style="background:#f09638"></div>
-          <span class="sb-link-text">Scikit-Learn</span>
-          <span class="sb-badge sb-live">5</span>
-        </a>
+        <a class="sb-link" href="python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link" href="python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link soon-link" href="python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
       </div>
     </div>
 
     <!-- AI / ML -->
     <div class="sb-group open">
-      <div class="sb-group-label" onclick="this.parentElement.classList.toggle('open')">AI &amp; Machine Learning</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="this.parentElement.classList.toggle('open')">AI &amp; Machine Learning</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="tut-ml.html">
-          <div class="sb-dot" style="background:#c8a96e"></div>
-          <span class="sb-link-text">ML Theory</span>
-          <span class="sb-badge sb-new">7</span>
-        </a>
-        <a class="sb-link" href="tut-dl.html">
-          <div class="sb-dot" style="background:#e84d80"></div>
-          <span class="sb-link-text">Deep Learning</span>
-          <span class="sb-badge sb-new">7</span>
-        </a>
-        <a class="sb-link" href="tut-rnn.html">
-          <div class="sb-dot" style="background:#ff6b6b"></div>
-          <span class="sb-link-text">RNN / LSTM</span>
-          <span class="sb-badge sb-new">6</span>
-        </a>
+        <a class="sb-link" href="ai/ml.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/dl.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="ai/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
       </div>
     </div>
 
     <!-- NLP & Transformers -->
     <div class="sb-group">
-      <div class="sb-group-label" onclick="this.parentElement.classList.toggle('open')">NLP &amp; Transformers</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="this.parentElement.classList.toggle('open')">NLP &amp; Transformers</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="tut-nlp.html">
-          <div class="sb-dot" style="background:#e84d4d"></div>
-          <span class="sb-link-text">NLP Fundamentals</span>
-          <span class="sb-badge sb-new">7</span>
-        </a>
-        <a class="sb-link" href="tut-transformers.html">
-          <div class="sb-dot" style="background:#a855f7"></div>
-          <span class="sb-link-text">Transformers / BERT</span>
-          <span class="sb-badge sb-new">8</span>
-        </a>
+        <a class="sb-link" href="nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
       </div>
     </div>
 
     <!-- Math & Foundations -->
     <div class="sb-group">
-      <div class="sb-group-label" onclick="this.parentElement.classList.toggle('open')">Math &amp; Foundations</div>
+      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="this.parentElement.classList.toggle('open')">Math &amp; Foundations</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="tut-acad.html">
-          <div class="sb-dot" style="background:#38bdf8"></div>
-          <span class="sb-link-text">Math for ML</span>
-          <span class="sb-badge sb-soon">Soon</span>
-        </a>
+        <a class="sb-link" href="math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
       </div>
     </div>
 
@@ -301,21 +250,9 @@
     <div class="sb-group">
       <div class="sb-group-label" data-i18n-text="tp.g.soon" onclick="this.parentElement.classList.toggle('open')">Coming Soon</div>
       <div class="sb-group-items">
-        <a class="sb-link" href="#">
-          <div class="sb-dot" style="background:var(--muted)"></div>
-          <span class="sb-link-text"><span data-i18n-text="tp.linux">Linux &amp; Bash</span></span>
-          <span class="sb-badge sb-soon">Soon</span>
-        </a>
-        <a class="sb-link" href="#">
-          <div class="sb-dot" style="background:var(--muted)"></div>
-          <span class="sb-link-text"><span data-i18n-text="tp.git">Git &amp; GitHub</span></span>
-          <span class="sb-badge sb-soon">Soon</span>
-        </a>
-        <a class="sb-link" href="#">
-          <div class="sb-dot" style="background:var(--muted)"></div>
-          <span class="sb-link-text"><span data-i18n-text="tp.scr">Web Scraping</span></span>
-          <span class="sb-badge sb-soon">Soon</span>
-        </a>
+        <a class="sb-link soon-link" href="#"><span data-i18n-text="tp.linux">Linux &amp; Bash</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="#"><span data-i18n-text="tp.git">Git &amp; GitHub</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="#"><span data-i18n-text="tp.scr">Web Scraping</span><span class="sb-badge sb-soon">Soon</span></a>
       </div>
     </div>
 
@@ -337,7 +274,7 @@
     <!-- Category Grid -->
     <div class="cat-grid">
 
-      <a class="cat-card" href="tut-c.html">
+      <a class="cat-card" href="systems/c.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
         <div class="cat-icon">⚙️</div>
         <div class="cat-name" style="color:#4de8cc">C</div>
@@ -345,7 +282,7 @@
         <div class="cat-count">6 lessons · Pointers, Memory, I/O</div>
       </a>
 
-      <a class="cat-card" href="tut-cpp.html">
+      <a class="cat-card" href="systems/cpp.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
         <div class="cat-icon">🔧</div>
         <div class="cat-name" style="color:#f09638">C++</div>
@@ -353,7 +290,7 @@
         <div class="cat-count">7 lessons · Classes, Templates, Smart Ptrs</div>
       </a>
 
-      <a class="cat-card" href="tut-csharp.html">
+      <a class="cat-card" href="systems/csharp.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#7c55cc,transparent)"></div>
         <div class="cat-icon">🟣</div>
         <div class="cat-name" style="color:#7c55cc">C#</div>
@@ -361,7 +298,7 @@
         <div class="cat-count">6 lessons · Properties, DI, LINQ</div>
       </a>
 
-      <a class="cat-card" href="tut-python.html">
+      <a class="cat-card" href="python/core.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
         <div class="cat-icon">🐍</div>
         <div class="cat-name" style="color:#4de87a">Python</div>
@@ -370,7 +307,7 @@
         <span style="font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .6rem;border:1px solid #4de87a;color:#4de87a;width:fit-content;margin-top:.3rem;">Live</span>
       </a>
 
-      <a class="cat-card" href="tut-pandas.html">
+      <a class="cat-card" href="python/pandas/pandas.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
         <div class="cat-icon">📊</div>
         <div class="cat-name" style="color:#4de87a">Pandas</div>
@@ -378,7 +315,7 @@
         <div class="cat-count">5 lessons · DataFrame, Cleaning, NLP prep</div>
       </a>
 
-      <a class="cat-card" href="tut-numpy.html">
+      <a class="cat-card" href="python/numpy/numpy.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
         <div class="cat-icon">🔢</div>
         <div class="cat-name" style="color:#4de8cc">NumPy</div>
@@ -386,7 +323,7 @@
         <div class="cat-count">4 lessons · Arrays, LinAlg, Broadcasting</div>
       </a>
 
-      <a class="cat-card" href="tut-sklearn.html">
+      <a class="cat-card" href="python/sklearn.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
         <div class="cat-icon">🤖</div>
         <div class="cat-name" style="color:#f09638">Sklearn</div>
@@ -394,7 +331,7 @@
         <div class="cat-count">5 lessons · Pipeline, Evaluation, CV</div>
       </a>
 
-      <a class="cat-card" href="tut-ml.html">
+      <a class="cat-card" href="ai/ml.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
         <div class="cat-icon">📈</div>
         <div class="cat-name" style="color:#c8a96e">ML Theory</div>
@@ -402,7 +339,7 @@
         <div class="cat-count">7 lessons · GD, Regularization, Clustering, Ensemble</div>
       </a>
 
-      <a class="cat-card" href="tut-dl.html">
+      <a class="cat-card" href="ai/dl.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
         <div class="cat-icon">🧠</div>
         <div class="cat-name" style="color:#e84d80">Deep Learning</div>
@@ -410,7 +347,7 @@
         <div class="cat-count">7 lessons · Perceptron, Backprop, CNN, Optimization</div>
       </a>
 
-      <a class="cat-card" href="tut-rnn.html">
+      <a class="cat-card" href="ai/rnn.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
         <div class="cat-icon">🔄</div>
         <div class="cat-name" style="color:#ff6b6b">RNN / LSTM</div>
@@ -418,7 +355,7 @@
         <div class="cat-count">6 lessons · Vanishing Gradient, Gates, Bidirectional, Seq2Seq</div>
       </a>
 
-      <a class="cat-card" href="tut-transformers.html">
+      <a class="cat-card" href="nlp/transformers.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
         <div class="cat-icon">⚡</div>
         <div class="cat-name" style="color:#a855f7">Transformers</div>
@@ -426,7 +363,7 @@
         <div class="cat-count">8 lessons · Self-Attention, Positional Enc, Tokenization, LoRA</div>
       </a>
 
-      <a class="cat-card" href="tut-nlp.html">
+      <a class="cat-card" href="nlp/fundamentals.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d4d,transparent)"></div>
         <div class="cat-icon">💬</div>
         <div class="cat-name" style="color:#e84d4d">NLP</div>
@@ -434,7 +371,15 @@
         <div class="cat-count">7 lessons · Tokenization, Word2Vec, Sentiment, Turkish NLP</div>
       </a>
 
-      <a class="cat-card" href="tut-acad.html">
+      <a class="cat-card" href="math/calculus.html">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">∫</div>
+        <div class="cat-name" style="color:#38bdf8">Calculus</div>
+        <div class="cat-sub">Limits · Derivatives · Integrals · Taylor Series</div>
+        <div class="cat-count">8 lessons · Chain Rule, Gradient, Optimization</div>
+      </a>
+
+      <a class="cat-card" href="math/foundations.html">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
         <div class="cat-icon">📐</div>
         <div class="cat-name" style="color:#38bdf8">Math for ML</div>
@@ -475,6 +420,6 @@
     document.getElementById('sbToggle').style.display = window.innerWidth <= 768 ? 'block' : 'none';
   });
 </script>
-<script src="i18n.js"></script>
+<script src="../i18n.js"></script>
 </body>
 </html>

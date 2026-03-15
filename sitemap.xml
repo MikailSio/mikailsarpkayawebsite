@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mikailsarpkaya.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://mikailsarpkaya.com/projects.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mikailsarpkaya.com/certificates.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mikailsarpkaya.com/cv/index.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Tutorials Hub -->
+  <url><loc>https://mikailsarpkaya.com/tutorials/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- Python Ecosystem -->
+  <url><loc>https://mikailsarpkaya.com/tutorials/python/core.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mikailsarpkaya.com/tutorials/python/pandas.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mikailsarpkaya.com/tutorials/python/numpy.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Math & Foundations -->
+  <url><loc>https://mikailsarpkaya.com/tutorials/math/calculus.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mikailsarpkaya.com/tutorials/math/foundations.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- AI & Machine Learning -->
+  <url><loc>https://mikailsarpkaya.com/tutorials/ai/ml.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mikailsarpkaya.com/tutorials/ai/dl.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mikailsarpkaya.com/tutorials/ai/rnn.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- NLP & Transformers -->
+  <url><loc>https://mikailsarpkaya.com/tutorials/nlp/transformers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Systems (when ready) -->
+  <url><loc>https://mikailsarpkaya.com/tutorials/systems/c.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

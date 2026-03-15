@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>C Language — Mikail Sarpkaya Tutorials</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -61,7 +61,7 @@
     .sb-head { padding:1.4rem 1.4rem .8rem; border-bottom:1px solid var(--border); }
     .sb-back { font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; transition:color .2s; }
     .sb-back:hover { color:var(--gold); }
-    .sb-lang { font-family:var(--display); font-size:2rem; letter-spacing:.1em; color:var(--accent); }
+
     .sb-title { font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:.2rem; }
 
     .sb-group { border-bottom:1px solid var(--border); }
@@ -70,13 +70,12 @@
     .sb-link { display:flex; align-items:center; gap:.7rem; padding:.6rem 1.4rem; text-decoration:none; transition:background .15s; border-left:2px solid transparent; cursor:pointer; }
     .sb-link:hover { background:rgba(255,255,255,.025); }
     .sb-link.active { background:rgba(77,232,204,.06); border-left-color:var(--accent); }
-    .sb-num { font-size:.48rem; color:var(--muted); width:18px; flex-shrink:0; font-family:var(--mono); }
-    .sb-link-text { font-size:.6rem; letter-spacing:.05em; color:rgba(232,224,208,.5); transition:color .2s; line-height:1.3; }
-    .sb-link:hover .sb-link-text, .sb-link.active .sb-link-text { color:var(--text); }
     .sb-badge { font-size:.42rem; letter-spacing:.1em; text-transform:uppercase; padding:.1rem .38rem; margin-left:auto; flex-shrink:0; }
     .sb-live { border:1px solid rgba(77,232,122,.35); color:#4de87a; }
     .sb-new  { border:1px solid rgba(200,169,110,.4); color:var(--gold); }
     .sb-soon { border:1px solid rgba(255,255,255,.1); color:var(--muted); }
+    .sb-link.soon-link{opacity:.4;cursor:default;pointer-events:none;}
+    .sb-toggle{display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--accent);color:#050810;border:none;width:46px;height:46px;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 20px rgba(77,232,204,.3);}
 
     /* MAIN */
     .main { flex:1; min-width:0; }
@@ -185,6 +184,7 @@
       .hamburger { display:flex; }
       .sidebar { position:fixed; top:var(--nav-h); left:-100%; width:82vw; max-width:300px; height:calc(100vh - var(--nav-h)); z-index:700; transition:left .3s ease; box-shadow:8px 0 30px rgba(0,0,0,.6); }
       .sidebar.open { left:0; }
+      .sb-toggle{display:flex;align-items:center;justify-content:center;}
       .lessons-wrap { padding:0 1.5rem 5rem; }
       .lesson-body { padding-left:0; }
       .topic-hero { padding:2.5rem 1.5rem 2rem; }
@@ -205,78 +205,76 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">MS</a>
+  <a href="../../index.html" class="nav-logo">MS</a>
   <ul class="nav-links">
-    <li><a href="index.html" data-i18n="nav.about">Home</a></li>
-    <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
-    <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
-    <li><a href="index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="tutorials.html" class="tut" data-i18n="nav.tutorials">Tutorials</a></li>
-    <li><a href="cv/index.html" class="cv-link" data-i18n="nav.cv">CV ↗</a></li>
+    <li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="../../index.html#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="../index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
+    <li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html"        onclick="toggleMobile()">Home</a>
-  <a href="tutorials.html"    onclick="toggleMobile()">Tutorials</a>
-  <a href="cv/index.html"     onclick="toggleMobile()">CV</a>
+  <a href="../../index.html" onclick="toggleMobile()">Home</a>
+  <a href="../../projects.html" onclick="toggleMobile()">Projects</a>
+  <a href="../../certificates.html" onclick="toggleMobile()">Certificates</a>
+  <a href="../index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
+  <a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
 </div>
 
 <div class="layout">
 
   <!-- ════ SIDEBAR ════ -->
   <aside class="sidebar" id="sidebar">
+    <a href="../index.html" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
     <div class="sb-head">
-      <a class="sb-back" href="tutorials.html"><span data-i18n-text="tp.back">← All Tutorials</span></a>
-      <div class="sb-lang">C</div>
-      <div class="sb-title">Systems Programming</div>
+      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
+      <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="toggleGroup(this)">Systems &amp; Languages</div>
+      <div class="sb-group-items">
+        <a class="sb-link active" href="c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
+        <a class="sb-link soon-link" href="csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-group-label">Lessons — C Language</div>
-      <a class="sb-link active" href="#l1" onclick="scrollTo('l1')">
-        <span class="sb-num">01</span>
-        <span class="sb-link-text"><span data-i18n-text="tc.l1">Hello World &amp; Compilation</span></span>
-        <span class="sb-badge sb-live">✓</span>
-      </a>
-      <a class="sb-link" href="#l2" onclick="scrollTo('l2')">
-        <span class="sb-num">02</span>
-        <span class="sb-link-text"><span data-i18n-text="tc.l2">Variables &amp; Data Types</span></span>
-        <span class="sb-badge sb-live">✓</span>
-      </a>
-      <a class="sb-link" href="#l3" onclick="scrollTo('l3')">
-        <span class="sb-num">03</span>
-        <span class="sb-link-text"><span data-i18n-text="tc.l3">Pointers &amp; Memory</span></span>
-        <span class="sb-badge sb-live">✓</span>
-      </a>
-      <a class="sb-link" href="#l4" onclick="scrollTo('l4')">
-        <span class="sb-num">04</span>
-        <span class="sb-link-text"><span data-i18n-text="tc.l4">Functions &amp; Recursion</span></span>
-        <span class="sb-badge sb-live">✓</span>
-      </a>
-      <a class="sb-link" href="#l5" onclick="scrollTo('l5')">
-        <span class="sb-num">05</span>
-        <span class="sb-link-text"><span data-i18n-text="tc.l5">Arrays &amp; Strings</span></span>
-        <span class="sb-badge sb-live">✓</span>
-      </a>
-      <a class="sb-link" href="#l6" onclick="scrollTo('l6')">
-        <span class="sb-num">06</span>
-        <span class="sb-link-text"><span data-i18n-text="tc.l6">File I/O in C</span></span>
-        <span class="sb-badge sb-live">✓</span>
-      </a>
+      <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="toggleGroup(this)">Python Ecosystem</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link" href="../python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
+        <a class="sb-link soon-link" href="../python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-group-label">Next Topics</div>
-      <a class="sb-link" href="tut-cpp.html">
-        <span class="sb-num">→</span>
-        <span class="sb-link-text">C++ (next)</span>
-        <span class="sb-badge sb-live">7</span>
-      </a>
-      <a class="sb-link" href="tutorials.html">
-        <span class="sb-num">↩</span>
-        <span class="sb-link-text">All Tutorials</span>
-      </a>
+      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Machine Learning</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../ai/ml.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/dl.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../ai/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link soon-link" href="../nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
+      <div class="sb-group-items">
+        <a class="sb-link" href="../math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
+        <a class="sb-link" href="../math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
+      </div>
     </div>
   </aside>
 
@@ -808,14 +806,15 @@ fb = <span class="fn">fopen</span>(<span class="st">"rec.bin"</span>, <span clas
 
     <!-- LESSON NAVIGATION -->
     <div class="lesson-nav">
-      <a class="ln-btn" href="tutorials.html"><span data-i18n-text="tp.back">← All Tutorials</span></a>
+      <a class="ln-btn" href="../index.html"><span data-i18n-text="tp.back">← All Tutorials</span></a>
       <div class="ln-center">
-        C Language · 6 / 6 lessons · <a href="tut-cpp.html"><span data-i18n-text="tc.next">Next: C++ →</span></a>
+        C Language · 6 / 6 lessons · <a href="cpp.html"><span data-i18n-text="tc.next">Next: C++ →</span></a>
       </div>
-      <a class="ln-btn ln-next" href="tut-cpp.html">C++ →</a>
+      <a class="ln-btn ln-next" href="cpp.html">C++ →</a>
     </div>
 
-  </main>
+  <button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰</button>
+</main>
 </div>
 
 <footer>
@@ -824,11 +823,7 @@ fb = <span class="fn">fopen</span>(<span class="st">"rec.bin"</span>, <span clas
 </footer>
 
 <!-- Mobile sidebar toggle -->
-<button id="sbBtn"
-  onclick="document.getElementById('sidebar').classList.toggle('open')"
-  style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--accent);color:#050810;border:none;font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1rem;cursor:pointer;">
-  ☰ Topics
-</button>
+
 
 <script>
   // Loader
@@ -852,33 +847,22 @@ fb = <span class="fn">fopen</span>(<span class="st">"rec.bin"</span>, <span clas
     block.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // Sidebar active link on scroll
-  const lessons = document.querySelectorAll('.lesson-block');
-  const sbLinks  = document.querySelectorAll('.sb-link[href^="#"]');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        sbLinks.forEach(l => l.classList.remove('active'));
-        const match = document.querySelector(`.sb-link[href="#${e.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-  lessons.forEach(l => obs.observe(l));
-
-  // Mobile sidebar button
-  const sbBtn = document.getElementById('sbBtn');
-  function checkMobile() { sbBtn.style.display = window.innerWidth <= 768 ? 'block' : 'none'; }
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
-
   // Close sidebar when clicking outside on mobile
   document.addEventListener('click', e => {
     const sb = document.getElementById('sidebar');
-    if (window.innerWidth <= 768 && sb.classList.contains('open') && !sb.contains(e.target) && e.target !== sbBtn)
+    const btn = document.getElementById('sbToggle');
+    if (window.innerWidth <= 768 && sb.classList.contains('open') && !sb.contains(e.target) && e.target !== btn)
       sb.classList.remove('open');
   });
 </script>
-<script src="i18n.js"></script>
+<script src="../shared.i18n.js"></script>
+<script src="c.i18n.js">
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+function toggleGroup(label) {
+  label.parentElement.classList.toggle('open');
+}
+</script>
 </body>
 </html>
