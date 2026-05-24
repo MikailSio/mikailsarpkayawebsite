@@ -1,0 +1,301 @@
+id,text,language,sentiment,hashtags,mentions,has_url,length
+T0001,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0002,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0003,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0004,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0005,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0006,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0007,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0008,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0009,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0010,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0011,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0012,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0013,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0014,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0015,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0016,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0017,"Slow internet again, third time this week",en,0,,,0,41
+T0018,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0019,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0020,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0021,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0022,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0023,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0024,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0025,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0026,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0027,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0028,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0029,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0030,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0031,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0032,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0033,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0034,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0035,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0036,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0037,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0038,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0039,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0040,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0041,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0042,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0043,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0044,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0045,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0046,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0047,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0048,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0049,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0050,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0051,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0052,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0053,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0054,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0055,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0056,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0057,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0058,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0059,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0060,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0061,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0062,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0063,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0064,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0065,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0066,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0067,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0068,"Slow internet again, third time this week",en,0,,,0,41
+T0069,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0070,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0071,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0072,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0073,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0074,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0075,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0076,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0077,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0078,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0079,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0080,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0081,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0082,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0083,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0084,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0085,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0086,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0087,"Slow internet again, third time this week",en,0,,,0,41
+T0088,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0089,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0090,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0091,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0092,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0093,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0094,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0095,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0096,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0097,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0098,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0099,"Slow internet again, third time this week",en,0,,,0,41
+T0100,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0101,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0102,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0103,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0104,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0105,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0106,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0107,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0108,"Slow internet again, third time this week",en,0,,,0,41
+T0109,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0110,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0111,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0112,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0113,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0114,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0115,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0116,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0117,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0118,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0119,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0120,"Slow internet again, third time this week",en,0,,,0,41
+T0121,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0122,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0123,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0124,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0125,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0126,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0127,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0128,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0129,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0130,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0131,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0132,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0133,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0134,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0135,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0136,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0137,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0138,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0139,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0140,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0141,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0142,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0143,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0144,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0145,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0146,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0147,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0148,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0149,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0150,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0151,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0152,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0153,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0154,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0155,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0156,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0157,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0158,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0159,"Slow internet again, third time this week",en,0,,,0,41
+T0160,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0161,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0162,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0163,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0164,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0165,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0166,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0167,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0168,"Slow internet again, third time this week",en,0,,,0,41
+T0169,"Slow internet again, third time this week",en,0,,,0,41
+T0170,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0171,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0172,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0173,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0174,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0175,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0176,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0177,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0178,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0179,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0180,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0181,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0182,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0183,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0184,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0185,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0186,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0187,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0188,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0189,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0190,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0191,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0192,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0193,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0194,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0195,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0196,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0197,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0198,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0199,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0200,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0201,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0202,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0203,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0204,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0205,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0206,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0207,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0208,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0209,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0210,"Slow internet again, third time this week",en,0,,,0,41
+T0211,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0212,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0213,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0214,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0215,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0216,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0217,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0218,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0219,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0220,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0221,"Slow internet again, third time this week",en,0,,,0,41
+T0222,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0223,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0224,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0225,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0226,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0227,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0228,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0229,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0230,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0231,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0232,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0233,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0234,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0235,"Bu film harikaydı, kesinlikle tavsiye ederim! #harika",tr,1,#harika,,0,53
+T0236,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0237,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0238,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0239,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0240,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0241,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0242,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0243,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0244,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0245,"Hayal kırıklığı yaratan bir gün, hiç keyif almadım :(",tr,0,,,0,53
+T0246,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0247,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0248,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0249,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0250,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0251,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0252,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0253,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0254,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0255,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0256,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0257,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0258,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0259,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0260,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0261,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0262,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0263,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0264,"Konser muhteşemdi, gece bitsin istemedim! @sanatcı",tr,1,,@sanatcı,0,50
+T0265,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0266,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0267,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0268,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0269,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0270,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0271,"Not worth the hype, returning it tomorrow.",en,0,,,0,42
+T0272,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0273,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0274,"Servis berbat, bir daha asla gelmeyeceğim #kötüservis",tr,0,#kötüservis,,0,53
+T0275,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0276,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0277,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0278,Just finished an amazing book! Could not put it down. #reading,en,1,#reading,,0,62
+T0279,"Best coffee in town, hands down :) @cafename",en,1,,@cafename,0,44
+T0280,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0281,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0282,"Ürün açıklamadakine benzemiyor, iade ediyorum",tr,0,,,0,45
+T0283,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0284,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0285,"Çok beğendim, herkese öneririm.",tr,1,,,0,31
+T0286,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0287,"Package arrived damaged, contacting support #fail",en,0,#fail,,0,49
+T0288,"Stuck in traffic for 2 hours, this is unbearable :(",en,0,,,0,51
+T0289,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48
+T0290,"Customer service was outstanding, very impressed.",en,1,,,0,49
+T0291,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0292,Beklediğimden çok daha kötü çıktı.,tr,0,,,0,34
+T0293,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0294,"Yeni telefonum süper, kamera muthis #teknoloji",tr,1,#teknoloji,,0,46
+T0295,"Trafik sinir bozucu, saatlerdir bekliyorum...",tr,0,,,0,45
+T0296,"Loved the new album, every track is fire! #music",en,1,#music,,0,48
+T0297,"Mukemmel bir akşam yemegi, sef'in elleri dert görmesin :)",tr,1,,,0,57
+T0298,"Worst movie I have seen this year, total waste",en,0,,,0,46
+T0299,"Slow internet again, third time this week",en,0,,,0,41
+T0300,"Beautiful sunset tonight, perfect end to the day",en,1,,,0,48

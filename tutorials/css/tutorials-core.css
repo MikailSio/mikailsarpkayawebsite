@@ -1,0 +1,1298 @@
+/* ============================================================
+   tutorials-core.css — mikailsarpkaya.com Tutorials
+   Shared layout: navbar, sidebar, footer, typography, responsive
+   All 61 pages link to this file.
+   ============================================================ */
+
+/* ---------- RESET & BASE ---------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-width:auto;scrollbar-color:rgba(235,230,220,.55) transparent}
+html.light-theme{scrollbar-color:rgba(28,26,22,.55) transparent}
+
+/* Page scrollbar — wider + high-contrast. Child .main/.sidebar keep their own rules. */
+::-webkit-scrollbar{width:14px;height:14px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(235,230,220,.5);border-radius:7px;transition:background .2s}
+::-webkit-scrollbar-thumb:hover{background:rgba(235,230,220,.72)}
+html.light-theme ::-webkit-scrollbar-thumb{background:rgba(28,26,22,.5)}
+html.light-theme ::-webkit-scrollbar-thumb:hover{background:rgba(28,26,22,.72)}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--hub-bg,#0a0a0f);
+  color:var(--hub-text,rgba(238,228,210,.88));
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- CSS VARIABLES (defaults — overridden by theme) ---------- */
+:root{
+  --nav-h:62px;
+  --sb-w:260px;
+  --hub-bg:#0a0a0f;
+  --hub-surface:rgba(14,11,8,.95);
+  --hub-text:rgba(238,228,210,.88);
+  --hub-accent:#b8a9d4;
+  --hub-accent-dim:rgba(184,169,212,.08);
+  --hub-border:rgba(184,169,212,.06);
+  --hub-muted:rgba(184,169,212,.35);
+  --particle-color:184,169,212;
+}
+
+/* Legacy variable aliases (live ders sayfaları uyumu) */
+:root{
+  --accent:var(--hub-accent);
+  --surface:var(--hub-surface);
+  --border:var(--hub-border);
+  --muted:var(--hub-muted);
+  --text:var(--hub-text);
+  --bg:var(--hub-bg);
+  --gold:var(--hub-accent);
+  --cyan:#4de8cc;
+  --display:'Bebas Neue',sans-serif;
+  --serif:'DM Serif Display',serif;
+  --mono:'DM Mono',monospace;
+}
+
+/* ---------- FONTS ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+/* ---------- NAVBAR (sabit siyah — tema değişmez) ---------- */
+#nav,nav[id="nav"]{
+  position:fixed!important;top:0;left:0;right:0;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;
+  background:#000000!important;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+  z-index:1000;
+}
+#nav.scrolled{background:#000000!important}
+.nav-logo{
+  font-family:'Bebas Neue',cursive;
+  font-size:1.35rem;letter-spacing:.04em;
+  color:#fff;text-decoration:none;
+}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{
+  font-family:'DM Mono',monospace;
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);text-decoration:none;
+  transition:color .25s;
+}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links .nav-tut{color:rgba(200,169,110,.65)}
+.nav-links .nav-tut:hover,.nav-links .nav-tut.active{color:var(--hub-accent,#c8a96e)}
+.nav-links .nav-cv{color:var(--hub-accent,#c8a96e);opacity:.85}
+.nav-links .nav-cv:hover{opacity:1}
+
+/* Mobile hamburger */
+.nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+
+/* Nav controls (theme + lang) */
+.nav-controls{display:flex;align-items:center;gap:.6rem}
+.nav-btn{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:6px;
+  color:var(--hub-muted,rgba(255,255,255,.4));
+  cursor:pointer;
+  width:34px;height:30px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;
+  padding:0;
+}
+.nav-btn:hover{
+  color:var(--hub-accent,#fff);
+  border-color:var(--hub-accent-dim,rgba(255,255,255,.12));
+  background:rgba(255,255,255,.06);
+}
+.nav-btn svg{width:14px;height:14px}
+.lang-label{
+  font-family:'DM Mono',monospace;
+  font-size:.5rem;letter-spacing:.08em;
+  font-weight:500;
+}
+
+/* Color picker dropdown */
+.color-picker-wrap{position:relative}
+.color-dropdown{
+  display:none;
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:#111;border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:1rem;
+  min-width:200px;
+  box-shadow:0 16px 48px rgba(0,0,0,.5);
+  z-index:1001;
+}
+.color-dropdown.open{display:block}
+.color-dropdown-label{
+  font-family:'DM Mono',monospace;
+  font-size:.42rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);margin-bottom:.6rem;
+}
+.color-presets{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-bottom:.8rem}
+.color-swatch{
+  width:28px;height:28px;border-radius:6px;
+  border:2px solid transparent;
+  cursor:pointer;transition:all .2s;
+  position:relative;
+}
+.color-swatch:hover{transform:scale(1.15);border-color:rgba(255,255,255,.3)}
+.color-swatch.active{border-color:#fff}
+.color-swatch.active::after{
+  content:'✓';position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);
+}
+.color-custom{
+  display:flex;align-items:center;gap:.6rem;
+  padding-top:.6rem;border-top:1px solid rgba(255,255,255,.06);
+}
+.color-custom label{
+  font-family:'DM Mono',monospace;
+  font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.color-custom input[type="color"]{
+  width:28px;height:28px;border:none;border-radius:6px;
+  background:transparent;cursor:pointer;padding:0;
+  -webkit-appearance:none;
+}
+.color-custom input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
+.color-custom input[type="color"]::-webkit-color-swatch{border:1px solid rgba(255,255,255,.15);border-radius:5px}
+
+/* Light theme — sadece arka plan ve metin renklerini değiştirir, accent rengi kullanıcının seçtiği kalır */
+html.light-theme{
+  --hub-bg:#f5f3ef!important;
+  --hub-surface:#ebe8e3!important;
+  --hub-text:rgba(30,28,24,.88)!important;
+  --surface:#ebe8e3!important;
+  --text:rgba(30,28,24,.88)!important;
+  --bg:#f5f3ef!important;
+}
+body.light-theme{background:#f5f3ef!important;color:rgba(30,28,24,.88)!important}
+body.light-theme .code-block{background:#1e2433}
+body.light-theme pre code{color:#c8d0dc}
+body.light-theme .lesson-block{background:rgba(255,255,255,.6)}
+body.light-theme .lesson-block:hover{box-shadow:0 4px 24px rgba(0,0,0,.06)}
+body.light-theme .topic-title{color:#1e1c18}
+body.light-theme .note-tip{background:rgba(0,0,0,.03)}
+body.light-theme .note-warn{background:rgba(245,158,11,.06)}
+body.light-theme .cat-card{background:rgba(255,255,255,.5)}
+body.light-theme .hub-card{background:rgba(255,255,255,.5)}
+body.light-theme .page-desc{color:rgba(30,28,24,.5)}
+body.light-theme .topic-desc{color:rgba(30,28,24,.5)}
+body.light-theme .meta-item,.light-theme .topic-meta-item{color:rgba(30,28,24,.4)}
+
+/* ---------- SIDEBAR (sabit siyah — tema değişmez) ---------- */
+.sidebar{
+  width:var(--sb-w);
+  flex-shrink:0;
+  position:sticky;
+  top:var(--nav-h);
+  height:calc(100vh - var(--nav-h));
+  background:#000000!important;
+  border-right:1px solid rgba(255,255,255,.06)!important;
+  overflow-y:auto;overflow-x:hidden;
+  z-index:900;
+  transition:transform .3s ease;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,.08) transparent;
+}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
+
+/* Sidebar header */
+.sb-head{
+  padding:1.4rem 1.2rem 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  padding-bottom:1rem;
+}
+.sb-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:1.15rem;letter-spacing:.06em;
+  color:#e0dcd4;
+}
+.sb-sub{
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  margin-top:.15rem;
+}
+.sb-back{
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  padding:1rem 1.2rem .5rem;
+  display:block;text-decoration:none;
+  transition:color .2s;
+}
+.sb-back:hover{color:#fff}
+
+/* Sidebar groups */
+.sb-group{border-bottom:1px solid rgba(255,255,255,.05)}
+.sb-group-label{
+  font-family:'DM Mono',monospace;
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  padding:.85rem 1.2rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+  transition:color .2s;user-select:none;
+}
+.sb-group-label:hover{color:#fff}
+.sb-group-label::after{
+  content:'▸';font-size:.55rem;
+  transition:transform .25s;
+}
+.sb-group.open .sb-group-label::after{transform:rotate(90deg);color:var(--hub-accent,#b8a9d4)}
+.sb-group-items{
+  display:none;
+  padding-bottom:.5rem;
+}
+.sb-group.open .sb-group-items{display:block}
+
+/* Sidebar divider (sub-group headers) */
+.sb-divider{
+  font-family:'DM Mono',monospace;
+  font-size:.38rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.18);
+  padding:.45rem 1.2rem .15rem;
+}
+
+/* Sidebar links */
+.sb-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.4rem 1.2rem .4rem 1.6rem;
+  font-family:'Outfit',sans-serif;
+  font-size:.78rem;font-weight:400;
+  color:rgba(255,255,255,.5);
+  text-decoration:none;
+  transition:all .2s;
+  border-left:2px solid transparent;
+}
+.sb-link:hover{
+  color:#fff;
+  background:rgba(255,255,255,.04);
+  border-left-color:rgba(255,255,255,.4);
+}
+.sb-link.active{
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  border-left-color:var(--hub-accent,#b8a9d4);
+  font-weight:500;
+}
+.sb-link.disabled{
+  color:rgba(255,255,255,.18);
+  pointer-events:none;cursor:default;
+}
+
+/* Badges */
+.sb-badge{margin-left:.5rem;flex-shrink:0}
+.sb-live{
+  font-family:'DM Mono',monospace;
+  font-size:.45rem;letter-spacing:.08em;text-transform:uppercase;
+  color:#4de87a;background:rgba(77,232,122,.08);
+  padding:.12rem .4rem;border-radius:3px;
+}
+.sb-soon{
+  font-family:'DM Mono',monospace;
+  font-size:.45rem;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);background:rgba(255,255,255,.03);
+  padding:.12rem .4rem;border-radius:3px;
+}
+
+/* ---------- SIDEBAR TOGGLE ---------- */
+.sb-toggle-desktop{
+  position:fixed;
+  left:var(--sb-w);
+  top:calc(var(--nav-h) + .5rem);
+  transform:translateX(-50%);
+  width:22px;height:22px;
+  border-radius:50%;
+  background:#000000!important;
+  border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.3);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.55rem;z-index:901;
+  transition:all .3s ease;
+}
+.sb-toggle-desktop:hover{
+  color:#fff;
+  border-color:rgba(255,255,255,.2);
+}
+
+/* Sidebar collapsed state */
+body.sb-collapsed .sidebar{
+  margin-left:calc(var(--sb-w) * -1);
+  opacity:0;pointer-events:none;
+  transition:margin-left .35s cubic-bezier(.4,0,.2,1),opacity .35s;
+}
+body.sb-collapsed .sb-toggle-desktop{left:0}
+/* Hub collapsed class (orijinal) */
+.sidebar.collapsed{
+  margin-left:calc(var(--sb-w) * -1);
+  opacity:0;pointer-events:none;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.layout{
+  display:flex;
+  padding-top:var(--nav-h);
+  min-height:100vh;
+}
+.layout .main,.layout .main-content{
+  flex:1;min-width:0;
+}
+
+/* Standalone main-content (fallback, layout wrapper yoksa) */
+.main-content{
+  min-height:calc(100vh - var(--nav-h));
+}
+.page-wrap{
+  min-height:calc(100vh - var(--nav-h));
+}
+
+/* ---------- CANVAS / PARTICLES ---------- */
+.particle-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;opacity:.5;
+}
+.grid-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;opacity:.015;
+  background-image:
+    linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
+/* ---------- FOOTER ---------- */
+.tut-footer{
+  padding:2rem 1.5rem;
+  text-align:center;
+  border-top:1px solid var(--hub-border,rgba(255,255,255,.04));
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;letter-spacing:.1em;
+  color:var(--hub-muted,rgba(255,255,255,.25));
+}
+.tut-footer a{
+  color:var(--hub-accent,#b8a9d4);
+  text-decoration:none;
+}
+.tut-footer a:hover{text-decoration:underline}
+
+/* ---------- COMING SOON PLACEHOLDER CONTENT ---------- */
+.placeholder-content{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:60vh;text-align:center;padding:3rem 2rem;
+  position:relative;z-index:1;
+}
+.placeholder-content h1{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(2rem,5vw,3.5rem);
+  letter-spacing:.04em;
+  color:var(--hub-accent,#b8a9d4);
+}
+.placeholder-content .coming-tag{
+  font-family:'DM Mono',monospace;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--hub-muted,rgba(255,255,255,.3));
+  margin-top:.5rem;
+}
+.placeholder-content .browse-btn{
+  margin-top:2rem;
+  font-family:'DM Mono',monospace;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--hub-accent,#b8a9d4);
+  border:1px solid var(--hub-border,rgba(255,255,255,.1));
+  background:var(--hub-accent-dim,rgba(255,255,255,.03));
+  padding:.7rem 1.8rem;border-radius:6px;
+  text-decoration:none;
+  transition:all .3s;
+}
+.placeholder-content .browse-btn:hover{
+  background:var(--hub-accent,#b8a9d4);
+  color:var(--hub-bg,#0a0a0f);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .sidebar{position:fixed;top:var(--nav-h);left:0;bottom:0;transform:translateX(calc(var(--sb-w) * -1))}
+  .sidebar.open,.sidebar.mobile-open{transform:translateX(0)}
+  .sb-toggle-desktop{display:none}
+  .nav-toggle{display:block}
+  .hamburger{display:flex}
+  .nav-links{
+    position:fixed;top:var(--nav-h);right:0;
+    flex-direction:column;
+    background:rgba(10,10,15,.96);
+    backdrop-filter:blur(18px);
+    padding:1.5rem 2rem;gap:1rem;
+    transform:translateX(100%);
+    transition:transform .3s;
+    border-left:1px solid rgba(255,255,255,.04);
+  }
+  .nav-links.open{transform:translateX(0)}
+  .layout .main{width:100%}
+  .topic-deco{display:none}
+  .topic-hero{padding:2.5rem 1.2rem 2rem}
+  .lessons{padding:1.5rem 1.2rem 4rem}
+  .lesson-nav{padding:1.5rem 1.2rem;flex-direction:column;gap:1rem;text-align:center}
+}
+
+@media(max-width:480px){
+  .placeholder-content h1{font-size:1.6rem}
+  .sb-link{font-size:.72rem;padding:.35rem 1rem .35rem 1.3rem}
+}
+
+/* ============================================================
+   LESSON CONTENT STYLES (live ders sayfaları)
+   ============================================================ */
+
+/* ---------- LOADER ---------- */
+#loader{
+  position:fixed;inset:0;z-index:1000;
+  background:var(--hub-bg,#0a0a0f);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.ld-name{font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--hub-text);overflow:hidden}
+.ld-name span{display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards}
+.ld-bar-wrap{width:200px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2rem}
+.ld-bar{height:100%;width:0;background:var(--hub-accent);animation:loadBar 1.5s ease forwards}
+.ld-sub{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--hub-muted);opacity:0;animation:fadeIn .5s .9s ease forwards}
+@keyframes loadBar{to{width:100%}}
+@keyframes slideUp{to{transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ---------- TOPIC HERO ---------- */
+.topic-hero{
+  padding:5rem 5vw 3rem;
+  border-bottom:1px solid var(--hub-border,rgba(255,255,255,.04));
+  position:relative;overflow:hidden;
+}
+.topic-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 20% 60%,rgba(200,169,110,.04),transparent 65%)}
+.topic-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);width:280px;height:280px;opacity:.06;pointer-events:none}
+.topic-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--hub-accent);margin-bottom:1rem}
+.topic-title{font-family:var(--display);font-size:clamp(3rem,7vw,7rem);line-height:.88;letter-spacing:.04em;margin-bottom:1rem}
+.topic-title .accent{color:var(--hub-accent)}
+.topic-desc{font-size:.92rem;color:var(--hub-muted);line-height:2.05;max-width:540px;margin-top:1.2rem}
+.topic-desc strong{color:var(--hub-text)}
+.topic-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.8rem}
+.meta-item,.topic-meta-item{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--hub-muted);display:flex;align-items:center;gap:.5rem}
+.meta-item span,.topic-meta-item span{color:var(--hub-text)}
+.topic-hero-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);font-family:var(--display);font-size:clamp(12rem,20vw,22rem);line-height:1;color:var(--hub-accent);opacity:.04;pointer-events:none}
+
+/* ---------- LESSON BLOCKS ---------- */
+.lessons,.lessons-wrap{padding:3rem 5vw 6rem}
+
+/* ---------- LESSON BLOCKS (premium) ---------- */
+.lesson-block{
+  border:1px solid var(--hub-border,rgba(255,255,255,.06));
+  border-radius:12px;
+  margin-bottom:1rem;
+  background:rgba(255,255,255,.015);
+  backdrop-filter:blur(6px);
+  transition:border-color .3s,box-shadow .3s,transform .2s;
+  overflow:hidden;
+}
+.lesson-block:hover{
+  border-color:rgba(200,169,110,.15);
+  box-shadow:0 4px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.03);
+  transform:translateY(-1px);
+}
+.lesson-block.open{
+  border-color:var(--hub-accent-dim,rgba(200,169,110,.12));
+  box-shadow:0 8px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.lesson-header{
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.6rem 2.2rem;cursor:pointer;user-select:none;
+  transition:background .2s;
+}
+.lesson-header:hover{background:rgba(255,255,255,.02)}
+.lesson-num{
+  font-family:var(--mono,'DM Mono',monospace);
+  font-size:.62rem;letter-spacing:.15em;
+  color:var(--hub-muted);min-width:2.5rem;
+  opacity:.6;
+}
+.lesson-info{flex:1;min-width:0}
+.lesson-title{font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;flex:1;transition:color .25s;font-weight:500}
+.lesson-header:hover .lesson-title{color:var(--hub-accent)}
+.lesson-sub{font-size:.65rem;color:var(--hub-muted);margin-top:.3rem;letter-spacing:.04em;opacity:.7}
+.lesson-badges{display:flex;gap:.6rem;margin-top:.45rem;align-items:center}
+.l-badge{
+  font-family:var(--mono,'DM Mono',monospace);
+  font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.15rem .5rem;border-radius:3px;
+}
+.lb-live{color:#4de87a;border:1px solid rgba(77,232,122,.2);background:rgba(77,232,122,.06)}
+.l-time{font-family:var(--mono,'DM Mono',monospace);font-size:.5rem;color:var(--hub-muted);opacity:.6}
+.lesson-toggle,.lesson-arrow{
+  font-size:.85rem;color:var(--hub-muted);
+  transition:transform .35s,color .25s;
+  margin-left:auto;flex-shrink:0;
+  width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:6px;
+  background:rgba(255,255,255,.02);
+}
+.lesson-block.open .lesson-toggle{transform:rotate(45deg);color:var(--hub-accent)}
+.lesson-block.open .lesson-arrow{transform:rotate(90deg);color:var(--hub-accent)}
+.lesson-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)}
+.lesson-block.open .lesson-body{max-height:9999px}
+
+/* ---------- LESSON CONTENT ---------- */
+.lesson-content{padding:0 2.5rem 2.5rem}
+.lesson-content p,.l-text{font-size:.88rem;color:var(--hub-muted);line-height:2.1;margin-bottom:1.2rem}
+.lesson-content p strong,.l-text strong{color:var(--hub-text)}
+.lesson-content p em,.l-text em{color:var(--hub-text);font-style:italic;opacity:.85}
+.lesson-content p code,.l-text code{font-family:var(--mono);color:var(--hub-accent);font-size:.85em;background:rgba(200,169,110,.07);padding:.1em .35em;border-radius:3px}
+.lesson-content h4{font-family:var(--display);font-size:1.1rem;letter-spacing:.08em;color:var(--hub-text);margin:1.8rem 0 .8rem}
+.l-list{list-style:none;padding:0;margin:.8rem 0 1.2rem}
+.l-list li{font-size:.85rem;color:var(--hub-muted);line-height:2;padding-left:1.2rem;position:relative}
+.l-list li::before{content:'›';position:absolute;left:0;color:var(--hub-accent);font-weight:600}
+
+/* ---------- CODE BLOCKS ---------- */
+.code-wrap{margin:1.2rem 0;border-radius:8px;overflow:hidden;border:1px solid var(--hub-border,rgba(255,255,255,.06))}
+.code-block{background:#080d15;margin:0;overflow:hidden}
+.code-wrap .code-block{border:none;margin:0;border-radius:0}
+.code-header,.code-label{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.5rem 1rem;
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid var(--hub-border,rgba(255,255,255,.06));
+}
+.code-lang,.code-label span{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--hub-accent)}
+.code-copy{font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--hub-muted);cursor:pointer;background:none;border:none;transition:color .2s;padding:0}
+.code-copy:hover{color:var(--hub-text)}
+pre{margin:0;padding:1.2rem;overflow-x:auto}
+pre code{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:#a8b8c8;white-space:pre}
+
+/* Standalone code-block (without code-wrap) */
+.lesson-content > .code-block,
+.lesson-body > .code-block,
+.lesson-body > p + .code-block{
+  border:1px solid var(--hub-border,rgba(255,255,255,.06));
+  border-radius:8px;
+  margin:1.2rem 0;
+}
+
+/* Syntax highlighting */
+.kw{color:#7c9ed9}
+.fn{color:#c8a96e}
+.str,.st{color:#98c379}
+.cm{color:#4a5568;font-style:italic}
+.num,.nm{color:#d19a66}
+.pp{color:#c678dd}
+.ty,.tp{color:#e5c07b}
+
+/* ---------- NOTES ---------- */
+.note,.l-note,.l-warn{
+  margin:1.4rem 0;padding:1.1rem 1.5rem;
+  font-size:.85rem;line-height:1.85;
+  border-radius:8px;
+  color:var(--hub-muted);
+}
+.note-tip,.l-note{border-left:2px solid var(--hub-accent);background:rgba(200,169,110,.04)}
+.note-warn,.l-warn{border-left:2px solid #f59e0b;background:rgba(245,158,11,.04)}
+.note-math{border-left:2px solid var(--cyan,#4de8cc);background:rgba(77,232,204,.04)}
+.note strong,.l-note strong,.l-warn strong{color:var(--hub-text)}
+.l-note code,.l-warn code{font-family:var(--mono);color:var(--hub-accent);font-size:.85em;background:rgba(200,169,110,.07);padding:.1em .35em;border-radius:3px}
+
+/* ---------- LESSON NAV ---------- */
+.lesson-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:2rem 5vw;border-top:1px solid var(--hub-border,rgba(255,255,255,.04));
+  font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;
+}
+.lesson-nav a,.ln-btn{
+  color:var(--hub-muted);text-decoration:none;
+  transition:color .2s,background .2s;
+  font-family:var(--mono,'DM Mono',monospace);
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+}
+.lesson-nav a:hover,.ln-btn:hover{color:var(--hub-accent)}
+.ln-btn{
+  padding:.6rem 1.2rem;border:1px solid var(--hub-border,rgba(255,255,255,.06));
+  border-radius:6px;background:rgba(255,255,255,.02);
+  display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;
+}
+.ln-btn.ln-next,.lesson-nav .nav-next{color:var(--hub-accent);border-color:var(--hub-accent-dim,rgba(200,169,110,.15))}
+.ln-center{font-size:.5rem;color:var(--hub-muted);opacity:.5}
+.lesson-nav .nav-label{color:rgba(232,224,208,.2)}
+
+/* ---------- FOOTER (live ders) ---------- */
+.f-copy,.f-site{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;
+  color:var(--hub-muted);text-align:center;padding:.5rem;
+}
+.f-site a{color:var(--hub-accent);text-decoration:none}
+.f-site a:hover{text-decoration:underline}
+
+/* ---------- MOBILE HAMBURGER (live ders) ---------- */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1px;background:var(--hub-text);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mobile-nav{
+  display:none;position:fixed;inset:0;z-index:490;
+  background:rgba(5,8,13,.97);backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-family:var(--display);font-size:2.5rem;letter-spacing:.1em;color:var(--hub-text);text-decoration:none;transition:color .3s}
+.mobile-nav a:hover{color:var(--hub-accent)}
+
+/* ---------- MOBILE SIDEBAR TOGGLE (live ders) ---------- */
+.sb-toggle{
+  display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;
+  background:var(--hub-accent);color:#050810;border:none;
+  width:46px;height:46px;border-radius:50%;font-size:1.1rem;cursor:pointer;
+  box-shadow:0 4px 20px rgba(200,169,110,.3);
+}
+@media(max-width:900px){
+  .sb-toggle{display:flex;align-items:center;justify-content:center}
+}
+
+/* ---------- DIVIDER ---------- */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,110,.18) 40%,rgba(200,169,110,.18) 60%,transparent)}
+
+/* ---------- SCROLL REVEAL ---------- */
+.sr{opacity:0;transform:translateY(32px);transition:opacity .85s ease,transform .85s ease}
+
+/* ============================================================
+   SUB-HUB STYLES (languages/index, web/index, ai/index)
+   ============================================================ */
+
+/* Hero (shared with main hub) */
+.page-hero{padding:5rem 5vw 3.5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--hub-border,rgba(255,255,255,.04))}
+.page-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 25% 40%,rgba(200,169,110,.04),transparent 70%),radial-gradient(ellipse 40% 50% at 75% 60%,rgba(200,169,110,.03),transparent 70%)}
+#particles{position:absolute;inset:0;pointer-events:none}
+.hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:linear-gradient(rgba(200,169,110,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,.3) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 70%)}
+.hero-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);width:300px;height:300px;opacity:.04;pointer-events:none}
+
+.eyebrow{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--hub-accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--hub-accent)}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,8vw,8rem);line-height:.88;letter-spacing:.04em;margin-bottom:1rem}
+.page-title .accent{color:var(--hub-accent)}
+.page-title .glow{position:relative}
+.page-title .glow::after{content:attr(data-text);position:absolute;left:0;top:0;color:var(--hub-accent);opacity:.06;filter:blur(30px);pointer-events:none}
+.page-desc{font-family:'Outfit',sans-serif;font-weight:300;font-size:.85rem;color:var(--hub-muted);line-height:2;max-width:540px;margin-top:1.2rem}
+.page-desc strong{color:var(--hub-text);font-weight:400}
+.page-meta{display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.5rem}
+
+/* Section labels */
+.section-label{padding:2.5rem 5vw 1rem;font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--hub-muted);border-bottom:1px solid var(--hub-border,rgba(255,255,255,.04));display:flex;align-items:center;gap:.8rem}
+.section-label::before{content:'';width:16px;height:1px;background:var(--hub-accent);opacity:.4}
+
+/* Category cards (sub-hub topic cards) */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;padding:1.5rem 5vw 3rem}
+.cat-card{display:block;text-decoration:none;padding:1.8rem 1.6rem;position:relative;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);transition:all .4s cubic-bezier(.4,0,.2,1)}
+.cat-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s;border-radius:10px;background:radial-gradient(ellipse at 20% 0%,rgba(200,169,110,.05),transparent 60%)}
+.cat-card:hover{transform:translateY(-3px);border-color:rgba(200,169,110,.15);box-shadow:0 16px 48px rgba(0,0,0,.3),0 0 30px rgba(200,169,110,.03)}
+.cat-card:hover::before{opacity:1}
+.cat-card-accent{position:absolute;top:0;left:0;width:100%;height:2px;opacity:.5;transition:opacity .3s}
+.cat-card:hover .cat-card-accent{opacity:1}
+.cat-icon{font-size:1.5rem;margin-bottom:.8rem}
+.cat-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.08em;margin-bottom:.3rem;transition:text-shadow .3s}
+.cat-card:hover .cat-name{text-shadow:0 0 20px currentColor}
+.cat-sub{font-family:'Outfit',sans-serif;font-weight:300;font-size:.65rem;color:var(--hub-muted);letter-spacing:.04em;line-height:1.7;margin-bottom:.5rem}
+.cat-count{font-family:'DM Mono',monospace;font-size:.48rem;color:var(--hub-muted);letter-spacing:.1em;text-transform:uppercase}
+.cat-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:.4rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;margin-top:.4rem;border-radius:3px}
+.cat-badge-live{background:rgba(77,232,122,.08);border:1px solid rgba(77,232,122,.2);color:#4de87a}
+.cat-badge-soon{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:rgba(200,200,200,.35)}
+.cat-card.soon{opacity:.35}
+.cat-card.soon:hover{transform:none;box-shadow:none}
+
+/* Bottom note */
+.bottom-note{padding:2rem 5vw 4rem;border-top:1px solid var(--hub-border,rgba(255,255,255,.04))}
+.bottom-note p{font-family:'Outfit',sans-serif;font-weight:300;font-size:.65rem;color:var(--hub-muted);line-height:2;max-width:500px}
+.bottom-note a{color:var(--hub-accent);text-decoration:none}
+.bottom-note a:hover{text-decoration:underline}
+.bottom-note span{color:var(--hub-text);font-weight:400}
+
+/* Sub-hub mobile */
+@media(max-width:900px){
+  .hero-deco{display:none}
+  .page-hero{padding:3rem 1.2rem 2.5rem}
+  .cat-grid{padding:1rem 1.2rem 2rem;grid-template-columns:1fr;gap:.8rem}
+  .section-label{padding:2rem 1.2rem .8rem}
+}
+/* ============================================================
+   PREMIUM ENHANCEMENTS — v8 patch
+   Append this to the END of tutorials-core.css
+   ============================================================ */
+
+/* ---------- LESSON PROGRESS BAR ---------- */
+.lesson-progress{
+  position:sticky;top:var(--nav-h);z-index:50;
+  height:3px;background:rgba(255,255,255,.03);
+  overflow:hidden;
+}
+.lesson-progress-bar{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--hub-accent),color-mix(in srgb,var(--hub-accent) 60%,#fff));
+  transition:width .3s ease;
+  box-shadow:0 0 12px color-mix(in srgb,var(--hub-accent) 40%,transparent);
+}
+
+/* ---------- GLASSMORPHISM LESSON BLOCKS ---------- */
+.lesson-block{
+  background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008))!important;
+  backdrop-filter:blur(12px)!important;
+  -webkit-backdrop-filter:blur(12px)!important;
+  border:1px solid rgba(255,255,255,.06)!important;
+  box-shadow:
+    0 2px 16px rgba(0,0,0,.15),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  transition:all .4s cubic-bezier(.4,0,.2,1)!important;
+}
+.lesson-block:hover{
+  background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.015))!important;
+  border-color:color-mix(in srgb,var(--hub-accent) 20%,transparent)!important;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.25),
+    0 0 40px color-mix(in srgb,var(--hub-accent) 4%,transparent),
+    inset 0 1px 0 rgba(255,255,255,.06)!important;
+  transform:translateY(-2px);
+}
+.lesson-block.open{
+  border-color:color-mix(in srgb,var(--hub-accent) 18%,transparent)!important;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,.3),
+    0 0 50px color-mix(in srgb,var(--hub-accent) 5%,transparent),
+    inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+
+/* Gradient top-border accent on open */
+.lesson-block.open::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--hub-accent),transparent);
+  opacity:.5;border-radius:12px 12px 0 0;
+}
+.lesson-block{position:relative;}
+
+/* ---------- IMPROVED CODE BLOCKS ---------- */
+.code-wrap{
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:10px!important;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.02);
+}
+.code-label,.code-header{
+  background:rgba(255,255,255,.04)!important;
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+  padding:.55rem 1.1rem!important;
+}
+.code-block{
+  background:linear-gradient(180deg,#0a1120,#080d18)!important;
+}
+pre{
+  padding:1.3rem 1.2rem!important;
+  position:relative;
+}
+pre code{
+  font-size:.8rem!important;
+  line-height:1.8!important;
+  tab-size:4;
+}
+
+/* Copy button enhancement */
+.code-copy{
+  font-size:.5rem!important;
+  padding:.25rem .6rem!important;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:4px;
+  transition:all .25s!important;
+}
+.code-copy:hover{
+  background:rgba(255,255,255,.06);
+  color:var(--hub-accent)!important;
+  border-color:color-mix(in srgb,var(--hub-accent) 25%,transparent);
+}
+
+/* ---------- IMPROVED SYNTAX HIGHLIGHTING ---------- */
+.kw{color:#7c9ed9;font-weight:500}                    /* keywords: blue */
+.fn{color:var(--hub-accent,#c8a96e)}                   /* functions: accent gold */
+.str,.st{color:#98c379}                                 /* strings: green */
+.cm{color:#546178;font-style:italic}                    /* comments: muted blue-gray */
+.num,.nm{color:#d19a66}                                 /* numbers: orange */
+.pp{color:#c678dd}                                      /* preprocessor: purple */
+.ty,.tp{color:#e5c07b}                                  /* types: yellow */
+.op{color:#56b6c2}                                      /* operators: cyan */
+.inc{color:#98c379}                                     /* includes: green */
+
+/* ---------- LESSON NUMBER BADGE ---------- */
+.lesson-num{
+  font-family:var(--mono,'DM Mono',monospace)!important;
+  font-size:.58rem!important;
+  letter-spacing:.12em!important;
+  color:var(--hub-accent)!important;
+  opacity:.4!important;
+  min-width:2.2rem;
+  background:color-mix(in srgb,var(--hub-accent) 5%,transparent);
+  padding:.25rem .5rem;
+  border-radius:5px;
+  text-align:center;
+}
+.lesson-block.open .lesson-num{
+  opacity:.8!important;
+  background:color-mix(in srgb,var(--hub-accent) 10%,transparent);
+}
+
+/* ---------- LESSON TOGGLE ANIMATION ---------- */
+.lesson-toggle,.lesson-arrow{
+  transition:all .4s cubic-bezier(.4,0,.2,1)!important;
+  background:rgba(255,255,255,.03)!important;
+  border:1px solid rgba(255,255,255,.04);
+}
+.lesson-block:hover .lesson-toggle,
+.lesson-block:hover .lesson-arrow{
+  border-color:color-mix(in srgb,var(--hub-accent) 15%,transparent);
+  color:var(--hub-accent);
+}
+
+/* ---------- SMOOTH OPEN ANIMATION ---------- */
+.lesson-body{
+  transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .4s ease!important;
+  opacity:0;
+}
+.lesson-block.open .lesson-body{
+  opacity:1;
+}
+
+/* ---------- HERO ENHANCEMENTS ---------- */
+.topic-hero{
+  position:relative;
+  overflow:hidden;
+}
+.topic-hero::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--hub-accent) 20%,transparent) 30%,color-mix(in srgb,var(--hub-accent) 20%,transparent) 70%,transparent);
+}
+.topic-eyebrow{
+  display:flex;align-items:center;gap:.8rem;
+}
+.topic-eyebrow::before{
+  content:'';width:20px;height:1px;
+  background:var(--hub-accent);opacity:.6;
+}
+
+/* Hero decorative text watermark */
+.topic-hero-deco{
+  position:absolute;right:3vw;top:50%;
+  transform:translateY(-50%);
+  font-family:var(--display);
+  font-size:clamp(10rem,18vw,20rem);
+  line-height:1;color:var(--hub-accent);
+  opacity:.03;pointer-events:none;
+  user-select:none;
+}
+
+/* ---------- NOTE ENHANCEMENTS ---------- */
+.note,.l-note,.l-warn{
+  border-radius:10px!important;
+  position:relative;
+  overflow:hidden;
+}
+.note::before,.l-note::before,.l-warn::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  border-radius:3px;
+}
+.note-tip::before,.l-note::before{
+  background:linear-gradient(180deg,var(--hub-accent),color-mix(in srgb,var(--hub-accent) 30%,transparent));
+}
+.note-warn::before,.l-warn::before{
+  background:linear-gradient(180deg,#f59e0b,rgba(245,158,11,.3));
+}
+
+/* ---------- SCROLLBAR (main content) ---------- */
+.main::-webkit-scrollbar{width:5px}
+.main::-webkit-scrollbar-track{background:transparent}
+.main::-webkit-scrollbar-thumb{
+  background:color-mix(in srgb,var(--hub-accent) 15%,transparent);
+  border-radius:3px;
+}
+.main::-webkit-scrollbar-thumb:hover{
+  background:color-mix(in srgb,var(--hub-accent) 30%,transparent);
+}
+
+/* ---------- LIGHT THEME ENHANCEMENTS ---------- */
+body.light-theme .lesson-block{
+  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,.4))!important;
+  border-color:rgba(0,0,0,.06)!important;
+  box-shadow:0 2px 12px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.8)!important;
+}
+body.light-theme .lesson-block:hover{
+  box-shadow:0 8px 24px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.8)!important;
+}
+body.light-theme .code-wrap{
+  border-color:rgba(0,0,0,.08)!important;
+  box-shadow:0 2px 12px rgba(0,0,0,.08)!important;
+}
+body.light-theme .lesson-num{
+  background:color-mix(in srgb,var(--hub-accent) 8%,transparent);
+}
+body.light-theme .lesson-progress{
+  background:rgba(0,0,0,.04);
+}
+
+/* ---------- SELECTION COLOR ---------- */
+::selection{
+  background:color-mix(in srgb,var(--hub-accent) 30%,transparent);
+  color:var(--hub-text);
+}
+
+/* ---------- FOCUS VISIBLE ---------- */
+:focus-visible{
+  outline:2px solid color-mix(in srgb,var(--hub-accent) 50%,transparent);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+/* ---------- PRINT STYLES ---------- */
+@media print{
+  #nav,.sidebar,.sb-toggle-desktop,.sb-toggle,.lesson-progress{display:none!important}
+  .layout{display:block}
+  .main{width:100%!important}
+  .lesson-body{max-height:none!important;opacity:1!important}
+  .lesson-block{break-inside:avoid;border:1px solid #ddd!important;background:#fff!important}
+  pre{white-space:pre-wrap!important;word-break:break-all}
+}
+/* ============================================================
+   PREMIUM ENHANCEMENTS — v8 patch
+   Append to END of tutorials-core.css
+   ============================================================ */
+
+/* ---------- LESSON PROGRESS BAR ---------- */
+.lesson-progress{
+  position:sticky;top:var(--nav-h);z-index:50;
+  height:3px;background:rgba(255,255,255,.03);
+  overflow:hidden;
+}
+.lesson-progress-bar{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--hub-accent),color-mix(in srgb,var(--hub-accent) 60%,#fff));
+  transition:width .3s ease;
+  box-shadow:0 0 12px color-mix(in srgb,var(--hub-accent) 40%,transparent);
+}
+
+/* ---------- GLASSMORPHISM LESSON BLOCKS ---------- */
+.lesson-block{
+  background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008))!important;
+  backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;
+  border:1px solid rgba(255,255,255,.06)!important;
+  box-shadow:0 2px 16px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.04);
+  transition:all .4s cubic-bezier(.4,0,.2,1)!important;
+  position:relative;
+}
+.lesson-block:hover{
+  background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.015))!important;
+  border-color:color-mix(in srgb,var(--hub-accent) 20%,transparent)!important;
+  box-shadow:0 8px 32px rgba(0,0,0,.25),0 0 40px color-mix(in srgb,var(--hub-accent) 4%,transparent),inset 0 1px 0 rgba(255,255,255,.06)!important;
+  transform:translateY(-2px);
+}
+.lesson-block.open{
+  border-color:color-mix(in srgb,var(--hub-accent) 18%,transparent)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.3),0 0 50px color-mix(in srgb,var(--hub-accent) 5%,transparent),inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+.lesson-block.open::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--hub-accent),transparent);
+  opacity:.5;border-radius:12px 12px 0 0;
+}
+
+/* ---------- IMPROVED CODE BLOCKS ---------- */
+.code-wrap{
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:10px!important;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.02);
+}
+.code-label,.code-header{
+  background:rgba(255,255,255,.04)!important;
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+  padding:.55rem 1.1rem!important;
+}
+.code-block{background:linear-gradient(180deg,#0a1120,#080d18)!important}
+pre{padding:1.3rem 1.2rem!important;position:relative}
+pre code{font-size:.8rem!important;line-height:1.8!important;tab-size:4}
+.code-copy{
+  font-size:.5rem!important;padding:.25rem .6rem!important;
+  border:1px solid rgba(255,255,255,.06);border-radius:4px;transition:all .25s!important;
+}
+.code-copy:hover{
+  background:rgba(255,255,255,.06);color:var(--hub-accent)!important;
+  border-color:color-mix(in srgb,var(--hub-accent) 25%,transparent);
+}
+
+/* ---------- SYNTAX HIGHLIGHTING ---------- */
+.kw{color:#7c9ed9;font-weight:500}
+.fn{color:var(--hub-accent,#c8a96e)}
+.str,.st{color:#98c379}
+.cm{color:#546178;font-style:italic}
+.num,.nm{color:#d19a66}
+.pp{color:#c678dd}
+.ty,.tp{color:#e5c07b}
+.op{color:#56b6c2}
+.inc{color:#98c379}
+
+/* ---------- LESSON NUMBER BADGE ---------- */
+.lesson-num{
+  font-family:var(--mono,'DM Mono',monospace)!important;
+  font-size:.58rem!important;letter-spacing:.12em!important;
+  color:var(--hub-accent)!important;opacity:.4!important;
+  min-width:2.2rem;
+  background:color-mix(in srgb,var(--hub-accent) 5%,transparent);
+  padding:.25rem .5rem;border-radius:5px;text-align:center;
+}
+.lesson-block.open .lesson-num{
+  opacity:.8!important;
+  background:color-mix(in srgb,var(--hub-accent) 10%,transparent);
+}
+
+/* ---------- LESSON TOGGLE ANIMATION ---------- */
+.lesson-toggle,.lesson-arrow{
+  transition:all .4s cubic-bezier(.4,0,.2,1)!important;
+  background:rgba(255,255,255,.03)!important;
+  border:1px solid rgba(255,255,255,.04);
+}
+.lesson-block:hover .lesson-toggle,
+.lesson-block:hover .lesson-arrow{
+  border-color:color-mix(in srgb,var(--hub-accent) 15%,transparent);
+  color:var(--hub-accent);
+}
+
+/* ---------- SMOOTH OPEN ANIMATION ---------- */
+.lesson-body{
+  transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .4s ease!important;
+  opacity:0;
+}
+.lesson-block.open .lesson-body{opacity:1}
+
+/* ---------- HERO ENHANCEMENTS ---------- */
+.topic-hero{position:relative;overflow:hidden}
+.topic-hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--hub-accent) 20%,transparent) 30%,color-mix(in srgb,var(--hub-accent) 20%,transparent) 70%,transparent);
+}
+.topic-eyebrow{display:flex;align-items:center;gap:.8rem}
+.topic-eyebrow::before{content:'';width:20px;height:1px;background:var(--hub-accent);opacity:.6}
+
+/* ---------- NOTE ENHANCEMENTS ---------- */
+.note,.l-note,.l-warn{border-radius:10px!important;position:relative;overflow:hidden}
+
+/* ---------- SCROLLBAR ---------- */
+.main::-webkit-scrollbar{width:5px}
+.main::-webkit-scrollbar-track{background:transparent}
+.main::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--hub-accent) 15%,transparent);border-radius:3px}
+.main::-webkit-scrollbar-thumb:hover{background:color-mix(in srgb,var(--hub-accent) 30%,transparent)}
+
+/* ---------- SELECTION COLOR ---------- */
+::selection{background:color-mix(in srgb,var(--hub-accent) 30%,transparent);color:var(--hub-text)}
+
+/* ---------- FOCUS VISIBLE ---------- */
+:focus-visible{outline:2px solid color-mix(in srgb,var(--hub-accent) 50%,transparent);outline-offset:2px;border-radius:4px}
+
+/* ============================================================
+   LIGHT THEME — FULL READABILITY FIX
+   Key: override --hub-muted on html.light-theme so every
+   element referencing it becomes readable on light bg.
+   Also use html.light-theme for max specificity.
+   ============================================================ */
+
+html.light-theme{
+  --hub-muted:rgba(30,28,24,.45)!important;
+  --hub-border:rgba(0,0,0,.08)!important;
+  --hub-accent-dim:color-mix(in srgb,var(--hub-accent) 12%,transparent)!important;
+}
+
+/* Text in lessons (.l-text is the original class, .lesson-content p is template) */
+html.light-theme .l-text,
+html.light-theme .lesson-body p,
+html.light-theme .lesson-content p{
+  color:rgba(30,28,24,.7)!important;
+}
+html.light-theme .l-text strong,
+html.light-theme .lesson-body p strong,
+html.light-theme .lesson-content p strong{
+  color:rgba(30,28,24,.92)!important;
+}
+html.light-theme .l-text em,
+html.light-theme .lesson-body p em{
+  color:rgba(30,28,24,.8)!important;
+}
+html.light-theme .l-text code,
+html.light-theme .lesson-body p code,
+html.light-theme .lesson-content p code{
+  color:var(--hub-accent)!important;
+  background:color-mix(in srgb,var(--hub-accent) 10%,transparent)!important;
+}
+
+/* Lesson blocks */
+html.light-theme .lesson-block{
+  background:rgba(255,255,255,.55)!important;
+  border-color:rgba(0,0,0,.08)!important;
+  box-shadow:0 2px 12px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.8)!important;
+}
+html.light-theme .lesson-block:hover{
+  box-shadow:0 8px 24px rgba(0,0,0,.08)!important;
+  border-color:color-mix(in srgb,var(--hub-accent) 30%,transparent)!important;
+}
+html.light-theme .lesson-block.open{
+  border-color:color-mix(in srgb,var(--hub-accent) 25%,transparent)!important;
+}
+
+/* Lesson title & sub */
+html.light-theme .lesson-title{color:rgba(30,28,24,.88)!important}
+html.light-theme .lesson-sub{color:rgba(30,28,24,.45)!important}
+html.light-theme .lesson-header:hover .lesson-title{color:var(--hub-accent)!important}
+html.light-theme .lesson-num{
+  background:color-mix(in srgb,var(--hub-accent) 10%,transparent)!important;
+  color:var(--hub-accent)!important;
+}
+
+/* Hero */
+html.light-theme .topic-title{color:rgba(30,28,24,.95)!important}
+html.light-theme .topic-desc{color:rgba(30,28,24,.55)!important}
+html.light-theme .topic-desc strong{color:rgba(30,28,24,.85)!important}
+html.light-theme .meta-item,
+html.light-theme .topic-meta-item{color:rgba(30,28,24,.45)!important}
+html.light-theme .meta-item span,
+html.light-theme .topic-meta-item span{color:rgba(30,28,24,.75)!important}
+html.light-theme .topic-hero-deco{color:var(--hub-accent)!important;opacity:.04!important}
+
+/* Code blocks — always dark */
+html.light-theme .code-wrap{border-color:rgba(0,0,0,.12)!important;box-shadow:0 2px 16px rgba(0,0,0,.1)!important}
+html.light-theme .code-block{background:#0d1117!important}
+html.light-theme pre code{color:#c8d0dc!important}
+html.light-theme .code-label,
+html.light-theme .code-header{background:rgba(0,0,0,.04)!important;border-bottom-color:rgba(0,0,0,.08)!important}
+html.light-theme .code-label span,
+html.light-theme .code-lang{color:var(--hub-accent)!important}
+html.light-theme .code-copy{color:rgba(30,28,24,.4)!important}
+
+/* Notes */
+html.light-theme .note,
+html.light-theme .l-note,
+html.light-theme .note-tip{
+  color:rgba(30,28,24,.65)!important;
+  background:color-mix(in srgb,var(--hub-accent) 6%,transparent)!important;
+  border-left-color:var(--hub-accent)!important;
+}
+html.light-theme .note-warn,
+html.light-theme .l-warn{
+  color:rgba(30,28,24,.65)!important;
+  background:rgba(245,158,11,.06)!important;
+  border-left-color:#f59e0b!important;
+}
+html.light-theme .note strong,
+html.light-theme .l-note strong,
+html.light-theme .l-warn strong{color:rgba(30,28,24,.88)!important}
+html.light-theme .note code,
+html.light-theme .l-note code,
+html.light-theme .l-warn code{
+  color:var(--hub-accent)!important;
+  background:color-mix(in srgb,var(--hub-accent) 10%,transparent)!important;
+}
+
+/* Lists */
+html.light-theme .l-list li{color:rgba(30,28,24,.65)!important}
+html.light-theme .l-list li::before{color:var(--hub-accent)!important}
+
+/* Lesson nav */
+html.light-theme .lesson-nav a,
+html.light-theme .ln-btn{color:rgba(30,28,24,.5)!important;border-color:rgba(0,0,0,.08)!important}
+html.light-theme .lesson-nav a:hover,
+html.light-theme .ln-btn:hover{color:var(--hub-accent)!important}
+html.light-theme .ln-btn.ln-next,
+html.light-theme .lesson-nav .nav-next{color:var(--hub-accent)!important;border-color:color-mix(in srgb,var(--hub-accent) 25%,transparent)!important}
+html.light-theme .ln-center{color:rgba(30,28,24,.35)!important}
+
+/* Footer */
+html.light-theme .tut-footer{color:rgba(30,28,24,.35)!important;border-top-color:rgba(0,0,0,.06)!important}
+html.light-theme .tut-footer a{color:var(--hub-accent)!important}
+
+/* Toggle/arrow */
+html.light-theme .lesson-toggle,
+html.light-theme .lesson-arrow{color:rgba(30,28,24,.3)!important;background:rgba(0,0,0,.03)!important;border-color:rgba(0,0,0,.06)!important}
+html.light-theme .lesson-block.open .lesson-toggle,
+html.light-theme .lesson-block.open .lesson-arrow{color:var(--hub-accent)!important}
+
+/* Badges */
+html.light-theme .l-badge.lb-live{color:#16a34a!important;border-color:rgba(22,163,74,.25)!important;background:rgba(22,163,74,.06)!important}
+html.light-theme .l-time{color:rgba(30,28,24,.35)!important}
+
+/* Progress bar */
+html.light-theme .lesson-progress{background:rgba(0,0,0,.04)}
+
+/* Scrollbar */
+html.light-theme .main::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--hub-accent) 20%,rgba(0,0,0,.1))}
+
+/* h4 headings */
+html.light-theme .lesson-content h4,
+html.light-theme .lesson-body h4{color:rgba(30,28,24,.88)!important}
+
+/* Page desc (sub-hub) */
+html.light-theme .page-desc{color:rgba(30,28,24,.5)!important}
+
+/* ---------- PRINT STYLES ---------- */
+@media print{
+  #nav,.sidebar,.sb-toggle-desktop,.sb-toggle,.lesson-progress{display:none!important}
+  .layout{display:block}
+  .main{width:100%!important}
+  .lesson-body{max-height:none!important;opacity:1!important}
+  .lesson-block{break-inside:avoid;border:1px solid #ddd!important;background:#fff!important}
+  pre{white-space:pre-wrap!important;word-break:break-all}
+}
+
+
+/* ===== UNIFY PATCH (cross-pattern aliases) ===== */
+/* Card title aliases — render cc-title and calc-card-title as card-title */
+.lesson-content .calc-card .cc-title,
+.lesson-content .calc-card .calc-card-title { font-size: .92rem; font-weight: 600; color: var(--accent); margin-bottom: .35rem; font-family: var(--mono); letter-spacing: .05em; }
+.lesson-content .calc-card .cc-body,
+.lesson-content .calc-card .calc-card-body { font-size: .95rem; line-height: 1.6; color: var(--text-dim); font-family: var(--sans, "Outfit", sans-serif); }
+
+/* H2 aliases — l-title ≡ lesson-title */
+.lesson-content .l-title,
+.lesson-content .lesson-title {
+  font-family: var(--display, "Bebas Neue");
+  font-size: 1.65rem;
+  letter-spacing: .04em;
+  margin: 0 0 1.2rem;
+  color: var(--text);
+  position: relative;
+}
+
+/* Hide any leftover card-icon residues across all tracks (visual purge) */
+.lesson-content .calc-card .card-icon { display: none; }
+
+/* Copy button aliases — code-copy ≡ copy-btn */
+.lesson-content .code-wrap .code-copy,
+.lesson-content .code-wrap .copy-btn {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: .55rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .25rem .55rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.lesson-content .code-wrap .code-copy:hover,
+.lesson-content .code-wrap .copy-btn:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}

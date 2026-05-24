@@ -1,0 +1,40 @@
+product_id,name,category,price_usd,stock
+P001,Wireless Headphones,electronics,197.58,386
+P002,Bluetooth Speaker,electronics,275.9,123
+P003,USB-C Hub,electronics,426.93,153
+P004,Laptop Stand,electronics,430.91,73
+P005,Mechanical Keyboard,electronics,405.8,468
+P006,Webcam HD,electronics,42.95,211
+P007,Smart Watch,electronics,484.38,285
+P008,Power Bank,electronics,272.05,198
+P009,"Tablet 10""",electronics,132.79,104
+P010,Phone Case,electronics,175.18,40
+P011,Wireless Mouse,electronics,462.28,433
+P012,"Monitor 27""",electronics,194.97,274
+P013,Python Crash Course,books,45.68,97
+P014,Deep Learning Book,books,10.68,193
+P015,Atomic Habits,books,43.03,308
+P016,Sapiens,books,10.06,37
+P017,The Pragmatic Programmer,books,17.78,389
+P018,Clean Code,books,38.55,343
+P019,NLP with Transformers,books,37.06,245
+P020,Designing Data-Intensive Apps,books,18.86,464
+P021,T-Shirt,clothing,56.62,489
+P022,Hoodie,clothing,137.26,108
+P023,Jeans,clothing,141.2,492
+P024,Sneakers,clothing,113.81,382
+P025,Cap,clothing,149.94,245
+P026,Jacket,clothing,138.02,356
+P027,Socks Pack,clothing,94.62,104
+P028,Backpack,clothing,65.53,122
+P029,Coffee Mug,home,46.41,397
+P030,Desk Lamp,home,26.23,238
+P031,Throw Blanket,home,45.02,183
+P032,Plant Pot,home,28.13,184
+P033,Wall Clock,home,43.46,254
+P034,Storage Box,home,39.95,411
+P035,Coffee Beans 1kg,food,34.4,240
+P036,Olive Oil 500ml,food,27.37,163
+P037,Honey 250g,food,32.26,189
+P038,Tea Pack,food,13.01,23
+P039,Chocolate Box,food,21.0,113

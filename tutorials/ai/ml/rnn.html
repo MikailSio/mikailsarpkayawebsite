@@ -9,81 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../../../site.css"/>
-  <style>
-    :root{--nav-h:62px;--sb-w:272px;--accent:#ff6b6b;}
-    .layout{display:flex;padding-top:var(--nav-h);min-height:100vh;}
-    .sidebar{width:var(--sb-w);flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;overflow-x:hidden;}
-    .sidebar::-webkit-scrollbar{width:2px;}.sidebar::-webkit-scrollbar-thumb{background:var(--border);}
-    .sb-head{padding:1.6rem 1.4rem 1rem;border-bottom:1px solid var(--border);}
-    .sb-title{font-family:var(--display);font-size:1rem;letter-spacing:.15em;}
-    .sb-sub{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
-    .sb-group{border-bottom:1px solid var(--border);}
-    .sb-group-label{padding:.55rem 1.4rem;font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.015);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:color .2s;}
-    .sb-group-label:hover{color:var(--text);}
-    .sb-group-label::after{content:'▸';font-size:.55rem;color:var(--muted);transition:transform .25s;}
-    .sb-group.open .sb-group-label::after{transform:rotate(90deg);color:var(--gold);}
-    .sb-group-items{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);}
-    .sb-group.open .sb-group-items{max-height:600px;}
-    .sb-link{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.4rem;text-decoration:none;transition:background .15s;color:rgba(232,224,208,.45);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .sb-link:hover{background:rgba(255,255,255,.04);color:var(--text);}
-    .sb-link.soon-link{opacity:.4;cursor:default;pointer-events:none;}
-    .sb-link.active{background:rgba(255,107,107,.07);color:var(--accent);border-left:2px solid var(--accent);}
-.sb-badge{font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .45rem;margin-left:auto;flex-shrink:0;}
-    .sb-live{border:1px solid var(--cyan);color:var(--cyan);}.sb-new{border:1px solid var(--gold);color:var(--gold);}
-    .sb-soon{border:1px solid rgba(255,255,255,.12);color:var(--muted);}
-    .sb-back{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.4rem;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s;}
-    .sb-back:hover{color:var(--gold);}
-    .main{flex:1;min-width:0;}
-    .topic-hero{padding:5rem 5vw 3rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-    .topic-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 20% 60%,rgba(255,107,107,.04),transparent 65%);}
-    .topic-deco{position:absolute;right:3vw;top:50%;transform:translateY(-50%);width:280px;height:280px;opacity:.06;pointer-events:none;}
-    .topic-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
-    .topic-title{font-family:var(--display);font-size:clamp(3rem,7vw,7rem);line-height:.88;letter-spacing:.04em;margin-bottom:1rem;}
-    .topic-title .accent{color:var(--accent);}
-    .topic-desc{font-size:.92rem;color:var(--muted);line-height:2.05;max-width:540px;margin-top:1.2rem;}.topic-desc strong{color:var(--text);}
-    .topic-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.8rem;}
-    .meta-item{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.5rem;}.meta-item span{color:var(--text);}
-    .lessons{padding:3rem 5vw 6rem;}
-    .lesson-block{border:1px solid var(--border);margin-bottom:1px;transition:border-color .3s;overflow:hidden;}
-    .lesson-block:hover{border-color:rgba(255,107,107,.2);}
-    .lesson-header{display:flex;align-items:center;gap:1.5rem;padding:1.6rem 2.2rem;cursor:pointer;user-select:none;transition:background .2s;}
-    .lesson-header:hover{background:rgba(255,255,255,.025);}
-    .lesson-num{font-size:.68rem;letter-spacing:.15em;color:var(--muted);min-width:2.5rem;}
-    .lesson-title{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;flex:1;transition:color .25s;}
-    .lesson-header:hover .lesson-title{color:var(--accent);}
-    .lesson-sub{font-size:.72rem;color:var(--muted);}
-    .lesson-toggle{font-size:.9rem;color:var(--muted);transition:transform .3s;margin-left:auto;}
-    .lesson-block.open .lesson-toggle{transform:rotate(45deg);color:var(--accent);}
-    .lesson-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
-    .lesson-block.open .lesson-body{max-height:9999px;}
-    .lesson-content{padding:0 2.5rem 2.5rem;}
-    .lesson-content p{font-size:.92rem;color:var(--muted);line-height:2.1;margin-bottom:1.2rem;}.lesson-content p strong{color:var(--text);}
-    .lesson-content p code{font-family:var(--mono);color:var(--accent);font-size:.85em;background:rgba(255,107,107,.07);padding:.1em .35em;}
-    .code-block{background:#080d15;border:1px solid var(--border);margin:1.2rem 0;overflow:hidden;}
-    .code-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);}
-    .code-lang{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
-    .code-copy{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .2s;padding:0;}.code-copy:hover{color:var(--text);}
-    pre{margin:0;padding:1.2rem;overflow-x:auto;}
-    pre code{font-family:var(--mono);font-size:.82rem;line-height:1.7;color:#a8b8c8;white-space:pre;}
-    .kw{color:#7c9ed9;}.fn{color:#ff6b6b;}.str{color:#98c379;}.cm{color:#4a5568;font-style:italic;}.num{color:#d19a66;}.pp{color:#c678dd;}.ty{color:#e5c07b;}
-    .note{margin:1.4rem 0;padding:1.1rem 1.5rem;font-size:.88rem;line-height:1.85;}
-    .note-tip{border-left:2px solid var(--accent);background:rgba(255,107,107,.05);color:var(--muted);}
-    .note-warn{border-left:2px solid #f59e0b;background:rgba(245,158,11,.05);color:var(--muted);}
-    .note-math{border-left:2px solid var(--cyan);background:rgba(77,232,204,.05);color:var(--muted);}
-    .note strong{color:var(--text);}
-    .lesson-nav{display:flex;justify-content:space-between;align-items:center;padding:2rem 5vw;border-top:1px solid var(--border);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;}
-    .lesson-nav a{color:var(--muted);text-decoration:none;transition:color .2s;}.lesson-nav a:hover{color:var(--gold);}
-    .lesson-nav .nav-next{color:var(--gold);}.lesson-nav .nav-label{color:rgba(232,224,208,.2);}
-    @media(max-width:900px){
-      .nav-links{display:none;}.hamburger{display:flex;}
-      .sidebar{position:fixed;left:0;top:var(--nav-h);transform:translateX(-100%);z-index:900;transition:transform .3s;height:calc(100vh - var(--nav-h));}
-      .sidebar.open{transform:translateX(0);} .sb-toggle{display:flex;align-items:center;justify-content:center;}
-      .main{width:100%;}.topic-deco{display:none;}.topic-hero{padding:2.5rem 1.2rem 2rem;}.lessons{padding:1.5rem 1.2rem 4rem;}
-      .lesson-nav{padding:1.5rem 1.2rem;flex-direction:column;gap:1rem;text-align:center;}
-    }
-    @keyframes loadBar{to{width:100%;}}@keyframes slideUp{to{transform:translateY(0);}}@keyframes fadeIn{to{opacity:1;}}
-  </style>
+  
+<link rel="stylesheet" href="../../css/tutorials-core.css?v=8">
+<link rel="stylesheet" href="../../css/theme-ai.css?v=2">
 </head>
 <body>
 
@@ -94,68 +22,137 @@
 </div>
 
 <nav id="nav">
-  <a href="../../../index.html" class="nav-logo">MS</a>
-  <ul class="nav-links">
-    <li><a href="../../../index.html">Home</a></li><li><a href="../../../projects.html" data-i18n="nav.projects">Projects</a></li>
-    <li><a href="../../../certificates.html" data-i18n="nav.certificates">Certificates</a></li><li><a href="../../../index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="../../index.html" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li><li><a href="../../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  <a href="../../../" class="nav-logo">MS</a>
+  <div class="nav-controls">
+    <div class="color-picker-wrap">
+      <button class="nav-btn" id="colorTog" aria-label="Change accent color" onclick="toggleColorPicker()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" opacity=".3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+      </button>
+      <div class="color-dropdown">
+        <div class="color-dropdown-label">Accent Color</div>
+        <div class="color-presets">
+          <div class="color-swatch" data-color="#b8a9d4" data-bg="#0a0a0f" style="background:#b8a9d4" title="Lavanta"></div>
+          <div class="color-swatch" data-color="#c8a96e" data-bg="#0a0806" style="background:#c8a96e" title="Altın"></div>
+          <div class="color-swatch" data-color="#4de8cc" data-bg="#060a0a" style="background:#4de8cc" title="Turkuaz"></div>
+          <div class="color-swatch" data-color="#4de87a" data-bg="#060a06" style="background:#4de87a" title="Yeşil"></div>
+          <div class="color-swatch" data-color="#e84d4d" data-bg="#0f0606" style="background:#e84d4d" title="Kırmızı"></div>
+          <div class="color-swatch" data-color="#4d8be8" data-bg="#06080f" style="background:#4d8be8" title="Mavi"></div>
+          <div class="color-swatch" data-color="#e8944d" data-bg="#0f0a06" style="background:#e8944d" title="Turuncu"></div>
+          <div class="color-swatch" data-color="#e84da5" data-bg="#0f060a" style="background:#e84da5" title="Pembe"></div>
+          <div class="color-swatch" data-color="#4dcce8" data-bg="#060c0f" style="background:#4dcce8" title="Cyan"></div>
+          <div class="color-swatch" data-color="#e8d44d" data-bg="#0f0e06" style="background:#e8d44d" title="Sarı"></div>
+        </div>
+        <div class="color-custom">
+          <label>Custom</label>
+          <input type="color" id="customColor" value="#b8a9d4">
+        </div>
+      </div>
+    </div>
+    <button class="nav-btn" id="themeTog" aria-label="Toggle theme" onclick="toggleTheme()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+    </button>
+    <button class="nav-btn" id="langTog" aria-label="Toggle language" onclick="toggleLang()">
+      <span class="lang-label">EN</span>
+    </button>
+  </div>
 </nav>
-<div class="mobile-nav" id="mobileNav"><a href="../../../index.html" onclick="toggleMobile()">Home</a><a href="../../../projects.html" onclick="toggleMobile()">Projects</a><a href="../../index.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a><a href="../../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a></div>
-
 <div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <a href="../../index.html" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
-    <div class="sb-head">
-      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
-      <div class="sb-sub" data-i18n-text="tp.sb.sub">Software &amp; AI Guides</div>
-    </div>
+  <aside class="sidebar">
+  <a href="../../" class="sb-back">&larr; All Tutorials</a>
+  <div class="sb-head">
+    <div class="sb-title">TUTORIALS</div>
+    <div class="sb-sub">Software &amp; AI Guides</div>
+  </div>
 
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.sys" onclick="toggleGroup(this)">Systems &amp; Languages</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="../../systems/c.html"><span>C Language</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="../../systems/cpp.html"><span>C++</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="../../systems/csharp.html"><span>C#</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
+  <div class="sb-group" data-hub="languages">
+    <div class="sb-group-label">Programming Languages</div>
+    <div class="sb-group-items">
+      <div class="sb-divider">C Family</div>
+      <a href="../../languages/c-family/c" class="sb-link">C Language <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../languages/c-family/cpp" class="sb-link disabled">C++ <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../languages/c-family/csharp" class="sb-link disabled">C# <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Python</div>
+      <a href="../../languages/python/core" class="sb-link">Python Core <span class="sb-badge sb-live">Live</span></a>
     </div>
+  </div>
 
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.py" onclick="toggleGroup(this)">Python Ecosystem</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="../../python/core.html"><span>Python Core</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="../../python/pandas/pandas.html"><span>Pandas</span><span class="sb-badge sb-new">New</span></a>
-        <a class="sb-link" href="../../python/numpy/numpy.html"><span>NumPy</span><span class="sb-badge sb-new">New</span></a>
-        <a class="sb-link soon-link" href="../../python/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
+  <div class="sb-group" data-hub="web">
+    <div class="sb-group-label">Web Development</div>
+    <div class="sb-group-items">
+      <div class="sb-divider">Frontend</div>
+      <a href="../../web/frontend/html" class="sb-link disabled">HTML <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/frontend/css" class="sb-link disabled">CSS <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/frontend/js" class="sb-link disabled">JavaScript <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/frontend/react" class="sb-link disabled">React <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Django (Python)</div>
+      <a href="../../web/django/basics" class="sb-link disabled">Django Basics <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/django/models" class="sb-link disabled">Django Models <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/django/views" class="sb-link disabled">Django Views <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/django/rest-api" class="sb-link disabled">Django REST API <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Web Scraping (Python)</div>
+      <a href="../../web/scraping/beautifulsoup" class="sb-link disabled">BeautifulSoup <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/scraping/scrapy" class="sb-link disabled">Scrapy <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/scraping/selenium" class="sb-link disabled">Selenium <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">DevOps</div>
+      <a href="../../web/devops/nginx" class="sb-link disabled">Nginx <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/devops/vps" class="sb-link disabled">VPS Setup <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/devops/cloudflare" class="sb-link disabled">Cloudflare <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/devops/docker" class="sb-link disabled">Docker <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Git</div>
+      <a href="../../web/git/basics" class="sb-link disabled">Git Basics <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../web/git/github" class="sb-link disabled">GitHub <span class="sb-badge sb-soon">Soon</span></a>
     </div>
+  </div>
 
-    <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">AI &amp; Machine Learning</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="theory.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="deep.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link active" href="rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
+  <div class="sb-group open" data-hub="ai">
+    <div class="sb-group-label">AI &amp; Data Science</div>
+    <div class="sb-group-items">
+      <div class="sb-divider">Math &amp; Foundations</div>
+      <a href="../../ai/math/foundations" class="sb-link">Math for ML <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/math/calculus" class="sb-link">Calculus <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/math/linear-algebra" class="sb-link disabled">Linear Algebra <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/math/probability" class="sb-link disabled">Probability &amp; Stats <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Python for AI</div>
+      <a href="../../ai/data/pandas" class="sb-link">Pandas <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/data/numpy" class="sb-link">NumPy <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/data/matplotlib" class="sb-link disabled">Matplotlib <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/data/preprocessing" class="sb-link disabled">Preprocessing <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/data/sklearn" class="sb-link disabled">Scikit-Learn <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/data/pytorch" class="sb-link disabled">PyTorch <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/data/tensorflow" class="sb-link disabled">TensorFlow <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/data/sql" class="sb-link disabled">SQL <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Machine Learning</div>
+      <a href="../../ai/ml/theory" class="sb-link">ML Theory <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/ml/deep" class="sb-link">Deep Learning <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/ml/rnn" class="sb-link active">RNN / LSTM <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/ml/cnn" class="sb-link disabled">CNN <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/ml/gan" class="sb-link disabled">GAN <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">NLP</div>
+      <a href="../../ai/nlp/fundamentals" class="sb-link disabled">NLP Fundamentals <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/nlp/transformers" class="sb-link">Transformers <span class="sb-badge sb-live">Live</span></a>
+      <a href="../../ai/nlp/embeddings" class="sb-link disabled">Word Embeddings <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/nlp/text-classification" class="sb-link disabled">Text Classification <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/nlp/sentiment" class="sb-link disabled">Sentiment Analysis <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/nlp/ner" class="sb-link disabled">NER <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/nlp/turkish-nlp" class="sb-link disabled">Turkish NLP <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/nlp/seq2seq" class="sb-link disabled">Seq2Seq <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Computer Vision</div>
+      <a href="../../ai/cv/image-processing" class="sb-link disabled">Image Processing <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/cv/object-detection" class="sb-link disabled">Object Detection <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/cv/segmentation" class="sb-link disabled">Segmentation <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">GenAI &amp; LLMs</div>
+      <a href="../../ai/genai/prompt-engineering" class="sb-link disabled">Prompt Engineering <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/genai/fine-tuning" class="sb-link disabled">Fine-tuning <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/genai/rag" class="sb-link disabled">RAG <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/genai/langchain" class="sb-link disabled">LangChain <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">MLOps</div>
+      <a href="../../ai/mlops/deployment" class="sb-link disabled">Model Deployment <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/mlops/experiment-tracking" class="sb-link disabled">Experiment Tracking <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../../ai/mlops/docker-ml" class="sb-link disabled">Docker for ML <span class="sb-badge sb-soon">Soon</span></a>
     </div>
-
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="../nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="../nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
-    </div>
-
-    <div class="sb-group">
-      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="../math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="../math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
-    </div>
-  </aside>
+  </div>
+</aside>
+<button class="sb-toggle-desktop" aria-label="Toggle sidebar">◂</button>
 
   <main class="main">
     <div class="topic-hero">
@@ -429,9 +426,9 @@ logits = model(dummy_input)
     </div>
 
     <div class="lesson-nav">
-      <a href="deep.html">← Deep Learning</a>
+      <a href="deep">← Deep Learning</a>
       <span class="nav-label">RNN / LSTM · 6 lessons</span>
-      <a href="../nlp/transformers.html" class="nav-next">Next: Transformers →</a>
+      <a href="../nlp/transformers" class="nav-next">Next: Transformers →</a>
     </div>
   <button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰</button>
 </main>
@@ -457,5 +454,8 @@ function toggleGroup(label) {
   label.parentElement.classList.toggle('open');
 }
 </script>
+
+
+<script src="../../tutorials-shared.js?v=4"></script>
 </body>
 </html>

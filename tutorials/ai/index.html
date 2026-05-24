@@ -3,182 +3,173 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="AI & Data Science Tutorials — Math, Pandas, NumPy, Machine Learning, Deep Learning, NLP, Transformers. By Mikail Sarpkaya."/>
+  <meta name="description" content="AI & Data Science Tutorials — Math, Data Tools, ML, DL, NLP, Computer Vision, GenAI, MLOps. By Mikail Sarpkaya."/>
   <title>AI & Data Science — Mikail Sarpkaya Tutorials</title>
   <link rel="icon" type="image/x-icon" href="../../favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../../site.css"/>
-  <style>
-    :root { --nav-h:62px; --sb-w:272px; --accent:#c8a96e; }
-    .layout { display:flex; padding-top:var(--nav-h); min-height:100vh; }
-    .sidebar { width:var(--sb-w); flex-shrink:0; background:var(--surface); border-right:1px solid var(--border); position:sticky; top:var(--nav-h); height:calc(100vh - var(--nav-h)); overflow-y:auto; overflow-x:hidden; }
-    .sidebar::-webkit-scrollbar { width:2px; } .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
-    .sb-head { padding:1.6rem 1.4rem 1rem; border-bottom:1px solid var(--border); }
-    .sb-title { font-family:var(--display); font-size:1rem; letter-spacing:.15em; }
-    .sb-sub { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; }
-    .sb-group { border-bottom:1px solid var(--border); }
-    .sb-group-label { padding:.55rem 1.4rem; font-size:.48rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); background:rgba(255,255,255,.015); cursor:pointer; display:flex; align-items:center; justify-content:space-between; user-select:none; transition:color .2s; }
-    .sb-group-label:hover { color:var(--text); }
-    .sb-group-label::after { content:'▸'; font-size:.55rem; color:var(--muted); transition:transform .25s; }
-    .sb-group.open .sb-group-label::after { transform:rotate(90deg); color:var(--gold); }
-    .sb-group-items { max-height:0; overflow:hidden; transition:max-height .35s cubic-bezier(.16,1,.3,1); }
-    .sb-group.open .sb-group-items { max-height:600px; }
-    .sb-link { display:flex; align-items:center; gap:.75rem; padding:.65rem 1.4rem; text-decoration:none; transition:background .15s; color:rgba(232,224,208,.45); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .sb-link:hover { background:rgba(255,255,255,.04); color:var(--text); }
-    .sb-link.soon-link { opacity:.4; cursor:default; pointer-events:none; }
-    .sb-badge { font-size:.42rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .45rem; margin-left:auto; flex-shrink:0; }
-    .sb-live { border:1px solid var(--cyan); color:var(--cyan); }
-    .sb-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
-    .sb-back { display:flex; align-items:center; gap:.6rem; padding:.9rem 1.4rem; font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border); transition:color .2s; }
-    .sb-back:hover { color:var(--gold); }
-    .main { flex:1; min-width:0; }
-    .page-hero { padding:5rem 5vw 3rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
-    .page-hero::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 70% 80% at 20% 60%, rgba(200,169,110,.04), transparent 65%); }
-    .hero-deco { position:absolute; right:3vw; top:50%; transform:translateY(-50%); width:300px; height:300px; opacity:.05; pointer-events:none; }
-    .eyebrow { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
-    .page-title { font-family:var(--display); font-size:clamp(3rem,7vw,7rem); line-height:.88; letter-spacing:.04em; margin-bottom:1rem; }
-    .page-title .accent { color:var(--accent); }
-    .page-desc { font-size:.82rem; color:var(--muted); line-height:1.95; max-width:520px; margin-top:1.2rem; }
-    .page-desc strong { color:var(--text); }
-    .page-meta { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1.8rem; }
-    .meta-item { font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:.5rem; }
-    .meta-item span { color:var(--text); }
-    .section-label { padding:2.5rem 5vw 1rem; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); }
-    .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; padding:0 5vw 3rem; }
-    .cat-card { display:block; text-decoration:none; padding:2rem 1.8rem; border:1px solid var(--border); position:relative; overflow:hidden; transition:border-color .3s, background .3s; }
-    .cat-card:hover { border-color:rgba(200,169,110,.25); background:rgba(255,255,255,.015); }
-    .cat-card-accent { position:absolute; top:0; left:0; width:100%; height:2px; opacity:.6; }
-    .cat-icon { font-size:1.6rem; margin-bottom:.8rem; }
-    .cat-name { font-family:var(--display); font-size:1.4rem; letter-spacing:.08em; margin-bottom:.4rem; }
-    .cat-sub { font-size:.65rem; color:var(--muted); letter-spacing:.06em; line-height:1.7; margin-bottom:.6rem; }
-    .cat-count { font-size:.55rem; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
-    .cat-badge { display:inline-block; font-size:.45rem; letter-spacing:.12em; text-transform:uppercase; padding:.18rem .55rem; margin-top:.5rem; }
-    .cat-badge-live { border:1px solid var(--cyan); color:var(--cyan); }
-    .cat-badge-soon { border:1px solid rgba(255,255,255,.12); color:var(--muted); }
-    .cat-card.soon { opacity:.45; pointer-events:none; }
-    .sb-toggle { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:800; background:var(--accent); color:#050810; border:none; font-family:var(--mono); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; padding:.65rem 1.1rem; cursor:pointer; }
-    @media(max-width:900px) {
-      .nav-links { display:none; } .hamburger { display:flex; }
-      .sidebar { position:fixed; left:0; top:var(--nav-h); transform:translateX(-100%); z-index:900; transition:transform .3s; height:calc(100vh - var(--nav-h)); }
-      .sidebar.open { transform:translateX(0); } .sb-toggle { display:block; }
-      .main { width:100%; } .hero-deco { display:none; }
-      .page-hero { padding:2.5rem 1.2rem 2rem; }
-      .cat-grid { padding:0 1.2rem 3rem; grid-template-columns:1fr; }
-      .section-label { padding:2rem 1.2rem .8rem; }
-    }
-    @keyframes loadBar { to { width:100%; } }
-    @keyframes slideUp { to { transform:translateY(0); } }
-    @keyframes fadeIn  { to { opacity:1; } }
-  </style>
-</head>
-<body>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  
+<link rel="stylesheet" href="../css/tutorials-core.css?v=8">
+<link rel="stylesheet" href="../css/theme-ai.css?v=2">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<meta property="og:image" content="https://mikailsarpkaya.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://mikailsarpkaya.com/og-image.png"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
 
 <div id="loader">
-  <div class="ld-name" style="font-family:var(--display);font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--text);overflow:hidden;">
+  <div class="ld-name" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,5rem);letter-spacing:.15em;color:var(--hub-text);overflow:hidden;">
     <span style="display:inline-block;transform:translateY(100%);animation:slideUp .7s cubic-bezier(.16,1,.3,1) forwards;">AI & DATA SCIENCE</span>
   </div>
   <div class="ld-bar-wrap" style="width:200px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2rem;">
-    <div class="ld-bar" style="height:100%;width:0;background:var(--accent);animation:loadBar 1.5s ease forwards;"></div>
+    <div class="ld-bar" style="height:100%;width:0;background:var(--hub-accent);animation:loadBar 1.5s ease forwards;"></div>
   </div>
-  <div class="ld-sub" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
+  <div class="ld-sub" style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--hub-muted);opacity:0;animation:fadeIn .5s .9s ease forwards;margin-top:1rem;">mikailsarpkaya.com</div>
 </div>
 
 <nav id="nav">
-  <a href="../../index.html" class="nav-logo">MS</a>
-  <ul class="nav-links">
-    <li><a href="../../index.html">Home</a></li>
-    <li><a href="../../projects.html" data-i18n="nav.projects">Projects</a></li>
-    <li><a href="../../certificates.html" data-i18n="nav.certificates">Certificates</a></li>
-    <li><a href="../../index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="../" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
-    <li><a href="../../cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  <a href="../../" class="nav-logo">MS</a>
+  <div class="nav-controls">
+    <div class="color-picker-wrap">
+      <button class="nav-btn" id="colorTog" aria-label="Change accent color" onclick="toggleColorPicker()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" opacity=".3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+      </button>
+      <div class="color-dropdown">
+        <div class="color-dropdown-label">Accent Color</div>
+        <div class="color-presets">
+          <div class="color-swatch" data-color="#b8a9d4" data-bg="#0a0a0f" style="background:#b8a9d4" title="Lavanta"></div>
+          <div class="color-swatch" data-color="#c8a96e" data-bg="#0a0806" style="background:#c8a96e" title="Altın"></div>
+          <div class="color-swatch" data-color="#4de8cc" data-bg="#060a0a" style="background:#4de8cc" title="Turkuaz"></div>
+          <div class="color-swatch" data-color="#4de87a" data-bg="#060a06" style="background:#4de87a" title="Yeşil"></div>
+          <div class="color-swatch" data-color="#e84d4d" data-bg="#0f0606" style="background:#e84d4d" title="Kırmızı"></div>
+          <div class="color-swatch" data-color="#4d8be8" data-bg="#06080f" style="background:#4d8be8" title="Mavi"></div>
+          <div class="color-swatch" data-color="#e8944d" data-bg="#0f0a06" style="background:#e8944d" title="Turuncu"></div>
+          <div class="color-swatch" data-color="#e84da5" data-bg="#0f060a" style="background:#e84da5" title="Pembe"></div>
+          <div class="color-swatch" data-color="#4dcce8" data-bg="#060c0f" style="background:#4dcce8" title="Cyan"></div>
+          <div class="color-swatch" data-color="#e8d44d" data-bg="#0f0e06" style="background:#e8d44d" title="Sarı"></div>
+        </div>
+        <div class="color-custom">
+          <label>Custom</label>
+          <input type="color" id="customColor" value="#b8a9d4">
+        </div>
+      </div>
+    </div>
+    <button class="nav-btn" id="themeTog" aria-label="Toggle theme" onclick="toggleTheme()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+    </button>
+    <button class="nav-btn" id="langTog" aria-label="Toggle language" onclick="toggleLang()">
+      <span class="lang-label">EN</span>
+    </button>
+  </div>
 </nav>
-<div class="mobile-nav" id="mobileNav">
-  <a href="../../index.html" onclick="toggleMobile()">Home</a>
-  <a href="../../projects.html" onclick="toggleMobile()">Projects</a>
-  <a href="../../certificates.html" onclick="toggleMobile()">Certificates</a>
-  <a href="../" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
-  <a href="../../cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
-</div>
-
 <div class="layout">
 
-  <aside class="sidebar" id="sidebar">
-    <a href="../" class="sb-back" data-i18n="tp.back">← All Tutorials</a>
-    <div class="sb-head">
-      <div class="sb-title" data-i18n-text="tp.sb.title">TUTORIALS</div>
-      <div class="sb-sub">AI &amp; Data Science</div>
-    </div>
+  <aside class="sidebar">
+  <a href="../" class="sb-back">&larr; All Tutorials</a>
+  <div class="sb-head">
+    <div class="sb-title">TUTORIALS</div>
+    <div class="sb-sub">Software &amp; AI Guides</div>
+  </div>
 
-    <!-- 1. Math (start here) -->
-    <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.math" onclick="toggleGroup(this)">Math &amp; Foundations</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="math/foundations.html"><span>Math for ML</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="math/calculus.html"><span>Calculus</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
+  <div class="sb-group" data-hub="languages">
+    <div class="sb-group-label">Programming Languages</div>
+    <div class="sb-group-items">
+      <div class="sb-divider">C Family</div>
+      <a href="../languages/c-family/c" class="sb-link">C Language <span class="sb-badge sb-live">Live</span></a>
+      <a href="../languages/c-family/cpp" class="sb-link disabled">C++ <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../languages/c-family/csharp" class="sb-link disabled">C# <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Python</div>
+      <a href="../languages/python/core" class="sb-link">Python Core <span class="sb-badge sb-live">Live</span></a>
     </div>
+  </div>
 
-    <!-- 2. Data Tools -->
-    <div class="sb-group open">
-      <div class="sb-group-label" onclick="toggleGroup(this)">Data Tools</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="data/pandas.html"><span>Pandas</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="data/numpy.html"><span>NumPy</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link soon-link" href="data/matplotlib.html"><span>Matplotlib / Seaborn</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="data/sql.html"><span>SQL for Data Science</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="data/preprocessing.html"><span>Data Preprocessing</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="data/sklearn.html"><span>Scikit-Learn</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link soon-link" href="data/pytorch.html"><span>PyTorch Basics</span><span class="sb-badge sb-soon">Soon</span></a>
-      </div>
+  <div class="sb-group" data-hub="web">
+    <div class="sb-group-label">Web Development</div>
+    <div class="sb-group-items">
+      <div class="sb-divider">Frontend</div>
+      <a href="../web/frontend/html" class="sb-link disabled">HTML <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/frontend/css" class="sb-link disabled">CSS <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/frontend/js" class="sb-link disabled">JavaScript <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/frontend/react" class="sb-link disabled">React <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Django (Python)</div>
+      <a href="../web/django/basics" class="sb-link disabled">Django Basics <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/django/models" class="sb-link disabled">Django Models <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/django/views" class="sb-link disabled">Django Views <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/django/rest-api" class="sb-link disabled">Django REST API <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Web Scraping (Python)</div>
+      <a href="../web/scraping/beautifulsoup" class="sb-link disabled">BeautifulSoup <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/scraping/scrapy" class="sb-link disabled">Scrapy <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/scraping/selenium" class="sb-link disabled">Selenium <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">DevOps</div>
+      <a href="../web/devops/nginx" class="sb-link disabled">Nginx <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/devops/vps" class="sb-link disabled">VPS Setup <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/devops/cloudflare" class="sb-link disabled">Cloudflare <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/devops/docker" class="sb-link disabled">Docker <span class="sb-badge sb-soon">Soon</span></a>
+      <div class="sb-divider">Git</div>
+      <a href="../web/git/basics" class="sb-link disabled">Git Basics <span class="sb-badge sb-soon">Soon</span></a>
+      <a href="../web/git/github" class="sb-link disabled">GitHub <span class="sb-badge sb-soon">Soon</span></a>
     </div>
-
-    <!-- 3. Machine Learning -->
-    <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.ai" onclick="toggleGroup(this)">Machine Learning</div>
-      <div class="sb-group-items">
-        <a class="sb-link" href="ml/theory.html"><span>ML Theory</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ml/deep.html"><span>Deep Learning</span><span class="sb-badge sb-live">Live</span></a>
-        <a class="sb-link" href="ml/rnn.html"><span>RNN / LSTM</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
+  </div>
+  <div class="sb-group open" data-hub="ds">
+    <div class="sb-group-label">Data Science Libraries</div>
+    <div class="sb-group-items">
+      <a href="/tutorials/numpy/" class="sb-link">NumPy <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/pandas/" class="sb-link">Pandas <span class="sb-badge sb-live">Live</span></a>
     </div>
-
-    <!-- 4. NLP -->
-    <div class="sb-group open">
-      <div class="sb-group-label" data-i18n-text="tp.g.nlp" onclick="toggleGroup(this)">NLP &amp; Transformers</div>
-      <div class="sb-group-items">
-        <a class="sb-link soon-link" href="nlp/fundamentals.html"><span>NLP Fundamentals</span><span class="sb-badge sb-soon">Soon</span></a>
-        <a class="sb-link" href="nlp/transformers.html"><span>Transformers</span><span class="sb-badge sb-live">Live</span></a>
-      </div>
+  </div>
+  <div class="sb-group open" data-hub="math">
+    <div class="sb-group-label">Mathematics</div>
+    <div class="sb-group-items">
+      <a href="/tutorials/linalg/1" class="sb-link">Linear Algebra <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/calculus/1" class="sb-link">Calculus <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/math/1" class="sb-link">ML Mathematics <span class="sb-badge sb-live">Live</span></a>
     </div>
-  </aside>
+  </div>
+  <div class="sb-group open" data-hub="ml">
+    <div class="sb-group-label">Machine Learning</div>
+    <div class="sb-group-items">
+      <a href="/tutorials/ml-theory/" class="sb-link">ML Theory <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/deep/" class="sb-link">Deep Learning <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/nlp/9" class="sb-link">RNN / LSTM <span class="sb-badge sb-live">Live</span></a>
+    </div>
+  </div>
+  <div class="sb-group open" data-hub="nlp">
+    <div class="sb-group-label">Natural Language Processing</div>
+    <div class="sb-group-items">
+      <a href="/tutorials/nlp/" class="sb-link">NLP Fundamentals <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/nlp/3" class="sb-link">Word Embeddings <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/nlp/10" class="sb-link">Transformers <span class="sb-badge sb-live">Live</span></a>
+      <a href="/tutorials/huggingface/" class="sb-link">HuggingFace <span class="sb-badge sb-live">Live</span></a>
+    </div>
+  </div>
+</aside>
+<button class="sb-toggle-desktop" aria-label="Toggle sidebar">◂</button>
 
-  <main class="main">
+  <main id="main" class="main">
 
     <div class="page-hero">
+      <canvas id="particles"></canvas>
+      <div class="hero-grid"></div>
       <svg class="hero-deco" viewBox="0 0 300 300" fill="none">
         <circle cx="150" cy="150" r="120" stroke="#c8a96e" stroke-width="0.4" stroke-dasharray="4 4"/>
         <circle cx="150" cy="150" r="80" stroke="#c8a96e" stroke-width="0.3" stroke-dasharray="6 6"/>
-        <circle cx="90" cy="120" r="5" fill="#c8a96e" opacity=".5"/>
-        <circle cx="200" cy="90" r="4" fill="#c8a96e" opacity=".4"/>
-        <circle cx="170" cy="210" r="6" fill="#c8a96e" opacity=".3"/>
-        <line x1="90" y1="120" x2="200" y2="90" stroke="#c8a96e" stroke-width="0.3" opacity=".3"/>
-        <line x1="200" y1="90" x2="170" y2="210" stroke="#c8a96e" stroke-width="0.3" opacity=".3"/>
-        <line x1="170" y1="210" x2="90" y2="120" stroke="#c8a96e" stroke-width="0.3" opacity=".3"/>
+        <circle cx="90" cy="120" r="5" fill="#c8a96e" opacity=".4"/>
+        <circle cx="200" cy="90" r="4" fill="#c8a96e" opacity=".3"/>
+        <circle cx="170" cy="210" r="6" fill="#c8a96e" opacity=".25"/>
+        <line x1="90" y1="120" x2="200" y2="90" stroke="#c8a96e" stroke-width="0.3" opacity=".2"/>
+        <line x1="200" y1="90" x2="170" y2="210" stroke="#c8a96e" stroke-width="0.3" opacity=".2"/>
+        <line x1="170" y1="210" x2="90" y2="120" stroke="#c8a96e" stroke-width="0.3" opacity=".2"/>
       </svg>
-      <div class="eyebrow">Tutorials · AI &amp; Data Science</div>
-      <h1 class="page-title"><span>AI &amp;</span><br><span class="accent">DATA SCIENCE</span></h1>
+      <div class="eyebrow">Tutorials · AI & Data Science</div>
+      <h1 class="page-title"><span class="glow" data-text="AI &">AI &</span><br><span class="accent">DATA SCIENCE</span></h1>
       <p class="page-desc">
         Start with <strong>math foundations</strong>, then learn to handle data with <strong>Pandas</strong> and <strong>NumPy</strong>.
         Build up to <strong>machine learning</strong>, <strong>deep learning</strong>, and modern <strong>NLP</strong> with Transformers — all with hands-on Python code.
       </p>
       <div class="page-meta">
-        <div class="meta-item">Topics: <span>9</span></div>
-        <div class="meta-item">Lessons: <span>51+</span></div>
+        <div class="meta-item">Topics: <span>17</span></div>
+        <div class="meta-item">Lessons: <span>77+</span></div>
         <div class="meta-item">Level: <span>Intermediate → Advanced</span></div>
       </div>
     </div>
@@ -186,7 +177,7 @@
     <!-- 1. Math -->
     <div class="section-label">① Math & Foundations — Start Here</div>
     <div class="cat-grid">
-      <a class="cat-card" href="math/foundations.html">
+      <a class="cat-card" href="math/foundations">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
         <div class="cat-icon">📐</div>
         <div class="cat-name" style="color:#38bdf8">Math for ML</div>
@@ -194,7 +185,7 @@
         <div class="cat-count">7 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-      <a class="cat-card" href="math/calculus.html">
+      <a class="cat-card" href="math/calculus">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
         <div class="cat-icon">∫</div>
         <div class="cat-name" style="color:#38bdf8">Calculus</div>
@@ -202,12 +193,28 @@
         <div class="cat-count">8 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
+      <a class="cat-card soon" href="math/linear-algebra">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
+        <div class="cat-icon">📏</div>
+        <div class="cat-name" style="color:#a855f7">Linear Algebra</div>
+        <div class="cat-sub">Vectors · Matrices · Eigenvalues · SVD · PCA</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="math/probability">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">🎲</div>
+        <div class="cat-name" style="color:#4de8cc">Probability & Statistics</div>
+        <div class="cat-sub">Distributions · Bayes · Hypothesis Testing · MLE</div>
+        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
     </div>
 
     <!-- 2. Data Tools -->
-    <div class="section-label">② Data Tools — Wrangle & Explore</div>
+    <div class="section-label">② Python for AI — Wrangle & Explore</div>
     <div class="cat-grid">
-      <a class="cat-card" href="data/pandas.html">
+      <a class="cat-card" href="data/pandas">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
         <div class="cat-icon">📊</div>
         <div class="cat-name" style="color:#e5c07b">Pandas</div>
@@ -215,7 +222,7 @@
         <div class="cat-count">10 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-      <a class="cat-card" href="data/numpy.html">
+      <a class="cat-card" href="data/numpy">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
         <div class="cat-icon">🔢</div>
         <div class="cat-name" style="color:#4de8cc">NumPy</div>
@@ -223,101 +230,243 @@
         <div class="cat-count">8 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-      <a class="cat-card soon" href="data/matplotlib.html">
+      <a class="cat-card soon" href="data/matplotlib">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
         <div class="cat-icon">📉</div>
         <div class="cat-name" style="color:#e5c07b">Matplotlib / Seaborn</div>
         <div class="cat-sub">Charts · Plots · Heatmaps · Statistical Visualization</div>
-        <div class="cat-count">Coming soon</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
-      <a class="cat-card soon" href="data/sql.html">
+      <a class="cat-card soon" href="data/sql">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
         <div class="cat-icon">🗄️</div>
         <div class="cat-name" style="color:#38bdf8">SQL for Data Science</div>
         <div class="cat-sub">Queries · Joins · Aggregation · Window Functions</div>
-        <div class="cat-count">Coming soon</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
-      <a class="cat-card soon" href="data/preprocessing.html">
+      <a class="cat-card soon" href="data/preprocessing">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
         <div class="cat-icon">🧹</div>
         <div class="cat-name" style="color:#4de8cc">Data Preprocessing</div>
-        <div class="cat-sub">Cleaning · Encoding · Scaling · Missing Values · Feature Engineering</div>
-        <div class="cat-count">Coming soon</div>
+        <div class="cat-sub">Cleaning · Encoding · Scaling · Feature Engineering</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
-      <a class="cat-card soon" href="data/sklearn.html">
+      <a class="cat-card soon" href="data/sklearn">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
         <div class="cat-icon">🤖</div>
         <div class="cat-name" style="color:#f09638">Scikit-Learn</div>
-        <div class="cat-sub">Pipeline · Cross-Validation · Feature Engineering · Metrics</div>
-        <div class="cat-count">Coming soon</div>
+        <div class="cat-sub">Pipeline · Cross-Validation · Metrics · GridSearch</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
-      <a class="cat-card soon" href="data/pytorch.html">
+      <a class="cat-card soon" href="data/pytorch">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
         <div class="cat-icon">🔥</div>
-        <div class="cat-name" style="color:#ff6b6b">PyTorch Basics</div>
+        <div class="cat-name" style="color:#ff6b6b">PyTorch</div>
         <div class="cat-sub">Tensors · Autograd · DataLoader · Training Loop</div>
-        <div class="cat-count">Coming soon</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="data/tensorflow">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
+        <div class="cat-icon">🧪</div>
+        <div class="cat-name" style="color:#f09638">TensorFlow</div>
+        <div class="cat-sub">Keras · tf.data · Callbacks · SavedModel · TF Lite</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
     </div>
 
-    <!-- 3. Machine Learning -->
+    <!-- 3. ML -->
     <div class="section-label">③ Machine Learning — Models & Training</div>
     <div class="cat-grid">
-      <a class="cat-card" href="ml/theory.html">
+      <a class="cat-card" href="ml/theory">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#c8a96e,transparent)"></div>
         <div class="cat-icon">📈</div>
         <div class="cat-name" style="color:#c8a96e">ML Theory</div>
-        <div class="cat-sub">Linear Regression · Logistic Regression · SVM · Decision Trees · Ensemble</div>
+        <div class="cat-sub">Linear Regression · SVM · Decision Trees · Ensemble</div>
         <div class="cat-count">7 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-      <a class="cat-card" href="ml/deep.html">
+      <a class="cat-card" href="ml/deep">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
         <div class="cat-icon">🧠</div>
         <div class="cat-name" style="color:#e84d80">Deep Learning</div>
-        <div class="cat-sub">Neural Networks · CNN · Backpropagation · PyTorch · Optimization</div>
+        <div class="cat-sub">Neural Networks · Backpropagation · Optimization</div>
         <div class="cat-count">7 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
-      <a class="cat-card" href="ml/rnn.html">
+      <a class="cat-card" href="ml/rnn">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
         <div class="cat-icon">🔄</div>
         <div class="cat-name" style="color:#ff6b6b">RNN / LSTM</div>
-        <div class="cat-sub">Sequence Modeling · LSTM · BiLSTM · GRU · Seq2Seq</div>
+        <div class="cat-sub">Sequence Modeling · LSTM · BiLSTM · GRU</div>
         <div class="cat-count">6 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
+      </a>
+      <a class="cat-card soon" href="ml/cnn">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">👁️</div>
+        <div class="cat-name" style="color:#38bdf8">CNN</div>
+        <div class="cat-sub">Convolution · Pooling · ResNet · Transfer Learning</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="ml/gan">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
+        <div class="cat-icon">🎨</div>
+        <div class="cat-name" style="color:#e84d80">GAN</div>
+        <div class="cat-sub">Generator · Discriminator · DCGAN · StyleGAN</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
     </div>
 
     <!-- 4. NLP -->
     <div class="section-label">④ NLP — Language Understanding</div>
     <div class="cat-grid">
-      <a class="cat-card soon" href="nlp/fundamentals.html">
+      <a class="cat-card soon" href="nlp/fundamentals">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d4d,transparent)"></div>
         <div class="cat-icon">💬</div>
         <div class="cat-name" style="color:#e84d4d">NLP Fundamentals</div>
-        <div class="cat-sub">Text Processing · TF-IDF · Word Embeddings · HuggingFace</div>
-        <div class="cat-count">Coming soon</div>
+        <div class="cat-sub">Text Processing · TF-IDF · Tokenization · HuggingFace</div>
         <span class="cat-badge cat-badge-soon">Soon</span>
       </a>
-      <a class="cat-card" href="nlp/transformers.html">
+      <a class="cat-card" href="nlp/transformers">
         <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
         <div class="cat-icon">⚡</div>
         <div class="cat-name" style="color:#a855f7">Transformers</div>
-        <div class="cat-sub">Attention · BERT · RoBERTa · GPT · Fine-Tuning · LoRA</div>
+        <div class="cat-sub">Attention · BERT · GPT · Fine-Tuning · LoRA</div>
         <div class="cat-count">8 lessons</div>
         <span class="cat-badge cat-badge-live">Live</span>
       </a>
+      <a class="cat-card soon" href="nlp/embeddings">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">📌</div>
+        <div class="cat-name" style="color:#4de8cc">Word Embeddings</div>
+        <div class="cat-sub">Word2Vec · GloVe · FastText · Contextual</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="nlp/text-classification">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
+        <div class="cat-icon">🏷️</div>
+        <div class="cat-name" style="color:#e5c07b">Text Classification</div>
+        <div class="cat-sub">BoW · TF-IDF · BERT Classifier · Multi-label</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="nlp/sentiment">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#ff6b6b,transparent)"></div>
+        <div class="cat-icon">😊</div>
+        <div class="cat-name" style="color:#ff6b6b">Sentiment Analysis</div>
+        <div class="cat-sub">Lexicon · ML-based · BERT · Aspect-based</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="nlp/ner">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="cat-icon">🔖</div>
+        <div class="cat-name" style="color:#4de87a">NER</div>
+        <div class="cat-sub">Named Entity Recognition · spaCy · BERT-NER</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="nlp/turkish-nlp">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d4d,transparent)"></div>
+        <div class="cat-icon">🇹🇷</div>
+        <div class="cat-name" style="color:#e84d4d">Turkish NLP</div>
+        <div class="cat-sub">Zemberek · BERTurk · Morphology · Datasets</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="nlp/seq2seq">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
+        <div class="cat-icon">🔄</div>
+        <div class="cat-name" style="color:#a855f7">Seq2Seq</div>
+        <div class="cat-sub">Encoder-Decoder · Attention · Beam Search</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
     </div>
 
-    <div style="padding:2rem 5vw 4rem;">
-      <p style="font-size:.65rem;color:var(--muted);line-height:1.9;max-width:500px;">
-        Prerequisite: <a href="../languages/python/core.html" style="color:var(--gold);text-decoration:none;">Python Core</a> — make sure you're comfortable with Python before starting this track.
+    <!-- 5. CV -->
+    <div class="section-label">⑤ Computer Vision — See & Understand</div>
+    <div class="cat-grid">
+      <a class="cat-card soon" href="cv/image-processing">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">🖼️</div>
+        <div class="cat-name" style="color:#38bdf8">Image Processing</div>
+        <div class="cat-sub">OpenCV · Filters · Transforms · Augmentation</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="cv/object-detection">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="cat-icon">🎯</div>
+        <div class="cat-name" style="color:#4de87a">Object Detection</div>
+        <div class="cat-sub">YOLO · R-CNN · Anchor Boxes · mAP</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="cv/segmentation">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
+        <div class="cat-icon">🧩</div>
+        <div class="cat-name" style="color:#e5c07b">Segmentation</div>
+        <div class="cat-sub">Semantic · Instance · U-Net · Mask R-CNN</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+    </div>
+
+    <!-- 6. GenAI -->
+    <div class="section-label">⑥ GenAI & LLMs — Build with AI</div>
+    <div class="cat-grid">
+      <a class="cat-card soon" href="genai/prompt-engineering">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#a855f7,transparent)"></div>
+        <div class="cat-icon">💡</div>
+        <div class="cat-name" style="color:#a855f7">Prompt Engineering</div>
+        <div class="cat-sub">System Prompts · Few-shot · Chain-of-Thought</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="genai/fine-tuning">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e84d80,transparent)"></div>
+        <div class="cat-icon">🔧</div>
+        <div class="cat-name" style="color:#e84d80">Fine-tuning</div>
+        <div class="cat-sub">LoRA · QLoRA · PEFT · Dataset Preparation</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="genai/rag">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de8cc,transparent)"></div>
+        <div class="cat-icon">🔍</div>
+        <div class="cat-name" style="color:#4de8cc">RAG</div>
+        <div class="cat-sub">Vector DB · Embeddings · Chunking · LlamaIndex</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="genai/langchain">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#f09638,transparent)"></div>
+        <div class="cat-icon">🔗</div>
+        <div class="cat-name" style="color:#f09638">LangChain</div>
+        <div class="cat-sub">Chains · Agents · Memory · Tools · LangGraph</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+    </div>
+
+    <!-- 7. MLOps -->
+    <div class="section-label">⑦ MLOps — Deploy & Scale</div>
+    <div class="cat-grid">
+      <a class="cat-card soon" href="mlops/deployment">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#4de87a,transparent)"></div>
+        <div class="cat-icon">🚀</div>
+        <div class="cat-name" style="color:#4de87a">Model Deployment</div>
+        <div class="cat-sub">FastAPI · Flask · ONNX · TorchServe</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="mlops/experiment-tracking">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#38bdf8,transparent)"></div>
+        <div class="cat-icon">📋</div>
+        <div class="cat-name" style="color:#38bdf8">Experiment Tracking</div>
+        <div class="cat-sub">MLflow · W&B · Hyperparameter Tuning</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+      <a class="cat-card soon" href="mlops/docker-ml">
+        <div class="cat-card-accent" style="background:linear-gradient(90deg,#e5c07b,transparent)"></div>
+        <div class="cat-icon">🐳</div>
+        <div class="cat-name" style="color:#e5c07b">Docker for ML</div>
+        <div class="cat-sub">Containerization · GPU · Docker Compose · CI/CD</div>
+        <span class="cat-badge cat-badge-soon">Soon</span>
+      </a>
+    </div>
+
+    <div class="bottom-note">
+      <p>
+        Prerequisite: <a href="../languages/python/core">Python Core</a> — make sure you're comfortable with Python before starting this track.
       </p>
     </div>
 
@@ -325,8 +474,8 @@
 </div>
 
 <footer>
-  <div class="f-copy"><span data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</span></div>
-  <div class="f-site" style="font-size:.55rem;letter-spacing:.1em;color:var(--muted)">mikailsarpkaya<span>.com</span></div>
+  <div class="f-copy">© 2026 Mikail Sarpkaya. All rights reserved.</div>
+  <div class="f-site" style="font-size:.55rem;letter-spacing:.1em;color:var(--hub-muted)">mikailsarpkaya<span>.com</span></div>
 </footer>
 
 <button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()">☰ Menu</button>
@@ -345,7 +494,50 @@ function toggleSidebar() {
 function toggleGroup(label) {
   label.parentElement.classList.toggle('open');
 }
+
+// Particle system
+(function(){
+  const c = document.getElementById('particles');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  let w, h, particles = [];
+  function resize() {
+    const r = c.parentElement.getBoundingClientRect();
+    w = c.width = r.width; h = c.height = r.height;
+  }
+  function init() {
+    resize(); particles = [];
+    for(let i = 0; i < 35; i++) {
+      particles.push({ x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.12, vy:(Math.random()-.5)*.12, r:Math.random()*1.5+.5, o:Math.random()*.25+.08 });
+    }
+  }
+  function draw() {
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<particles.length;i++){
+      const p=particles[i];
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,169,110,${p.o})`;ctx.fill();
+      for(let j=i+1;j<particles.length;j++){
+        const q=particles[j];const dx=p.x-q.x,dy=p.y-q.y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<110){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(200,169,110,${.05*(1-dist/110)})`;ctx.lineWidth=.5;ctx.stroke();}
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  init();draw();
+  window.addEventListener('resize',resize);
+})();
 </script>
-<script src="../shared.i18n.js"></script>
+
+
+<script src="../tutorials-shared.js?v=4"></script>
+<script>
+function initKaTeX(){if(typeof renderMathInElement!=="undefined"){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false})}}
+document.addEventListener("DOMContentLoaded",function(){setTimeout(initKaTeX,500)});
+document.addEventListener("langchange",function(){setTimeout(initKaTeX,300)});
+</script>
+<script src="/tutorials/interactive-runner.js?v=14" defer></script>
 </body>
 </html>

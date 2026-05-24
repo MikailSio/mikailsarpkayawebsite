@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "datasets": {
+    "churn": {
+      "file": "churn.csv",
+      "rows": 500,
+      "columns": [
+        "customer_id",
+        "gender",
+        "age",
+        "senior",
+        "tenure_months",
+        "monthly_charge",
+        "total_charge",
+        "num_support_calls",
+        "contract_type",
+        "payment_method",
+        "internet_service",
+        "churned"
+      ],
+      "description": "Customer churn prediction. Target: churned (0/1). 500 customers.",
+      "use_in": [
+        "ml-theory",
+        "sklearn",
+        "pandas"
+      ]
+    },
+    "reviews": {
+      "file": "reviews.csv",
+      "rows": 300,
+      "columns": [
+        "id",
+        "text",
+        "sentiment",
+        "category",
+        "rating",
+        "word_count"
+      ],
+      "description": "Product/movie reviews with sentiment labels. EN.",
+      "use_in": [
+        "nlp",
+        "pandas"
+      ]
+    },
+    "tweets": {
+      "file": "tweets.csv",
+      "rows": 300,
+      "columns": [
+        "id",
+        "text",
+        "language",
+        "sentiment",
+        "hashtags",
+        "mentions",
+        "has_url",
+        "length"
+      ],
+      "description": "Bilingual (TR + EN) tweets with sentiment.",
+      "use_in": [
+        "nlp",
+        "huggingface"
+      ]
+    },
+    "housing": {
+      "file": "housing.csv",
+      "rows": 200,
+      "columns": [
+        "bedrooms",
+        "bathrooms",
+        "area_m2",
+        "age_years",
+        "district",
+        "price_try"
+      ],
+      "description": "Istanbul-style housing prices (synthetic). Regression target: price_try.",
+      "use_in": [
+        "ml-theory",
+        "sklearn",
+        "pandas",
+        "matplotlib"
+      ]
+    },
+    "stocks": {
+      "file": "stocks.csv",
+      "rows": 261,
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "description": "Synthetic stock OHLCV time series, 1 year of daily.",
+      "use_in": [
+        "pandas",
+        "matplotlib"
+      ]
+    },
+    "iris": {
+      "file": "iris.csv",
+      "rows": 150,
+      "columns": [
+        "sepal_length",
+        "sepal_width",
+        "petal_length",
+        "petal_width",
+        "species"
+      ],
+      "description": "Classic iris dataset (re-synthesized). 3-class classification.",
+      "use_in": [
+        "ml-theory",
+        "sklearn"
+      ]
+    },
+    "customers": {
+      "file": "customers.csv",
+      "rows": 500,
+      "columns": [
+        "customer_id",
+        "first_name",
+        "last_name",
+        "email",
+        "country",
+        "city",
+        "signup_date"
+      ],
+      "description": "Customer profiles, joins to churn.csv via customer_id.",
+      "use_in": [
+        "sql",
+        "pandas"
+      ]
+    },
+    "products": {
+      "file": "products.csv",
+      "rows": 39,
+      "columns": [
+        "product_id",
+        "name",
+        "category",
+        "price_usd",
+        "stock"
+      ],
+      "description": "Product catalog, joins to orders.csv via product_id.",
+      "use_in": [
+        "sql",
+        "pandas"
+      ]
+    },
+    "orders": {
+      "file": "orders.csv",
+      "rows": 2000,
+      "columns": [
+        "order_id",
+        "customer_id",
+        "product_id",
+        "quantity",
+        "order_date",
+        "total_usd",
+        "status"
+      ],
+      "description": "Order history, joins to customers + products. Star-schema fact table.",
+      "use_in": [
+        "sql",
+        "pandas",
+        "time-series"
+      ]
+    }
+  }
+}

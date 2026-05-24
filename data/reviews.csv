@@ -1,0 +1,301 @@
+id,text,sentiment,category,rating,word_count
+R0001,"Terrible experience, asked for a refund.",negative,electronics,1,6
+R0002,Genuinely surprised by how good it is.,positive,clothing,4,7
+R0003,"Absolutely fantastic, highly recommend.",positive,electronics,4,4
+R0004,Customer service was unhelpful.,negative,clothing,1,4
+R0005,Five stars without hesitation. Best purchase I've made all year.,positive,electronics,4,10
+R0006,"Terrible experience, asked for a refund. Boring and predictable, fell asleep halfway.",negative,book,1,12
+R0007,"Absolutely fantastic, highly recommend. The plot was gripping from start to finish.",positive,clothing,5,12
+R0008,"A masterpiece, truly memorable.",positive,restaurant,4,4
+R0009,Five stars without hesitation. The plot was gripping from start to finish.,positive,movie,4,12
+R0010,Best purchase I've made all year.,positive,electronics,4,6
+R0011,"Met my expectations, no more no less. Mixed feelings about this.",neutral,book,3,11
+R0012,Excellent quality and great value. Best purchase I've made all year.,positive,clothing,4,11
+R0013,"Would not recommend to anyone. Boring and predictable, fell asleep halfway. Cheap materials, broke after a week.",negative,book,2,17
+R0014,Watchable but forgettable.,neutral,movie,3,3
+R0015,The plot was gripping from start to finish.,positive,book,5,8
+R0016,"The plot was gripping from start to finish. Excellent quality and great value. A masterpiece, truly memorable.",positive,restaurant,5,17
+R0017,Excellent quality and great value.,positive,clothing,5,5
+R0018,Amazing acting and direction. The plot was gripping from start to finish. Excellent quality and great value.,positive,clothing,4,17
+R0019,Disappointed with the quality.,negative,electronics,1,4
+R0020,Overpriced for what you get. Disappointed with the quality.,negative,restaurant,2,9
+R0021,"Customer service was unhelpful. Terrible experience, asked for a refund.",negative,movie,1,10
+R0022,"Terrible experience, asked for a refund. Awful acting, weak script. Disappointed with the quality.",negative,restaurant,2,14
+R0023,Best purchase I've made all year.,positive,clothing,4,6
+R0024,"Could be better, could be worse. Average product, does the job.",neutral,electronics,3,11
+R0025,Genuinely surprised by how good it is.,positive,clothing,4,7
+R0026,"Absolutely fantastic, highly recommend.",positive,book,5,4
+R0027,Five stars without hesitation.,positive,movie,4,4
+R0028,Customer service was unhelpful.,negative,electronics,1,4
+R0029,"Boring and predictable, fell asleep halfway. Terrible experience, asked for a refund. Felt rushed and underdeveloped.",negative,clothing,1,16
+R0030,"Would not recommend to anyone. Terrible experience, asked for a refund. Felt rushed and underdeveloped.",negative,restaurant,2,15
+R0031,"Decent for the price. Average product, does the job.",neutral,electronics,3,9
+R0032,Five stars without hesitation.,positive,clothing,4,4
+R0033,Loved every minute of it.,positive,movie,4,5
+R0034,"Decent for the price. Could be better, could be worse.",neutral,electronics,3,10
+R0035,Excellent quality and great value. Genuinely surprised by how good it is.,positive,clothing,4,12
+R0036,"Cheap materials, broke after a week.",negative,electronics,2,6
+R0037,Amazing acting and direction. The plot was gripping from start to finish. Five stars without hesitation.,positive,restaurant,5,16
+R0038,Decent for the price.,neutral,movie,3,4
+R0039,"Absolutely fantastic, highly recommend. Excellent quality and great value.",positive,electronics,4,9
+R0040,Felt rushed and underdeveloped.,negative,book,1,4
+R0041,"Cheap materials, broke after a week.",negative,movie,1,6
+R0042,Complete waste of time and money. Disappointed with the quality. Would not recommend to anyone.,negative,restaurant,1,15
+R0043,Felt rushed and underdeveloped.,negative,electronics,1,4
+R0044,"Best purchase I've made all year. A masterpiece, truly memorable.",positive,restaurant,5,10
+R0045,"Customer service was unhelpful. Cheap materials, broke after a week. Boring and predictable, fell asleep halfway.",negative,book,1,16
+R0046,Five stars without hesitation.,positive,book,4,4
+R0047,"A masterpiece, truly memorable. Genuinely surprised by how good it is. Worth every penny, would buy again.",positive,clothing,4,17
+R0048,"Absolutely fantastic, highly recommend.",positive,electronics,4,4
+R0049,"Excellent quality and great value. Loved every minute of it. Absolutely fantastic, highly recommend.",positive,clothing,5,14
+R0050,"Terrible experience, asked for a refund. Would not recommend to anyone.",negative,electronics,2,11
+R0051,Best purchase I've made all year.,positive,book,5,6
+R0052,"It was okay, nothing special.",neutral,restaurant,3,5
+R0053,Disappointed with the quality. Overpriced for what you get. Would not recommend to anyone.,negative,electronics,2,14
+R0054,"Average product, does the job.",neutral,book,3,5
+R0055,Genuinely surprised by how good it is. Best purchase I've made all year.,positive,clothing,4,13
+R0056,"Absolutely fantastic, highly recommend. Worth every penny, would buy again. Best purchase I've made all year.",positive,movie,4,16
+R0057,"Terrible experience, asked for a refund.",negative,clothing,2,6
+R0058,Excellent quality and great value. Best purchase I've made all year.,positive,book,5,11
+R0059,Decent for the price.,neutral,restaurant,3,4
+R0060,"It was okay, nothing special.",neutral,book,3,5
+R0061,"Terrible experience, asked for a refund. Boring and predictable, fell asleep halfway. Cheap materials, broke after a week.",negative,clothing,2,18
+R0062,"Worth every penny, would buy again.",positive,book,4,6
+R0063,Felt rushed and underdeveloped.,negative,movie,1,4
+R0064,The plot was gripping from start to finish.,positive,electronics,4,8
+R0065,Customer service was unhelpful. Felt rushed and underdeveloped.,negative,electronics,1,8
+R0066,Acceptable quality.,neutral,movie,3,2
+R0067,Amazing acting and direction. Excellent quality and great value.,positive,electronics,5,9
+R0068,Felt rushed and underdeveloped.,negative,restaurant,1,4
+R0069,The plot was gripping from start to finish. Best purchase I've made all year.,positive,electronics,4,14
+R0070,Amazing acting and direction.,positive,book,5,4
+R0071,"Watchable but forgettable. Could be better, could be worse.",neutral,restaurant,3,9
+R0072,"Awful acting, weak script. Complete waste of time and money. Disappointed with the quality.",negative,electronics,2,14
+R0073,Complete waste of time and money. Disappointed with the quality.,negative,book,2,10
+R0074,Felt rushed and underdeveloped. Customer service was unhelpful.,negative,restaurant,1,8
+R0075,"Met my expectations, no more no less.",neutral,movie,3,7
+R0076,Customer service was unhelpful.,negative,book,1,4
+R0077,"The plot was gripping from start to finish. Five stars without hesitation. Absolutely fantastic, highly recommend.",positive,clothing,5,16
+R0078,The plot was gripping from start to finish. Amazing acting and direction.,positive,clothing,5,12
+R0079,"Amazing acting and direction. Worth every penny, would buy again.",positive,restaurant,5,10
+R0080,"Terrible experience, asked for a refund.",negative,electronics,2,6
+R0081,"Five stars without hesitation. The plot was gripping from start to finish. A masterpiece, truly memorable.",positive,restaurant,5,16
+R0082,"Cheap materials, broke after a week. Boring and predictable, fell asleep halfway. Disappointed with the quality.",negative,clothing,2,16
+R0083,"Awful acting, weak script. Disappointed with the quality. Would not recommend to anyone.",negative,electronics,2,13
+R0084,"It was okay, nothing special.",neutral,movie,3,5
+R0085,"Five stars without hesitation. Absolutely fantastic, highly recommend.",positive,restaurant,5,8
+R0086,Acceptable quality.,neutral,restaurant,3,2
+R0087,Loved every minute of it.,positive,restaurant,4,5
+R0088,"Genuinely surprised by how good it is. A masterpiece, truly memorable. Loved every minute of it.",positive,movie,4,16
+R0089,Customer service was unhelpful. Overpriced for what you get.,negative,restaurant,2,9
+R0090,"Customer service was unhelpful. Felt rushed and underdeveloped. Cheap materials, broke after a week.",negative,restaurant,1,14
+R0091,"Terrible experience, asked for a refund.",negative,electronics,2,6
+R0092,Best purchase I've made all year.,positive,book,4,6
+R0093,"Absolutely fantastic, highly recommend. Worth every penny, would buy again. Genuinely surprised by how good it is.",positive,restaurant,4,17
+R0094,Would not recommend to anyone. Disappointed with the quality. Felt rushed and underdeveloped.,negative,book,2,13
+R0095,Complete waste of time and money. Would not recommend to anyone.,negative,restaurant,2,11
+R0096,Functional but uninspired.,neutral,restaurant,3,3
+R0097,"Terrible experience, asked for a refund. Felt rushed and underdeveloped.",negative,clothing,2,10
+R0098,"Overpriced for what you get. Would not recommend to anyone. Cheap materials, broke after a week.",negative,book,1,16
+R0099,Amazing acting and direction.,positive,restaurant,5,4
+R0100,"Boring and predictable, fell asleep halfway. Customer service was unhelpful.",negative,restaurant,1,10
+R0101,Complete waste of time and money. Disappointed with the quality. Felt rushed and underdeveloped.,negative,restaurant,1,14
+R0102,Amazing acting and direction. The plot was gripping from start to finish.,positive,restaurant,4,12
+R0103,Best purchase I've made all year. Amazing acting and direction.,positive,movie,5,10
+R0104,"Customer service was unhelpful. Complete waste of time and money. Awful acting, weak script.",negative,movie,1,14
+R0105,Complete waste of time and money. Overpriced for what you get. Would not recommend to anyone.,negative,movie,1,16
+R0106,"Boring and predictable, fell asleep halfway.",negative,movie,2,6
+R0107,"Cheap materials, broke after a week.",negative,book,2,6
+R0108,"Absolutely fantastic, highly recommend. Worth every penny, would buy again. Best purchase I've made all year.",positive,clothing,4,16
+R0109,Five stars without hesitation. Amazing acting and direction.,positive,electronics,5,8
+R0110,"Excellent quality and great value. Absolutely fantastic, highly recommend. Best purchase I've made all year.",positive,clothing,4,15
+R0111,Customer service was unhelpful. Felt rushed and underdeveloped.,negative,movie,2,8
+R0112,Complete waste of time and money. Felt rushed and underdeveloped.,negative,movie,2,10
+R0113,"A masterpiece, truly memorable. Worth every penny, would buy again.",positive,electronics,5,10
+R0114,"Terrible experience, asked for a refund. Customer service was unhelpful. Cheap materials, broke after a week.",negative,restaurant,2,16
+R0115,"Watchable but forgettable. Average product, does the job.",neutral,movie,3,8
+R0116,"Excellent quality and great value. A masterpiece, truly memorable.",positive,book,5,9
+R0117,"Worth every penny, would buy again. A masterpiece, truly memorable.",positive,book,4,10
+R0118,"Terrible experience, asked for a refund. Overpriced for what you get.",negative,clothing,1,11
+R0119,"Average product, does the job.",neutral,restaurant,3,5
+R0120,"Cheap materials, broke after a week.",negative,restaurant,2,6
+R0121,"Terrible experience, asked for a refund.",negative,restaurant,1,6
+R0122,"Overpriced for what you get. Awful acting, weak script.",negative,clothing,2,9
+R0123,"Customer service was unhelpful. Awful acting, weak script.",negative,restaurant,2,8
+R0124,"Excellent quality and great value. Absolutely fantastic, highly recommend.",positive,book,4,9
+R0125,"Worth every penny, would buy again. Excellent quality and great value. Genuinely surprised by how good it is.",positive,book,5,18
+R0126,"Overpriced for what you get. Terrible experience, asked for a refund. Disappointed with the quality.",negative,book,1,15
+R0127,Best purchase I've made all year.,positive,clothing,4,6
+R0128,Loved every minute of it.,positive,electronics,5,5
+R0129,Disappointed with the quality. Complete waste of time and money.,negative,restaurant,2,10
+R0130,"Boring and predictable, fell asleep halfway. Complete waste of time and money.",negative,restaurant,2,12
+R0131,Amazing acting and direction.,positive,movie,5,4
+R0132,"Complete waste of time and money. Boring and predictable, fell asleep halfway. Customer service was unhelpful.",negative,movie,2,16
+R0133,"Could be better, could be worse.",neutral,restaurant,3,6
+R0134,Would not recommend to anyone. Customer service was unhelpful. Felt rushed and underdeveloped.,negative,restaurant,2,13
+R0135,Amazing acting and direction. Best purchase I've made all year. Loved every minute of it.,positive,electronics,4,15
+R0136,"Disappointed with the quality. Boring and predictable, fell asleep halfway.",negative,electronics,1,10
+R0137,Complete waste of time and money.,negative,restaurant,2,6
+R0138,"Terrible experience, asked for a refund. Complete waste of time and money.",negative,book,1,12
+R0139,"Cheap materials, broke after a week. Disappointed with the quality. Would not recommend to anyone.",negative,clothing,2,15
+R0140,Felt rushed and underdeveloped.,negative,clothing,1,4
+R0141,Best purchase I've made all year.,positive,movie,4,6
+R0142,Five stars without hesitation. Best purchase I've made all year.,positive,movie,5,10
+R0143,"Felt rushed and underdeveloped. Terrible experience, asked for a refund.",negative,restaurant,2,10
+R0144,Amazing acting and direction.,positive,clothing,5,4
+R0145,Excellent quality and great value.,positive,book,4,5
+R0146,"Cheap materials, broke after a week.",negative,book,2,6
+R0147,"Amazing acting and direction. A masterpiece, truly memorable. Absolutely fantastic, highly recommend.",positive,book,5,12
+R0148,"Absolutely fantastic, highly recommend. Worth every penny, would buy again.",positive,restaurant,5,10
+R0149,Felt rushed and underdeveloped. Customer service was unhelpful.,negative,restaurant,1,8
+R0150,"The plot was gripping from start to finish. Absolutely fantastic, highly recommend.",positive,clothing,5,12
+R0151,"Could be better, could be worse.",neutral,restaurant,3,6
+R0152,Genuinely surprised by how good it is.,positive,clothing,5,7
+R0153,"Cheap materials, broke after a week. Complete waste of time and money. Would not recommend to anyone.",negative,clothing,2,17
+R0154,"A masterpiece, truly memorable. Five stars without hesitation.",positive,movie,4,8
+R0155,"Some good moments, some weak ones.",neutral,book,3,6
+R0156,Felt rushed and underdeveloped. Disappointed with the quality. Would not recommend to anyone.,negative,restaurant,1,13
+R0157,Mixed feelings about this.,neutral,book,3,4
+R0158,"Felt rushed and underdeveloped. Cheap materials, broke after a week.",negative,electronics,2,10
+R0159,Felt rushed and underdeveloped.,negative,clothing,1,4
+R0160,Disappointed with the quality.,negative,restaurant,2,4
+R0161,Best purchase I've made all year. Loved every minute of it. Five stars without hesitation.,positive,clothing,5,15
+R0162,"Cheap materials, broke after a week. Boring and predictable, fell asleep halfway. Overpriced for what you get.",negative,book,2,17
+R0163,"Amazing acting and direction. A masterpiece, truly memorable. The plot was gripping from start to finish.",positive,electronics,4,16
+R0164,Felt rushed and underdeveloped.,negative,book,1,4
+R0165,"Felt rushed and underdeveloped. Overpriced for what you get. Boring and predictable, fell asleep halfway.",negative,movie,2,15
+R0166,"The plot was gripping from start to finish. Absolutely fantastic, highly recommend. A masterpiece, truly memorable.",positive,clothing,4,16
+R0167,"Some good moments, some weak ones.",neutral,restaurant,3,6
+R0168,Decent for the price.,neutral,restaurant,3,4
+R0169,"Awful acting, weak script. Felt rushed and underdeveloped.",negative,book,1,8
+R0170,Watchable but forgettable. Mixed feelings about this.,neutral,clothing,3,7
+R0171,Excellent quality and great value.,positive,electronics,5,5
+R0172,Disappointed with the quality. Overpriced for what you get.,negative,electronics,2,9
+R0173,Complete waste of time and money.,negative,movie,2,6
+R0174,"Amazing acting and direction. Worth every penny, would buy again.",positive,clothing,4,10
+R0175,"Worth every penny, would buy again. Five stars without hesitation. Genuinely surprised by how good it is.",positive,clothing,4,17
+R0176,Mixed feelings about this.,neutral,clothing,3,4
+R0177,"Best purchase I've made all year. A masterpiece, truly memorable.",positive,movie,5,10
+R0178,"Met my expectations, no more no less. Could be better, could be worse.",neutral,electronics,3,13
+R0179,Five stars without hesitation. Best purchase I've made all year.,positive,book,5,10
+R0180,Would not recommend to anyone. Felt rushed and underdeveloped.,negative,movie,2,9
+R0181,The plot was gripping from start to finish. Best purchase I've made all year. Genuinely surprised by how good it is.,positive,restaurant,4,21
+R0182,"Loved every minute of it. A masterpiece, truly memorable. Best purchase I've made all year.",positive,clothing,4,15
+R0183,"Average product, does the job.",neutral,clothing,3,5
+R0184,"Worth every penny, would buy again. Absolutely fantastic, highly recommend. Loved every minute of it.",positive,restaurant,5,15
+R0185,"Worth every penny, would buy again. Absolutely fantastic, highly recommend.",positive,book,5,10
+R0186,Would not recommend to anyone.,negative,clothing,1,5
+R0187,"Could be better, could be worse. Functional but uninspired.",neutral,book,3,9
+R0188,"Mixed feelings about this. Met my expectations, no more no less.",neutral,book,3,11
+R0189,"Decent for the price. Some good moments, some weak ones.",neutral,electronics,3,10
+R0190,"Could be better, could be worse. Watchable but forgettable.",neutral,movie,3,9
+R0191,"Terrible experience, asked for a refund.",negative,restaurant,1,6
+R0192,Best purchase I've made all year. Amazing acting and direction. The plot was gripping from start to finish.,positive,electronics,4,18
+R0193,"Customer service was unhelpful. Awful acting, weak script. Would not recommend to anyone.",negative,restaurant,1,13
+R0194,Acceptable quality. Decent for the price.,neutral,electronics,3,6
+R0195,Best purchase I've made all year.,positive,movie,5,6
+R0196,"Worth every penny, would buy again. Amazing acting and direction. A masterpiece, truly memorable.",positive,clothing,5,14
+R0197,"Worth every penny, would buy again. Amazing acting and direction. Absolutely fantastic, highly recommend.",positive,clothing,5,14
+R0198,Loved every minute of it. The plot was gripping from start to finish.,positive,restaurant,4,13
+R0199,The plot was gripping from start to finish.,positive,book,4,8
+R0200,"Awful acting, weak script. Complete waste of time and money. Felt rushed and underdeveloped.",negative,electronics,2,14
+R0201,"Decent for the price. Average product, does the job.",neutral,clothing,3,9
+R0202,Watchable but forgettable.,neutral,electronics,3,3
+R0203,Decent for the price.,neutral,clothing,3,4
+R0204,Excellent quality and great value.,positive,electronics,5,5
+R0205,"Complete waste of time and money. Terrible experience, asked for a refund. Boring and predictable, fell asleep halfway.",negative,clothing,1,18
+R0206,"Absolutely fantastic, highly recommend.",positive,electronics,4,4
+R0207,Five stars without hesitation.,positive,movie,5,4
+R0208,"Worth every penny, would buy again.",positive,clothing,5,6
+R0209,"A masterpiece, truly memorable.",positive,book,5,4
+R0210,"Cheap materials, broke after a week.",negative,clothing,1,6
+R0211,"Genuinely surprised by how good it is. Best purchase I've made all year. A masterpiece, truly memorable.",positive,movie,4,17
+R0212,Acceptable quality. Decent for the price.,neutral,restaurant,3,6
+R0213,Disappointed with the quality. Overpriced for what you get.,negative,clothing,2,9
+R0214,Best purchase I've made all year.,positive,restaurant,5,6
+R0215,"Mixed feelings about this. Could be better, could be worse.",neutral,clothing,3,10
+R0216,"Absolutely fantastic, highly recommend. Genuinely surprised by how good it is. Excellent quality and great value.",positive,restaurant,5,16
+R0217,Watchable but forgettable. Mixed feelings about this.,neutral,restaurant,3,7
+R0218,The plot was gripping from start to finish.,positive,book,5,8
+R0219,"Boring and predictable, fell asleep halfway. Cheap materials, broke after a week.",negative,movie,1,12
+R0220,Acceptable quality.,neutral,movie,3,2
+R0221,"Boring and predictable, fell asleep halfway. Customer service was unhelpful.",negative,clothing,1,10
+R0222,Decent for the price. Acceptable quality.,neutral,book,3,6
+R0223,"It was okay, nothing special. Met my expectations, no more no less.",neutral,clothing,3,12
+R0224,Five stars without hesitation.,positive,electronics,4,4
+R0225,Disappointed with the quality.,negative,clothing,2,4
+R0226,Five stars without hesitation. Excellent quality and great value.,positive,clothing,5,9
+R0227,Functional but uninspired.,neutral,book,3,3
+R0228,Best purchase I've made all year. The plot was gripping from start to finish.,positive,movie,5,14
+R0229,Five stars without hesitation.,positive,movie,5,4
+R0230,"Loved every minute of it. Absolutely fantastic, highly recommend. Excellent quality and great value.",positive,restaurant,5,14
+R0231,"Awful acting, weak script.",negative,book,2,4
+R0232,Overpriced for what you get. Disappointed with the quality. Complete waste of time and money.,negative,electronics,1,15
+R0233,Disappointed with the quality.,negative,restaurant,2,4
+R0234,"Overpriced for what you get. Cheap materials, broke after a week.",negative,book,2,11
+R0235,"Absolutely fantastic, highly recommend. The plot was gripping from start to finish. Amazing acting and direction.",positive,book,4,16
+R0236,"Cheap materials, broke after a week. Customer service was unhelpful. Terrible experience, asked for a refund.",negative,electronics,1,16
+R0237,Loved every minute of it. Five stars without hesitation. Excellent quality and great value.,positive,electronics,5,14
+R0238,"Terrible experience, asked for a refund. Awful acting, weak script.",negative,movie,1,10
+R0239,"Boring and predictable, fell asleep halfway. Overpriced for what you get.",negative,clothing,2,11
+R0240,"Customer service was unhelpful. Awful acting, weak script. Disappointed with the quality.",negative,movie,2,12
+R0241,"Absolutely fantastic, highly recommend. The plot was gripping from start to finish.",positive,clothing,5,12
+R0242,"Amazing acting and direction. Best purchase I've made all year. Absolutely fantastic, highly recommend.",positive,movie,5,14
+R0243,Functional but uninspired.,neutral,restaurant,3,3
+R0244,Decent for the price. Acceptable quality.,neutral,movie,3,6
+R0245,"Amazing acting and direction. Genuinely surprised by how good it is. Absolutely fantastic, highly recommend.",positive,book,5,15
+R0246,"Awful acting, weak script.",negative,movie,1,4
+R0247,Customer service was unhelpful.,negative,book,1,4
+R0248,"Worth every penny, would buy again. Excellent quality and great value. Absolutely fantastic, highly recommend.",positive,book,4,15
+R0249,"Worth every penny, would buy again. Absolutely fantastic, highly recommend. Five stars without hesitation.",positive,restaurant,5,14
+R0250,"Cheap materials, broke after a week. Awful acting, weak script. Customer service was unhelpful.",negative,restaurant,1,14
+R0251,Best purchase I've made all year. Five stars without hesitation.,positive,book,4,10
+R0252,"Cheap materials, broke after a week. Overpriced for what you get.",negative,movie,1,11
+R0253,"Absolutely fantastic, highly recommend. Five stars without hesitation.",positive,restaurant,5,8
+R0254,"Complete waste of time and money. Cheap materials, broke after a week. Would not recommend to anyone.",negative,clothing,2,17
+R0255,Complete waste of time and money.,negative,movie,2,6
+R0256,"Decent for the price. Could be better, could be worse.",neutral,electronics,3,10
+R0257,"A masterpiece, truly memorable. Five stars without hesitation. Worth every penny, would buy again.",positive,book,5,14
+R0258,Acceptable quality. Watchable but forgettable.,neutral,clothing,3,5
+R0259,"The plot was gripping from start to finish. Absolutely fantastic, highly recommend. Five stars without hesitation.",positive,clothing,4,16
+R0260,"Terrible experience, asked for a refund. Boring and predictable, fell asleep halfway.",negative,movie,2,12
+R0261,"Awful acting, weak script.",negative,restaurant,2,4
+R0262,"Absolutely fantastic, highly recommend. Best purchase I've made all year. Amazing acting and direction.",positive,electronics,5,14
+R0263,Customer service was unhelpful. Disappointed with the quality. Felt rushed and underdeveloped.,negative,movie,2,12
+R0264,Excellent quality and great value.,positive,restaurant,5,5
+R0265,"Worth every penny, would buy again.",positive,book,4,6
+R0266,"Could be better, could be worse.",neutral,clothing,3,6
+R0267,Watchable but forgettable.,neutral,clothing,3,3
+R0268,"Worth every penny, would buy again. Five stars without hesitation.",positive,clothing,4,10
+R0269,Mixed feelings about this.,neutral,movie,3,4
+R0270,"Excellent quality and great value. A masterpiece, truly memorable. Best purchase I've made all year.",positive,electronics,5,15
+R0271,"Cheap materials, broke after a week. Would not recommend to anyone.",negative,clothing,2,11
+R0272,"Met my expectations, no more no less. Acceptable quality.",neutral,clothing,3,9
+R0273,Would not recommend to anyone.,negative,book,1,5
+R0274,The plot was gripping from start to finish. Genuinely surprised by how good it is.,positive,clothing,4,15
+R0275,"Decent for the price. Some good moments, some weak ones.",neutral,book,3,10
+R0276,"Worth every penny, would buy again. Amazing acting and direction. Absolutely fantastic, highly recommend.",positive,restaurant,4,14
+R0277,Acceptable quality.,neutral,movie,3,2
+R0278,Excellent quality and great value. Amazing acting and direction.,positive,book,4,9
+R0279,"Absolutely fantastic, highly recommend. The plot was gripping from start to finish.",positive,electronics,4,12
+R0280,"Worth every penny, would buy again. A masterpiece, truly memorable.",positive,clothing,5,10
+R0281,Loved every minute of it.,positive,electronics,5,5
+R0282,"Decent for the price. Met my expectations, no more no less.",neutral,electronics,3,11
+R0283,Excellent quality and great value.,positive,clothing,5,5
+R0284,"Cheap materials, broke after a week.",negative,clothing,1,6
+R0285,"Boring and predictable, fell asleep halfway. Terrible experience, asked for a refund. Felt rushed and underdeveloped.",negative,clothing,1,16
+R0286,"Amazing acting and direction. Worth every penny, would buy again. Absolutely fantastic, highly recommend.",positive,movie,5,14
+R0287,Acceptable quality.,neutral,restaurant,3,2
+R0288,The plot was gripping from start to finish. Best purchase I've made all year.,positive,book,4,14
+R0289,Would not recommend to anyone. Disappointed with the quality.,negative,electronics,2,9
+R0290,"The plot was gripping from start to finish. Worth every penny, would buy again. A masterpiece, truly memorable.",positive,electronics,5,18
+R0291,Mixed feelings about this.,neutral,movie,3,4
+R0292,Excellent quality and great value.,positive,book,4,5
+R0293,"Could be better, could be worse. Mixed feelings about this.",neutral,book,3,10
+R0294,Excellent quality and great value. Best purchase I've made all year. The plot was gripping from start to finish.,positive,book,4,19
+R0295,Amazing acting and direction. Five stars without hesitation.,positive,restaurant,5,8
+R0296,"A masterpiece, truly memorable.",positive,book,5,4
+R0297,Decent for the price. Acceptable quality.,neutral,movie,3,6
+R0298,Genuinely surprised by how good it is.,positive,book,5,7
+R0299,Best purchase I've made all year. Five stars without hesitation.,positive,clothing,5,10
+R0300,"Cheap materials, broke after a week.",negative,restaurant,2,6

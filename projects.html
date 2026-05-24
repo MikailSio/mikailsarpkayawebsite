@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Projects by Mikail Sarpkaya – AI research, NLP models, web apps, and engineering projects."/>
   <meta name="author" content="Mikail Sarpkaya"/>
-  <link rel="canonical" href="https://mikailsarpkaya.com/projects.html"/>
+  <link rel="canonical" href="https://mikailsarpkaya.com/projects"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Projects — Mikail Sarpkaya"/>
   <meta property="og:description" content="AI research, NLP models, web apps, and engineering projects."/>
@@ -24,27 +24,26 @@
 <div id="loader"><div class="loader-name"><span>PROJECTS</span></div><div class="loader-bar-wrap"><div class="loader-bar"></div></div><div class="loader-sub">mikailsarpkaya.com</div></div>
 
 <nav id="nav">
-  <a href="index.html" class="nav-logo">MS</a>
+  <a href="index" class="nav-logo">MS</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="projects.html" class="active">Projects</a></li>
-    <li><a href="certificates.html" data-i18n="nav.certificates">Certificates</a></li>
-    <li><a href="index.html#research" data-i18n="nav.research">Research</a></li>
-    <li><a href="tutorials.html" data-i18n="nav.tutorials" class="nav-tut">Tutorials</a></li>
-    <li><a href="cv/index.html" class="nav-cv" data-i18n="nav.cv">CV ↗</a></li>
+    <li><a href="index" data-i18n="nav.home">Home</a></li>
+    <li><a href="projects" class="active" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="certificates" data-i18n="nav.certificates">Certificates</a></li>
+    <li><a href="tutorials" data-i18n="nav.tutorials" class="nav-tut">Tutorials</a></li>
+    <li class="lang-switch"><button class="lang-btn" onclick="setLang('tr')">TR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('es')">ES</button></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html" onclick="toggleMobile()">Home</a>
-  <a href="projects.html" onclick="toggleMobile()">Projects</a>
-  <a href="certificates.html" onclick="toggleMobile()">Certificates</a>
-  <a href="tutorials.html" onclick="toggleMobile()" style="color:var(--gold)">Tutorials</a>
-  <a href="cv/index.html" onclick="toggleMobile()" style="color:var(--gold)">CV</a>
+  <a href="index" onclick="toggleMobile()" data-i18n="nav.home">Home</a>
+  <a href="projects" onclick="toggleMobile()" data-i18n="nav.projects">Projects</a>
+  <a href="certificates" onclick="toggleMobile()" data-i18n="nav.certificates">Certificates</a>
+  <a href="tutorials" onclick="toggleMobile()" style="color:var(--gold)" data-i18n="nav.tutorials">Tutorials</a>
+  <div class="mobile-lang"><button class="lang-btn" onclick="setLang('tr')">TR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('es')">ES</button></div>
 </div>
 
 <div class="page-hero">
-  <div class="page-eyebrow sr"><span data-i18n-text="pp.eyebrow">02 — Works</span></div>
+  <div class="page-eyebrow sr"><span data-i18n-text="pp.eyebrow">Works</span></div>
   <h1 class="page-title sr"><span data-i18n-text="pp.t1">ALL</span><br><span class="outline" data-i18n-text="pp.t2">PROJECTS</span></h1>
   <p class="page-sub sr" data-i18n="pp.desc">Software, research, and engineering projects — from production web apps to academic AI research.</p>
 </div>
@@ -56,78 +55,50 @@
     <button class="filter-btn" data-filter="ai"><span data-i18n-text="f.ai">AI / ML</span></button>
     <button class="filter-btn" data-filter="web"><span data-i18n-text="f.web">Web</span></button>
     <button class="filter-btn" data-filter="education"><span data-i18n-text="f.edu">Education</span></button>
-    <button class="filter-btn" data-filter="research"><span data-i18n-text="f.res">Research</span></button>
   </div>
 
   <div class="cards-grid" id="projectsGrid">
 
     <div class="card sr" data-category="web education">
       <div style="display:flex;justify-content:space-between;align-items:start">
-        <div class="card-idx">001 — Featured</div>
+        <div class="card-idx" data-i18n-text="pa.abc.tag">Featured</div>
         <span class="card-status s-live" data-i18n-text="st.live">Live</span>
       </div>
       <div class="card-title" data-i18n-text="pa.abc.t">AbcToHero — English Learning Platform</div>
       <p class="card-desc" data-i18n="pa.abc.d">Interactive English learning platform for learners starting from scratch. Vocabulary, grammar, practice exercises, and adaptive learning paths. Deployed at abctohero.com.</p>
       <div class="card-tags">
-        <span class="card-tag">HTML</span><span class="card-tag">CSS</span><span class="card-tag">JavaScript</span><span class="card-tag">Education</span><span class="card-tag">Hetzner VPS</span><span class="card-tag">Nginx</span>
+        <span class="card-tag">HTML</span><span class="card-tag">CSS</span><span class="card-tag">JavaScript</span><span class="card-tag">Education</span><span class="card-tag">Linux VPS</span><span class="card-tag">Nginx</span>
       </div>
       <a href="https://abctohero.com" target="_blank" class="card-link">Visit abctohero.com →</a>
     </div>
 
     <div class="card sr" data-category="ai research">
       <div style="display:flex;justify-content:space-between;align-items:start">
-        <div class="card-idx">002 — M.Sc. Thesis</div>
+        <div class="card-idx" data-i18n-text="pa.nlp.tag">M.Sc. Thesis</div>
         <span class="card-status s-wip" data-i18n-text="st.wip">In Progress</span>
       </div>
-      <div class="card-title" data-i18n-text="pa.nlp.t">NLP Thesis — Turkish Text Analysis</div>
-      <p class="card-desc" data-i18n="pa.nlp.d">Graduate research combining automated web scraping pipelines, data cleaning, and transformer-based deep learning architectures for Turkish text analysis and classification.</p>
+      <div class="card-title" data-i18n-text="pa.nlp.t">Sentiment Analysis — IMDb Reviews</div>
+      <p class="card-desc" data-i18n="pa.nlp.d">Graduate research on English IMDb movie review sentiment analysis using transformer-based deep learning architectures, fine-tuned BERT models, and comprehensive evaluation pipelines.</p>
       <div class="card-tags">
-        <span class="card-tag">Python</span><span class="card-tag">Transformers</span><span class="card-tag">PyTorch</span><span class="card-tag">HuggingFace</span><span class="card-tag">BeautifulSoup</span><span class="card-tag">Pandas</span>
-      </div>
-      <a href="index.html#research" class="card-link">See Research →</a>
-    </div>
-
-    <div class="card sr" data-category="ai research">
-      <div style="display:flex;justify-content:space-between;align-items:start">
-        <div class="card-idx">003 — Research</div>
-        <span class="card-status s-research" data-i18n-text="st.res">Research</span>
-      </div>
-      <div class="card-title" data-i18n-text="pa.llm.t">LLM Fine-Tuning Experiments</div>
-      <p class="card-desc" data-i18n="pa.llm.d">Research and fine-tuning experiments on Large Language Models. Investigating model performance, prompt engineering, and domain adaptation for Turkish language tasks.</p>
-      <div class="card-tags">
-        <span class="card-tag">Python</span><span class="card-tag">LLM</span><span class="card-tag">PyTorch</span><span class="card-tag">HuggingFace</span>
+        <span class="card-tag">Python</span><span class="card-tag">Transformers</span><span class="card-tag">PyTorch</span><span class="card-tag">HuggingFace</span><span class="card-tag">BERT</span><span class="card-tag">Pandas</span>
       </div>
       <a href="https://github.com/MikailSio" target="_blank" class="card-link">GitHub →</a>
     </div>
 
     <div class="card sr" data-category="web">
       <div style="display:flex;justify-content:space-between;align-items:start">
-        <div class="card-idx">004 — Web</div>
-        <span class="card-status s-live">Live</span>
+        <div class="card-idx">Web</div>
+        <span class="card-status s-live" data-i18n-text="st.live">Live</span>
       </div>
-      <div class="card-title">Personal Website — mikailsarpkaya.com</div>
-      <p class="card-desc">Professional portfolio site showcasing projects, certificates, and research. Custom-built with vanilla HTML/CSS/JS, deployed on Hetzner VPS with Nginx and Cloudflare.</p>
+      <div class="card-title">mikailsarpkaya.com</div>
+      <p class="card-desc" data-i18n="pa.site.d">Personal portfolio and tutorial site. Custom-built with vanilla HTML/CSS/JS, 13 interactive AI/ML tutorials, 4-language support. Deployed on Linux VPS with Nginx and Cloudflare.</p>
       <div class="card-tags">
         <span class="card-tag">HTML5</span><span class="card-tag">CSS3</span><span class="card-tag">JS</span><span class="card-tag">Linux VPS</span><span class="card-tag">Cloudflare</span>
       </div>
       <a href="https://github.com/MikailSio/mikailsarpkayawebsite" target="_blank" class="card-link">Source Code →</a>
     </div>
 
-    <div class="card sr" data-category="ai">
-      <div style="display:flex;justify-content:space-between;align-items:start">
-        <div class="card-idx">005 — AI</div>
-        <span class="card-status s-wip">In Progress</span>
-      </div>
-      <div class="card-title">Web Scraping & Data Pipeline</div>
-      <p class="card-desc">Automated data collection systems for Turkish language corpora. Multi-source scraping, cleaning, deduplication, and preprocessing for downstream NLP tasks.</p>
-      <div class="card-tags">
-        <span class="card-tag">Python</span><span class="card-tag">BeautifulSoup</span><span class="card-tag">Scrapy</span><span class="card-tag">Pandas</span><span class="card-tag">NLP</span>
-      </div>
-      <a href="https://github.com/MikailSio" target="_blank" class="card-link">GitHub →</a>
-    </div>
-
     <!-- ADD NEW PROJECTS BELOW THIS LINE -->
-    <!-- Copy a .card block and fill in the content -->
 
   </div>
 </section>
@@ -154,6 +125,6 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.08});
 document.querySelectorAll('.sr').forEach((el,i)=>{el.style.transitionDelay=(i%4)*0.1+'s';obs.observe(el);});
 </script>
-<script src="i18n.js"></script>
+<script src="i18n.js?v=2"></script>
 </body>
 </html>

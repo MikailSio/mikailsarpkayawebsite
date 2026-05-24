@@ -2,3 +2,13 @@
 .DS_Store
 node_modules/
 .env
+
+# 2026-05-24 cleanup
+__pycache__/
+.claude/
+_design_screens/
+_*.tar.gz
+assets/favicon/backup/
+assets/favicon/*.zip
+*.pyc
+Thumbs.db

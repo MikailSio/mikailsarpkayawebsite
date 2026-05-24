@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML5 Basics — Mikail Sarpkaya Tutorials</title>
+<meta name="description" content="Learn HTML5 from scratch — document structure, text, links, images, forms, semantic elements. By Mikail Sarpkaya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/core2.css?v=2">
+<link rel="stylesheet" href="/tutorials/c/c.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-name"><span>H</span><span>T</span><span>M</span><span>L</span><span>&nbsp;</span><span>B</span><span>A</span><span>S</span><span>I</span><span>C</span><span>S</span></div>
+  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
+  <div class="ld-sub">Loading…</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/tutorials/" class="nav-logo">MS</a>
+  <div class="nav-controls">
+    <div class="color-picker-wrap">
+      <button class="nav-btn" id="colorTog" aria-label="Accent color">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 14 3.5 3.5 0 0 1 0 7 10 10 0 1 0 0-20z"/></svg>
+      </button>
+      <div class="color-dropdown" id="colorDrop">
+        <div class="cd-label">Accent Color</div>
+        <div class="color-presets" id="presets"></div>
+        <div class="color-custom">
+          <label>Custom</label>
+          <input type="color" id="customColor" value="#4de87a">
+        </div>
+      </div>
+    </div>
+    <button class="nav-btn" id="themeTog" aria-label="Toggle theme">
+      <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="nav-btn" id="langTog" aria-label="Language"><span class="lang-label" id="langLabel">EN</span></button>
+  </div>
+</nav>
+
+<!-- PROGRESS -->
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="/tutorials/" class="sb-back" data-en="← All Tutorials" data-tr="← Tüm Eğitimler">← All Tutorials</a>
+    <div class="sb-head">
+      <div class="sb-title" data-en="TUTORIALS" data-tr="EĞİTİMLER">TUTORIALS</div>
+      <div class="sb-sub" data-en="Software & AI Guides" data-tr="Yazılım ve Yapay Zeka">Software &amp; AI Guides</div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-en="Programming Languages" data-tr="Programlama Dilleri">Programming Languages</div>
+      <div class="sb-group-items">
+        <a href="/tutorials/c/" class="sb-link">C Language <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/python/" class="sb-link">Python Core <span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" data-en="AI & Data Science" data-tr="Yapay Zeka ve Veri Bilimi">AI &amp; Data Science</div>
+      <div class="sb-group-items">
+        <a href="/tutorials/numpy/" class="sb-link">NumPy <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/pandas/" class="sb-link">Pandas <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/math/" class="sb-link">Math for ML <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/calculus/" class="sb-link">Calculus <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/ml-theory/" class="sb-link">ML Theory <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/nlp/" class="sb-link">NLP Fundamentals <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/embeddings/" class="sb-link">Word Embeddings <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/deep/" class="sb-link">Deep Learning <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/rnn/" class="sb-link">RNN / LSTM <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/transformers/" class="sb-link">Transformers <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/huggingface/" class="sb-link">HuggingFace &amp; Fine-Tuning <span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+
+    <div class="sb-group open">
+      <div class="sb-group-label" data-en="Web Development" data-tr="Web Geliştirme">Web Development</div>
+      <div class="sb-group-items">
+        <a href="/tutorials/web/frontend/html-basics.html" class="sb-link active">HTML <span class="sb-badge sb-live">Live</span></a>
+        <a href="#" class="sb-link" style="pointer-events:none">CSS <span class="sb-badge sb-soon">Soon</span></a>
+        <a href="#" class="sb-link" style="pointer-events:none">JavaScript <span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <button class="sb-toggle-btn" id="sbToggle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button>
+
+  <!-- MAIN -->
+  <main class="main">
+    <section class="topic-hero">
+      <div class="hero-grid"></div>
+      <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="topic-eyebrow" id="eyebrow">Web Development · Markup Language</div>
+      <h1 class="topic-title">HTML5 <span class="accent">BASICS</span></h1>
+      <p class="topic-desc" id="heroDesc">The backbone of every website. HTML defines the <strong>structure and content</strong> of web pages. Every front-end developer starts here &mdash; because without HTML, there is no web.</p>
+      <div class="topic-meta">
+        <div class="meta-item"><span class="meta-label" data-key="metaLessons">Lessons</span> 6</div>
+        <div class="meta-item"><span class="meta-label" data-key="metaLevel">Level</span> Beginner</div>
+        <div class="meta-item"><span class="meta-label" data-key="metaTools">Tools</span> Browser + Editor</div>
+      </div>
+      <div class="topic-deco" aria-hidden="true">&lt;/&gt;</div>
+    </section>
+
+    <!-- ====== LESSONS ====== -->
+    <section class="lessons">
+
+      <!-- L1 -->
+      <div class="lesson-block open" id="l1">
+        <div class="lesson-header">
+          <span class="lesson-num">01</span>
+          <div class="lesson-info">
+            <div class="lesson-title" id="lt1">Introduction &amp; Document Structure</div>
+            <div class="lesson-sub" id="ls1">DOCTYPE, html, head, body, meta tags, boilerplate</div>
+            <div class="lesson-badges">
+              <span class="l-badge lb-live l-badge-text">Available</span>
+              <span class="l-time">5 min read</span>
+            </div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <!-- L2 -->
+      <div class="lesson-block" id="l2">
+        <div class="lesson-header">
+          <span class="lesson-num">02</span>
+          <div class="lesson-info">
+            <div class="lesson-title" id="lt2">Text Elements &amp; Formatting</div>
+            <div class="lesson-sub" id="ls2">headings, paragraphs, strong, em, blockquote, pre, code</div>
+            <div class="lesson-badges">
+              <span class="l-badge lb-live l-badge-text">Available</span>
+              <span class="l-time">6 min read</span>
+            </div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <!-- L3 -->
+      <div class="lesson-block" id="l3">
+        <div class="lesson-header">
+          <span class="lesson-num">03</span>
+          <div class="lesson-info">
+            <div class="lesson-title" id="lt3">Links, Images &amp; Media</div>
+            <div class="lesson-sub" id="ls3">a href, img, figure, audio, video, lazy loading</div>
+            <div class="lesson-badges">
+              <span class="l-badge lb-live l-badge-text">Available</span>
+              <span class="l-time">7 min read</span>
+            </div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <!-- L4 -->
+      <div class="lesson-block" id="l4">
+        <div class="lesson-header">
+          <span class="lesson-num">04</span>
+          <div class="lesson-info">
+            <div class="lesson-title" id="lt4">Lists &amp; Tables</div>
+            <div class="lesson-sub" id="ls4">ul, ol, dl, table, thead, tbody, colspan, rowspan</div>
+            <div class="lesson-badges">
+              <span class="l-badge lb-live l-badge-text">Available</span>
+              <span class="l-time">6 min read</span>
+            </div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <!-- L5 -->
+      <div class="lesson-block" id="l5">
+        <div class="lesson-header">
+          <span class="lesson-num">05</span>
+          <div class="lesson-info">
+            <div class="lesson-title" id="lt5">Forms &amp; Input Elements</div>
+            <div class="lesson-sub" id="ls5">input types, select, textarea, label, fieldset, validation</div>
+            <div class="lesson-badges">
+              <span class="l-badge lb-live l-badge-text">Available</span>
+              <span class="l-time">8 min read</span>
+            </div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <!-- L6 -->
+      <div class="lesson-block" id="l6">
+        <div class="lesson-header">
+          <span class="lesson-num">06</span>
+          <div class="lesson-info">
+            <div class="lesson-title" id="lt6">Semantic HTML5 &amp; Accessibility</div>
+            <div class="lesson-sub" id="ls6">header, nav, main, article, section, aside, ARIA</div>
+            <div class="lesson-badges">
+              <span class="l-badge lb-live l-badge-text">Available</span>
+              <span class="l-time">7 min read</span>
+            </div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+    </section>
+
+    <!-- LESSON NAV -->
+    <div class="lesson-nav">
+      <a href="/tutorials/" class="ln-btn" id="prevLabel">← All Tutorials</a>
+      <span class="ln-center">HTML5 Basics · 6 lessons</span>
+      <a href="#" class="ln-btn ln-next" id="nextLabel" style="pointer-events:none">Next: CSS →</a>
+    </div>
+
+    <footer class="tut-footer">
+      <div>© 2026 Mikail Sarpkaya. All rights reserved.</div>
+      <div><a href="https://mikailsarpkaya.com">mikailsarpkaya.com</a></div>
+    </footer>
+  </main>
+</div>
+
+<button class="sb-mobile" id="sbMobile" aria-label="Toggle sidebar" aria-controls="sidebar">☰</button>
+
+<!-- SHARED JS -->
+<script src="/tutorials/core.js"></script>
+
+<script>
+/* html-basics.js — HTML5 Basics: all translatable content */
+(function(){
+'use strict';
+
+var L = {
+en: {
+  eyebrow: 'Web Development \u00b7 Markup Language',
+  heroDesc: 'The backbone of every website. HTML defines the <strong>structure and content</strong> of web pages. Every front-end developer starts here \u2014 because without HTML, there is no web.',
+  metaLessons: 'Lessons', metaLevel: 'Level', metaTools: 'Tools',
+  prevLabel: '\u2190 All Tutorials', nextLabel: 'Next: CSS \u2192', badge: 'Available',
+  lessons: [
+    {
+      title: 'Introduction &amp; Document Structure',
+      sub: 'DOCTYPE, html, head, body, meta tags, boilerplate',
+      time: '5 min read',
+      body: '<p class="l-text">HTML (<strong>HyperText Markup Language</strong>) is the standard language for creating web pages. It is not a programming language \u2014 it is a <strong>markup language</strong> that tells browsers how to structure and display content.</p><p class="l-text">When you open a web page, the browser fetches the HTML file, parses it into a <strong>DOM (Document Object Model)</strong> tree, and renders the visual output. Every element you see \u2014 headings, paragraphs, images, links \u2014 is defined by HTML tags.</p><div class="l-note"><strong>Key idea:</strong> HTML provides the <em>structure</em>, CSS handles the <em>style</em>, and JavaScript adds <em>interactivity</em>. These three form the foundation of the web.</div><p class="l-text">Every HTML5 document follows this structure:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Basic HTML5 boilerplate <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="pp">&lt;!DOCTYPE html&gt;</span>\n<span class="kw">&lt;html</span> <span class="str">lang="en"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;head&gt;</span>\n    <span class="kw">&lt;meta</span> <span class="str">charset="UTF-8"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;meta</span> <span class="str">name="viewport"</span> <span class="str">content="width=device-width, initial-scale=1.0"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;title&gt;</span>My First Page<span class="kw">&lt;/title&gt;</span>\n<span class="kw">&lt;/head&gt;</span>\n<span class="kw">&lt;body&gt;</span>\n    <span class="kw">&lt;h1&gt;</span>Hello, World!<span class="kw">&lt;/h1&gt;</span>\n    <span class="kw">&lt;p&gt;</span>This is my first web page.<span class="kw">&lt;/p&gt;</span>\n<span class="kw">&lt;/body&gt;</span>\n<span class="kw">&lt;/html&gt;</span></code></pre></div></div><p class="l-text">Let\'s break down each part:</p><ul class="l-list"><li><code>&lt;!DOCTYPE html&gt;</code> \u2014 tells the browser this is an HTML5 document. Always the first line.</li><li><code>&lt;html lang="en"&gt;</code> \u2014 root element. The <code>lang</code> attribute helps screen readers and search engines.</li><li><code>&lt;head&gt;</code> \u2014 contains metadata (not displayed): character set, viewport, title, linked stylesheets.</li><li><code>&lt;meta charset="UTF-8"&gt;</code> \u2014 sets character encoding. UTF-8 supports virtually all world languages.</li><li><code>&lt;meta name="viewport"&gt;</code> \u2014 makes the page responsive on mobile devices.</li><li><code>&lt;title&gt;</code> \u2014 appears in the browser tab and search engine results.</li><li><code>&lt;body&gt;</code> \u2014 contains all visible content: text, images, links, everything the user sees.</li></ul><div class="code-wrap"><div class="code-label"><span>HTML</span> Extended head with common meta tags <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;head&gt;</span>\n    <span class="kw">&lt;meta</span> <span class="str">charset="UTF-8"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;meta</span> <span class="str">name="viewport"</span> <span class="str">content="width=device-width, initial-scale=1.0"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;meta</span> <span class="str">name="description"</span> <span class="str">content="A brief description for search engines"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;meta</span> <span class="str">name="author"</span> <span class="str">content="Mikail Sarpkaya"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;link</span> <span class="str">rel="stylesheet"</span> <span class="str">href="styles.css"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;link</span> <span class="str">rel="icon"</span> <span class="str">href="favicon.ico"</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;title&gt;</span>My Website<span class="kw">&lt;/title&gt;</span>\n<span class="kw">&lt;/head&gt;</span></code></pre></div></div><div class="l-tip"><strong>Tip:</strong> Use the <code>description</code> meta tag on every page \u2014 it appears as the snippet text in Google search results. Keep it under 160 characters.</div>'
+    },
+    {
+      title: 'Text Elements &amp; Formatting',
+      sub: 'headings, paragraphs, strong, em, blockquote, pre, code',
+      time: '6 min read',
+      body: '<p class="l-text">HTML provides a rich set of elements for structuring text content. Choosing the right element is not just about appearance \u2014 it conveys <strong>semantic meaning</strong> to browsers, screen readers, and search engines.</p><p class="l-text"><strong>Headings</strong> define a hierarchy. Use them in order \u2014 don\'t skip levels for styling.</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Heading hierarchy <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;h1&gt;</span>Main Page Title<span class="kw">&lt;/h1&gt;</span>        <span class="cm">&lt;!-- only one per page --&gt;</span>\n<span class="kw">&lt;h2&gt;</span>Section Heading<span class="kw">&lt;/h2&gt;</span>\n<span class="kw">&lt;h3&gt;</span>Subsection Heading<span class="kw">&lt;/h3&gt;</span>\n<span class="kw">&lt;h4&gt;</span>Sub-subsection<span class="kw">&lt;/h4&gt;</span>\n<span class="kw">&lt;h5&gt;</span>Minor Heading<span class="kw">&lt;/h5&gt;</span>\n<span class="kw">&lt;h6&gt;</span>Smallest Heading<span class="kw">&lt;/h6&gt;</span></code></pre></div></div><p class="l-text"><strong>Paragraphs and inline formatting</strong>:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Text formatting elements <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;p&gt;</span>This is a paragraph of text. Browsers add spacing above and below.<span class="kw">&lt;/p&gt;</span>\n\n<span class="kw">&lt;p&gt;</span>\n  <span class="kw">&lt;strong&gt;</span>Bold text<span class="kw">&lt;/strong&gt;</span> for importance.<span class="kw">&lt;br&gt;</span>\n  <span class="kw">&lt;em&gt;</span>Italic text<span class="kw">&lt;/em&gt;</span> for emphasis.<span class="kw">&lt;br&gt;</span>\n  <span class="kw">&lt;mark&gt;</span>Highlighted text<span class="kw">&lt;/mark&gt;</span> for relevance.<span class="kw">&lt;br&gt;</span>\n  <span class="kw">&lt;small&gt;</span>Small text<span class="kw">&lt;/small&gt;</span> for fine print.<span class="kw">&lt;br&gt;</span>\n  H<span class="kw">&lt;sub&gt;</span>2<span class="kw">&lt;/sub&gt;</span>O and x<span class="kw">&lt;sup&gt;</span>2<span class="kw">&lt;/sup&gt;</span> for subscript/superscript.\n<span class="kw">&lt;/p&gt;</span></code></pre></div></div><ul class="l-list"><li><code>&lt;strong&gt;</code> \u2014 <strong>semantic importance</strong> (screen readers emphasize it). Renders bold.</li><li><code>&lt;em&gt;</code> \u2014 <strong>stress emphasis</strong>. Renders italic.</li><li><code>&lt;b&gt;</code> / <code>&lt;i&gt;</code> \u2014 visual-only bold/italic, no semantic weight. Prefer <code>strong</code>/<code>em</code>.</li><li><code>&lt;mark&gt;</code> \u2014 highlighted/relevant text (like a yellow highlighter).</li><li><code>&lt;br&gt;</code> \u2014 line break (self-closing). Use sparingly \u2014 prefer CSS margin.</li><li><code>&lt;hr&gt;</code> \u2014 horizontal rule (thematic break between sections).</li></ul><div class="code-wrap"><div class="code-label"><span>HTML</span> Blockquote, pre, and code <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Quotation --&gt;</span>\n<span class="kw">&lt;blockquote</span> <span class="str">cite="https://example.com"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;p&gt;</span>The only way to do great work is to love what you do.<span class="kw">&lt;/p&gt;</span>\n  <span class="kw">&lt;footer&gt;</span>\u2014 Steve Jobs<span class="kw">&lt;/footer&gt;</span>\n<span class="kw">&lt;/blockquote&gt;</span>\n\n<span class="cm">&lt;!-- Preformatted text (preserves whitespace) --&gt;</span>\n<span class="kw">&lt;pre&gt;</span>\n  Line 1\n  Line 2\n    Indented line\n<span class="kw">&lt;/pre&gt;</span>\n\n<span class="cm">&lt;!-- Inline code vs code block --&gt;</span>\n<span class="kw">&lt;p&gt;</span>Use the <span class="kw">&lt;code&gt;</span>console.log()<span class="kw">&lt;/code&gt;</span> method to debug.<span class="kw">&lt;/p&gt;</span>\n\n<span class="kw">&lt;pre&gt;&lt;code&gt;</span>\nfunction greet(name) {\n    return "Hello, " + name;\n}\n<span class="kw">&lt;/code&gt;&lt;/pre&gt;</span></code></pre></div></div><div class="l-note"><strong>Best practice:</strong> Use <code>&lt;h1&gt;</code> only once per page. Search engines use heading hierarchy to understand your content structure. Think of headings like a table of contents.</div>'
+    },
+    {
+      title: 'Links, Images &amp; Media',
+      sub: 'a href, img, figure, audio, video, lazy loading',
+      time: '7 min read',
+      body: '<p class="l-text">Links and images are what make the web <em>a web</em>. The <code>&lt;a&gt;</code> tag creates hyperlinks, and <code>&lt;img&gt;</code> embeds images. HTML5 also added native <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> support.</p><p class="l-text"><strong>Links</strong> \u2014 the anchor element:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Link examples <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Basic link --&gt;</span>\n<span class="kw">&lt;a</span> <span class="str">href="https://mikailsarpkaya.com"</span><span class="kw">&gt;</span>Visit My Site<span class="kw">&lt;/a&gt;</span>\n\n<span class="cm">&lt;!-- Open in new tab (always add rel for security) --&gt;</span>\n<span class="kw">&lt;a</span> <span class="str">href="https://github.com"</span> <span class="str">target="_blank"</span> <span class="str">rel="noopener noreferrer"</span><span class="kw">&gt;</span>\n  GitHub\n<span class="kw">&lt;/a&gt;</span>\n\n<span class="cm">&lt;!-- Link to page section (anchor) --&gt;</span>\n<span class="kw">&lt;a</span> <span class="str">href="#section-2"</span><span class="kw">&gt;</span>Jump to Section 2<span class="kw">&lt;/a&gt;</span>\n<span class="kw">&lt;h2</span> <span class="str">id="section-2"</span><span class="kw">&gt;</span>Section 2<span class="kw">&lt;/h2&gt;</span>\n\n<span class="cm">&lt;!-- Email and telephone links --&gt;</span>\n<span class="kw">&lt;a</span> <span class="str">href="mailto:hello@example.com"</span><span class="kw">&gt;</span>Send Email<span class="kw">&lt;/a&gt;</span>\n<span class="kw">&lt;a</span> <span class="str">href="tel:+1234567890"</span><span class="kw">&gt;</span>Call Us<span class="kw">&lt;/a&gt;</span></code></pre></div></div><div class="l-note"><strong>Security:</strong> Always add <code>rel="noopener noreferrer"</code> when using <code>target="_blank"</code>. Without it, the new page can access your page via <code>window.opener</code> \u2014 a security risk.</div><p class="l-text"><strong>Images</strong>:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Image elements <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Basic image (alt text is REQUIRED for accessibility) --&gt;</span>\n<span class="kw">&lt;img</span> <span class="str">src="photo.jpg"</span>\n     <span class="str">alt="A sunset over the mountains"</span>\n     <span class="str">width="800"</span>\n     <span class="str">height="600"</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Lazy loading (loads only when visible) --&gt;</span>\n<span class="kw">&lt;img</span> <span class="str">src="large-photo.jpg"</span>\n     <span class="str">alt="Description"</span>\n     <span class="str">loading="lazy"</span>\n     <span class="str">width="1200"</span>\n     <span class="str">height="800"</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Figure with caption --&gt;</span>\n<span class="kw">&lt;figure&gt;</span>\n  <span class="kw">&lt;img</span> <span class="str">src="chart.png"</span> <span class="str">alt="Sales chart for Q4 2025"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;figcaption&gt;</span>Fig 1: Quarterly sales report<span class="kw">&lt;/figcaption&gt;</span>\n<span class="kw">&lt;/figure&gt;</span></code></pre></div></div><ul class="l-list"><li><code>alt</code> \u2014 <strong>always provide descriptive alt text</strong>. Screen readers read it aloud. If decorative, use <code>alt=""</code>.</li><li><code>width</code> / <code>height</code> \u2014 set these to prevent layout shift while the image loads.</li><li><code>loading="lazy"</code> \u2014 defers loading off-screen images. Great for performance.</li><li><code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code> \u2014 semantically groups an image with its caption.</li></ul><p class="l-text"><strong>Audio and video</strong>:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Media elements <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Audio player --&gt;</span>\n<span class="kw">&lt;audio</span> <span class="str">controls</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;source</span> <span class="str">src="song.mp3"</span> <span class="str">type="audio/mpeg"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;source</span> <span class="str">src="song.ogg"</span> <span class="str">type="audio/ogg"</span><span class="kw">&gt;</span>\n  Your browser does not support audio.\n<span class="kw">&lt;/audio&gt;</span>\n\n<span class="cm">&lt;!-- Video player --&gt;</span>\n<span class="kw">&lt;video</span> <span class="str">controls</span> <span class="str">width="640"</span> <span class="str">height="360"</span> <span class="str">poster="thumb.jpg"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;source</span> <span class="str">src="video.mp4"</span> <span class="str">type="video/mp4"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;source</span> <span class="str">src="video.webm"</span> <span class="str">type="video/webm"</span><span class="kw">&gt;</span>\n  Your browser does not support video.\n<span class="kw">&lt;/video&gt;</span></code></pre></div></div><div class="l-tip"><strong>Tip:</strong> Provide multiple <code>&lt;source&gt;</code> formats for browser compatibility. The browser picks the first format it supports.</div>'
+    },
+    {
+      title: 'Lists &amp; Tables',
+      sub: 'ul, ol, dl, table, thead, tbody, colspan, rowspan',
+      time: '6 min read',
+      body: '<p class="l-text">Lists and tables are essential for organizing data. HTML provides three types of lists and a full table system with headers, bodies, and cell spanning.</p><p class="l-text"><strong>Unordered and ordered lists</strong>:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> List types <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Unordered list (bullet points) --&gt;</span>\n<span class="kw">&lt;ul&gt;</span>\n  <span class="kw">&lt;li&gt;</span>HTML \u2014 Structure<span class="kw">&lt;/li&gt;</span>\n  <span class="kw">&lt;li&gt;</span>CSS \u2014 Style<span class="kw">&lt;/li&gt;</span>\n  <span class="kw">&lt;li&gt;</span>JavaScript \u2014 Behavior<span class="kw">&lt;/li&gt;</span>\n<span class="kw">&lt;/ul&gt;</span>\n\n<span class="cm">&lt;!-- Ordered list (numbered) --&gt;</span>\n<span class="kw">&lt;ol&gt;</span>\n  <span class="kw">&lt;li&gt;</span>Write HTML<span class="kw">&lt;/li&gt;</span>\n  <span class="kw">&lt;li&gt;</span>Add CSS<span class="kw">&lt;/li&gt;</span>\n  <span class="kw">&lt;li&gt;</span>Sprinkle JavaScript<span class="kw">&lt;/li&gt;</span>\n<span class="kw">&lt;/ol&gt;</span>\n\n<span class="cm">&lt;!-- Nested list --&gt;</span>\n<span class="kw">&lt;ul&gt;</span>\n  <span class="kw">&lt;li&gt;</span>Frontend\n    <span class="kw">&lt;ul&gt;</span>\n      <span class="kw">&lt;li&gt;</span>HTML<span class="kw">&lt;/li&gt;</span>\n      <span class="kw">&lt;li&gt;</span>CSS<span class="kw">&lt;/li&gt;</span>\n      <span class="kw">&lt;li&gt;</span>JavaScript<span class="kw">&lt;/li&gt;</span>\n    <span class="kw">&lt;/ul&gt;</span>\n  <span class="kw">&lt;/li&gt;</span>\n  <span class="kw">&lt;li&gt;</span>Backend\n    <span class="kw">&lt;ul&gt;</span>\n      <span class="kw">&lt;li&gt;</span>Python<span class="kw">&lt;/li&gt;</span>\n      <span class="kw">&lt;li&gt;</span>Node.js<span class="kw">&lt;/li&gt;</span>\n    <span class="kw">&lt;/ul&gt;</span>\n  <span class="kw">&lt;/li&gt;</span>\n<span class="kw">&lt;/ul&gt;</span></code></pre></div></div><p class="l-text"><strong>Description lists</strong> \u2014 perfect for glossaries and key-value pairs:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Description list <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;dl&gt;</span>\n  <span class="kw">&lt;dt&gt;</span>HTML<span class="kw">&lt;/dt&gt;</span>\n  <span class="kw">&lt;dd&gt;</span>HyperText Markup Language \u2014 structures web content.<span class="kw">&lt;/dd&gt;</span>\n\n  <span class="kw">&lt;dt&gt;</span>CSS<span class="kw">&lt;/dt&gt;</span>\n  <span class="kw">&lt;dd&gt;</span>Cascading Style Sheets \u2014 styles the visual presentation.<span class="kw">&lt;/dd&gt;</span>\n\n  <span class="kw">&lt;dt&gt;</span>JS<span class="kw">&lt;/dt&gt;</span>\n  <span class="kw">&lt;dd&gt;</span>JavaScript \u2014 adds interactivity and dynamic behavior.<span class="kw">&lt;/dd&gt;</span>\n<span class="kw">&lt;/dl&gt;</span></code></pre></div></div><p class="l-text"><strong>Tables</strong> \u2014 use for tabular data, never for page layout:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Complete table with spanning <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;table&gt;</span>\n  <span class="kw">&lt;thead&gt;</span>\n    <span class="kw">&lt;tr&gt;</span>\n      <span class="kw">&lt;th&gt;</span>Language<span class="kw">&lt;/th&gt;</span>\n      <span class="kw">&lt;th&gt;</span>Type<span class="kw">&lt;/th&gt;</span>\n      <span class="kw">&lt;th&gt;</span>Year<span class="kw">&lt;/th&gt;</span>\n    <span class="kw">&lt;/tr&gt;</span>\n  <span class="kw">&lt;/thead&gt;</span>\n  <span class="kw">&lt;tbody&gt;</span>\n    <span class="kw">&lt;tr&gt;</span>\n      <span class="kw">&lt;td&gt;</span>Python<span class="kw">&lt;/td&gt;</span>\n      <span class="kw">&lt;td&gt;</span>Interpreted<span class="kw">&lt;/td&gt;</span>\n      <span class="kw">&lt;td&gt;</span><span class="num">1991</span><span class="kw">&lt;/td&gt;</span>\n    <span class="kw">&lt;/tr&gt;</span>\n    <span class="kw">&lt;tr&gt;</span>\n      <span class="kw">&lt;td&gt;</span>C<span class="kw">&lt;/td&gt;</span>\n      <span class="kw">&lt;td&gt;</span>Compiled<span class="kw">&lt;/td&gt;</span>\n      <span class="kw">&lt;td&gt;</span><span class="num">1972</span><span class="kw">&lt;/td&gt;</span>\n    <span class="kw">&lt;/tr&gt;</span>\n    <span class="kw">&lt;tr&gt;</span>\n      <span class="kw">&lt;td</span> <span class="str">colspan="3"</span><span class="kw">&gt;</span><span class="kw">&lt;em&gt;</span>More languages coming soon...<span class="kw">&lt;/em&gt;&lt;/td&gt;</span>\n    <span class="kw">&lt;/tr&gt;</span>\n  <span class="kw">&lt;/tbody&gt;</span>\n<span class="kw">&lt;/table&gt;</span></code></pre></div></div><ul class="l-list"><li><code>&lt;thead&gt;</code> \u2014 groups header rows. Use <code>&lt;th&gt;</code> for header cells (bold + centered by default).</li><li><code>&lt;tbody&gt;</code> \u2014 groups body rows. Use <code>&lt;td&gt;</code> for data cells.</li><li><code>colspan="3"</code> \u2014 makes a cell span 3 columns horizontally.</li><li><code>rowspan="2"</code> \u2014 makes a cell span 2 rows vertically.</li></ul><div class="l-note"><strong>Rule:</strong> Tables are for <em>data</em>, not layout. Use CSS Grid or Flexbox for page layout. Screen readers navigate tables as data grids.</div>'
+    },
+    {
+      title: 'Forms &amp; Input Elements',
+      sub: 'input types, select, textarea, label, fieldset, validation',
+      time: '8 min read',
+      body: '<p class="l-text">Forms are how users interact with web applications \u2014 login, search, registration, checkout. HTML5 introduced many input types with <strong>built-in validation</strong>, reducing the need for JavaScript.</p><p class="l-text">The <code>&lt;form&gt;</code> element wraps all inputs and defines where data goes:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Form basics <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;form</span> <span class="str">action="/submit"</span> <span class="str">method="POST"</span><span class="kw">&gt;</span>\n  <span class="cm">&lt;!-- action = where to send data --&gt;</span>\n  <span class="cm">&lt;!-- method = GET (URL params) or POST (body) --&gt;</span>\n<span class="kw">&lt;/form&gt;</span></code></pre></div></div><p class="l-text"><strong>Input types</strong> \u2014 HTML5 gives you many built-in types:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Common input types <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Text input with label --&gt;</span>\n<span class="kw">&lt;label</span> <span class="str">for="username"</span><span class="kw">&gt;</span>Username:<span class="kw">&lt;/label&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="text"</span> <span class="str">id="username"</span> <span class="str">name="username"</span>\n       <span class="str">placeholder="Enter username"</span> <span class="str">required</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Email (validates format automatically) --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="email"</span> <span class="str">name="email"</span> <span class="str">required</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Password (masked input) --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="password"</span> <span class="str">name="pass"</span> <span class="str">minlength="8"</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Number with range --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="number"</span> <span class="str">name="age"</span> <span class="str">min="18"</span> <span class="str">max="120"</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Date picker --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="date"</span> <span class="str">name="birthday"</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Checkbox and radio --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="checkbox"</span> <span class="str">id="agree"</span> <span class="str">name="agree"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;label</span> <span class="str">for="agree"</span><span class="kw">&gt;</span>I agree to the terms<span class="kw">&lt;/label&gt;</span>\n\n<span class="kw">&lt;input</span> <span class="str">type="radio"</span> <span class="str">name="plan"</span> <span class="str">value="free"</span> <span class="str">id="free"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;label</span> <span class="str">for="free"</span><span class="kw">&gt;</span>Free<span class="kw">&lt;/label&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="radio"</span> <span class="str">name="plan"</span> <span class="str">value="pro"</span> <span class="str">id="pro"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;label</span> <span class="str">for="pro"</span><span class="kw">&gt;</span>Pro<span class="kw">&lt;/label&gt;</span>\n\n<span class="cm">&lt;!-- File upload and range slider --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="file"</span> <span class="str">name="avatar"</span> <span class="str">accept="image/*"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="range"</span> <span class="str">name="volume"</span> <span class="str">min="0"</span> <span class="str">max="100"</span><span class="kw">&gt;</span></code></pre></div></div><p class="l-text"><strong>Select, textarea, and grouping</strong>:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Select, textarea, fieldset <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- Dropdown select --&gt;</span>\n<span class="kw">&lt;label</span> <span class="str">for="country"</span><span class="kw">&gt;</span>Country:<span class="kw">&lt;/label&gt;</span>\n<span class="kw">&lt;select</span> <span class="str">id="country"</span> <span class="str">name="country"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;option</span> <span class="str">value=""</span><span class="kw">&gt;</span>Select...<span class="kw">&lt;/option&gt;</span>\n  <span class="kw">&lt;option</span> <span class="str">value="tr"</span><span class="kw">&gt;</span>Turkey<span class="kw">&lt;/option&gt;</span>\n  <span class="kw">&lt;option</span> <span class="str">value="us"</span><span class="kw">&gt;</span>United States<span class="kw">&lt;/option&gt;</span>\n  <span class="kw">&lt;option</span> <span class="str">value="de"</span><span class="kw">&gt;</span>Germany<span class="kw">&lt;/option&gt;</span>\n<span class="kw">&lt;/select&gt;</span>\n\n<span class="cm">&lt;!-- Multi-line text --&gt;</span>\n<span class="kw">&lt;label</span> <span class="str">for="bio"</span><span class="kw">&gt;</span>Bio:<span class="kw">&lt;/label&gt;</span>\n<span class="kw">&lt;textarea</span> <span class="str">id="bio"</span> <span class="str">name="bio"</span> <span class="str">rows="4"</span> <span class="str">cols="50"</span>\n          <span class="str">placeholder="Tell us about yourself..."</span><span class="kw">&gt;&lt;/textarea&gt;</span>\n\n<span class="cm">&lt;!-- Fieldset groups related inputs --&gt;</span>\n<span class="kw">&lt;fieldset&gt;</span>\n  <span class="kw">&lt;legend&gt;</span>Account Type<span class="kw">&lt;/legend&gt;</span>\n  <span class="kw">&lt;input</span> <span class="str">type="radio"</span> <span class="str">name="type"</span> <span class="str">value="personal"</span> <span class="str">id="personal"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;label</span> <span class="str">for="personal"</span><span class="kw">&gt;</span>Personal<span class="kw">&lt;/label&gt;</span>\n  <span class="kw">&lt;input</span> <span class="str">type="radio"</span> <span class="str">name="type"</span> <span class="str">value="business"</span> <span class="str">id="business"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;label</span> <span class="str">for="business"</span><span class="kw">&gt;</span>Business<span class="kw">&lt;/label&gt;</span>\n<span class="kw">&lt;/fieldset&gt;</span></code></pre></div></div><p class="l-text"><strong>Complete registration form</strong>:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> Registration form example <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="kw">&lt;form</span> <span class="str">action="/register"</span> <span class="str">method="POST"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;fieldset&gt;</span>\n    <span class="kw">&lt;legend&gt;</span>Create Account<span class="kw">&lt;/legend&gt;</span>\n\n    <span class="kw">&lt;label</span> <span class="str">for="name"</span><span class="kw">&gt;</span>Full Name:<span class="kw">&lt;/label&gt;</span>\n    <span class="kw">&lt;input</span> <span class="str">type="text"</span> <span class="str">id="name"</span> <span class="str">name="name"</span> <span class="str">required</span><span class="kw">&gt;</span>\n\n    <span class="kw">&lt;label</span> <span class="str">for="email"</span><span class="kw">&gt;</span>Email:<span class="kw">&lt;/label&gt;</span>\n    <span class="kw">&lt;input</span> <span class="str">type="email"</span> <span class="str">id="email"</span> <span class="str">name="email"</span> <span class="str">required</span><span class="kw">&gt;</span>\n\n    <span class="kw">&lt;label</span> <span class="str">for="pwd"</span><span class="kw">&gt;</span>Password:<span class="kw">&lt;/label&gt;</span>\n    <span class="kw">&lt;input</span> <span class="str">type="password"</span> <span class="str">id="pwd"</span> <span class="str">name="password"</span>\n           <span class="str">minlength="8"</span> <span class="str">required</span><span class="kw">&gt;</span>\n\n    <span class="kw">&lt;label</span> <span class="str">for="dob"</span><span class="kw">&gt;</span>Date of Birth:<span class="kw">&lt;/label&gt;</span>\n    <span class="kw">&lt;input</span> <span class="str">type="date"</span> <span class="str">id="dob"</span> <span class="str">name="dob"</span><span class="kw">&gt;</span>\n\n    <span class="kw">&lt;input</span> <span class="str">type="checkbox"</span> <span class="str">id="terms"</span> <span class="str">name="terms"</span> <span class="str">required</span><span class="kw">&gt;</span>\n    <span class="kw">&lt;label</span> <span class="str">for="terms"</span><span class="kw">&gt;</span>I accept the terms<span class="kw">&lt;/label&gt;</span>\n\n    <span class="kw">&lt;button</span> <span class="str">type="submit"</span><span class="kw">&gt;</span>Register<span class="kw">&lt;/button&gt;</span>\n    <span class="kw">&lt;button</span> <span class="str">type="reset"</span><span class="kw">&gt;</span>Clear<span class="kw">&lt;/button&gt;</span>\n  <span class="kw">&lt;/fieldset&gt;</span>\n<span class="kw">&lt;/form&gt;</span></code></pre></div></div><ul class="l-list"><li><code>&lt;label for="id"&gt;</code> \u2014 <strong>always pair labels with inputs</strong>. Clicking the label focuses the input. Essential for accessibility.</li><li><code>required</code> \u2014 prevents form submission if empty.</li><li><code>minlength</code> / <code>maxlength</code> \u2014 built-in length validation.</li><li><code>type="submit"</code> \u2014 sends the form. <code>type="reset"</code> clears all fields. <code>type="button"</code> does nothing (for JS).</li></ul><div class="l-tip"><strong>Tip:</strong> Use <code>type="email"</code>, <code>type="url"</code>, <code>type="tel"</code> \u2014 mobile browsers show specialized keyboards for each type.</div>'
+    },
+    {
+      title: 'Semantic HTML5 &amp; Accessibility',
+      sub: 'header, nav, main, article, section, aside, ARIA',
+      time: '7 min read',
+      body: '<p class="l-text">Semantic HTML means using elements that <strong>describe their meaning</strong> rather than just their appearance. Instead of <code>&lt;div&gt;</code> for everything, use elements like <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;main&gt;</code> that tell browsers and assistive tools what role each section plays.</p><p class="l-text"><strong>Why semantic HTML matters</strong>:</p><ul class="l-list"><li><strong>Accessibility</strong> \u2014 screen readers use semantic elements to navigate. A blind user can jump between <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;article&gt;</code> sections.</li><li><strong>SEO</strong> \u2014 search engines understand your content structure better, potentially ranking you higher.</li><li><strong>Maintainability</strong> \u2014 reading <code>&lt;header&gt;</code> is instantly clear; reading <code>&lt;div class="header"&gt;</code> requires guessing.</li><li><strong>Future-proof</strong> \u2014 browsers and tools can enhance semantic pages as the web evolves.</li></ul><div class="code-wrap"><div class="code-label"><span>HTML</span> Semantic page layout <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="pp">&lt;!DOCTYPE html&gt;</span>\n<span class="kw">&lt;html</span> <span class="str">lang="en"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;head&gt;</span>\n  <span class="kw">&lt;meta</span> <span class="str">charset="UTF-8"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;meta</span> <span class="str">name="viewport"</span> <span class="str">content="width=device-width, initial-scale=1.0"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;title&gt;</span>My Blog<span class="kw">&lt;/title&gt;</span>\n<span class="kw">&lt;/head&gt;</span>\n<span class="kw">&lt;body&gt;</span>\n\n  <span class="kw">&lt;header&gt;</span>\n    <span class="kw">&lt;h1&gt;</span>My Blog<span class="kw">&lt;/h1&gt;</span>\n    <span class="kw">&lt;nav&gt;</span>\n      <span class="kw">&lt;ul&gt;</span>\n        <span class="kw">&lt;li&gt;&lt;a</span> <span class="str">href="/"</span><span class="kw">&gt;</span>Home<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>\n        <span class="kw">&lt;li&gt;&lt;a</span> <span class="str">href="/about"</span><span class="kw">&gt;</span>About<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>\n        <span class="kw">&lt;li&gt;&lt;a</span> <span class="str">href="/contact"</span><span class="kw">&gt;</span>Contact<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>\n      <span class="kw">&lt;/ul&gt;</span>\n    <span class="kw">&lt;/nav&gt;</span>\n  <span class="kw">&lt;/header&gt;</span>\n\n  <span class="kw">&lt;main&gt;</span>\n    <span class="kw">&lt;article&gt;</span>\n      <span class="kw">&lt;h2&gt;</span>Understanding Semantic HTML<span class="kw">&lt;/h2&gt;</span>\n      <span class="kw">&lt;time</span> <span class="str">datetime="2026-03-20"</span><span class="kw">&gt;</span>March 20, 2026<span class="kw">&lt;/time&gt;</span>\n      <span class="kw">&lt;section&gt;</span>\n        <span class="kw">&lt;h3&gt;</span>What is Semantic HTML?<span class="kw">&lt;/h3&gt;</span>\n        <span class="kw">&lt;p&gt;</span>Semantic elements describe the meaning of content...<span class="kw">&lt;/p&gt;</span>\n      <span class="kw">&lt;/section&gt;</span>\n      <span class="kw">&lt;section&gt;</span>\n        <span class="kw">&lt;h3&gt;</span>Why It Matters<span class="kw">&lt;/h3&gt;</span>\n        <span class="kw">&lt;p&gt;</span>Accessibility and SEO are the main benefits...<span class="kw">&lt;/p&gt;</span>\n      <span class="kw">&lt;/section&gt;</span>\n    <span class="kw">&lt;/article&gt;</span>\n\n    <span class="kw">&lt;aside&gt;</span>\n      <span class="kw">&lt;h3&gt;</span>Related Posts<span class="kw">&lt;/h3&gt;</span>\n      <span class="kw">&lt;ul&gt;</span>\n        <span class="kw">&lt;li&gt;&lt;a</span> <span class="str">href="/css-basics"</span><span class="kw">&gt;</span>CSS Basics<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>\n        <span class="kw">&lt;li&gt;&lt;a</span> <span class="str">href="/js-intro"</span><span class="kw">&gt;</span>JavaScript Intro<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>\n      <span class="kw">&lt;/ul&gt;</span>\n    <span class="kw">&lt;/aside&gt;</span>\n  <span class="kw">&lt;/main&gt;</span>\n\n  <span class="kw">&lt;footer&gt;</span>\n    <span class="kw">&lt;p&gt;</span>&amp;copy; 2026 Mikail Sarpkaya<span class="kw">&lt;/p&gt;</span>\n  <span class="kw">&lt;/footer&gt;</span>\n\n<span class="kw">&lt;/body&gt;</span>\n<span class="kw">&lt;/html&gt;</span></code></pre></div></div><p class="l-text"><strong>Key semantic elements</strong>:</p><ul class="l-list"><li><code>&lt;header&gt;</code> \u2014 introductory content or navigation links (site banner, article header).</li><li><code>&lt;nav&gt;</code> \u2014 a block of navigation links. Not every link group \u2014 only major navigation.</li><li><code>&lt;main&gt;</code> \u2014 the dominant content of the page. <strong>Only one per page.</strong></li><li><code>&lt;article&gt;</code> \u2014 self-contained content (blog post, news story, forum post).</li><li><code>&lt;section&gt;</code> \u2014 thematic grouping of content with a heading.</li><li><code>&lt;aside&gt;</code> \u2014 tangentially related content (sidebar, pull quotes).</li><li><code>&lt;footer&gt;</code> \u2014 footer for the nearest sectioning element (copyright, links).</li><li><code>&lt;time&gt;</code> \u2014 machine-readable date/time. Use <code>datetime</code> attribute.</li></ul><p class="l-text"><strong>ARIA roles and labels</strong> \u2014 when semantic elements alone are not enough:</p><div class="code-wrap"><div class="code-label"><span>HTML</span> ARIA examples <button class="code-copy">COPY</button></div><div class="code-block"><pre><code><span class="cm">&lt;!-- ARIA role for custom components --&gt;</span>\n<span class="kw">&lt;div</span> <span class="str">role="alert"</span><span class="kw">&gt;</span>Form submitted successfully!<span class="kw">&lt;/div&gt;</span>\n\n<span class="cm">&lt;!-- Label for icon-only buttons --&gt;</span>\n<span class="kw">&lt;button</span> <span class="str">aria-label="Close menu"</span><span class="kw">&gt;</span>\n  <span class="kw">&lt;svg&gt;</span>...<span class="kw">&lt;/svg&gt;</span>\n<span class="kw">&lt;/button&gt;</span>\n\n<span class="cm">&lt;!-- Describe an input with extra help text --&gt;</span>\n<span class="kw">&lt;input</span> <span class="str">type="password"</span> <span class="str">aria-describedby="pwd-help"</span><span class="kw">&gt;</span>\n<span class="kw">&lt;small</span> <span class="str">id="pwd-help"</span><span class="kw">&gt;</span>Must be at least 8 characters.<span class="kw">&lt;/small&gt;</span>\n\n<span class="cm">&lt;!-- Hide decorative elements from screen readers --&gt;</span>\n<span class="kw">&lt;img</span> <span class="str">src="decoration.svg"</span> <span class="str">alt=""</span> <span class="str">aria-hidden="true"</span><span class="kw">&gt;</span>\n\n<span class="cm">&lt;!-- Live region (announces dynamic updates) --&gt;</span>\n<span class="kw">&lt;div</span> <span class="str">aria-live="polite"</span><span class="kw">&gt;</span>3 new messages<span class="kw">&lt;/div&gt;</span></code></pre></div></div><div class="l-note"><strong>Best practices:</strong></div><ul class="l-list"><li>Use semantic elements <em>first</em>. Only add ARIA when there is no suitable HTML element.</li><li>Always provide <code>alt</code> text on images. Use <code>alt=""</code> for purely decorative images.</li><li>Ensure all interactive elements are keyboard-accessible (<code>Tab</code>, <code>Enter</code>, <code>Escape</code>).</li><li>Use <code>lang</code> attribute on <code>&lt;html&gt;</code> and on text blocks in other languages.</li><li>Test with a screen reader (VoiceOver, NVDA) \u2014 it reveals issues you cannot see visually.</li></ul><div class="l-tip"><strong>Rule of thumb:</strong> If you can replace a <code>&lt;div&gt;</code> with a semantic element, do it. Your future self, your users, and search engines will thank you.</div>'
+    }
+  ]
+},
+tr: {
+  eyebrow: 'Web Geli\u015ftirme \u00b7 \u0130\u015faretleme Dili',
+  heroDesc: 'Her web sitesinin omurgas\u0131. HTML, web sayfalar\u0131n\u0131n <strong>yap\u0131s\u0131n\u0131 ve i\u00e7eri\u011fini</strong> tan\u0131mlar. Her \u00f6n y\u00fcz geli\u015ftirici buradan ba\u015flar \u2014 \u00e7\u00fcnk\u00fc HTML olmadan web yoktur.',
+  metaLessons: 'Dersler', metaLevel: 'Seviye', metaTools: 'Ara\u00e7lar',
+  prevLabel: '\u2190 T\u00fcm E\u011fitimler', nextLabel: 'Sonraki: CSS \u2192', badge: 'Mevcut',
+  lessons: [
+    {
+      title: 'Giri\u015f &amp; Belge Yap\u0131s\u0131',
+      sub: 'DOCTYPE, html, head, body, meta etiketleri, \u015fablon',
+      time: '5 dk okuma',
+      body: null
+    },
+    {
+      title: 'Metin Elemanlar\u0131 &amp; Bi\u00e7imlendirme',
+      sub: 'ba\u015fl\u0131klar, paragraflar, strong, em, blockquote, pre, code',
+      time: '6 dk okuma',
+      body: null
+    },
+    {
+      title: 'Ba\u011flant\u0131lar, G\u00f6rseller &amp; Medya',
+      sub: 'a href, img, figure, audio, video, tembel y\u00fckleme',
+      time: '7 dk okuma',
+      body: null
+    },
+    {
+      title: 'Listeler &amp; Tablolar',
+      sub: 'ul, ol, dl, table, thead, tbody, colspan, rowspan',
+      time: '6 dk okuma',
+      body: null
+    },
+    {
+      title: 'Formlar &amp; Girdi Elemanlar\u0131',
+      sub: 'girdi t\u00fcrleri, select, textarea, label, fieldset, do\u011frulama',
+      time: '8 dk okuma',
+      body: null
+    },
+    {
+      title: 'Semantik HTML5 &amp; Eri\u015filebilirlik',
+      sub: 'header, nav, main, article, section, aside, ARIA',
+      time: '7 dk okuma',
+      body: null
+    }
+  ]
+}
+};
+
+function render(lang) {
+  var t = L[lang] || L.en, fb = L.en;
+  var ey = document.getElementById('eyebrow');
+  if(ey) ey.textContent = t.eyebrow;
+  var hd = document.getElementById('heroDesc');
+  if(hd) hd.innerHTML = t.heroDesc;
+  document.querySelectorAll('.meta-label').forEach(function(el){
+    var k=el.dataset.key; if(k&&t[k]) el.textContent=t[k];
+  });
+  var pv=document.getElementById('prevLabel');
+  if(pv) pv.textContent=t.prevLabel;
+  var nx=document.getElementById('nextLabel');
+  if(nx) nx.textContent=t.nextLabel;
+  document.querySelectorAll('.lesson-block').forEach(function(block,i){
+    var lesson=t.lessons[i], fall=fb.lessons[i];
+    if(!lesson) return;
+    var ti=block.querySelector('.lesson-title');
+    var su=block.querySelector('.lesson-sub');
+    var tm=block.querySelector('.l-time');
+    var ba=block.querySelector('.l-badge-text');
+    var bo=block.querySelector('.lesson-body');
+    if(ti) ti.innerHTML=lesson.title;
+    if(su) su.innerHTML=lesson.sub;
+    if(tm) tm.textContent=lesson.time;
+    if(ba) ba.textContent=t.badge;
+    var content=lesson.body||(fall?fall.body:'');
+    if(bo&&content) bo.innerHTML=content;
+  });
+}
+render('en');
+document.addEventListener('langchange',function(e){render(e.detail.lang);});
+try{if(localStorage.getItem('tut-lang')==='tr') render('tr');}catch(e){}
+})();
+
+</script>
+</body>
+</html>
