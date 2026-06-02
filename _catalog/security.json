@@ -1,0 +1,182 @@
+{
+  "safety": {
+    "category": "security",
+    "subfield": "safety",
+    "group": "ai-safety",
+    "name_en": "AI Safety & Alignment",
+    "name_tr": "AI Güvenliği & Hizalama",
+    "lessons": [
+      { "n": 1, "en": "Why Alignment? The Problem Statement", "tr": "Neden Hizalama? Problem Tanımı", "slug": "alignment-problem-statement" },
+      { "n": 2, "en": "RLHF Deep Dive", "tr": "RLHF Detaylı İnceleme", "slug": "rlhf-deep-dive" },
+      { "n": 3, "en": "DPO / IPO / KTO Family", "tr": "DPO / IPO / KTO Ailesi", "slug": "dpo-ipo-kto-family" },
+      { "n": 4, "en": "Constitutional AI", "tr": "Anayasal AI", "slug": "constitutional-ai" },
+      { "n": 5, "en": "Red Teaming & Jailbreak Defense", "tr": "Red Team & Jailbreak Savunması", "slug": "red-teaming-jailbreak-defense" },
+      { "n": 6, "en": "Evaluation & Audit", "tr": "Değerlendirme & Denetim", "slug": "evaluation-audit" }
+    ],
+    "notes": "Sub-group: ai-safety. 6 lessons, sequential order 1-6, no gaps or duplicates. Clean progression from alignment motivation -> RLHF -> preference-optimization family -> Constitutional AI -> red teaming -> evaluation. Lesson 1 slug drops the 'Why' interrogative for a cleaner URL."
+  },
+  "mlsec": {
+    "category": "security",
+    "subfield": "mlsec",
+    "group": "ai-safety",
+    "name_en": "ML Security & Adversarial AI",
+    "name_tr": "ML Güvenliği & Karşıt AI",
+    "lessons": [
+      { "n": 1, "en": "Threat Models for ML", "tr": "ML için Tehdit Modelleri", "slug": "threat-models-ml" },
+      { "n": 2, "en": "Adversarial Examples (FGSM, PGD, C&W)", "tr": "Karşıt Örnekler (FGSM, PGD, C&W)", "slug": "adversarial-examples" },
+      { "n": 3, "en": "Defenses & Adversarial Training", "tr": "Savunmalar & Karşıt Eğitim", "slug": "defenses-adversarial-training" },
+      { "n": 4, "en": "Data Poisoning Attacks", "tr": "Veri Zehirleme Saldırıları", "slug": "data-poisoning-attacks" },
+      { "n": 5, "en": "Model Stealing & Extraction", "tr": "Model Çalma & Çıkarma", "slug": "model-stealing-extraction" },
+      { "n": 6, "en": "Membership Inference Attacks", "tr": "Üyelik Çıkarım Saldırıları", "slug": "membership-inference-attacks" },
+      { "n": 7, "en": "Backdoor Attacks & Detection", "tr": "Backdoor Saldırılar & Tespit", "slug": "backdoor-attacks-detection" },
+      { "n": 8, "en": "Robust ML & Certified Defenses", "tr": "Robust ML & Sertifikalı Savunmalar", "slug": "robust-ml-certified-defenses" },
+      { "n": 9, "en": "LLM Security", "tr": "LLM Güvenliği", "slug": "llm-security" },
+      { "n": 10, "en": "AI Red Teaming", "tr": "AI Red Team", "slug": "ai-red-teaming" }
+    ],
+    "notes": "Sub-group: ai-safety. 10 lessons, sequential order 1-10, no gaps or duplicates. Lesson 2 parenthetical attack names (FGSM/PGD/C&W) dropped from slug per no-extra-detail rule. Some thematic overlap with the privacy track (membership inference appears in both fields) but framed differently here (attacker view) - not a true duplicate."
+  },
+  "privacy": {
+    "category": "security",
+    "subfield": "privacy",
+    "group": "ai-safety",
+    "name_en": "Privacy-Preserving ML",
+    "name_tr": "Gizlilik-Koruyan ML",
+    "lessons": [
+      { "n": 1, "en": "Differential Privacy Fundamentals", "tr": "Diferansiyel Gizlilik Temelleri", "slug": "differential-privacy-fundamentals" },
+      { "n": 2, "en": "DP Mechanisms", "tr": "DP Mekanizmaları", "slug": "dp-mechanisms" },
+      { "n": 3, "en": "DP-SGD: Training Neural Nets with DP", "tr": "DP-SGD: Sinir Ağlarını DP ile Eğitme", "slug": "dp-sgd-training" },
+      { "n": 4, "en": "Federated Learning + Privacy", "tr": "Federe Öğrenme + Gizlilik", "slug": "federated-learning-privacy" },
+      { "n": 5, "en": "Local Differential Privacy", "tr": "Yerel Diferansiyel Gizlilik", "slug": "local-differential-privacy" },
+      { "n": 6, "en": "k-Anonymity, l-Diversity, t-Closeness (URV)", "tr": "k-Anonimlik, l-Çeşitlilik, t-Yakınlık (URV)", "slug": "k-anonymity-l-diversity" },
+      { "n": 7, "en": "Synthetic Data Generation", "tr": "Sentetik Veri Üretimi", "slug": "synthetic-data-generation" },
+      { "n": 8, "en": "Privacy Auditing & Tooling", "tr": "Gizlilik Denetimi & Araçlar", "slug": "privacy-auditing-tooling" }
+    ],
+    "notes": "Sub-group: ai-safety. 8 lessons, sequential order 1-8, no gaps or duplicates. Lesson 3 colon stripped for slug. Lesson 6 'k/l/t' are single-letter algorithm prefixes (not numerals) so they are kept; slug truncated to first two terms (k-anonymity-l-diversity) to stay within ~4 words while remaining unique."
+  },
+  "fairness": {
+    "category": "security",
+    "subfield": "fairness",
+    "group": "ai-safety",
+    "name_en": "Fairness & Interpretability",
+    "name_tr": "Adalet & Yorumlanabilirlik",
+    "lessons": [
+      { "n": 1, "en": "Why Fairness? Real Harms", "tr": "Neden Adalet? Gerçek Zararlar", "slug": "why-fairness-real-harms" },
+      { "n": 2, "en": "Fairness Metrics", "tr": "Adalet Metrikleri", "slug": "fairness-metrics" },
+      { "n": 3, "en": "Bias Mitigation Techniques", "tr": "Önyargı Azaltma Teknikleri", "slug": "bias-mitigation-techniques" },
+      { "n": 4, "en": "SHAP — SHapley Additive exPlanations", "tr": "SHAP — SHapley Additive exPlanations", "slug": "shap-shapley-additive-explanations" },
+      { "n": 5, "en": "LIME & Local Surrogate Models", "tr": "LIME & Yerel Vekil Modeller", "slug": "lime-local-surrogate-models" },
+      { "n": 6, "en": "Counterfactual Explanations", "tr": "Karşı-Olgu Açıklamaları", "slug": "counterfactual-explanations" },
+      { "n": 7, "en": "Mechanistic Interpretability of LLMs", "tr": "LLM'lerin Mekanistik Yorumlanabilirliği", "slug": "mechanistic-interpretability-llms" },
+      { "n": 8, "en": "Capstone — Fair & Explainable Loan Model", "tr": "Bitirme — Adil & Açıklanabilir Kredi Modeli", "slug": "capstone-fair-explainable-loan" }
+    ],
+    "notes": "Sub-group: ai-safety. 8 lessons, sequential order 1-8, no gaps or duplicates. Track mixes fairness (1-3, 8) and interpretability/XAI (4-7) per its title. Lesson 4 em-dash subtitle expanded into slug (shap-shapley-additive-explanations). Lesson 8 is a capstone project tying both themes together. TR title of lesson 4 is identical to EN (not translated upstream)."
+  },
+  "compliance": {
+    "category": "security",
+    "subfield": "compliance",
+    "group": "ai-safety",
+    "name_en": "AI Compliance & Governance",
+    "name_tr": "AI Uyum & Yönetişim",
+    "lessons": [
+      { "n": 1, "en": "GDPR for AI Systems", "tr": "AI Sistemleri için GDPR", "slug": "gdpr-ai-systems" },
+      { "n": 2, "en": "EU AI Act Deep Dive", "tr": "EU AI Yasası Detaylı İnceleme", "slug": "eu-ai-act" },
+      { "n": 3, "en": "NIS2 & DORA Directives", "tr": "NIS2 & DORA Direktifleri", "slug": "nis2-dora-directives" },
+      { "n": 4, "en": "Risk Assessment for AI", "tr": "AI için Risk Değerlendirmesi", "slug": "risk-assessment-ai" },
+      { "n": 5, "en": "AI Auditing Frameworks", "tr": "AI Denetim Çerçeveleri", "slug": "ai-auditing-frameworks" },
+      { "n": 6, "en": "Standards (ISO 27001, ISO/IEC 42001)", "tr": "Standartlar (ISO 27001, ISO/IEC 42001)", "slug": "iso-standards" }
+    ],
+    "notes": "Sub-group: ai-safety. 6 lessons, sequential order 1-6, no gaps or duplicates. NUMBER-RULE EXCEPTIONS: lesson 3 keeps 'nis2' because NIS2 is a proper directive name and stripping the digit would corrupt it; lesson 6 ISO numbers (27001/42001) were dropped and slugged as 'iso-standards' instead. Confirm whether the no-numbers rule should override the NIS2 proper noun before these go live."
+  },
+  "crypto": {
+    "category": "security",
+    "subfield": "crypto",
+    "group": "cyber",
+    "name_en": "Cryptography Engineering",
+    "name_tr": "Kriptografi Mühendisliği",
+    "lessons": [
+      { "n": 1, "en": "Symmetric Cryptography (AES, Modes)", "tr": "Simetrik Kriptografi (AES, Modlar)", "slug": "symmetric-cryptography" },
+      { "n": 2, "en": "Asymmetric Cryptography (RSA, ECC)", "tr": "Asimetrik Kriptografi (RSA, ECC)", "slug": "asymmetric-cryptography" },
+      { "n": 3, "en": "Hash Functions & MACs", "tr": "Hash Fonksiyonları & MAC'ler", "slug": "hash-functions-macs" },
+      { "n": 4, "en": "PKI & Digital Certificates", "tr": "PKI & Dijital Sertifikalar", "slug": "pki-digital-certificates" },
+      { "n": 5, "en": "Zero-Knowledge Proofs", "tr": "Sıfır-Bilgi Kanıtları", "slug": "zero-knowledge-proofs" },
+      { "n": 6, "en": "Homomorphic Encryption", "tr": "Homomorfik Şifreleme", "slug": "homomorphic-encryption" },
+      { "n": 7, "en": "Secure Multiparty Computation (MPC)", "tr": "Güvenli Çok-Taraflı Hesaplama (MPC)", "slug": "secure-multiparty-computation" },
+      { "n": 8, "en": "Post-Quantum Cryptography", "tr": "Post-Kuantum Kriptografi", "slug": "post-quantum-cryptography" },
+      { "n": 9, "en": "Cryptanalysis Fundamentals", "tr": "Kriptanaliz Temelleri", "slug": "cryptanalysis-fundamentals" },
+      { "n": 10, "en": "Side-Channel Attacks", "tr": "Yan-Kanal Saldırıları", "slug": "side-channel-attacks" }
+    ],
+    "notes": "Sub-group: cyber. 10 lessons, sequential order 1-10, no gaps or duplicates. Track folder has no index.html (display name taken from lesson <title> middle segment and the parent tutorials index). Parenthetical algorithm lists (AES/RSA/ECC/MPC) dropped from slugs. Clean primitives -> protocols -> advanced (ZKP/HE/MPC/PQC) -> attacks ordering."
+  },
+  "netsec": {
+    "category": "security",
+    "subfield": "netsec",
+    "group": "cyber",
+    "name_en": "Network & System Security",
+    "name_tr": "Ağ & Sistem Güvenliği",
+    "lessons": [
+      { "n": 1, "en": "Network Protocols & TLS", "tr": "Ağ Protokolleri & TLS", "slug": "network-protocols-tls" },
+      { "n": 2, "en": "Web Application Security (OWASP Top 10)", "tr": "Web Uygulama Güvenliği (OWASP Top 10)", "slug": "web-application-security" },
+      { "n": 3, "en": "Authentication & Authorization", "tr": "Kimlik Doğrulama & Yetkilendirme", "slug": "authentication-authorization" },
+      { "n": 4, "en": "Intrusion Detection & ML-IDS", "tr": "Saldırı Tespiti & ML-IDS", "slug": "intrusion-detection-ml-ids" },
+      { "n": 5, "en": "Firewalls, WAFs, & Network Segmentation", "tr": "Firewall'lar, WAF'lar & Ağ Segmentasyonu", "slug": "firewalls-wafs-segmentation" },
+      { "n": 6, "en": "DDoS Attacks & Defense", "tr": "DDoS Saldırıları & Savunma", "slug": "ddos-attacks-defense" },
+      { "n": 7, "en": "Wireless & 5G Security", "tr": "Kablosuz & 5G Güvenliği", "slug": "wireless-5g-security" },
+      { "n": 8, "en": "Cloud Security", "tr": "Bulut Güvenliği", "slug": "cloud-security" },
+      { "n": 9, "en": "Container & Kubernetes Security", "tr": "Konteyner & Kubernetes Güvenliği", "slug": "container-kubernetes-security" },
+      { "n": 10, "en": "Zero Trust Architecture", "tr": "Zero Trust Mimarisi", "slug": "zero-trust-architecture" }
+    ],
+    "notes": "Sub-group: cyber. 10 lessons, sequential order 1-10, no gaps or duplicates. NUMBER-RULE EXCEPTION: lesson 7 keeps '5g' since it is part of the proper technology name '5G' (dropping it would lose meaning); confirm acceptable. Lesson 2 'OWASP Top 10' parenthetical dropped from slug (also avoids the trailing number)."
+  },
+  "forensics": {
+    "category": "security",
+    "subfield": "forensics",
+    "group": "cyber",
+    "name_en": "Forensics & Incident Response",
+    "name_tr": "Adli Bilişim & Olay Müdahale",
+    "lessons": [
+      { "n": 1, "en": "Threat Modeling & MITRE ATT&CK", "tr": "Tehdit Modelleme & MITRE ATT&CK", "slug": "threat-modeling-mitre-attack" },
+      { "n": 2, "en": "Static Malware Analysis", "tr": "Statik Malware Analizi", "slug": "static-malware-analysis" },
+      { "n": 3, "en": "Dynamic Analysis & Sandboxing", "tr": "Dinamik Analiz & Sandbox", "slug": "dynamic-analysis-sandboxing" },
+      { "n": 4, "en": "Reverse Engineering Basics", "tr": "Tersine Mühendislik Temelleri", "slug": "reverse-engineering-basics" },
+      { "n": 5, "en": "Memory Forensics", "tr": "Bellek Adli Bilişimi", "slug": "memory-forensics" },
+      { "n": 6, "en": "Network Forensics", "tr": "Ağ Adli Bilişimi", "slug": "network-forensics" },
+      { "n": 7, "en": "APT Analysis & Threat Intelligence", "tr": "APT Analizi & Tehdit İstihbaratı", "slug": "apt-analysis-threat-intelligence" },
+      { "n": 8, "en": "Incident Response & SIEM/SOC", "tr": "Olay Müdahale & SIEM/SOC", "slug": "incident-response-siem-soc" }
+    ],
+    "notes": "Sub-group: cyber. 8 lessons, sequential order 1-8, no gaps or duplicates. Lesson 1 'ATT&CK' ampersand stripped to 'attack' in slug. Lesson 8 slash in 'SIEM/SOC' converted to hyphen. Memory (5) and Network (6) forensics are distinct topics, not duplicates."
+  },
+  "blockchain": {
+    "category": "security",
+    "subfield": "blockchain",
+    "group": "cyber",
+    "name_en": "Blockchain & Smart Contract",
+    "name_tr": "Blockchain & Akıllı Sözleşme",
+    "lessons": [
+      { "n": 1, "en": "Blockchain Fundamentals", "tr": "Blockchain Temelleri", "slug": "blockchain-fundamentals" },
+      { "n": 2, "en": "Bitcoin Protocol Deep Dive", "tr": "Bitcoin Protokolü Detaylı İnceleme", "slug": "bitcoin-protocol-deep-dive" },
+      { "n": 3, "en": "Ethereum & Smart Contracts", "tr": "Ethereum & Akıllı Sözleşmeler", "slug": "ethereum-smart-contracts" },
+      { "n": 4, "en": "Smart Contract Vulnerabilities", "tr": "Akıllı Sözleşme Açıkları", "slug": "smart-contract-vulnerabilities" },
+      { "n": 5, "en": "Consensus Mechanisms", "tr": "Konsensüs Mekanizmaları", "slug": "consensus-mechanisms" },
+      { "n": 6, "en": "ZK Rollups & L2 Scaling", "tr": "ZK Rollup'lar & L2 Ölçekleme", "slug": "zk-rollups-l2-scaling" },
+      { "n": 7, "en": "DeFi Security", "tr": "DeFi Güvenliği", "slug": "defi-security" },
+      { "n": 8, "en": "Smart Contract Auditing & Formal Verification", "tr": "Akıllı Sözleşme Denetimi & Biçimsel Doğrulama", "slug": "smart-contract-auditing" }
+    ],
+    "notes": "Sub-group: cyber. 8 lessons, sequential order 1-8, no gaps or duplicates. NUMBER-RULE EXCEPTION: lesson 6 keeps 'l2' (Layer-2 proper term). Three smart-contract lessons (3, 4, 8) are complementary (intro / vulns / auditing), not duplicates. Lesson 8 slug truncated to 'smart-contract-auditing' (drops 'formal-verification') to stay <=4 words; unique within track."
+  },
+  "iot": {
+    "category": "security",
+    "subfield": "iot",
+    "group": "cyber",
+    "name_en": "IoT & Embedded Security",
+    "name_tr": "IoT & Gömülü Güvenlik",
+    "lessons": [
+      { "n": 1, "en": "IoT Architecture & Threat Landscape", "tr": "IoT Mimarisi & Tehdit Manzarası", "slug": "iot-architecture-threat-landscape" },
+      { "n": 2, "en": "Hardware Security (TPM, Secure Boot)", "tr": "Donanım Güvenliği (TPM, Secure Boot)", "slug": "hardware-security" },
+      { "n": 3, "en": "Firmware Analysis & Reverse Engineering", "tr": "Firmware Analizi & Tersine Mühendislik", "slug": "firmware-analysis-reverse-engineering" },
+      { "n": 4, "en": "Wireless IoT (BLE, Zigbee, LoRaWAN)", "tr": "Kablosuz IoT (BLE, Zigbee, LoRaWAN)", "slug": "wireless-iot" },
+      { "n": 5, "en": "Industrial Control Systems (ICS/SCADA)", "tr": "Endüstriyel Kontrol Sistemleri (ICS/SCADA)", "slug": "industrial-control-systems" },
+      { "n": 6, "en": "Connected & Autonomous Vehicle Security", "tr": "Bağlı & Otonom Araç Güvenliği", "slug": "connected-autonomous-vehicle-security" }
+    ],
+    "notes": "Sub-group: cyber. 6 lessons, sequential order 1-6, no gaps or duplicates. Parenthetical technology lists (TPM/BLE/Zigbee/LoRaWAN/ICS/SCADA) dropped from slugs. Slugs for lessons 1 and 3 run slightly long (4 words) but remain readable and unique."
+  }
+}

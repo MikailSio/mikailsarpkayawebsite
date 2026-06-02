@@ -1,0 +1,88 @@
+{
+  "ml-theory": {
+    "category": "ai",
+    "subfield": "ml",
+    "name_en": "ML Theory",
+    "name_tr": "ML Teorisi",
+    "lessons": [
+      { "n": 1, "en": "What is Machine Learning?", "tr": "Makine Öğrenmesi Nedir?", "slug": "what-is-machine-learning" },
+      { "n": 2, "en": "Linear Regression", "tr": "Lineer Regresyon", "slug": "linear-regression" },
+      { "n": 3, "en": "Logistic Regression & Classification", "tr": "Lojistik Regresyon & Sınıflandırma", "slug": "logistic-regression-classification" },
+      { "n": 4, "en": "Generalisation: Bias-Variance & CV", "tr": "Genelleme: Bias-Variance & CV", "slug": "generalization-bias-variance" },
+      { "n": 5, "en": "Evaluation & Hyperparameter Tuning", "tr": "Değerlendirme & Hyperparameter Tuning", "slug": "evaluation-hyperparameter-tuning" },
+      { "n": 6, "en": "Regularisation", "tr": "Regularization", "slug": "regularization" },
+      { "n": 7, "en": "Trees & Ensembles (XGBoost)", "tr": "Ağaçlar & Ensemble (XGBoost)", "slug": "trees-ensembles-xgboost" },
+      { "n": 8, "en": "Clustering", "tr": "Kümeleme (Clustering)", "slug": "clustering" },
+      { "n": 9, "en": "Dimensionality Reduction", "tr": "Boyut İndirgeme", "slug": "dimensionality-reduction" },
+      { "n": 10, "en": "Feature Engineering & Imbalanced Data", "tr": "Özellik Mühendisliği & Dengesiz Veri", "slug": "feature-engineering-imbalanced" },
+      { "n": 11, "en": "MLOps & Production", "tr": "MLOps & Üretim", "slug": "mlops-production" },
+      { "n": 12, "en": "Support Vector Machines (SVM)", "tr": "Destek Vektör Makineleri (SVM)", "slug": "support-vector-machines" },
+      { "n": 13, "en": "Naive Bayes Classifier", "tr": "Naive Bayes Sınıflandırıcı", "slug": "naive-bayes" },
+      { "n": 14, "en": "k-Nearest Neighbors (kNN)", "tr": "k-En Yakın Komşu (kNN)", "slug": "k-nearest-neighbors" }
+    ],
+    "notes": "14 lesson files (1-14). CRITICAL DATA INTEGRITY ISSUE: the hero block (eyebrow/<h1 class=topic-title>/topic-desc) and partly the <title> tag are STALE on lessons 6-14 — all show eyebrow 'Lesson 06' + h1 'Trees & Ensembles' + desc 'Decision trees, Random Forest, XGBoost'. Titles here are taken from the authoritative sidebar (.sb-lesson labels) and CONFIRMED against each lesson's content payload header comment (L#.js: L6=Regularization, L7=Trees&Ensembles/XGBoost, L8=Clustering, L9=Dimensionality Reduction PCA/t-SNE/UMAP, L10=Feature Engineering & Imbalanced, L11=MLOps, L12=SVM, L13=Naive Bayes, L14=kNN). The <title> tags were correct only for 1-5,12,13,14; <h1> was correct only for 1-5; do NOT trust h1/title for 6-11. Also stale: in-page footer nav on lesson 6 reads 'Lesson 6 of 6' and sidebar eyebrow says '11 Lessons' (actual: 14). Cross-listing: lessons 12-14 (SVM, Naive Bayes, kNN) duplicate the same algorithms taught in the sklearn track (sklearn 9-10) — SVM/NB overlap. No true duplicate/draft files; numeric order is pedagogically sound (foundations -> regularization -> ensembles -> unsupervised -> classical classifiers appended later as 12-14). Minor: lesson 6 EN is British 'Regularisation' while deep track uses 'Regularization' — slug normalized to regularization."
+  },
+  "sklearn": {
+    "category": "ai",
+    "subfield": "sklearn",
+    "name_en": "scikit-learn",
+    "name_tr": "scikit-learn",
+    "lessons": [
+      { "n": 1, "en": "Estimator API", "tr": "Estimator API", "slug": "estimator-api" },
+      { "n": 2, "en": "Preprocessing & Pipelines", "tr": "Önişleme & Pipeline", "slug": "preprocessing-pipelines" },
+      { "n": 3, "en": "Linear Models", "tr": "Doğrusal Modeller", "slug": "linear-models" },
+      { "n": 4, "en": "Tree-Based Models", "tr": "Ağaç Modelleri", "slug": "tree-based-models" },
+      { "n": 5, "en": "Model Selection & CV", "tr": "Model Seçimi & CV", "slug": "model-selection-cv" },
+      { "n": 6, "en": "Classification Metrics", "tr": "Sınıflandırma Metrikleri", "slug": "classification-metrics" },
+      { "n": 7, "en": "Regression & Clustering", "tr": "Regresyon & Kümeleme", "slug": "regression-clustering" },
+      { "n": 8, "en": "PCA & End-to-End", "tr": "PCA & Uçtan Uca", "slug": "pca-end-to-end" },
+      { "n": 9, "en": "SVM (sklearn)", "tr": "SVM (sklearn)", "slug": "svm" },
+      { "n": 10, "en": "Naive Bayes (sklearn)", "tr": "Naive Bayes (sklearn)", "slug": "naive-bayes" }
+    ],
+    "notes": "10 lesson files (1-10). Titles from sidebar; agree with <title> tags. Stale hero <h1>: lessons 9 and 10 both show h1 'PCA & End-to-End' (copied from lesson 8) — the <title> tags (9='Support Vector Machines (sklearn)', 10='Naive Bayes (sklearn)') and sidebar are correct, so h1 was not trusted. Stale metadata: index.html is JS-driven ('sklearn — Loading…') and sidebar eyebrow says '8 Lessons' (actual: 10). Cross-listing/duplication: SVM (9) and Naive Bayes (10) cover the same algorithms as ml-theory 12-13 — these are the applied/sklearn-API counterparts of the ml-theory theory lessons. Track also cross-lists under AI/Data (practical tooling). No draft files; order consistent."
+  },
+  "deep": {
+    "category": "ai",
+    "subfield": "dl",
+    "name_en": "Deep Learning",
+    "name_tr": "Derin Öğrenme",
+    "lessons": [
+      { "n": 1, "en": "Neural Networks Intro (Perceptron, MLP)", "tr": "Sinir Ağına Giriş (Perceptron, MLP)", "slug": "neural-networks-intro" },
+      { "n": 2, "en": "Activations & Loss Functions", "tr": "Aktivasyon & Kayıp Fonksiyonları", "slug": "activations-loss-functions" },
+      { "n": 3, "en": "Backpropagation & Computational Graphs", "tr": "Backpropagation & Hesap Grafı", "slug": "backpropagation-computational-graphs" },
+      { "n": 4, "en": "Optimization & Training Dynamics", "tr": "Optimizasyon & Eğitim Dinamiği", "slug": "optimization-training-dynamics" },
+      { "n": 5, "en": "Regularization & Normalization", "tr": "Regularization & Normalization", "slug": "regularization-normalization" },
+      { "n": 6, "en": "CNN & Computer Vision", "tr": "CNN & Bilgisayarla Görü", "slug": "cnn-computer-vision" },
+      { "n": 7, "en": "Transfer Learning & Pre-training", "tr": "Transfer Learning & Pre-training", "slug": "transfer-learning-pretraining" },
+      { "n": 8, "en": "RNN & LSTM (Sequential Models)", "tr": "RNN & LSTM (Sıralı Modeller)", "slug": "rnn-lstm-sequential" },
+      { "n": 9, "en": "Attention & Transformers", "tr": "Attention & Transformers", "slug": "attention-transformers" },
+      { "n": 10, "en": "Generative Models (VAE, GAN, Diffusion)", "tr": "Generative Modeller (VAE, GAN, Diffusion)", "slug": "generative-models" },
+      { "n": 11, "en": "Production, Efficiency & MLOps", "tr": "Üretim, Verimlilik & MLOps", "slug": "production-efficiency-mlops" },
+      { "n": 12, "en": "Mamba & State Space Models", "tr": "Mamba ve Durum Uzayı Modelleri", "slug": "mamba-state-space-models" }
+    ],
+    "notes": "12 lesson files (1-12), sidebar count '12 Lessons' is accurate. Titles from sidebar; CONFIRMED against L#.js content comments (e.g. L12='State Space Models, Mamba & Uzun Bağlam', L1='Sinir Ağına Giriş — Perceptron & MLP'). Stale hero <h1>: lesson 12 shows h1 'Production, Efficiency & MLOps' (copied from lesson 11) — sidebar/content say it is actually 'Mamba & State Space Models', so h1 not trusted. The lesson <title> tags are otherwise descriptive (lesson titles partly Turkish in the <title>, e.g. 'CNN & Bilgisayarla Görü'). Cross-listing: lesson 6 (CNN & Computer Vision) overlaps the dedicated CV track; lessons 8-9 (RNN/LSTM, Attention/Transformers) overlap NLP and PyTorch tracks. No draft/duplicate files; order is standard DL curriculum. Minor curriculum note: no dedicated lesson on hardware/GPU or deployment beyond the combined Production lesson 11."
+  },
+  "pytorch": {
+    "category": "ai",
+    "subfield": "pytorch",
+    "name_en": "PyTorch",
+    "name_tr": "PyTorch",
+    "lessons": [
+      { "n": 1, "en": "Tensors Foundation", "tr": "Tensör Temelleri", "slug": "tensors-foundation" },
+      { "n": 2, "en": "Autograd", "tr": "Autograd", "slug": "autograd" },
+      { "n": 3, "en": "nn.Module", "tr": "nn.Module", "slug": "nn-module" },
+      { "n": 4, "en": "DataLoader & Dataset", "tr": "DataLoader & Dataset", "slug": "dataloader-dataset" },
+      { "n": 5, "en": "Training Loop", "tr": "Eğitim Döngüsü", "slug": "training-loop" },
+      { "n": 6, "en": "CNN Basics", "tr": "CNN Temelleri", "slug": "cnn-basics" },
+      { "n": 7, "en": "RNN / LSTM / GRU", "tr": "RNN / LSTM / GRU", "slug": "rnn-lstm-gru" },
+      { "n": 8, "en": "Embeddings & Tokenization", "tr": "Embedding & Tokenizasyon", "slug": "embeddings-tokenization" },
+      { "n": 9, "en": "Attention & Transformer", "tr": "Dikkat & Transformer", "slug": "attention-transformer" },
+      { "n": 10, "en": "Pretrained & Transfer", "tr": "Pretrained & Transfer", "slug": "pretrained-transfer" },
+      { "n": 11, "en": "Production", "tr": "Üretim", "slug": "production" },
+      { "n": 12, "en": "NLP Sentiment Project", "tr": "NLP Duygu Projesi", "slug": "nlp-sentiment-project" },
+      { "n": 13, "en": "Distributed Training — DDP & FSDP", "tr": "Dağıtık Eğitim — DDP & FSDP", "slug": "distributed-training-ddp-fsdp" },
+      { "n": 14, "en": "torch.compile + Mixed Precision", "tr": "torch.compile + Karışık Hassasiyet", "slug": "torch-compile-mixed-precision" }
+    ],
+    "notes": "14 lesson files (1-14). Titles from sidebar; agree with <title> tags. Stale hero <h1>: lessons 13 and 14 both show h1 'NLP Sentiment Project' (copied from lesson 12) — the <title> tags (13='Distributed Training — DDP & FSDP', 14='torch.compile + Mixed Precision') and sidebar are correct, so h1 not trusted. Stale metadata: index.html is JS-driven ('pytorch — Loading…') and sidebar eyebrow says '12 Lessons' (actual: 14 — lessons 13-14 are advanced scaling additions). Cross-listing: 6 (CNN), 7 (RNN/LSTM/GRU), 9 (Attention/Transformer) overlap the deep track; 8-9 and 12 (Embeddings, Attention, NLP Sentiment) overlap NLP. No draft/duplicate files; order consistent (fundamentals -> architectures -> project -> distributed/perf)."
+  }
+}

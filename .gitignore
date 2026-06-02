@@ -12,3 +12,8 @@ assets/favicon/backup/
 assets/favicon/*.zip
 *.pyc
 Thumbs.db
+
+# 2026-06-03 migration (V2 + slug tutorials)
+HANDOFF.md
+*.deb
+_viz_qc/

@@ -1,0 +1,73 @@
+{
+  "numpy": {
+    "category": "ai",
+    "subfield": "numpy",
+    "name_en": "NumPy",
+    "name_tr": "NumPy",
+    "lessons": [
+      { "n": 1, "en": "Arrays & Creation", "tr": "Diziler & Oluşturma", "slug": "arrays-creation" },
+      { "n": 2, "en": "Indexing & Slicing", "tr": "İndeksleme & Dilimleme", "slug": "indexing-slicing" },
+      { "n": 3, "en": "Broadcasting & Vectorization", "tr": "Broadcasting & Vektörizasyon", "slug": "broadcasting-vectorization" },
+      { "n": 4, "en": "Statistics & Sorting", "tr": "İstatistik & Sıralama", "slug": "statistics-sorting" },
+      { "n": 5, "en": "Linear Algebra", "tr": "Doğrusal Cebir", "slug": "linear-algebra" },
+      { "n": 6, "en": "Random & Practical", "tr": "Rastgele & Pratik", "slug": "random-practical" },
+      { "n": 7, "en": "einsum Mastery", "tr": "einsum Ustalığı", "slug": "einsum-mastery" },
+      { "n": 8, "en": "Strides & Memory Layout", "tr": "Strides & Bellek Düzeni", "slug": "strides-memory-layout" },
+      { "n": 9, "en": "Numerical Stability", "tr": "Sayısal Kararlılık", "slug": "numerical-stability" }
+    ],
+    "notes": "9 lesson files (1-9), all with clean titles + TR. Cross-listed: AI/Data + Programming. Metadata gap: index.html and shared sidebar both label the track '6 Lessons' (stale — actual count is 9). No duplicate/draft lessons. Numeric order is consistent."
+  },
+  "pandas": {
+    "category": "ai",
+    "subfield": "pandas",
+    "name_en": "Pandas",
+    "name_tr": "Pandas",
+    "lessons": [
+      { "n": 1, "en": "Series & DataFrames", "tr": "Series & DataFrame", "slug": "series-dataframes" },
+      { "n": 2, "en": "Data Loading & Export", "tr": "Veri Yükleme & Dışa Aktarma", "slug": "data-loading-export" },
+      { "n": 3, "en": "Selection & Filtering", "tr": "Seçim & Filtreleme", "slug": "selection-filtering" },
+      { "n": 4, "en": "Data Cleaning", "tr": "Veri Temizleme", "slug": "data-cleaning" },
+      { "n": 5, "en": "GroupBy & Aggregation", "tr": "GroupBy & Toplama", "slug": "groupby-aggregation" },
+      { "n": 6, "en": "Merging & Reshaping", "tr": "Birleştirme & Yeniden Şekillendirme", "slug": "merging-reshaping" },
+      { "n": 7, "en": "Time Series Foundations", "tr": "Zaman Serisi Temelleri", "slug": "time-series-foundations" },
+      { "n": 8, "en": "String & Text Processing for NLP", "tr": "NLP icin Metin Isleme", "slug": "string-text-processing" },
+      { "n": 9, "en": "MultiIndex Mastery", "tr": "MultiIndex Ustalığı", "slug": "multiindex-mastery" },
+      { "n": 10, "en": "Polars — Lazy & Fast", "tr": "Polars — Tembel & Hızlı", "slug": "polars-lazy-fast" }
+    ],
+    "notes": "10 lesson files (1-10), all with clean titles + TR. Cross-listed: AI/Data + Programming. Lesson 8 EN title is long ('...for NLP'); slug trimmed to string-text-processing. Lesson 8 TR ('NLP icin Metin Isleme') is missing Turkish diacritics (should be 'NLP için Metin İşleme') — kept as authored. Lesson 10 (Polars) is an adjacent-library bonus, not strictly Pandas. No duplicate/draft lessons; order consistent."
+  },
+  "sql": {
+    "category": "ai",
+    "subfield": "sql",
+    "name_en": "SQL",
+    "name_tr": "SQL",
+    "lessons": [
+      { "n": 1, "en": "What is SQL?", "tr": "SQL Nedir?", "slug": "what-is-sql" },
+      { "n": 2, "en": "SELECT, WHERE, ORDER BY", "tr": "SELECT, WHERE, ORDER BY", "slug": "select-where-order-by" },
+      { "n": 3, "en": "Aggregates & GROUP BY", "tr": "Toplama & GROUP BY", "slug": "aggregates-group-by" },
+      { "n": 4, "en": "JOINs", "tr": "JOIN İşlemleri", "slug": "joins" },
+      { "n": 5, "en": "Subqueries & CTEs", "tr": "Alt Sorgular & CTE", "slug": "subqueries-ctes" },
+      { "n": 6, "en": "Window Functions", "tr": "Pencere Fonksiyonları", "slug": "window-functions" },
+      { "n": 7, "en": "Dates, Strings, NULLs", "tr": "Tarihler, Metinler, NULL'lar", "slug": "dates-strings-nulls" },
+      { "n": 8, "en": "Indexes & Performance", "tr": "İndeksler & Performans", "slug": "indexes-performance" },
+      { "n": 9, "en": "Schema Design & Normalization", "tr": "Şema Tasarımı & Normalizasyon", "slug": "schema-design-normalization" },
+      { "n": 10, "en": "Real-World Analytics Pipeline", "tr": "Gerçek Dünya Analitik Boru Hattı", "slug": "real-world-analytics-pipeline" }
+    ],
+    "notes": "10 lesson files (1-10), all with clean titles + TR. Cross-listed: AI/Data + Programming. index.html is JS-driven (title 'SQL — Loading…') — track name taken from lesson <title> tags. No duplicate/draft lessons; order consistent."
+  },
+  "matplotlib": {
+    "category": "ai",
+    "subfield": "matplotlib",
+    "name_en": "Matplotlib",
+    "name_tr": "Matplotlib",
+    "lessons": [
+      { "n": 1, "en": "Anatomy of a Figure", "tr": "Figure Anatomisi", "slug": "anatomy-figure" },
+      { "n": 2, "en": "Lines, Markers, Styles", "tr": "Çizgiler & Stiller", "slug": "lines-markers-styles" },
+      { "n": 3, "en": "Subplots & Layout", "tr": "Subplot & Düzen", "slug": "subplots-layout" },
+      { "n": 4, "en": "Styling & Themes", "tr": "Stillendirme & Temalar", "slug": "styling-themes" },
+      { "n": 5, "en": "3D & Heatmaps", "tr": "3B & Isı Haritaları", "slug": "three-d-heatmaps" },
+      { "n": 6, "en": "ML Cookbook & Export", "tr": "ML Tarifleri & Dışa Aktarma", "slug": "ml-cookbook-export" }
+    ],
+    "notes": "6 lesson files (1-6), all with clean titles + TR. Cross-listed: AI/Data + Programming. index.html is JS-driven (title 'Matplotlib — Loading…'). Lesson 5 '3D & Heatmaps': per the no-digits slug rule the '3D' token was spelled as 'three-d' (slug three-d-heatmaps). No duplicate/draft lessons; order consistent."
+  }
+}

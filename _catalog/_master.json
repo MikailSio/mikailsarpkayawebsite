@@ -1,0 +1,3645 @@
+{
+  "ml-theory": {
+    "category": "ai",
+    "subfield": "ml",
+    "name_en": "ML Theory",
+    "name_tr": "ML Teorisi",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is Machine Learning?",
+        "tr": "Makine Öğrenmesi Nedir?",
+        "slug": "what-is-machine-learning"
+      },
+      {
+        "n": 2,
+        "en": "Linear Regression",
+        "tr": "Lineer Regresyon",
+        "slug": "linear-regression"
+      },
+      {
+        "n": 3,
+        "en": "Logistic Regression & Classification",
+        "tr": "Lojistik Regresyon & Sınıflandırma",
+        "slug": "logistic-regression-classification"
+      },
+      {
+        "n": 4,
+        "en": "Generalisation: Bias-Variance & CV",
+        "tr": "Genelleme: Bias-Variance & CV",
+        "slug": "generalization-bias-variance"
+      },
+      {
+        "n": 5,
+        "en": "Evaluation & Hyperparameter Tuning",
+        "tr": "Değerlendirme & Hyperparameter Tuning",
+        "slug": "evaluation-hyperparameter-tuning"
+      },
+      {
+        "n": 6,
+        "en": "Regularisation",
+        "tr": "Regularization",
+        "slug": "regularization"
+      },
+      {
+        "n": 7,
+        "en": "Trees & Ensembles (XGBoost)",
+        "tr": "Ağaçlar & Ensemble (XGBoost)",
+        "slug": "trees-ensembles-xgboost"
+      },
+      {
+        "n": 8,
+        "en": "Clustering",
+        "tr": "Kümeleme (Clustering)",
+        "slug": "clustering"
+      },
+      {
+        "n": 9,
+        "en": "Dimensionality Reduction",
+        "tr": "Boyut İndirgeme",
+        "slug": "dimensionality-reduction"
+      },
+      {
+        "n": 10,
+        "en": "Feature Engineering & Imbalanced Data",
+        "tr": "Özellik Mühendisliği & Dengesiz Veri",
+        "slug": "feature-engineering-imbalanced"
+      },
+      {
+        "n": 11,
+        "en": "MLOps & Production",
+        "tr": "MLOps & Üretim",
+        "slug": "mlops-production"
+      },
+      {
+        "n": 12,
+        "en": "Support Vector Machines (SVM)",
+        "tr": "Destek Vektör Makineleri (SVM)",
+        "slug": "support-vector-machines"
+      },
+      {
+        "n": 13,
+        "en": "Naive Bayes Classifier",
+        "tr": "Naive Bayes Sınıflandırıcı",
+        "slug": "naive-bayes"
+      },
+      {
+        "n": 14,
+        "en": "k-Nearest Neighbors (kNN)",
+        "tr": "k-En Yakın Komşu (kNN)",
+        "slug": "k-nearest-neighbors"
+      }
+    ],
+    "notes": "14 lesson files (1-14). CRITICAL DATA INTEGRITY ISSUE: the hero block (eyebrow/<h1 class=topic-title>/topic-desc) and partly the <title> tag are STALE on lessons 6-14 — all show eyebrow 'Lesson 06' + h1 'Trees & Ensembles' + desc 'Decision trees, Random Forest, XGBoost'. Titles here are taken from the authoritative sidebar (.sb-lesson labels) and CONFIRMED against each lesson's content payload header comment (L#.js: L6=Regularization, L7=Trees&Ensembles/XGBoost, L8=Clustering, L9=Dimensionality Reduction PCA/t-SNE/UMAP, L10=Feature Engineering & Imbalanced, L11=MLOps, L12=SVM, L13=Naive Bayes, L14=kNN). The <title> tags were correct only for 1-5,12,13,14; <h1> was correct only for 1-5; do NOT trust h1/title for 6-11. Also stale: in-page footer nav on lesson 6 reads 'Lesson 6 of 6' and sidebar eyebrow says '11 Lessons' (actual: 14). Cross-listing: lessons 12-14 (SVM, Naive Bayes, kNN) duplicate the same algorithms taught in the sklearn track (sklearn 9-10) — SVM/NB overlap. No true duplicate/draft files; numeric order is pedagogically sound (foundations -> regularization -> ensembles -> unsupervised -> classical classifiers appended later as 12-14). Minor: lesson 6 EN is British 'Regularisation' while deep track uses 'Regularization' — slug normalized to regularization."
+  },
+  "sklearn": {
+    "category": "ai",
+    "subfield": "sklearn",
+    "name_en": "scikit-learn",
+    "name_tr": "scikit-learn",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Estimator API",
+        "tr": "Estimator API",
+        "slug": "estimator-api"
+      },
+      {
+        "n": 2,
+        "en": "Preprocessing & Pipelines",
+        "tr": "Önişleme & Pipeline",
+        "slug": "preprocessing-pipelines"
+      },
+      {
+        "n": 3,
+        "en": "Linear Models",
+        "tr": "Doğrusal Modeller",
+        "slug": "linear-models"
+      },
+      {
+        "n": 4,
+        "en": "Tree-Based Models",
+        "tr": "Ağaç Modelleri",
+        "slug": "tree-based-models"
+      },
+      {
+        "n": 5,
+        "en": "Model Selection & CV",
+        "tr": "Model Seçimi & CV",
+        "slug": "model-selection-cv"
+      },
+      {
+        "n": 6,
+        "en": "Classification Metrics",
+        "tr": "Sınıflandırma Metrikleri",
+        "slug": "classification-metrics"
+      },
+      {
+        "n": 7,
+        "en": "Regression & Clustering",
+        "tr": "Regresyon & Kümeleme",
+        "slug": "regression-clustering"
+      },
+      {
+        "n": 8,
+        "en": "PCA & End-to-End",
+        "tr": "PCA & Uçtan Uca",
+        "slug": "pca-end-to-end"
+      },
+      {
+        "n": 9,
+        "en": "SVM (sklearn)",
+        "tr": "SVM (sklearn)",
+        "slug": "svm"
+      },
+      {
+        "n": 10,
+        "en": "Naive Bayes (sklearn)",
+        "tr": "Naive Bayes (sklearn)",
+        "slug": "naive-bayes"
+      }
+    ],
+    "notes": "10 lesson files (1-10). Titles from sidebar; agree with <title> tags. Stale hero <h1>: lessons 9 and 10 both show h1 'PCA & End-to-End' (copied from lesson 8) — the <title> tags (9='Support Vector Machines (sklearn)', 10='Naive Bayes (sklearn)') and sidebar are correct, so h1 was not trusted. Stale metadata: index.html is JS-driven ('sklearn — Loading…') and sidebar eyebrow says '8 Lessons' (actual: 10). Cross-listing/duplication: SVM (9) and Naive Bayes (10) cover the same algorithms as ml-theory 12-13 — these are the applied/sklearn-API counterparts of the ml-theory theory lessons. Track also cross-lists under AI/Data (practical tooling). No draft files; order consistent."
+  },
+  "deep": {
+    "category": "ai",
+    "subfield": "dl",
+    "name_en": "Deep Learning",
+    "name_tr": "Derin Öğrenme",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Neural Networks Intro (Perceptron, MLP)",
+        "tr": "Sinir Ağına Giriş (Perceptron, MLP)",
+        "slug": "neural-networks-intro"
+      },
+      {
+        "n": 2,
+        "en": "Activations & Loss Functions",
+        "tr": "Aktivasyon & Kayıp Fonksiyonları",
+        "slug": "activations-loss-functions"
+      },
+      {
+        "n": 3,
+        "en": "Backpropagation & Computational Graphs",
+        "tr": "Backpropagation & Hesap Grafı",
+        "slug": "backpropagation-computational-graphs"
+      },
+      {
+        "n": 4,
+        "en": "Optimization & Training Dynamics",
+        "tr": "Optimizasyon & Eğitim Dinamiği",
+        "slug": "optimization-training-dynamics"
+      },
+      {
+        "n": 5,
+        "en": "Regularization & Normalization",
+        "tr": "Regularization & Normalization",
+        "slug": "regularization-normalization"
+      },
+      {
+        "n": 6,
+        "en": "CNN & Computer Vision",
+        "tr": "CNN & Bilgisayarla Görü",
+        "slug": "cnn-computer-vision"
+      },
+      {
+        "n": 7,
+        "en": "Transfer Learning & Pre-training",
+        "tr": "Transfer Learning & Pre-training",
+        "slug": "transfer-learning-pretraining"
+      },
+      {
+        "n": 8,
+        "en": "RNN & LSTM (Sequential Models)",
+        "tr": "RNN & LSTM (Sıralı Modeller)",
+        "slug": "rnn-lstm-sequential"
+      },
+      {
+        "n": 9,
+        "en": "Attention & Transformers",
+        "tr": "Attention & Transformers",
+        "slug": "attention-transformers"
+      },
+      {
+        "n": 10,
+        "en": "Generative Models (VAE, GAN, Diffusion)",
+        "tr": "Generative Modeller (VAE, GAN, Diffusion)",
+        "slug": "generative-models"
+      },
+      {
+        "n": 11,
+        "en": "Production, Efficiency & MLOps",
+        "tr": "Üretim, Verimlilik & MLOps",
+        "slug": "production-efficiency-mlops"
+      },
+      {
+        "n": 12,
+        "en": "Mamba & State Space Models",
+        "tr": "Mamba ve Durum Uzayı Modelleri",
+        "slug": "mamba-state-space-models"
+      }
+    ],
+    "notes": "12 lesson files (1-12), sidebar count '12 Lessons' is accurate. Titles from sidebar; CONFIRMED against L#.js content comments (e.g. L12='State Space Models, Mamba & Uzun Bağlam', L1='Sinir Ağına Giriş — Perceptron & MLP'). Stale hero <h1>: lesson 12 shows h1 'Production, Efficiency & MLOps' (copied from lesson 11) — sidebar/content say it is actually 'Mamba & State Space Models', so h1 not trusted. The lesson <title> tags are otherwise descriptive (lesson titles partly Turkish in the <title>, e.g. 'CNN & Bilgisayarla Görü'). Cross-listing: lesson 6 (CNN & Computer Vision) overlaps the dedicated CV track; lessons 8-9 (RNN/LSTM, Attention/Transformers) overlap NLP and PyTorch tracks. No draft/duplicate files; order is standard DL curriculum. Minor curriculum note: no dedicated lesson on hardware/GPU or deployment beyond the combined Production lesson 11."
+  },
+  "pytorch": {
+    "category": "ai",
+    "subfield": "pytorch",
+    "name_en": "PyTorch",
+    "name_tr": "PyTorch",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Tensors Foundation",
+        "tr": "Tensör Temelleri",
+        "slug": "tensors-foundation"
+      },
+      {
+        "n": 2,
+        "en": "Autograd",
+        "tr": "Autograd",
+        "slug": "autograd"
+      },
+      {
+        "n": 3,
+        "en": "nn.Module",
+        "tr": "nn.Module",
+        "slug": "nn-module"
+      },
+      {
+        "n": 4,
+        "en": "DataLoader & Dataset",
+        "tr": "DataLoader & Dataset",
+        "slug": "dataloader-dataset"
+      },
+      {
+        "n": 5,
+        "en": "Training Loop",
+        "tr": "Eğitim Döngüsü",
+        "slug": "training-loop"
+      },
+      {
+        "n": 6,
+        "en": "CNN Basics",
+        "tr": "CNN Temelleri",
+        "slug": "cnn-basics"
+      },
+      {
+        "n": 7,
+        "en": "RNN / LSTM / GRU",
+        "tr": "RNN / LSTM / GRU",
+        "slug": "rnn-lstm-gru"
+      },
+      {
+        "n": 8,
+        "en": "Embeddings & Tokenization",
+        "tr": "Embedding & Tokenizasyon",
+        "slug": "embeddings-tokenization"
+      },
+      {
+        "n": 9,
+        "en": "Attention & Transformer",
+        "tr": "Dikkat & Transformer",
+        "slug": "attention-transformer"
+      },
+      {
+        "n": 10,
+        "en": "Pretrained & Transfer",
+        "tr": "Pretrained & Transfer",
+        "slug": "pretrained-transfer"
+      },
+      {
+        "n": 11,
+        "en": "Production",
+        "tr": "Üretim",
+        "slug": "production"
+      },
+      {
+        "n": 12,
+        "en": "NLP Sentiment Project",
+        "tr": "NLP Duygu Projesi",
+        "slug": "nlp-sentiment-project"
+      },
+      {
+        "n": 13,
+        "en": "Distributed Training — DDP & FSDP",
+        "tr": "Dağıtık Eğitim — DDP & FSDP",
+        "slug": "distributed-training-ddp-fsdp"
+      },
+      {
+        "n": 14,
+        "en": "torch.compile + Mixed Precision",
+        "tr": "torch.compile + Karışık Hassasiyet",
+        "slug": "torch-compile-mixed-precision"
+      }
+    ],
+    "notes": "14 lesson files (1-14). Titles from sidebar; agree with <title> tags. Stale hero <h1>: lessons 13 and 14 both show h1 'NLP Sentiment Project' (copied from lesson 12) — the <title> tags (13='Distributed Training — DDP & FSDP', 14='torch.compile + Mixed Precision') and sidebar are correct, so h1 not trusted. Stale metadata: index.html is JS-driven ('pytorch — Loading…') and sidebar eyebrow says '12 Lessons' (actual: 14 — lessons 13-14 are advanced scaling additions). Cross-listing: 6 (CNN), 7 (RNN/LSTM/GRU), 9 (Attention/Transformer) overlap the deep track; 8-9 and 12 (Embeddings, Attention, NLP Sentiment) overlap NLP. No draft/duplicate files; order consistent (fundamentals -> architectures -> project -> distributed/perf)."
+  },
+  "numpy": {
+    "category": "ai",
+    "subfield": "numpy",
+    "name_en": "NumPy",
+    "name_tr": "NumPy",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Arrays & Creation",
+        "tr": "Diziler & Oluşturma",
+        "slug": "arrays-creation"
+      },
+      {
+        "n": 2,
+        "en": "Indexing & Slicing",
+        "tr": "İndeksleme & Dilimleme",
+        "slug": "indexing-slicing"
+      },
+      {
+        "n": 3,
+        "en": "Broadcasting & Vectorization",
+        "tr": "Broadcasting & Vektörizasyon",
+        "slug": "broadcasting-vectorization"
+      },
+      {
+        "n": 4,
+        "en": "Statistics & Sorting",
+        "tr": "İstatistik & Sıralama",
+        "slug": "statistics-sorting"
+      },
+      {
+        "n": 5,
+        "en": "Linear Algebra",
+        "tr": "Doğrusal Cebir",
+        "slug": "linear-algebra"
+      },
+      {
+        "n": 6,
+        "en": "Random & Practical",
+        "tr": "Rastgele & Pratik",
+        "slug": "random-practical"
+      },
+      {
+        "n": 7,
+        "en": "einsum Mastery",
+        "tr": "einsum Ustalığı",
+        "slug": "einsum-mastery"
+      },
+      {
+        "n": 8,
+        "en": "Strides & Memory Layout",
+        "tr": "Strides & Bellek Düzeni",
+        "slug": "strides-memory-layout"
+      },
+      {
+        "n": 9,
+        "en": "Numerical Stability",
+        "tr": "Sayısal Kararlılık",
+        "slug": "numerical-stability"
+      }
+    ],
+    "notes": "9 lesson files (1-9), all with clean titles + TR. Cross-listed: AI/Data + Programming. Metadata gap: index.html and shared sidebar both label the track '6 Lessons' (stale — actual count is 9). No duplicate/draft lessons. Numeric order is consistent."
+  },
+  "pandas": {
+    "category": "ai",
+    "subfield": "pandas",
+    "name_en": "Pandas",
+    "name_tr": "Pandas",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Series & DataFrames",
+        "tr": "Series & DataFrame",
+        "slug": "series-dataframes"
+      },
+      {
+        "n": 2,
+        "en": "Data Loading & Export",
+        "tr": "Veri Yükleme & Dışa Aktarma",
+        "slug": "data-loading-export"
+      },
+      {
+        "n": 3,
+        "en": "Selection & Filtering",
+        "tr": "Seçim & Filtreleme",
+        "slug": "selection-filtering"
+      },
+      {
+        "n": 4,
+        "en": "Data Cleaning",
+        "tr": "Veri Temizleme",
+        "slug": "data-cleaning"
+      },
+      {
+        "n": 5,
+        "en": "GroupBy & Aggregation",
+        "tr": "GroupBy & Toplama",
+        "slug": "groupby-aggregation"
+      },
+      {
+        "n": 6,
+        "en": "Merging & Reshaping",
+        "tr": "Birleştirme & Yeniden Şekillendirme",
+        "slug": "merging-reshaping"
+      },
+      {
+        "n": 7,
+        "en": "Time Series Foundations",
+        "tr": "Zaman Serisi Temelleri",
+        "slug": "time-series-foundations"
+      },
+      {
+        "n": 8,
+        "en": "String & Text Processing for NLP",
+        "tr": "NLP icin Metin Isleme",
+        "slug": "string-text-processing"
+      },
+      {
+        "n": 9,
+        "en": "MultiIndex Mastery",
+        "tr": "MultiIndex Ustalığı",
+        "slug": "multiindex-mastery"
+      },
+      {
+        "n": 10,
+        "en": "Polars — Lazy & Fast",
+        "tr": "Polars — Tembel & Hızlı",
+        "slug": "polars-lazy-fast"
+      }
+    ],
+    "notes": "10 lesson files (1-10), all with clean titles + TR. Cross-listed: AI/Data + Programming. Lesson 8 EN title is long ('...for NLP'); slug trimmed to string-text-processing. Lesson 8 TR ('NLP icin Metin Isleme') is missing Turkish diacritics (should be 'NLP için Metin İşleme') — kept as authored. Lesson 10 (Polars) is an adjacent-library bonus, not strictly Pandas. No duplicate/draft lessons; order consistent."
+  },
+  "sql": {
+    "category": "ai",
+    "subfield": "sql",
+    "name_en": "SQL",
+    "name_tr": "SQL",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is SQL?",
+        "tr": "SQL Nedir?",
+        "slug": "what-is-sql"
+      },
+      {
+        "n": 2,
+        "en": "SELECT, WHERE, ORDER BY",
+        "tr": "SELECT, WHERE, ORDER BY",
+        "slug": "select-where-order-by"
+      },
+      {
+        "n": 3,
+        "en": "Aggregates & GROUP BY",
+        "tr": "Toplama & GROUP BY",
+        "slug": "aggregates-group-by"
+      },
+      {
+        "n": 4,
+        "en": "JOINs",
+        "tr": "JOIN İşlemleri",
+        "slug": "joins"
+      },
+      {
+        "n": 5,
+        "en": "Subqueries & CTEs",
+        "tr": "Alt Sorgular & CTE",
+        "slug": "subqueries-ctes"
+      },
+      {
+        "n": 6,
+        "en": "Window Functions",
+        "tr": "Pencere Fonksiyonları",
+        "slug": "window-functions"
+      },
+      {
+        "n": 7,
+        "en": "Dates, Strings, NULLs",
+        "tr": "Tarihler, Metinler, NULL'lar",
+        "slug": "dates-strings-nulls"
+      },
+      {
+        "n": 8,
+        "en": "Indexes & Performance",
+        "tr": "İndeksler & Performans",
+        "slug": "indexes-performance"
+      },
+      {
+        "n": 9,
+        "en": "Schema Design & Normalization",
+        "tr": "Şema Tasarımı & Normalizasyon",
+        "slug": "schema-design-normalization"
+      },
+      {
+        "n": 10,
+        "en": "Real-World Analytics Pipeline",
+        "tr": "Gerçek Dünya Analitik Boru Hattı",
+        "slug": "real-world-analytics-pipeline"
+      }
+    ],
+    "notes": "10 lesson files (1-10), all with clean titles + TR. Cross-listed: AI/Data + Programming. index.html is JS-driven (title 'SQL — Loading…') — track name taken from lesson <title> tags. No duplicate/draft lessons; order consistent."
+  },
+  "matplotlib": {
+    "category": "ai",
+    "subfield": "matplotlib",
+    "name_en": "Matplotlib",
+    "name_tr": "Matplotlib",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Anatomy of a Figure",
+        "tr": "Figure Anatomisi",
+        "slug": "anatomy-figure"
+      },
+      {
+        "n": 2,
+        "en": "Lines, Markers, Styles",
+        "tr": "Çizgiler & Stiller",
+        "slug": "lines-markers-styles"
+      },
+      {
+        "n": 3,
+        "en": "Subplots & Layout",
+        "tr": "Subplot & Düzen",
+        "slug": "subplots-layout"
+      },
+      {
+        "n": 4,
+        "en": "Styling & Themes",
+        "tr": "Stillendirme & Temalar",
+        "slug": "styling-themes"
+      },
+      {
+        "n": 5,
+        "en": "3D & Heatmaps",
+        "tr": "3B & Isı Haritaları",
+        "slug": "three-d-heatmaps"
+      },
+      {
+        "n": 6,
+        "en": "ML Cookbook & Export",
+        "tr": "ML Tarifleri & Dışa Aktarma",
+        "slug": "ml-cookbook-export"
+      }
+    ],
+    "notes": "6 lesson files (1-6), all with clean titles + TR. Cross-listed: AI/Data + Programming. index.html is JS-driven (title 'Matplotlib — Loading…'). Lesson 5 '3D & Heatmaps': per the no-digits slug rule the '3D' token was spelled as 'three-d' (slug three-d-heatmaps). No duplicate/draft lessons; order consistent."
+  },
+  "rl": {
+    "category": "ai",
+    "subfield": "rl",
+    "name_en": "Reinforcement Learning",
+    "name_tr": "Pekiştirmeli Öğrenme",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is RL?",
+        "tr": "RL Nedir?",
+        "slug": "what-is-rl"
+      },
+      {
+        "n": 2,
+        "en": "Markov Decision Processes",
+        "tr": "Markov Karar Süreçleri",
+        "slug": "markov-decision-processes"
+      },
+      {
+        "n": 3,
+        "en": "Dynamic Programming",
+        "tr": "Dinamik Programlama",
+        "slug": "dynamic-programming"
+      },
+      {
+        "n": 4,
+        "en": "Monte Carlo & TD Learning",
+        "tr": "Monte Carlo & TD Öğrenme",
+        "slug": "monte-carlo-td-learning"
+      },
+      {
+        "n": 5,
+        "en": "Q-Learning",
+        "tr": "Q-Öğrenme",
+        "slug": "q-learning"
+      },
+      {
+        "n": 6,
+        "en": "Deep Q-Networks (DQN)",
+        "tr": "Derin Q-Ağları (DQN)",
+        "slug": "deep-q-networks"
+      },
+      {
+        "n": 7,
+        "en": "Policy Gradient & REINFORCE",
+        "tr": "Policy Gradient & REINFORCE",
+        "slug": "policy-gradient-reinforce"
+      },
+      {
+        "n": 8,
+        "en": "Actor-Critic",
+        "tr": "Actor-Critic",
+        "slug": "actor-critic"
+      },
+      {
+        "n": 9,
+        "en": "PPO",
+        "tr": "PPO",
+        "slug": "ppo"
+      },
+      {
+        "n": 10,
+        "en": "RLHF for LLMs",
+        "tr": "LLM'ler için RLHF",
+        "slug": "rlhf-for-llms"
+      },
+      {
+        "n": 11,
+        "en": "Multi-Armed Bandits",
+        "tr": "Çok Kollu Haydutlar",
+        "slug": "multi-armed-bandits"
+      },
+      {
+        "n": 12,
+        "en": "Modern RL & Capstone",
+        "tr": "Modern RL & Bitirme",
+        "slug": "modern-rl-capstone"
+      },
+      {
+        "n": 13,
+        "en": "Continuous Control & Multi-Agent RL",
+        "tr": "",
+        "slug": "continuous-control-multi-agent-rl"
+      }
+    ],
+    "notes": "13 lesson files (1-13), numbering contiguous, kept in numeric order. DUPLICATE/DRAFT: lesson 13's hero <h1> and og still read 'Modern RL & Capstone' / data-tr 'Modern RL & Bitirme' (identical to lesson 12) while its <title> reads 'Continuous Control & Multi-Agent RL' — lesson 13 looks like an un-updated copy of lesson 12; EN taken from <title>, TR left empty because the only TR present is the wrong (lesson-12) string. COUNT MISMATCH: sidebar on lesson 1 says '12 Lessons' but lesson 13's own sidebar says '13 Lessons' — inconsistent lesson count across the track. Lesson 10 (RLHF) cross-lists with NLP/LLM tracks; lesson 11 (Multi-Armed Bandits) cross-lists with recsys/7 (Bandits for Recommendation). Slugs drop the (DQN) parenthetical and remove '&'."
+  },
+  "gnn": {
+    "category": "ai",
+    "subfield": "gnn",
+    "name_en": "Graph Neural Networks",
+    "name_tr": "Çizge Sinir Ağları",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Graphs? Node, Edge, Graph Tasks",
+        "tr": "Neden Graflar? Düğüm, Kenar, Graf Görevleri",
+        "slug": "why-graphs"
+      },
+      {
+        "n": 2,
+        "en": "Classical Graph Algorithms",
+        "tr": "Klasik Graf Algoritmaları",
+        "slug": "classical-graph-algorithms"
+      },
+      {
+        "n": 3,
+        "en": "Spectral & Diffusion on Graphs",
+        "tr": "Graflarda Spektral & Difüzyon",
+        "slug": "spectral-diffusion-graphs"
+      },
+      {
+        "n": 4,
+        "en": "GCN — Graph Convolutional Networks",
+        "tr": "GCN — Graf Konvolüsyon Ağları",
+        "slug": "graph-convolutional-networks"
+      },
+      {
+        "n": 5,
+        "en": "GAT — Graph Attention Networks",
+        "tr": "GAT — Graf Dikkat Ağları",
+        "slug": "graph-attention-networks"
+      },
+      {
+        "n": 6,
+        "en": "PyTorch Geometric (PyG)",
+        "tr": "PyTorch Geometric (PyG)",
+        "slug": "pytorch-geometric"
+      },
+      {
+        "n": 7,
+        "en": "Graph Tasks: Node / Link / Graph",
+        "tr": "Graf Görevleri: Düğüm / Bağlantı / Graf",
+        "slug": "graph-tasks-node-link"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — Knowledge Graph + Recommender",
+        "tr": "Bitirme — Bilgi Grafı + Öneri Sistemi",
+        "slug": "knowledge-graph-recommender"
+      }
+    ],
+    "notes": "8 lessons (1-8), numbering contiguous, no ordering issues. CONTENT OVERLAP: lesson 1 'Why Graphs? Node, Edge, Graph Tasks' and lesson 7 'Graph Tasks: Node / Link / Graph' cover overlapping node/link/graph-task material — possible redundancy / merge candidate. Slugs: lesson 1 drops trailing enumeration to 'why-graphs'; lessons 4 & 5 drop the redundant 'GCN —'/'GAT —' acronym lead segment; lesson 6 drops '(PyG)'; lesson 8 drops 'Capstone —' and the '+'. Lesson 8 (Knowledge Graph + Recommender) cross-lists with the recsys track. name_tr taken from nav label 'Çizge Sinir Ağları'."
+  },
+  "timeseries": {
+    "category": "ai",
+    "subfield": "timeseries",
+    "name_en": "Time Series Forecasting",
+    "name_tr": "Zaman Serisi ML",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Time Series? Stationarity & Decomposition",
+        "tr": "Neden Zaman Serisi? Durağanlık & Ayrıştırma",
+        "slug": "why-time-series"
+      },
+      {
+        "n": 2,
+        "en": "ARIMA & Exponential Smoothing",
+        "tr": "ARIMA & Üstel Düzleştirme",
+        "slug": "arima-exponential-smoothing"
+      },
+      {
+        "n": 3,
+        "en": "Prophet & STL Decomposition",
+        "tr": "Prophet & STL Ayrıştırma",
+        "slug": "prophet-stl-decomposition"
+      },
+      {
+        "n": 4,
+        "en": "Feature Engineering for TS",
+        "tr": "TS için Özellik Mühendisliği",
+        "slug": "feature-engineering-ts"
+      },
+      {
+        "n": 5,
+        "en": "ML for Time Series",
+        "tr": "Zaman Serisi için ML",
+        "slug": "ml-for-time-series"
+      },
+      {
+        "n": 6,
+        "en": "Deep Learning for TS",
+        "tr": "TS için Derin Öğrenme",
+        "slug": "deep-learning-ts"
+      },
+      {
+        "n": 7,
+        "en": "N-BEATS & N-HITS",
+        "tr": "N-BEATS & N-HITS",
+        "slug": "n-beats-n-hits"
+      },
+      {
+        "n": 8,
+        "en": "Transformers for TS",
+        "tr": "TS için Transformer'lar",
+        "slug": "transformers-ts"
+      },
+      {
+        "n": 9,
+        "en": "Probabilistic Forecasting",
+        "tr": "Olasılıksal Tahmin",
+        "slug": "probabilistic-forecasting"
+      },
+      {
+        "n": 10,
+        "en": "Capstone — Production Forecasting Pipeline",
+        "tr": "Bitirme — Üretim Tahmin Pipeline'ı",
+        "slug": "production-forecasting-pipeline"
+      }
+    ],
+    "notes": "10 lessons (1-10), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs: lesson 1 drops trailing enumeration to 'why-time-series'; lesson 7 keeps the N-BEATS/N-HITS model names (numbers are part of model identifiers, hyphenated) and only drops '&'; lesson 10 drops 'Capstone —'. name_en uses the full <title> track name 'Time Series Forecasting'; name_tr uses nav label 'Zaman Serisi ML'. Cross-listing candidate: lesson 8 'Transformers for TS' with the transformers track."
+  },
+  "recsys": {
+    "category": "ai",
+    "subfield": "recsys",
+    "name_en": "Recommender Systems",
+    "name_tr": "Öneri Sistemleri",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Recommendation Fundamentals",
+        "tr": "Öneri Temelleri",
+        "slug": "recommendation-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Matrix Factorization (SVD, ALS)",
+        "tr": "Matris Çarpanlarına Ayırma (SVD, ALS)",
+        "slug": "matrix-factorization"
+      },
+      {
+        "n": 3,
+        "en": "Implicit Feedback Models",
+        "tr": "Örtük Geri Bildirim Modelleri",
+        "slug": "implicit-feedback-models"
+      },
+      {
+        "n": 4,
+        "en": "Two-Tower Models",
+        "tr": "Two-Tower Modelleri",
+        "slug": "two-tower-models"
+      },
+      {
+        "n": 5,
+        "en": "Deep Recommenders (NCF, Wide & Deep)",
+        "tr": "Derin Öneri (NCF, Wide & Deep)",
+        "slug": "deep-recommenders"
+      },
+      {
+        "n": 6,
+        "en": "Sequential Recommenders",
+        "tr": "Sıralı Öneri Sistemleri",
+        "slug": "sequential-recommenders"
+      },
+      {
+        "n": 7,
+        "en": "Bandits for Recommendation",
+        "tr": "Öneri için Bandit'ler",
+        "slug": "bandits-for-recommendation"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — RAG-Powered Recommender",
+        "tr": "Bitirme — RAG Destekli Öneri Sistemi",
+        "slug": "rag-powered-recommender"
+      }
+    ],
+    "notes": "8 lessons (1-8), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs drop the parentheticals on lessons 2 (SVD, ALS) and 5 (NCF, Wide & Deep) and the 'Capstone —' lead on lesson 8. Cross-listing candidates: lesson 7 'Bandits for Recommendation' overlaps rl/11 'Multi-Armed Bandits'; lesson 8 'RAG-Powered Recommender' overlaps gnn/8 (Knowledge Graph + Recommender) and the vectordb/RAG tracks."
+  },
+  "causal": {
+    "category": "ai",
+    "subfield": "causal",
+    "name_en": "Causal Inference for ML",
+    "name_tr": "Nedensel Çıkarım",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Causality? Beyond Correlation",
+        "tr": "Neden Nedensellik? Korelasyonun Ötesi",
+        "slug": "why-causality-beyond-correlation"
+      },
+      {
+        "n": 2,
+        "en": "Causal Graphs & DAGs",
+        "tr": "Nedensel Grafler & DAG'lar",
+        "slug": "causal-graphs-dags"
+      },
+      {
+        "n": 3,
+        "en": "do-Calculus & Identifiability",
+        "tr": "do-Hesabı & Tanımlanabilirlik",
+        "slug": "do-calculus-identifiability"
+      },
+      {
+        "n": 4,
+        "en": "Treatment Effects & Counterfactuals",
+        "tr": "Tedavi Etkileri & Karşı-Olgular",
+        "slug": "treatment-effects-counterfactuals"
+      },
+      {
+        "n": 5,
+        "en": "Causal ML Methods",
+        "tr": "Nedensel ML Yöntemleri",
+        "slug": "causal-ml-methods"
+      },
+      {
+        "n": 6,
+        "en": "Capstone — Causal Inference for NLP Bias",
+        "tr": "Bitirme — NLP Önyargısı için Nedensel Çıkarım",
+        "slug": "causal-inference-nlp-bias"
+      }
+    ],
+    "notes": "6 lessons (1-6), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs: lesson 2 drops the apostrophe in DAG's; lesson 6 drops 'Capstone —' and 'for' and trims to ~4 words. name_en uses full <title> track name 'Causal Inference for ML'; name_tr uses nav label 'Nedensel Çıkarım'. Cross-listing candidate: lesson 6 (Causal Inference for NLP Bias) overlaps the NLP and fairness tracks."
+  },
+  "bio": {
+    "category": "ai",
+    "subfield": "bio",
+    "name_en": "Bioinformatics & AlphaFold",
+    "name_tr": "Biyoinformatik ML",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Bioinformatics Fundamentals",
+        "tr": "Biyoinformatik Temelleri",
+        "slug": "bioinformatics-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Protein Structure Prediction",
+        "tr": "Protein Yapı Tahmini",
+        "slug": "protein-structure-prediction"
+      },
+      {
+        "n": 3,
+        "en": "AlphaFold 2 & 3",
+        "tr": "AlphaFold 2 & 3",
+        "slug": "alphafold"
+      },
+      {
+        "n": 4,
+        "en": "Protein Language Models (ESM, ProtBERT)",
+        "tr": "Protein Dil Modelleri (ESM, ProtBERT)",
+        "slug": "protein-language-models"
+      },
+      {
+        "n": 5,
+        "en": "Genomics & Variant Calling",
+        "tr": "Genomik & Varyant Çağırma",
+        "slug": "genomics-variant-calling"
+      },
+      {
+        "n": 6,
+        "en": "Capstone — Drug-Target Interaction Pipeline",
+        "tr": "Bitirme — İlaç-Hedef Etkileşim Pipeline'ı",
+        "slug": "drug-target-interaction-pipeline"
+      }
+    ],
+    "notes": "6 lessons (1-6), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs: lesson 3 'AlphaFold 2 & 3' reduced to 'alphafold' to satisfy the no-numbers rule; lesson 4 drops '(ESM, ProtBERT)'; lesson 6 drops 'Capstone —'. name_en uses full <title> track name 'Bioinformatics & AlphaFold'; name_tr uses nav label 'Biyoinformatik ML'. Cross-listing candidate: lesson 4 (Protein Language Models) overlaps transformers/LLM tracks."
+  },
+  "huggingface": {
+    "category": "ai",
+    "subfield": "huggingface",
+    "name_en": "HuggingFace Transformers",
+    "name_tr": "HuggingFace Transformers",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Ecosystem & Pipelines",
+        "tr": "Ekosistem & Pipeline",
+        "slug": "ecosystem-pipelines"
+      },
+      {
+        "n": 2,
+        "en": "Tokenizers",
+        "tr": "Tokenizer'lar",
+        "slug": "tokenizers"
+      },
+      {
+        "n": 3,
+        "en": "BERT Sentiment Analysis",
+        "tr": "BERT Duygu Analizi",
+        "slug": "bert-sentiment-analysis"
+      },
+      {
+        "n": 4,
+        "en": "NER Token Classification",
+        "tr": "NER Token Sınıflandırma",
+        "slug": "ner-token-classification"
+      },
+      {
+        "n": 5,
+        "en": "Generation & Summarization",
+        "tr": "Üretim & Özetleme",
+        "slug": "generation-summarization"
+      },
+      {
+        "n": 6,
+        "en": "Deployment & LoRA",
+        "tr": "Konuşlandırma & LoRA",
+        "slug": "deployment-lora"
+      },
+      {
+        "n": 7,
+        "en": "Trainer Deep Dive",
+        "tr": "Trainer Detaylı İnceleme",
+        "slug": "trainer-deep-dive"
+      },
+      {
+        "n": 8,
+        "en": "PEFT — Parameter-Efficient Fine-Tuning",
+        "tr": "PEFT — Parametre-Verimli İnce Ayar",
+        "slug": "peft-fine-tuning"
+      },
+      {
+        "n": 9,
+        "en": "vLLM & TGI — Production Serving",
+        "tr": "vLLM & TGI — Üretim Sunumu",
+        "slug": "vllm-tgi-production-serving"
+      },
+      {
+        "n": 10,
+        "en": "lm-evaluation-harness",
+        "tr": "lm-evaluation-harness",
+        "slug": "lm-evaluation-harness"
+      },
+      {
+        "n": 11,
+        "en": "HuggingFace Agents (smolagents)",
+        "tr": "HuggingFace Agent'ları (smolagents)",
+        "slug": "huggingface-agents-smolagents"
+      },
+      {
+        "n": 12,
+        "en": "Fine-Tuning Recipes",
+        "tr": "İnce Ayar Tarifleri",
+        "slug": "fine-tuning-recipes"
+      }
+    ],
+    "notes": "12 lessons (1-12), numeric order is coherent (ecosystem -> tokenizers -> task models -> training/PEFT -> serving/eval -> recipes). Lessons 1-6 use track label 'HuggingFace' in <title> while 7-12 use 'HuggingFace Transformers'; index.html title is just 'HuggingFace'. Lesson 11 (smolagents) is a cross-listing candidate with the 'agents' track. No duplicates or drafts detected."
+  },
+  "langchain": {
+    "category": "ai",
+    "subfield": "langchain",
+    "name_en": "LangChain & RAG",
+    "name_tr": "LangChain & RAG",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is LangChain?",
+        "tr": "LangChain Nedir?",
+        "slug": "what-is-langchain"
+      },
+      {
+        "n": 2,
+        "en": "LLMs & Chat Models",
+        "tr": "LLM'ler & Sohbet Modelleri",
+        "slug": "llms-chat-models"
+      },
+      {
+        "n": 3,
+        "en": "Prompt Engineering",
+        "tr": "Prompt Mühendisliği",
+        "slug": "prompt-engineering"
+      },
+      {
+        "n": 4,
+        "en": "Chains with LCEL",
+        "tr": "LCEL ile Zincirler",
+        "slug": "chains-with-lcel"
+      },
+      {
+        "n": 5,
+        "en": "Embeddings & Vector Stores",
+        "tr": "Gömmeler & Vektör DB",
+        "slug": "embeddings-vector-stores"
+      },
+      {
+        "n": 6,
+        "en": "RAG: Retrieval-Augmented Generation",
+        "tr": "RAG: Geri Erişimli Üretim",
+        "slug": "rag-retrieval-augmented-generation"
+      },
+      {
+        "n": 7,
+        "en": "Document Loaders & Splitters",
+        "tr": "Belge Yükleyiciler & Bölücüler",
+        "slug": "document-loaders-splitters"
+      },
+      {
+        "n": 8,
+        "en": "Memory: Stateful Conversations",
+        "tr": "Hafıza",
+        "slug": "memory-stateful-conversations"
+      },
+      {
+        "n": 9,
+        "en": "Agents & Tool Use",
+        "tr": "Ajanlar & Araçlar",
+        "slug": "agents-tool-use"
+      },
+      {
+        "n": 10,
+        "en": "Advanced RAG",
+        "tr": "İleri RAG",
+        "slug": "advanced-rag"
+      },
+      {
+        "n": 11,
+        "en": "Production: LangServe & Observability",
+        "tr": "Üretim & Gözlem",
+        "slug": "production-langserve-observability"
+      },
+      {
+        "n": 12,
+        "en": "Capstone: Customer Support RAG Bot",
+        "tr": "Bitirme: RAG Botu",
+        "slug": "customer-support-rag-bot"
+      }
+    ],
+    "notes": "12 lessons (1-12), coherent progression ending in a capstone. Track label 'LangChain & RAG' consistent across all lessons + index. EN titles taken from <title> (fuller); sidebar hero data-en abbreviates some (e.g. L6 'RAG: Retrieval-Augmented Gen.', L11 'Production: LangServe & Obs.', L12 'Capstone: RAG Bot'). Heavy topical overlap with vectordb (embeddings/RAG) and agents (L9 Agents & Tool Use) — cross-listing candidates. No duplicates or drafts."
+  },
+  "agents": {
+    "category": "ai",
+    "subfield": "agents",
+    "name_en": "LLM Agents",
+    "name_tr": "LLM Agents",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Agents? Chain → Autonomy",
+        "tr": "Neden Agent? Chain → Otonom",
+        "slug": "why-agents-chain-autonomy"
+      },
+      {
+        "n": 2,
+        "en": "The Agent Loop — ReAct from Scratch",
+        "tr": "Agent Döngüsü — Sıfırdan ReAct",
+        "slug": "agent-loop-react"
+      },
+      {
+        "n": 3,
+        "en": "Tool Calling & Function Calling",
+        "tr": "Tool Calling & Function Calling",
+        "slug": "tool-calling-function-calling"
+      },
+      {
+        "n": 4,
+        "en": "Tool Design Patterns",
+        "tr": "Tool Tasarım Desenleri",
+        "slug": "tool-design-patterns"
+      },
+      {
+        "n": 5,
+        "en": "LangChain & LangGraph Agents",
+        "tr": "LangChain & LangGraph Agent'ları",
+        "slug": "langchain-langgraph-agents"
+      },
+      {
+        "n": 6,
+        "en": "Memory Architectures",
+        "tr": "Bellek Mimarileri",
+        "slug": "memory-architectures"
+      },
+      {
+        "n": 7,
+        "en": "Planning & Task Decomposition",
+        "tr": "Planlama & Görev Ayrıştırma",
+        "slug": "planning-task-decomposition"
+      },
+      {
+        "n": 8,
+        "en": "Multi-Agent Systems",
+        "tr": "Multi-Agent Sistemler",
+        "slug": "multi-agent-systems"
+      },
+      {
+        "n": 9,
+        "en": "Browser & Code Agents",
+        "tr": "Browser & Kod Agent'ları",
+        "slug": "browser-code-agents"
+      },
+      {
+        "n": 10,
+        "en": "Agent Evaluation",
+        "tr": "Agent Değerlendirme",
+        "slug": "agent-evaluation"
+      },
+      {
+        "n": 11,
+        "en": "Production Agents",
+        "tr": "Üretim Agent'ları",
+        "slug": "production-agents"
+      },
+      {
+        "n": 12,
+        "en": "Multi-Agent NLP Research Assistant",
+        "tr": "Multi-Agent NLP Araştırma Asistanı",
+        "slug": "multi-agent-research-assistant"
+      }
+    ],
+    "notes": "12 lesson files present (1-12) with coherent order, but the sidebar metadata is STALE: sb-current-sub says '8 Lessons' on every page (should be 12). No index.html for this track (huggingface & langchain have one; agents & vectordb do not). Lesson 5 (LangChain & LangGraph Agents) cross-lists with the langchain track; lesson 12 (NLP Research Assistant capstone) cross-lists with NLP. No duplicate/draft lessons detected."
+  },
+  "vectordb": {
+    "category": "ai",
+    "subfield": "vectordb",
+    "name_en": "Vector Databases",
+    "name_tr": "Vektör Veritabanları",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Vector DBs? Embeddings → Search",
+        "tr": "Neden Vector DB? Gömme → Arama",
+        "slug": "why-vector-dbs"
+      },
+      {
+        "n": 2,
+        "en": "FAISS Deep Dive",
+        "tr": "FAISS Detaylı İnceleme",
+        "slug": "faiss-deep-dive"
+      },
+      {
+        "n": 3,
+        "en": "HNSW & ANN Algorithms",
+        "tr": "HNSW & ANN Algoritmaları",
+        "slug": "hnsw-ann-algorithms"
+      },
+      {
+        "n": 4,
+        "en": "The Vector DB Zoo",
+        "tr": "Vector DB Hayvanat Bahçesi",
+        "slug": "vector-db-zoo"
+      },
+      {
+        "n": 5,
+        "en": "Hybrid Search & Reranking",
+        "tr": "Hibrit Arama & Reranking",
+        "slug": "hybrid-search-reranking"
+      },
+      {
+        "n": 6,
+        "en": "Indexing & Update Strategies",
+        "tr": "İndeksleme & Güncelleme Stratejileri",
+        "slug": "indexing-update-strategies"
+      },
+      {
+        "n": 7,
+        "en": "Production Vector DB Ops",
+        "tr": "Üretim Vector DB Operasyonları",
+        "slug": "production-vector-db-ops"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — Production RAG Pipeline",
+        "tr": "Bitirme — Üretim RAG Pipeline'ı",
+        "slug": "capstone-production-rag-pipeline"
+      }
+    ],
+    "notes": "8 lessons (1-8), coherent order ending in a capstone; sidebar sb-current-sub correctly says '8 Lessons'. No index.html for this track. Strong overlap with langchain L5/L6 (embeddings, RAG) — cross-listing candidate. No duplicate or draft lessons detected."
+  },
+  "cv": {
+    "category": "ai",
+    "subfield": "cv",
+    "name_en": "Computer Vision",
+    "name_tr": "Bilgisayarla Görme",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Image Fundamentals",
+        "tr": "Görüntü Temelleri",
+        "slug": "image-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Preprocessing & Augmentation",
+        "tr": "Önişleme & Augmentation",
+        "slug": "preprocessing-augmentation"
+      },
+      {
+        "n": 3,
+        "en": "Classical CV",
+        "tr": "Klasik CV",
+        "slug": "classical-cv"
+      },
+      {
+        "n": 4,
+        "en": "Feature Detection",
+        "tr": "Öznitelik Tespiti",
+        "slug": "feature-detection"
+      },
+      {
+        "n": 5,
+        "en": "CNN Fundamentals",
+        "tr": "CNN Temelleri",
+        "slug": "cnn-fundamentals"
+      },
+      {
+        "n": 6,
+        "en": "Object Detection",
+        "tr": "Nesne Tespiti",
+        "slug": "object-detection"
+      },
+      {
+        "n": 7,
+        "en": "Semantic Segmentation",
+        "tr": "Semantik Segmentasyon",
+        "slug": "semantic-segmentation"
+      },
+      {
+        "n": 8,
+        "en": "Vision Transformers",
+        "tr": "Vision Transformer'lar",
+        "slug": "vision-transformers"
+      },
+      {
+        "n": 9,
+        "en": "Image Generation",
+        "tr": "Görüntü Üretimi",
+        "slug": "image-generation"
+      },
+      {
+        "n": 10,
+        "en": "CLIP & Multimodal",
+        "tr": "CLIP & Multimodal",
+        "slug": "clip-multimodal"
+      },
+      {
+        "n": 11,
+        "en": "Production CV",
+        "tr": "Üretim CV",
+        "slug": "production-cv"
+      },
+      {
+        "n": 12,
+        "en": "NLP+CV Multimodal Project",
+        "tr": "NLP+CV Multimodal Projesi",
+        "slug": "nlp-cv-multimodal-project"
+      }
+    ],
+    "notes": "12 lessons, numbering contiguous 1-12, no ordering issues. Lesson 10 (CLIP & Multimodal) and 12 (NLP+CV Multimodal Project) overlap heavily with the dedicated 'multimodal' track (esp. multimodal/2 CLIP Deep Dive) — cross-listing candidates. Lesson 3 'Classical CV' and 1 'Image Fundamentals' have related scope but distinct. No duplicate or draft lessons detected."
+  },
+  "audio": {
+    "category": "ai",
+    "subfield": "audio",
+    "name_en": "Audio",
+    "name_tr": "Ses",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Audio Fundamentals",
+        "tr": "Ses Temelleri",
+        "slug": "audio-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "FFT & Spectrograms",
+        "tr": "FFT & Spektrogramlar",
+        "slug": "fft-spectrograms"
+      },
+      {
+        "n": 3,
+        "en": "Mel-Spectrograms & MFCC",
+        "tr": "Mel-Spektrogram & MFCC",
+        "slug": "mel-spectrograms-mfcc"
+      },
+      {
+        "n": 4,
+        "en": "Whisper ASR",
+        "tr": "Whisper Konuşma Tanıma",
+        "slug": "whisper-asr"
+      },
+      {
+        "n": 5,
+        "en": "Text to Speech (TTS)",
+        "tr": "Metinden Sese (TTS)",
+        "slug": "text-to-speech"
+      },
+      {
+        "n": 6,
+        "en": "Audio Embeddings",
+        "tr": "Ses Gömmeleri",
+        "slug": "audio-embeddings"
+      },
+      {
+        "n": 7,
+        "en": "Audio Classification & Voicebot",
+        "tr": "Ses Sınıflandırma & Voicebot",
+        "slug": "audio-classification-voicebot"
+      },
+      {
+        "n": 8,
+        "en": "Production & Real-Time",
+        "tr": "Üretim & Gerçek Zamanlı",
+        "slug": "production-real-time"
+      },
+      {
+        "n": 9,
+        "en": "Music Information Retrieval",
+        "tr": "Müzik Bilgi Erişimi",
+        "slug": "music-information-retrieval"
+      },
+      {
+        "n": 10,
+        "en": "Speaker Diarization",
+        "tr": "Konuşmacı Ayrıştırma",
+        "slug": "speaker-diarization"
+      },
+      {
+        "n": 11,
+        "en": "Audio LLMs & Voice Agents",
+        "tr": "Ses LLM'leri & Voice Agent'lar",
+        "slug": "audio-llms-voice-agents"
+      },
+      {
+        "n": 12,
+        "en": "Sound Event Detection",
+        "tr": "Ses Olayı Tespiti",
+        "slug": "sound-event-detection"
+      }
+    ],
+    "notes": "12 lessons, numbering contiguous 1-12, no ordering issues. Lesson 5 slug dropped redundant '(TTS)' parenthetical; lesson 12 'Sound Event Detection' conceptually adjacent to lesson 7 'Audio Classification' but distinct. Lessons 4 (Whisper ASR) and 11 (Audio LLMs & Voice Agents) are cross-listing candidates with multimodal/4 (Audio-Language Models). No duplicate or draft lessons detected."
+  },
+  "multimodal": {
+    "category": "ai",
+    "subfield": "multimodal",
+    "name_en": "Multimodal AI",
+    "name_tr": "Multimodal",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is Multimodal? Vision + Language + Audio",
+        "tr": "Multimodal Nedir? Görü + Dil + Ses",
+        "slug": "what-is-multimodal"
+      },
+      {
+        "n": 2,
+        "en": "CLIP Deep Dive",
+        "tr": "CLIP Detaylı İnceleme",
+        "slug": "clip-deep-dive"
+      },
+      {
+        "n": 3,
+        "en": "Vision-Language Models (LLaVA, BLIP-2)",
+        "tr": "Görü-Dil Modelleri (LLaVA, BLIP-2)",
+        "slug": "vision-language-models"
+      },
+      {
+        "n": 4,
+        "en": "Audio-Language Models (Whisper-LLM, AudioGPT)",
+        "tr": "Ses-Dil Modelleri (Whisper-LLM, AudioGPT)",
+        "slug": "audio-language-models"
+      },
+      {
+        "n": 5,
+        "en": "Video Understanding",
+        "tr": "Video Anlama",
+        "slug": "video-understanding"
+      },
+      {
+        "n": 6,
+        "en": "Document AI & OCR-Free Understanding",
+        "tr": "Doküman AI & OCR-Bağımsız Anlama",
+        "slug": "document-ai-ocr-free"
+      },
+      {
+        "n": 7,
+        "en": "Multimodal Generation (DALL-E, Sora, Suno)",
+        "tr": "Multimodal Üretim (DALL-E, Sora, Suno)",
+        "slug": "multimodal-generation"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — Multimodal NLP Assistant",
+        "tr": "Bitirme — Multimodal NLP Asistanı",
+        "slug": "multimodal-nlp-assistant"
+      }
+    ],
+    "notes": "8 lessons, numbering contiguous 1-8, no ordering issues. NO index.html in this track folder (only cv and audio have one) — content gap to flag for the track landing page. Slugs strip parenthetical model lists (LLaVA/BLIP-2, etc.) and the 'Capstone —' lead segment per rules. Lesson 2 'CLIP Deep Dive' overlaps cv/10 'CLIP & Multimodal'; lesson 4 overlaps audio/4 & audio/11; lesson 3 overlaps cv content — strong cross-listing cluster with cv and audio tracks."
+  },
+  "mlops": {
+    "category": "ai",
+    "subfield": "mlops",
+    "name_en": "MLOps & Deployment",
+    "name_tr": "MLOps & Konuşlandırma",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is MLOps?",
+        "tr": "MLOps Nedir?",
+        "slug": "what-is-mlops"
+      },
+      {
+        "n": 2,
+        "en": "Reproducibility",
+        "tr": "Tekrarlanabilirlik",
+        "slug": "reproducibility"
+      },
+      {
+        "n": 3,
+        "en": "Experiment Tracking",
+        "tr": "Deney Takibi",
+        "slug": "experiment-tracking"
+      },
+      {
+        "n": 4,
+        "en": "Model Packaging",
+        "tr": "Model Paketleme",
+        "slug": "model-packaging"
+      },
+      {
+        "n": 5,
+        "en": "Containerization (Docker)",
+        "tr": "Konteynerleştirme",
+        "slug": "containerization-docker"
+      },
+      {
+        "n": 6,
+        "en": "Model Serving",
+        "tr": "Model Serving",
+        "slug": "model-serving"
+      },
+      {
+        "n": 7,
+        "en": "Cloud Deployment",
+        "tr": "Bulut Konuşlandırma",
+        "slug": "cloud-deployment"
+      },
+      {
+        "n": 8,
+        "en": "CI/CD for ML",
+        "tr": "ML için CI/CD",
+        "slug": "ci-cd-for-ml"
+      },
+      {
+        "n": 9,
+        "en": "Monitoring & Drift",
+        "tr": "İzleme & Drift",
+        "slug": "monitoring-drift"
+      },
+      {
+        "n": 10,
+        "en": "Scaling: Batch, Stream, Edge",
+        "tr": "Ölçekleme",
+        "slug": "scaling-batch-stream-edge"
+      },
+      {
+        "n": 11,
+        "en": "LLM Ops",
+        "tr": "LLM Operasyonları",
+        "slug": "llm-ops"
+      },
+      {
+        "n": 12,
+        "en": "End-to-End Capstone",
+        "tr": "Uçtan Uca Bitirme",
+        "slug": "end-to-end-capstone"
+      }
+    ],
+    "notes": "12 lessons, clean numeric order 1-12. Has index.html redirect to lesson 1. No duplicates or drafts. TR title for lesson 6 (Model Serving) left untranslated in source; lesson 10 TR is shortened to just 'Ölçekleme'. Cross-listing: lesson 5 (Containerization/Docker), lesson 8 (CI/CD), and lesson 11 (LLM Ops) are candidate Tools cross-listings. Lesson 10 overlaps the 'edge' track (Edge scaling) — possible cross-link."
+  },
+  "edge": {
+    "category": "ai",
+    "subfield": "edge",
+    "name_en": "Edge ML & On-Device",
+    "name_tr": "Edge ML & Cihaz-Üstü",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Edge? Latency, Privacy, Cost",
+        "tr": "Neden Edge? Gecikme, Gizlilik, Maliyet",
+        "slug": "why-edge"
+      },
+      {
+        "n": 2,
+        "en": "Quantization Deep Dive",
+        "tr": "Quantization Detaylı İnceleme",
+        "slug": "quantization-deep-dive"
+      },
+      {
+        "n": 3,
+        "en": "Pruning & Distillation",
+        "tr": "Budama & Damıtma",
+        "slug": "pruning-distillation"
+      },
+      {
+        "n": 4,
+        "en": "GGUF & llama.cpp",
+        "tr": "GGUF & llama.cpp",
+        "slug": "gguf-llama-cpp"
+      },
+      {
+        "n": 5,
+        "en": "ONNX & Model Formats",
+        "tr": "ONNX & Model Formatları",
+        "slug": "onnx-model-formats"
+      },
+      {
+        "n": 6,
+        "en": "Mobile Deployment (iOS, Android)",
+        "tr": "Mobil Dağıtım (iOS, Android)",
+        "slug": "mobile-deployment"
+      },
+      {
+        "n": 7,
+        "en": "Browser ML (WebGPU, ONNX-Web, Transformers.js)",
+        "tr": "Tarayıcı ML (WebGPU, ONNX-Web, Transformers.js)",
+        "slug": "browser-ml"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — On-Device LLM Voice Assistant",
+        "tr": "Bitirme — Cihaz-Üstü LLM Ses Asistanı",
+        "slug": "capstone-voice-assistant"
+      }
+    ],
+    "notes": "8 lessons, clean numeric order 1-8. No index.html in folder (mlops has one; edge/gpu do not — content gap for the redirect stub). No duplicates or drafts. Slugs truncated to <=4 words: 'why-edge' (dropped Latency/Privacy/Cost), 'mobile-deployment' and 'browser-ml' (dropped parenthetical platform lists). Cross-listing: lesson 4 (GGUF & llama.cpp), 5 (ONNX), 6 (Mobile), 7 (Browser/WebGPU/Transformers.js) are strong Tools cross-listing candidates. Lesson 7 (WebGPU) and lesson 2 (Quantization) overlap the 'gpu' track."
+  },
+  "gpu": {
+    "category": "ai",
+    "subfield": "gpu",
+    "name_en": "GPU & CUDA Programming",
+    "name_tr": "GPU & CUDA Programlama",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "GPU Architecture Fundamentals",
+        "tr": "GPU Mimarisi Temelleri",
+        "slug": "gpu-architecture-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "CUDA C/C++ Basics",
+        "tr": "CUDA C/C++ Temelleri",
+        "slug": "cuda-c-cpp-basics"
+      },
+      {
+        "n": 3,
+        "en": "Memory Optimization",
+        "tr": "Bellek Optimizasyonu",
+        "slug": "memory-optimization"
+      },
+      {
+        "n": 4,
+        "en": "Numba & CuPy",
+        "tr": "Numba & CuPy",
+        "slug": "numba-cupy"
+      },
+      {
+        "n": 5,
+        "en": "Triton — Python DSL for GPU Kernels",
+        "tr": "Triton — GPU Kernel'ları için Python DSL",
+        "slug": "triton-gpu-kernels"
+      },
+      {
+        "n": 6,
+        "en": "FlashAttention & Attention Kernels",
+        "tr": "FlashAttention & Attention Kernel'ları",
+        "slug": "flashattention-attention-kernels"
+      },
+      {
+        "n": 7,
+        "en": "Multi-GPU & Distributed Training",
+        "tr": "Çoklu-GPU & Dağıtık Eğitim",
+        "slug": "multi-gpu-distributed-training"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — Optimized Inference Server",
+        "tr": "Bitirme — Optimize Çıkarım Sunucusu",
+        "slug": "capstone-inference-server"
+      }
+    ],
+    "notes": "8 lessons, clean numeric order 1-8. No index.html in folder (content gap for redirect stub). No duplicates or drafts. Slugs: 'cuda-c-cpp-basics' (C/C++ -> c-cpp), 'triton-gpu-kernels' truncated to <=4 words. Cross-listing: whole track is a strong Tools cross-listing candidate (CUDA, Numba, CuPy, Triton, FlashAttention are named tools/libraries). Lesson 7 (Multi-GPU & Distributed Training) overlaps mlops scaling. Lesson 5 (Triton) and lesson 6 (FlashAttention) overlap edge browser/WebGPU and serving topics."
+  },
+  "linalg": {
+    "category": "math",
+    "subfield": "linalg",
+    "name_en": "Linear Algebra",
+    "name_tr": "Doğrusal Cebir",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Vectors & Vector Spaces",
+        "tr": "Vektörler & Vektör Uzayları",
+        "slug": "vectors-vector-spaces"
+      },
+      {
+        "n": 2,
+        "en": "Matrices & Transformations",
+        "tr": "Matrisler & Dönüşümler",
+        "slug": "matrices-transformations"
+      },
+      {
+        "n": 3,
+        "en": "Linear Systems",
+        "tr": "Doğrusal Sistemler",
+        "slug": "linear-systems"
+      },
+      {
+        "n": 4,
+        "en": "Eigenvalues & Eigenvectors",
+        "tr": "Özdeğerler & Özvektörler",
+        "slug": "eigenvalues-eigenvectors"
+      },
+      {
+        "n": 5,
+        "en": "SVD & Matrix Decomposition",
+        "tr": "SVD & Matris Ayrışımı",
+        "slug": "svd-matrix-decomposition"
+      },
+      {
+        "n": 6,
+        "en": "Tensors & Multidimensional Arrays",
+        "tr": "Tensörler & Derin Öğrenme",
+        "slug": "tensors-multidimensional-arrays"
+      },
+      {
+        "n": 7,
+        "en": "Float & Stability",
+        "tr": "Float & Kararlılık",
+        "slug": "float-stability"
+      },
+      {
+        "n": 8,
+        "en": "Matrix Calculus",
+        "tr": "Matris Analizi",
+        "slug": "matrix-calculus"
+      }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisite: ENTIRE track is core ML math — flag all for cross-listing into AI path (esp. L1 vectors, L2 matrices, L4 eigenvalues→PCA, L5 SVD→PCA/embeddings, L6 tensors→deep learning, L8 matrix calculus→backprop; L7 float/stability for numerical ML). Title/hero mismatch L6: <title> says 'Tensors & Multidimensional Arrays' but hero h1 reads 'Tensors & Deep Learning' (tr 'Tensörler & Derin Öğrenme' kept from hero) — reconcile. Stale metadata: sidebar/index label '6 Lessons' but 8 files exist (L7, L8 added later). No duplicate hero block here. Numeric order consistent."
+  },
+  "calculus": {
+    "category": "math",
+    "subfield": "calculus",
+    "name_en": "Calculus",
+    "name_tr": "Kalkülüs",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Limits & Derivatives",
+        "tr": "Limitler & Türevler",
+        "slug": "limits-derivatives"
+      },
+      {
+        "n": 2,
+        "en": "Differentiation Rules",
+        "tr": "Türev Kuralları",
+        "slug": "differentiation-rules"
+      },
+      {
+        "n": 3,
+        "en": "Partial Derivatives",
+        "tr": "Kısmi Türevler",
+        "slug": "partial-derivatives"
+      },
+      {
+        "n": 4,
+        "en": "Chain Rule & Backprop",
+        "tr": "Zincir Kuralı & Geri Yayılım",
+        "slug": "chain-rule-backprop"
+      },
+      {
+        "n": 5,
+        "en": "Integration for ML",
+        "tr": "ML İçin İntegral",
+        "slug": "integration-for-ml"
+      },
+      {
+        "n": 6,
+        "en": "Optimization & GD",
+        "tr": "Optimizasyon & Gradyan İnişi",
+        "slug": "optimization-gradient-descent"
+      },
+      {
+        "n": 7,
+        "en": "Lagrange Multipliers",
+        "tr": "Lagrange Çarpanları",
+        "slug": "lagrange-multipliers"
+      },
+      {
+        "n": 8,
+        "en": "Advanced Vector Analysis",
+        "tr": "Vektör Analizi",
+        "slug": "advanced-vector-analysis"
+      }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisite: ENTIRE track is core ML math — flag all for cross-listing into AI path (esp. L3 partial derivatives, L4 chain rule→backprop, L6 optimization→gradient descent, L7 Lagrange→constrained opt/SVM). Abbreviation in <title> L6 'Optimization & GD' expanded to 'gradient-descent' in slug (per hero 'Optimization & Gradient Descent'). Title/hero mismatch L8: <title> 'Advanced Vector Analysis' vs hero 'Vector Analysis' (tr 'Vektör Analizi' from hero). No duplicate hero block. Numeric order consistent."
+  },
+  "math": {
+    "category": "math",
+    "subfield": "probability",
+    "name_en": "ML Mathematics",
+    "name_tr": "ML Matematik",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Probability Fundamentals",
+        "tr": "Olasılık Temelleri",
+        "slug": "probability-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Statistics & Distributions",
+        "tr": "İstatistik & Dağılımlar",
+        "slug": "statistics-distributions"
+      },
+      {
+        "n": 3,
+        "en": "Bayesian Thinking",
+        "tr": "Bayesçi Düşünme",
+        "slug": "bayesian-thinking"
+      },
+      {
+        "n": 4,
+        "en": "Information Theory",
+        "tr": "Bilgi Teorisi",
+        "slug": "information-theory"
+      },
+      {
+        "n": 5,
+        "en": "Optimization Theory",
+        "tr": "Optimizasyon Teorisi",
+        "slug": "optimization-theory"
+      },
+      {
+        "n": 6,
+        "en": "Numerical Methods",
+        "tr": "Sayısal Yöntemler",
+        "slug": "numerical-methods"
+      },
+      {
+        "n": 7,
+        "en": "Convex Optimization",
+        "tr": "Konveks Optimizasyon",
+        "slug": "convex-optimization"
+      },
+      {
+        "n": 8,
+        "en": "Manifold Geometry",
+        "tr": "Manifold Geometrisi",
+        "slug": "manifold-geometry"
+      },
+      {
+        "n": 9,
+        "en": "Information Geometry",
+        "tr": "Bilgi Geometrisi",
+        "slug": "information-geometry"
+      },
+      {
+        "n": 10,
+        "en": "Statistical Learning Theory",
+        "tr": "Öğrenme Teorisi",
+        "slug": "statistical-learning-theory"
+      },
+      {
+        "n": 11,
+        "en": "Advanced Probability: Martingales & Concentration",
+        "tr": "Martingaleler & Yoğunlaşma",
+        "slug": "martingales-concentration"
+      }
+    ],
+    "notes": "11 lesson files (1-11). This 'math' folder = 'ML Mathematics' (sidebar sb-current-title 'ML MATHEMATICS' / 'ML Matematik'): it is AI-focused and should live in the AI path, NOT the standalone Math section. Subfield marked 'probability'. AI prerequisite: ENTIRE track (probability, statistics, Bayesian, information theory, optimization, convex opt, manifold/information geometry, learning theory, martingales) — flag all for the AI path. Title/hero mismatches: L10 <title> 'Statistical Learning Theory' vs hero 'Learning Theory'; L11 <title> 'Advanced Probability: Martingales & Concentration' vs hero 'Martingales & Concentration' (colon stripped, slug trimmed to martingales-concentration). L8/L9 (Manifold/Information Geometry) are advanced/specialized — possible content depth gap vs intro lessons. Numeric order consistent."
+  },
+  "discrete": {
+    "category": "math",
+    "subfield": "discrete",
+    "name_en": "Discrete Math & Graph Theory",
+    "name_tr": "Discrete Math & Graph Theory",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Combinatorics & Counting",
+        "tr": "Sayma & Kombinatorik",
+        "slug": "combinatorics-counting"
+      },
+      {
+        "n": 2,
+        "en": "Generating Functions & Inclusion-Exclusion",
+        "tr": "Üreteç Fonksiyonları",
+        "slug": "generating-functions"
+      },
+      {
+        "n": 3,
+        "en": "Graph Fundamentals & Traversal",
+        "tr": "Çizge Temelleri",
+        "slug": "graph-fundamentals-traversal"
+      },
+      {
+        "n": 4,
+        "en": "Graph Algorithms (Dijkstra, MST, Max-Flow)",
+        "tr": "Çizge Algoritmaları",
+        "slug": "graph-algorithms"
+      },
+      {
+        "n": 5,
+        "en": "Spectral Graph Theory",
+        "tr": "Spektral Çizgeler",
+        "slug": "spectral-graph-theory"
+      },
+      {
+        "n": 6,
+        "en": "Knowledge Graphs & Dependency Parsing",
+        "tr": "Bilgi Grafları",
+        "slug": "knowledge-graphs"
+      }
+    ],
+    "notes": "6 lesson files (1-6). AI prerequisites: L3 Graph Fundamentals, L4 Graph Algorithms, L5 Spectral Graph Theory, L6 Knowledge Graphs & Dependency Parsing — these underpin GNNs and NLP and should cross-list into the AI path (L1/L2 combinatorics/generating functions are weaker AI ties). DUPLICATE/DRAFT artifact: every lesson contains a stray second <h1 class='topic-title'> reading 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (leftover boilerplate hero copied from the calculus template, ~line 1463) — should be removed. Slugs trimmed for long EN titles (L2→generating-functions, L4→graph-algorithms, L6→knowledge-graphs). TR hero terminology inconsistent ('Çizge' vs 'Graf' for graph). Track name not localized to TR. Numeric order consistent."
+  },
+  "complex": {
+    "category": "math",
+    "subfield": "complex",
+    "name_en": "Complex Analysis",
+    "name_tr": "Complex Analysis",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Complex Numbers & Geometric Intuition",
+        "tr": "Karmaşık Sayılar",
+        "slug": "complex-numbers"
+      },
+      {
+        "n": 2,
+        "en": "Complex Functions & Continuity",
+        "tr": "Karmaşık Fonksiyonlar",
+        "slug": "complex-functions"
+      },
+      {
+        "n": 3,
+        "en": "Cauchy-Riemann & Analyticity",
+        "tr": "Cauchy-Riemann",
+        "slug": "cauchy-riemann"
+      },
+      {
+        "n": 4,
+        "en": "Complex Integration & Cauchy Theorem",
+        "tr": "Cauchy Teoremi",
+        "slug": "complex-integration"
+      },
+      {
+        "n": 5,
+        "en": "Residue Theorem & Real Integrals",
+        "tr": "Rezidü Hesabı",
+        "slug": "residue-theorem"
+      },
+      {
+        "n": 6,
+        "en": "Conformal Maps & Applications",
+        "tr": "Konform Dönüşümler",
+        "slug": "conformal-maps"
+      }
+    ],
+    "notes": "6 lesson files (1-6). AI ties are indirect: this track mainly supports the Fourier/signal-processing track rather than being a direct ML prerequisite — flag as supporting math, low priority for AI cross-listing. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. Slugs trimmed from longer EN titles (L1→complex-numbers, L2→complex-functions, L4→complex-integration, L5→residue-theorem). TR heroes give short forms only (e.g. L5 'Rezidü Hesabı' = Residue Calculus vs title 'Residue Theorem'). Track name not localized to TR. Numeric order consistent."
+  },
+  "fourier": {
+    "category": "math",
+    "subfield": "fourier",
+    "name_en": "Fourier",
+    "name_tr": "Fourier",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Periodic Functions & Sinusoids",
+        "tr": "Periyodik Fonksiyonlar",
+        "slug": "periodic-functions"
+      },
+      {
+        "n": 2,
+        "en": "Fourier Series",
+        "tr": "Fourier Serileri",
+        "slug": "fourier-series"
+      },
+      {
+        "n": 3,
+        "en": "Complex Exponential Form",
+        "tr": "Karmaşık Üstel Form",
+        "slug": "complex-exponential-form"
+      },
+      {
+        "n": 4,
+        "en": "Continuous Fourier Transform",
+        "tr": "Fourier Dönüşümü",
+        "slug": "continuous-fourier-transform"
+      },
+      {
+        "n": 5,
+        "en": "Discrete Fourier Transform & FFT",
+        "tr": "DFT & FFT",
+        "slug": "discrete-fourier-transform"
+      },
+      {
+        "n": 6,
+        "en": "Laplace Transform",
+        "tr": "Laplace Dönüşümü",
+        "slug": "laplace-transform"
+      },
+      {
+        "n": 7,
+        "en": "Wavelets",
+        "tr": "Wavelet Dönüşümü",
+        "slug": "wavelets"
+      },
+      {
+        "n": 8,
+        "en": "Spectral Methods in ML",
+        "tr": "Spektral Yöntemler",
+        "slug": "spectral-methods"
+      }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisites: L5 Discrete Fourier Transform & FFT, L7 Wavelets, L8 Spectral Methods in ML (and L4 Fourier Transform as basis) — relevant to signal/audio ML, CNN spectral methods; cross-list these into the AI path. DUPLICATE/DRAFT artifact: every lesson carries a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. TR hero for L4 omits 'Continuous' ('Fourier Dönüşümü'). Numeric order consistent."
+  },
+  "diffeq": {
+    "category": "math",
+    "subfield": "diffeq",
+    "name_en": "Differential Equations",
+    "name_tr": "Differential Equations",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "ODE Fundamentals",
+        "tr": "ODE Temelleri",
+        "slug": "ode-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Second-Order Linear ODEs",
+        "tr": "İkinci Mertebe ODE",
+        "slug": "second-order-odes"
+      },
+      {
+        "n": 3,
+        "en": "ODE Systems & Matrix Form",
+        "tr": "ODE Sistemleri",
+        "slug": "ode-systems"
+      },
+      {
+        "n": 4,
+        "en": "Partial Differential Equations (PDE)",
+        "tr": "PDE Temelleri",
+        "slug": "partial-differential-equations"
+      },
+      {
+        "n": 5,
+        "en": "Numerical ODE Methods",
+        "tr": "Sayısal Çözücüler",
+        "slug": "numerical-ode-methods"
+      },
+      {
+        "n": 6,
+        "en": "Stochastic Differential Equations (SDE)",
+        "tr": "SDE & Brownian",
+        "slug": "stochastic-differential-equations"
+      },
+      {
+        "n": 7,
+        "en": "Variational PDE & Calculus of Variations",
+        "tr": "Varyasyonel Yöntemler",
+        "slug": "variational-pde"
+      },
+      {
+        "n": 8,
+        "en": "Neural ODEs, Neural SDEs & Flow Matching",
+        "tr": "Neural Diffeq",
+        "slug": "neural-odes"
+      }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisites: L6 Stochastic Differential Equations (Brownian) and L8 Neural ODEs/SDEs & Flow Matching are DIRECT prereqs for modern generative AI (diffusion/flow-matching); L7 Variational methods also relevant — cross-list these into the AI path. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. TR heroes give short forms (L5 'Sayısal Çözücüler' = Numerical Solvers vs title 'Numerical ODE Methods'; L8 'Neural Diffeq' untranslated). Long EN titles trimmed in slugs. Track name not localized to TR. Numeric order consistent."
+  },
+  "markov": {
+    "category": "math",
+    "subfield": "markov",
+    "name_en": "Markov Chains & MCMC",
+    "name_tr": "Markov Chains & MCMC",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Markov Chain Fundamentals",
+        "tr": "Markov Zincirleri",
+        "slug": "markov-chain-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Hidden Markov Models (HMM)",
+        "tr": "Saklı Markov",
+        "slug": "hidden-markov-models"
+      },
+      {
+        "n": 3,
+        "en": "Monte Carlo & MCMC Foundations",
+        "tr": "Monte Carlo & MCMC",
+        "slug": "monte-carlo-mcmc"
+      },
+      {
+        "n": 4,
+        "en": "Hamiltonian Monte Carlo (HMC) & NUTS",
+        "tr": "HMC & NUTS",
+        "slug": "hamiltonian-monte-carlo"
+      },
+      {
+        "n": 5,
+        "en": "Variational Inference & ELBO",
+        "tr": "Varyasyonel Çıkarım",
+        "slug": "variational-inference"
+      },
+      {
+        "n": 6,
+        "en": "Bayesian Deep Learning & Modern Apps",
+        "tr": "Bayesçi Derin Öğrenme",
+        "slug": "bayesian-deep-learning"
+      }
+    ],
+    "notes": "6 lesson files (1-6). AI prerequisite: ENTIRE track is probabilistic ML (Markov chains, HMM, MCMC, HMC/NUTS, Variational Inference/ELBO, Bayesian Deep Learning) — flag all for cross-listing into the AI path; L5 (VI/ELBO) and L6 (Bayesian DL) are especially central to modern generative/Bayesian deep learning. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. TR heroes give short forms (L1 'Markov Zincirleri', L2 'Saklı Markov'). Track name not localized to TR. Numeric order consistent."
+  },
+  "control": {
+    "category": "math",
+    "subfield": "control",
+    "name_en": "Control Theory",
+    "name_tr": "Control Theory",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "System Modeling & Transfer Functions",
+        "tr": "Sistem Modelleme",
+        "slug": "system-modeling"
+      },
+      {
+        "n": 2,
+        "en": "PID Controllers",
+        "tr": "PID Kontrol",
+        "slug": "pid-controllers"
+      },
+      {
+        "n": 3,
+        "en": "Bode & Nyquist Analysis",
+        "tr": "Bode & Nyquist",
+        "slug": "bode-nyquist-analysis"
+      },
+      {
+        "n": 4,
+        "en": "Root Locus",
+        "tr": "Kök Yer Eğrisi",
+        "slug": "root-locus"
+      },
+      {
+        "n": 5,
+        "en": "State-Space Representation",
+        "tr": "Durum Uzayı",
+        "slug": "state-space-representation"
+      },
+      {
+        "n": 6,
+        "en": "Lyapunov Stability",
+        "tr": "Lyapunov Kararlılık",
+        "slug": "lyapunov-stability"
+      },
+      {
+        "n": 7,
+        "en": "LQR, MPC & Modern Control + RL",
+        "tr": "LQR / MPC",
+        "slug": "lqr-mpc"
+      }
+    ],
+    "notes": "7 lesson files (1-7). AI prerequisites: L7 LQR, MPC & Modern Control + RL is a DIRECT bridge to reinforcement learning; L5 State-Space and L6 Lyapunov Stability support RL/optimal control and training-stability analysis — cross-list these into the AI path. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. Long EN titles trimmed in slugs (L1→system-modeling, L7→lqr-mpc). TR heroes give short forms (L1 'Sistem Modelleme', L5 'Durum Uzayı'). Track name not localized to TR. Numeric order consistent."
+  },
+  "python": {
+    "category": "programming",
+    "subfield": "python",
+    "name_en": "Python Core",
+    "name_tr": "Python Temelleri",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Setup & Fundamentals",
+        "tr": "Kurulum & Temeller",
+        "slug": "setup-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Control Flow & Functions",
+        "tr": "Kontrol Akışı & Fonksiyonlar",
+        "slug": "control-flow-functions"
+      },
+      {
+        "n": 3,
+        "en": "Data Structures",
+        "tr": "Veri Yapıları",
+        "slug": "data-structures"
+      },
+      {
+        "n": 4,
+        "en": "OOP & Classes",
+        "tr": "OOP & Sınıflar",
+        "slug": "oop-classes"
+      },
+      {
+        "n": 5,
+        "en": "File I/O & Error Handling",
+        "tr": "Dosya I/O & Hata Yönetimi",
+        "slug": "file-io-error-handling"
+      },
+      {
+        "n": 6,
+        "en": "Advanced Python",
+        "tr": "İleri Python",
+        "slug": "advanced-python"
+      },
+      {
+        "n": 7,
+        "en": "Modern Python 3.10+ Features",
+        "tr": "",
+        "slug": "modern-python-features"
+      }
+    ],
+    "notes": "Cross-listed: Programming + AI foundations (NumPy/pandas/ML tracks build on this). DATA BUG: lesson 7 (7.html) is a genuine distinct lesson — <title>, meta description and canonical URL .../python/7 all say 'Modern Python 3.10+ Features' (dataclasses, match/case, pathlib, type hints) — BUT its visible <h1> hero and eyebrow were copy-pasted from lesson 6 and never updated (still read 'Advanced Python' / 'Lesson 06', og:description still 'Lesson 6 of Python'); its data-tr is also the stale 'İleri Python', so tr left empty. COUNT MISMATCH: index.html and its meta declare only '6 Lessons' / 'Lessons 6' but 7 lesson files exist — lesson 7 is unregistered in the track index. Numeric order is otherwise correct (1-7)."
+  },
+  "c": {
+    "category": "programming",
+    "subfield": "c",
+    "name_en": "C Language",
+    "name_tr": "C Dili",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Hello World & Compilation",
+        "tr": "Merhaba Dünya & Derleme",
+        "slug": "hello-world-compilation"
+      },
+      {
+        "n": 2,
+        "en": "Variables & Data Types",
+        "tr": "Değişkenler & Veri Tipleri",
+        "slug": "variables-data-types"
+      },
+      {
+        "n": 3,
+        "en": "Pointers & Memory",
+        "tr": "İşaretçiler & Bellek",
+        "slug": "pointers-memory"
+      },
+      {
+        "n": 4,
+        "en": "Functions & Recursion",
+        "tr": "Fonksiyonlar & Özyineleme",
+        "slug": "functions-recursion"
+      },
+      {
+        "n": 5,
+        "en": "Arrays, Strings & Structs",
+        "tr": "Diziler, Dizgiler & Yapılar",
+        "slug": "arrays-strings-structs"
+      },
+      {
+        "n": 6,
+        "en": "File I/O & Preprocessor",
+        "tr": "Dosya G/Ç & Önişlemci",
+        "slug": "file-io-preprocessor"
+      }
+    ],
+    "notes": "6 lessons, clean 1-6 numeric order, no gaps or duplicates. index.html count matches. Solid intro-to-C progression. No content gaps noted."
+  },
+  "cpp": {
+    "category": "programming",
+    "subfield": "cpp",
+    "name_en": "C++",
+    "name_tr": "C++",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "C++ Fundamentals & Modern Setup",
+        "tr": "C++ Temelleri & Modern Kurulum",
+        "slug": "cpp-fundamentals-setup"
+      },
+      {
+        "n": 2,
+        "en": "Object-Oriented Programming",
+        "tr": "Nesne Yönelimli Programlama",
+        "slug": "object-oriented-programming"
+      },
+      {
+        "n": 3,
+        "en": "Inheritance & Polymorphism",
+        "tr": "Kalıtım & Çok Biçimlilik",
+        "slug": "inheritance-polymorphism"
+      },
+      {
+        "n": 4,
+        "en": "Templates & Generic Programming",
+        "tr": "Şablonlar & Genel Programlama",
+        "slug": "templates-generic-programming"
+      },
+      {
+        "n": 5,
+        "en": "Smart Pointers & Memory Management",
+        "tr": "Akıllı İşaretçiler & Bellek Yönetimi",
+        "slug": "smart-pointers-memory"
+      },
+      {
+        "n": 6,
+        "en": "Modern C++ Features (C++11/14/17/20)",
+        "tr": "Modern C++ Özellikleri (C++11/14/17/20)",
+        "slug": "modern-cpp-features"
+      },
+      {
+        "n": 7,
+        "en": "File I/O & String Processing",
+        "tr": "Dosya G/Ç & Dizi İşleme",
+        "slug": "file-io-string-processing"
+      },
+      {
+        "n": 8,
+        "en": "Practical Project — Mini Library System",
+        "tr": "Pratik Proje — Mini Kütüphane Sistemi",
+        "slug": "mini-library-system"
+      }
+    ],
+    "notes": "8 lessons, clean 1-8 numeric order, no gaps or duplicates. 'C++' transliterated to 'cpp' in slugs (++ is punctuation; bare 'c' would collide with the C track). Lesson 6 version numbers (C++11/14/17/20) dropped from slug per no-numbers rule. Lesson 8 uses an em-dash (&mdash;) in title vs &amp; elsewhere — harmless. Capstone project structure is good."
+  },
+  "js": {
+    "category": "programming",
+    "subfield": "js",
+    "name_en": "JavaScript",
+    "name_tr": "JavaScript",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "JavaScript Fundamentals",
+        "tr": "JavaScript Temelleri",
+        "slug": "javascript-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Operators, Conditionals & Loops",
+        "tr": "Operatörler, Koşullar ve Döngüler",
+        "slug": "operators-conditionals-loops"
+      },
+      {
+        "n": 3,
+        "en": "Functions & Scope",
+        "tr": "Fonksiyonlar ve Kapsam",
+        "slug": "functions-scope"
+      },
+      {
+        "n": 4,
+        "en": "Arrays & Objects",
+        "tr": "Diziler ve Nesneler",
+        "slug": "arrays-objects"
+      },
+      {
+        "n": 5,
+        "en": "DOM Manipulation & Events",
+        "tr": "DOM Manipülasyonu ve Olaylar",
+        "slug": "dom-manipulation-events"
+      },
+      {
+        "n": 6,
+        "en": "Asynchronous JavaScript",
+        "tr": "Asenkron JavaScript",
+        "slug": "asynchronous-javascript"
+      },
+      {
+        "n": 7,
+        "en": "ES6+ Modern Features",
+        "tr": "ES6+ Modern Özellikler",
+        "slug": "es6-modern-features"
+      },
+      {
+        "n": 8,
+        "en": "Error Handling, Storage & Best Practices",
+        "tr": "Hata Yönetimi, Depolama ve En İyi Uygulamalar",
+        "slug": "error-handling-storage"
+      }
+    ],
+    "notes": "Cross-listed: Programming + Web (foundational for the CSS/Web tracks). 8 lessons, clean 1-8 numeric order, no gaps or duplicates. Lesson 7 'ES6+' kept as 'es6' per shared example. Lesson 8 slug truncated to 'error-handling-storage' (dropped 'Best Practices') to honor the ~4-word cap. No content gaps noted."
+  },
+  "latex": {
+    "category": "tools",
+    "subfield": "latex",
+    "name_en": "LaTeX",
+    "name_tr": "LaTeX",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "What is LaTeX & Setup",
+        "tr": "LaTeX Nedir ve Kurulum",
+        "slug": "latex-setup"
+      },
+      {
+        "n": 2,
+        "en": "Text Formatting & Structure",
+        "tr": "Metin Biçimlendirme ve Yapı",
+        "slug": "text-formatting-structure"
+      },
+      {
+        "n": 3,
+        "en": "Mathematics in LaTeX",
+        "tr": "LaTeX'te Matematik",
+        "slug": "mathematics-latex"
+      },
+      {
+        "n": 4,
+        "en": "Tables & Figures",
+        "tr": "Tablolar ve Şekiller",
+        "slug": "tables-figures"
+      },
+      {
+        "n": 5,
+        "en": "Document Structure & Layout",
+        "tr": "Doküman Yapısı ve Düzen",
+        "slug": "document-structure-layout"
+      },
+      {
+        "n": 6,
+        "en": "Beamer Presentations",
+        "tr": "Beamer Sunumları",
+        "slug": "beamer-presentations"
+      },
+      {
+        "n": 7,
+        "en": "Bibliography & Citations",
+        "tr": "Kaynakça ve Atıflar",
+        "slug": "bibliography-citations"
+      },
+      {
+        "n": 8,
+        "en": "Advanced LaTeX",
+        "tr": "İleri Düzey LaTeX",
+        "slug": "advanced-latex"
+      }
+    ],
+    "notes": "category 'tools' (not programming) per instructions. 8 lessons, clean 1-8 numeric order, no gaps or duplicates. Lesson 1 'What is LaTeX & Setup' slugged 'latex-setup' (dropped interrogative 'What is'). Lesson 3 'Mathematics in LaTeX' → 'mathematics-latex' (dropped stop-word 'in'). No content gaps noted."
+  },
+  "safety": {
+    "category": "security",
+    "subfield": "safety",
+    "group": "ai-safety",
+    "name_en": "AI Safety & Alignment",
+    "name_tr": "AI Güvenliği & Hizalama",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Alignment? The Problem Statement",
+        "tr": "Neden Hizalama? Problem Tanımı",
+        "slug": "alignment-problem-statement"
+      },
+      {
+        "n": 2,
+        "en": "RLHF Deep Dive",
+        "tr": "RLHF Detaylı İnceleme",
+        "slug": "rlhf-deep-dive"
+      },
+      {
+        "n": 3,
+        "en": "DPO / IPO / KTO Family",
+        "tr": "DPO / IPO / KTO Ailesi",
+        "slug": "dpo-ipo-kto-family"
+      },
+      {
+        "n": 4,
+        "en": "Constitutional AI",
+        "tr": "Anayasal AI",
+        "slug": "constitutional-ai"
+      },
+      {
+        "n": 5,
+        "en": "Red Teaming & Jailbreak Defense",
+        "tr": "Red Team & Jailbreak Savunması",
+        "slug": "red-teaming-jailbreak-defense"
+      },
+      {
+        "n": 6,
+        "en": "Evaluation & Audit",
+        "tr": "Değerlendirme & Denetim",
+        "slug": "evaluation-audit"
+      }
+    ],
+    "notes": "Sub-group: ai-safety. 6 lessons, sequential order 1-6, no gaps or duplicates. Clean progression from alignment motivation -> RLHF -> preference-optimization family -> Constitutional AI -> red teaming -> evaluation. Lesson 1 slug drops the 'Why' interrogative for a cleaner URL."
+  },
+  "mlsec": {
+    "category": "security",
+    "subfield": "mlsec",
+    "group": "ai-safety",
+    "name_en": "ML Security & Adversarial AI",
+    "name_tr": "ML Güvenliği & Karşıt AI",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Threat Models for ML",
+        "tr": "ML için Tehdit Modelleri",
+        "slug": "threat-models-ml"
+      },
+      {
+        "n": 2,
+        "en": "Adversarial Examples (FGSM, PGD, C&W)",
+        "tr": "Karşıt Örnekler (FGSM, PGD, C&W)",
+        "slug": "adversarial-examples"
+      },
+      {
+        "n": 3,
+        "en": "Defenses & Adversarial Training",
+        "tr": "Savunmalar & Karşıt Eğitim",
+        "slug": "defenses-adversarial-training"
+      },
+      {
+        "n": 4,
+        "en": "Data Poisoning Attacks",
+        "tr": "Veri Zehirleme Saldırıları",
+        "slug": "data-poisoning-attacks"
+      },
+      {
+        "n": 5,
+        "en": "Model Stealing & Extraction",
+        "tr": "Model Çalma & Çıkarma",
+        "slug": "model-stealing-extraction"
+      },
+      {
+        "n": 6,
+        "en": "Membership Inference Attacks",
+        "tr": "Üyelik Çıkarım Saldırıları",
+        "slug": "membership-inference-attacks"
+      },
+      {
+        "n": 7,
+        "en": "Backdoor Attacks & Detection",
+        "tr": "Backdoor Saldırılar & Tespit",
+        "slug": "backdoor-attacks-detection"
+      },
+      {
+        "n": 8,
+        "en": "Robust ML & Certified Defenses",
+        "tr": "Robust ML & Sertifikalı Savunmalar",
+        "slug": "robust-ml-certified-defenses"
+      },
+      {
+        "n": 9,
+        "en": "LLM Security",
+        "tr": "LLM Güvenliği",
+        "slug": "llm-security"
+      },
+      {
+        "n": 10,
+        "en": "AI Red Teaming",
+        "tr": "AI Red Team",
+        "slug": "ai-red-teaming"
+      }
+    ],
+    "notes": "Sub-group: ai-safety. 10 lessons, sequential order 1-10, no gaps or duplicates. Lesson 2 parenthetical attack names (FGSM/PGD/C&W) dropped from slug per no-extra-detail rule. Some thematic overlap with the privacy track (membership inference appears in both fields) but framed differently here (attacker view) - not a true duplicate."
+  },
+  "privacy": {
+    "category": "security",
+    "subfield": "privacy",
+    "group": "ai-safety",
+    "name_en": "Privacy-Preserving ML",
+    "name_tr": "Gizlilik-Koruyan ML",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Differential Privacy Fundamentals",
+        "tr": "Diferansiyel Gizlilik Temelleri",
+        "slug": "differential-privacy-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "DP Mechanisms",
+        "tr": "DP Mekanizmaları",
+        "slug": "dp-mechanisms"
+      },
+      {
+        "n": 3,
+        "en": "DP-SGD: Training Neural Nets with DP",
+        "tr": "DP-SGD: Sinir Ağlarını DP ile Eğitme",
+        "slug": "dp-sgd-training"
+      },
+      {
+        "n": 4,
+        "en": "Federated Learning + Privacy",
+        "tr": "Federe Öğrenme + Gizlilik",
+        "slug": "federated-learning-privacy"
+      },
+      {
+        "n": 5,
+        "en": "Local Differential Privacy",
+        "tr": "Yerel Diferansiyel Gizlilik",
+        "slug": "local-differential-privacy"
+      },
+      {
+        "n": 6,
+        "en": "k-Anonymity, l-Diversity, t-Closeness (URV)",
+        "tr": "k-Anonimlik, l-Çeşitlilik, t-Yakınlık (URV)",
+        "slug": "k-anonymity-l-diversity"
+      },
+      {
+        "n": 7,
+        "en": "Synthetic Data Generation",
+        "tr": "Sentetik Veri Üretimi",
+        "slug": "synthetic-data-generation"
+      },
+      {
+        "n": 8,
+        "en": "Privacy Auditing & Tooling",
+        "tr": "Gizlilik Denetimi & Araçlar",
+        "slug": "privacy-auditing-tooling"
+      }
+    ],
+    "notes": "Sub-group: ai-safety. 8 lessons, sequential order 1-8, no gaps or duplicates. Lesson 3 colon stripped for slug. Lesson 6 'k/l/t' are single-letter algorithm prefixes (not numerals) so they are kept; slug truncated to first two terms (k-anonymity-l-diversity) to stay within ~4 words while remaining unique."
+  },
+  "fairness": {
+    "category": "security",
+    "subfield": "fairness",
+    "group": "ai-safety",
+    "name_en": "Fairness & Interpretability",
+    "name_tr": "Adalet & Yorumlanabilirlik",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Why Fairness? Real Harms",
+        "tr": "Neden Adalet? Gerçek Zararlar",
+        "slug": "why-fairness-real-harms"
+      },
+      {
+        "n": 2,
+        "en": "Fairness Metrics",
+        "tr": "Adalet Metrikleri",
+        "slug": "fairness-metrics"
+      },
+      {
+        "n": 3,
+        "en": "Bias Mitigation Techniques",
+        "tr": "Önyargı Azaltma Teknikleri",
+        "slug": "bias-mitigation-techniques"
+      },
+      {
+        "n": 4,
+        "en": "SHAP — SHapley Additive exPlanations",
+        "tr": "SHAP — SHapley Additive exPlanations",
+        "slug": "shap-shapley-additive-explanations"
+      },
+      {
+        "n": 5,
+        "en": "LIME & Local Surrogate Models",
+        "tr": "LIME & Yerel Vekil Modeller",
+        "slug": "lime-local-surrogate-models"
+      },
+      {
+        "n": 6,
+        "en": "Counterfactual Explanations",
+        "tr": "Karşı-Olgu Açıklamaları",
+        "slug": "counterfactual-explanations"
+      },
+      {
+        "n": 7,
+        "en": "Mechanistic Interpretability of LLMs",
+        "tr": "LLM'lerin Mekanistik Yorumlanabilirliği",
+        "slug": "mechanistic-interpretability-llms"
+      },
+      {
+        "n": 8,
+        "en": "Capstone — Fair & Explainable Loan Model",
+        "tr": "Bitirme — Adil & Açıklanabilir Kredi Modeli",
+        "slug": "capstone-fair-explainable-loan"
+      }
+    ],
+    "notes": "Sub-group: ai-safety. 8 lessons, sequential order 1-8, no gaps or duplicates. Track mixes fairness (1-3, 8) and interpretability/XAI (4-7) per its title. Lesson 4 em-dash subtitle expanded into slug (shap-shapley-additive-explanations). Lesson 8 is a capstone project tying both themes together. TR title of lesson 4 is identical to EN (not translated upstream)."
+  },
+  "compliance": {
+    "category": "security",
+    "subfield": "compliance",
+    "group": "ai-safety",
+    "name_en": "AI Compliance & Governance",
+    "name_tr": "AI Uyum & Yönetişim",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "GDPR for AI Systems",
+        "tr": "AI Sistemleri için GDPR",
+        "slug": "gdpr-ai-systems"
+      },
+      {
+        "n": 2,
+        "en": "EU AI Act Deep Dive",
+        "tr": "EU AI Yasası Detaylı İnceleme",
+        "slug": "eu-ai-act"
+      },
+      {
+        "n": 3,
+        "en": "NIS2 & DORA Directives",
+        "tr": "NIS2 & DORA Direktifleri",
+        "slug": "nis2-dora-directives"
+      },
+      {
+        "n": 4,
+        "en": "Risk Assessment for AI",
+        "tr": "AI için Risk Değerlendirmesi",
+        "slug": "risk-assessment-ai"
+      },
+      {
+        "n": 5,
+        "en": "AI Auditing Frameworks",
+        "tr": "AI Denetim Çerçeveleri",
+        "slug": "ai-auditing-frameworks"
+      },
+      {
+        "n": 6,
+        "en": "Standards (ISO 27001, ISO/IEC 42001)",
+        "tr": "Standartlar (ISO 27001, ISO/IEC 42001)",
+        "slug": "iso-standards"
+      }
+    ],
+    "notes": "Sub-group: ai-safety. 6 lessons, sequential order 1-6, no gaps or duplicates. NUMBER-RULE EXCEPTIONS: lesson 3 keeps 'nis2' because NIS2 is a proper directive name and stripping the digit would corrupt it; lesson 6 ISO numbers (27001/42001) were dropped and slugged as 'iso-standards' instead. Confirm whether the no-numbers rule should override the NIS2 proper noun before these go live."
+  },
+  "crypto": {
+    "category": "security",
+    "subfield": "crypto",
+    "group": "cyber",
+    "name_en": "Cryptography Engineering",
+    "name_tr": "Kriptografi Mühendisliği",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Symmetric Cryptography (AES, Modes)",
+        "tr": "Simetrik Kriptografi (AES, Modlar)",
+        "slug": "symmetric-cryptography"
+      },
+      {
+        "n": 2,
+        "en": "Asymmetric Cryptography (RSA, ECC)",
+        "tr": "Asimetrik Kriptografi (RSA, ECC)",
+        "slug": "asymmetric-cryptography"
+      },
+      {
+        "n": 3,
+        "en": "Hash Functions & MACs",
+        "tr": "Hash Fonksiyonları & MAC'ler",
+        "slug": "hash-functions-macs"
+      },
+      {
+        "n": 4,
+        "en": "PKI & Digital Certificates",
+        "tr": "PKI & Dijital Sertifikalar",
+        "slug": "pki-digital-certificates"
+      },
+      {
+        "n": 5,
+        "en": "Zero-Knowledge Proofs",
+        "tr": "Sıfır-Bilgi Kanıtları",
+        "slug": "zero-knowledge-proofs"
+      },
+      {
+        "n": 6,
+        "en": "Homomorphic Encryption",
+        "tr": "Homomorfik Şifreleme",
+        "slug": "homomorphic-encryption"
+      },
+      {
+        "n": 7,
+        "en": "Secure Multiparty Computation (MPC)",
+        "tr": "Güvenli Çok-Taraflı Hesaplama (MPC)",
+        "slug": "secure-multiparty-computation"
+      },
+      {
+        "n": 8,
+        "en": "Post-Quantum Cryptography",
+        "tr": "Post-Kuantum Kriptografi",
+        "slug": "post-quantum-cryptography"
+      },
+      {
+        "n": 9,
+        "en": "Cryptanalysis Fundamentals",
+        "tr": "Kriptanaliz Temelleri",
+        "slug": "cryptanalysis-fundamentals"
+      },
+      {
+        "n": 10,
+        "en": "Side-Channel Attacks",
+        "tr": "Yan-Kanal Saldırıları",
+        "slug": "side-channel-attacks"
+      }
+    ],
+    "notes": "Sub-group: cyber. 10 lessons, sequential order 1-10, no gaps or duplicates. Track folder has no index.html (display name taken from lesson <title> middle segment and the parent tutorials index). Parenthetical algorithm lists (AES/RSA/ECC/MPC) dropped from slugs. Clean primitives -> protocols -> advanced (ZKP/HE/MPC/PQC) -> attacks ordering."
+  },
+  "netsec": {
+    "category": "security",
+    "subfield": "netsec",
+    "group": "cyber",
+    "name_en": "Network & System Security",
+    "name_tr": "Ağ & Sistem Güvenliği",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Network Protocols & TLS",
+        "tr": "Ağ Protokolleri & TLS",
+        "slug": "network-protocols-tls"
+      },
+      {
+        "n": 2,
+        "en": "Web Application Security (OWASP Top 10)",
+        "tr": "Web Uygulama Güvenliği (OWASP Top 10)",
+        "slug": "web-application-security"
+      },
+      {
+        "n": 3,
+        "en": "Authentication & Authorization",
+        "tr": "Kimlik Doğrulama & Yetkilendirme",
+        "slug": "authentication-authorization"
+      },
+      {
+        "n": 4,
+        "en": "Intrusion Detection & ML-IDS",
+        "tr": "Saldırı Tespiti & ML-IDS",
+        "slug": "intrusion-detection-ml-ids"
+      },
+      {
+        "n": 5,
+        "en": "Firewalls, WAFs, & Network Segmentation",
+        "tr": "Firewall'lar, WAF'lar & Ağ Segmentasyonu",
+        "slug": "firewalls-wafs-segmentation"
+      },
+      {
+        "n": 6,
+        "en": "DDoS Attacks & Defense",
+        "tr": "DDoS Saldırıları & Savunma",
+        "slug": "ddos-attacks-defense"
+      },
+      {
+        "n": 7,
+        "en": "Wireless & 5G Security",
+        "tr": "Kablosuz & 5G Güvenliği",
+        "slug": "wireless-5g-security"
+      },
+      {
+        "n": 8,
+        "en": "Cloud Security",
+        "tr": "Bulut Güvenliği",
+        "slug": "cloud-security"
+      },
+      {
+        "n": 9,
+        "en": "Container & Kubernetes Security",
+        "tr": "Konteyner & Kubernetes Güvenliği",
+        "slug": "container-kubernetes-security"
+      },
+      {
+        "n": 10,
+        "en": "Zero Trust Architecture",
+        "tr": "Zero Trust Mimarisi",
+        "slug": "zero-trust-architecture"
+      }
+    ],
+    "notes": "Sub-group: cyber. 10 lessons, sequential order 1-10, no gaps or duplicates. NUMBER-RULE EXCEPTION: lesson 7 keeps '5g' since it is part of the proper technology name '5G' (dropping it would lose meaning); confirm acceptable. Lesson 2 'OWASP Top 10' parenthetical dropped from slug (also avoids the trailing number)."
+  },
+  "forensics": {
+    "category": "security",
+    "subfield": "forensics",
+    "group": "cyber",
+    "name_en": "Forensics & Incident Response",
+    "name_tr": "Adli Bilişim & Olay Müdahale",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Threat Modeling & MITRE ATT&CK",
+        "tr": "Tehdit Modelleme & MITRE ATT&CK",
+        "slug": "threat-modeling-mitre-attack"
+      },
+      {
+        "n": 2,
+        "en": "Static Malware Analysis",
+        "tr": "Statik Malware Analizi",
+        "slug": "static-malware-analysis"
+      },
+      {
+        "n": 3,
+        "en": "Dynamic Analysis & Sandboxing",
+        "tr": "Dinamik Analiz & Sandbox",
+        "slug": "dynamic-analysis-sandboxing"
+      },
+      {
+        "n": 4,
+        "en": "Reverse Engineering Basics",
+        "tr": "Tersine Mühendislik Temelleri",
+        "slug": "reverse-engineering-basics"
+      },
+      {
+        "n": 5,
+        "en": "Memory Forensics",
+        "tr": "Bellek Adli Bilişimi",
+        "slug": "memory-forensics"
+      },
+      {
+        "n": 6,
+        "en": "Network Forensics",
+        "tr": "Ağ Adli Bilişimi",
+        "slug": "network-forensics"
+      },
+      {
+        "n": 7,
+        "en": "APT Analysis & Threat Intelligence",
+        "tr": "APT Analizi & Tehdit İstihbaratı",
+        "slug": "apt-analysis-threat-intelligence"
+      },
+      {
+        "n": 8,
+        "en": "Incident Response & SIEM/SOC",
+        "tr": "Olay Müdahale & SIEM/SOC",
+        "slug": "incident-response-siem-soc"
+      }
+    ],
+    "notes": "Sub-group: cyber. 8 lessons, sequential order 1-8, no gaps or duplicates. Lesson 1 'ATT&CK' ampersand stripped to 'attack' in slug. Lesson 8 slash in 'SIEM/SOC' converted to hyphen. Memory (5) and Network (6) forensics are distinct topics, not duplicates."
+  },
+  "blockchain": {
+    "category": "security",
+    "subfield": "blockchain",
+    "group": "cyber",
+    "name_en": "Blockchain & Smart Contract",
+    "name_tr": "Blockchain & Akıllı Sözleşme",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Blockchain Fundamentals",
+        "tr": "Blockchain Temelleri",
+        "slug": "blockchain-fundamentals"
+      },
+      {
+        "n": 2,
+        "en": "Bitcoin Protocol Deep Dive",
+        "tr": "Bitcoin Protokolü Detaylı İnceleme",
+        "slug": "bitcoin-protocol-deep-dive"
+      },
+      {
+        "n": 3,
+        "en": "Ethereum & Smart Contracts",
+        "tr": "Ethereum & Akıllı Sözleşmeler",
+        "slug": "ethereum-smart-contracts"
+      },
+      {
+        "n": 4,
+        "en": "Smart Contract Vulnerabilities",
+        "tr": "Akıllı Sözleşme Açıkları",
+        "slug": "smart-contract-vulnerabilities"
+      },
+      {
+        "n": 5,
+        "en": "Consensus Mechanisms",
+        "tr": "Konsensüs Mekanizmaları",
+        "slug": "consensus-mechanisms"
+      },
+      {
+        "n": 6,
+        "en": "ZK Rollups & L2 Scaling",
+        "tr": "ZK Rollup'lar & L2 Ölçekleme",
+        "slug": "zk-rollups-l2-scaling"
+      },
+      {
+        "n": 7,
+        "en": "DeFi Security",
+        "tr": "DeFi Güvenliği",
+        "slug": "defi-security"
+      },
+      {
+        "n": 8,
+        "en": "Smart Contract Auditing & Formal Verification",
+        "tr": "Akıllı Sözleşme Denetimi & Biçimsel Doğrulama",
+        "slug": "smart-contract-auditing"
+      }
+    ],
+    "notes": "Sub-group: cyber. 8 lessons, sequential order 1-8, no gaps or duplicates. NUMBER-RULE EXCEPTION: lesson 6 keeps 'l2' (Layer-2 proper term). Three smart-contract lessons (3, 4, 8) are complementary (intro / vulns / auditing), not duplicates. Lesson 8 slug truncated to 'smart-contract-auditing' (drops 'formal-verification') to stay <=4 words; unique within track."
+  },
+  "iot": {
+    "category": "security",
+    "subfield": "iot",
+    "group": "cyber",
+    "name_en": "IoT & Embedded Security",
+    "name_tr": "IoT & Gömülü Güvenlik",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "IoT Architecture & Threat Landscape",
+        "tr": "IoT Mimarisi & Tehdit Manzarası",
+        "slug": "iot-architecture-threat-landscape"
+      },
+      {
+        "n": 2,
+        "en": "Hardware Security (TPM, Secure Boot)",
+        "tr": "Donanım Güvenliği (TPM, Secure Boot)",
+        "slug": "hardware-security"
+      },
+      {
+        "n": 3,
+        "en": "Firmware Analysis & Reverse Engineering",
+        "tr": "Firmware Analizi & Tersine Mühendislik",
+        "slug": "firmware-analysis-reverse-engineering"
+      },
+      {
+        "n": 4,
+        "en": "Wireless IoT (BLE, Zigbee, LoRaWAN)",
+        "tr": "Kablosuz IoT (BLE, Zigbee, LoRaWAN)",
+        "slug": "wireless-iot"
+      },
+      {
+        "n": 5,
+        "en": "Industrial Control Systems (ICS/SCADA)",
+        "tr": "Endüstriyel Kontrol Sistemleri (ICS/SCADA)",
+        "slug": "industrial-control-systems"
+      },
+      {
+        "n": 6,
+        "en": "Connected & Autonomous Vehicle Security",
+        "tr": "Bağlı & Otonom Araç Güvenliği",
+        "slug": "connected-autonomous-vehicle-security"
+      }
+    ],
+    "notes": "Sub-group: cyber. 6 lessons, sequential order 1-6, no gaps or duplicates. Parenthetical technology lists (TPM/BLE/Zigbee/LoRaWAN/ICS/SCADA) dropped from slugs. Slugs for lessons 1 and 3 run slightly long (4 words) but remain readable and unique."
+  },
+  "matematik": {
+    "category": "tr",
+    "subfield": "matematik",
+    "name_en": "Mathematics (TR)",
+    "name_tr": "Matematik",
+    "lessons": [
+      {
+        "n": 1,
+        "en": "Angle Measurement & Unit Circle",
+        "tr": "Açı Ölçümü ve Birim Çember",
+        "slug": "aci-olcumu-ve-birim-cember"
+      },
+      {
+        "n": 2,
+        "en": "Basic Trigonometric Ratios",
+        "tr": "Temel Trigonometrik Oranlar",
+        "slug": "temel-trigonometrik-oranlar"
+      },
+      {
+        "n": 3,
+        "en": "Special Angles & Values",
+        "tr": "Özel Açılar ve Değerler",
+        "slug": "ozel-acilar-ve-degerler"
+      },
+      {
+        "n": 4,
+        "en": "Trigonometric Identities I (Pythagorean, Sum-Difference)",
+        "tr": "Trigonometrik Özdeşlikler I (Pisagor, Toplam-Fark)",
+        "slug": "trigonometrik-ozdeslikler-pisagor-toplam-fark"
+      },
+      {
+        "n": 5,
+        "en": "Trigonometric Identities II (Product-to-Sum, Power Reduction)",
+        "tr": "Trigonometrik Özdeşlikler II (Çarpımdan Toplama, Derece İndirgeme)",
+        "slug": "trigonometrik-ozdeslikler-carpimdan-toplama"
+      },
+      {
+        "n": 6,
+        "en": "Trigonometric Equations",
+        "tr": "Trigonometrik Denklemler",
+        "slug": "trigonometrik-denklemler"
+      },
+      {
+        "n": 7,
+        "en": "Law of Sines & Cosines",
+        "tr": "Sinüs ve Kosinüs Teoremi",
+        "slug": "sinus-ve-kosinus-teoremi"
+      },
+      {
+        "n": 8,
+        "en": "Trigonometric Function Graphs",
+        "tr": "Trigonometrik Fonksiyon Grafikleri",
+        "slug": "trigonometrik-fonksiyon-grafikleri"
+      },
+      {
+        "n": 9,
+        "en": "Inverse Trigonometric Functions",
+        "tr": "Ters Trigonometrik Fonksiyonlar",
+        "slug": "ters-trigonometrik-fonksiyonlar"
+      },
+      {
+        "n": 10,
+        "en": "Applications: Heights, Distances, Engineering",
+        "tr": "Uygulamalar: Yükseklik, Uzaklık, Mühendislik",
+        "slug": "trigonometri-uygulamalari"
+      },
+      {
+        "n": 11,
+        "en": "Intuitive Limit",
+        "tr": "Sezgisel Limit",
+        "slug": "sezgisel-limit"
+      },
+      {
+        "n": 12,
+        "en": "Limit Laws & Calculation",
+        "tr": "Limit Kuralları ve Hesabı",
+        "slug": "limit-kurallari-ve-hesabi"
+      },
+      {
+        "n": 13,
+        "en": "Indeterminate Forms & L'Hôpital",
+        "tr": "Belirsizlik Durumları ve L'Hôpital",
+        "slug": "belirsizlik-durumlari-ve-lhopital"
+      },
+      {
+        "n": 14,
+        "en": "Infinite Limits & Asymptotes",
+        "tr": "Sonsuz Limitler ve Asimptotlar",
+        "slug": "sonsuz-limitler-ve-asimptotlar"
+      },
+      {
+        "n": 15,
+        "en": "Continuity & Discontinuities",
+        "tr": "Süreklilik ve Süreksizlikler",
+        "slug": "sureklilik-ve-sureksizlikler"
+      },
+      {
+        "n": 16,
+        "en": "Intermediate Value Theorem & Applications",
+        "tr": "Ara Değer Teoremi ve Uygulamaları",
+        "slug": "ara-deger-teoremi"
+      },
+      {
+        "n": 17,
+        "en": "Derivative Definition (Limit-Based)",
+        "tr": "Türev Tanımı (Limit Tabanlı)",
+        "slug": "turev-tanimi"
+      },
+      {
+        "n": 18,
+        "en": "Basic Differentiation Rules",
+        "tr": "Temel Türev Kuralları",
+        "slug": "temel-turev-kurallari"
+      },
+      {
+        "n": 19,
+        "en": "Product, Quotient, Chain Rules",
+        "tr": "Çarpım, Bölüm ve Zincir Kuralı",
+        "slug": "carpim-bolum-zincir-kurali"
+      },
+      {
+        "n": 20,
+        "en": "Derivatives of Trig & Exponential Functions",
+        "tr": "Trigonometrik ve Üstel Fonksiyonların Türevi",
+        "slug": "trigonometrik-ve-ustel-turev"
+      },
+      {
+        "n": 21,
+        "en": "Implicit & Logarithmic Differentiation",
+        "tr": "Kapalı ve Logaritmik Türev",
+        "slug": "kapali-ve-logaritmik-turev"
+      },
+      {
+        "n": 22,
+        "en": "Higher-Order Derivatives",
+        "tr": "Yüksek Mertebeden Türevler",
+        "slug": "yuksek-mertebeden-turevler"
+      },
+      {
+        "n": 23,
+        "en": "Increasing/Decreasing & First-Derivative Test",
+        "tr": "Artan/Azalan ve Birinci Türev Testi",
+        "slug": "artan-azalan-birinci-turev-testi"
+      },
+      {
+        "n": 24,
+        "en": "Concavity & Second-Derivative Test",
+        "tr": "İçbükeylik ve İkinci Türev Testi",
+        "slug": "icbukeylik-ikinci-turev-testi"
+      },
+      {
+        "n": 25,
+        "en": "Curve Sketching",
+        "tr": "Eğri Çizimi",
+        "slug": "egri-cizimi"
+      },
+      {
+        "n": 26,
+        "en": "Optimization Problems",
+        "tr": "Optimizasyon Problemleri",
+        "slug": "optimizasyon-problemleri"
+      },
+      {
+        "n": 27,
+        "en": "Antiderivative & Indefinite Integral",
+        "tr": "Ters Türev ve Belirsiz İntegral",
+        "slug": "belirsiz-integral"
+      },
+      {
+        "n": 28,
+        "en": "Basic Integration Techniques",
+        "tr": "Temel İntegral Teknikleri",
+        "slug": "temel-integral-teknikleri"
+      },
+      {
+        "n": 29,
+        "en": "Substitution Method",
+        "tr": "Değişken Değiştirme Yöntemi",
+        "slug": "degisken-degistirme-yontemi"
+      },
+      {
+        "n": 30,
+        "en": "Integration by Parts",
+        "tr": "Kısmi İntegrasyon",
+        "slug": "kismi-integrasyon"
+      },
+      {
+        "n": 31,
+        "en": "Definite Integral & FTC",
+        "tr": "Belirli İntegral ve Analizin Temel Teoremi",
+        "slug": "belirli-integral-ve-temel-teorem"
+      },
+      {
+        "n": 32,
+        "en": "Area Between Curves",
+        "tr": "Eğriler Arasında Kalan Alan",
+        "slug": "egriler-arasinda-alan"
+      },
+      {
+        "n": 33,
+        "en": "Volumes of Revolution",
+        "tr": "Dönel Cisimlerin Hacmi",
+        "slug": "donel-cisimlerin-hacmi"
+      },
+      {
+        "n": 34,
+        "en": "Applications: Work, Average Value, Arc Length",
+        "tr": "Uygulamalar: İş, Ortalama Değer, Yay Uzunluğu",
+        "slug": "integral-uygulamalari"
+      },
+      {
+        "n": 35,
+        "en": "Exponential Functions",
+        "tr": "Üstel Fonksiyonlar",
+        "slug": "ustel-fonksiyonlar"
+      },
+      {
+        "n": 36,
+        "en": "Logarithm Definition & Properties",
+        "tr": "Logaritma Tanımı ve Özellikleri",
+        "slug": "logaritma-tanim-ve-ozellikler"
+      },
+      {
+        "n": 37,
+        "en": "Natural Logarithm & Common Log",
+        "tr": "Doğal Logaritma ve Bayağı Logaritma",
+        "slug": "dogal-ve-bayagi-logaritma"
+      },
+      {
+        "n": 38,
+        "en": "Logarithmic Equations & Inequalities",
+        "tr": "Logaritmik Denklemler ve Eşitsizlikler",
+        "slug": "logaritmik-denklemler-ve-esitsizlikler"
+      },
+      {
+        "n": 39,
+        "en": "Applications: Sound (dB), pH, Growth Models",
+        "tr": "Uygulamalar: Ses (dB), pH, Büyüme Modelleri",
+        "slug": "logaritma-uygulamalari"
+      },
+      {
+        "n": 40,
+        "en": "Function Definition & Notation",
+        "tr": "Fonksiyon Tanımı ve Gösterimi",
+        "slug": "fonksiyon-tanimi-ve-gosterimi"
+      },
+      {
+        "n": 41,
+        "en": "Function Types",
+        "tr": "Fonksiyon Çeşitleri",
+        "slug": "fonksiyon-cesitleri"
+      },
+      {
+        "n": 42,
+        "en": "Graphs & Transformations",
+        "tr": "Grafikler ve Dönüşümler",
+        "slug": "fonksiyon-grafikleri-ve-donusumler"
+      },
+      {
+        "n": 43,
+        "en": "Composite Functions",
+        "tr": "Bileşke Fonksiyonlar",
+        "slug": "bileske-fonksiyonlar"
+      },
+      {
+        "n": 44,
+        "en": "Inverse Functions",
+        "tr": "Ters Fonksiyonlar",
+        "slug": "ters-fonksiyonlar"
+      },
+      {
+        "n": 45,
+        "en": "Piecewise Functions",
+        "tr": "Parçalı Fonksiyonlar",
+        "slug": "parcali-fonksiyonlar"
+      },
+      {
+        "n": 46,
+        "en": "Special Functions (Abs, Floor, Sign)",
+        "tr": "Özel Fonksiyonlar (Mutlak Değer, Tam Değer, İşaret)",
+        "slug": "ozel-fonksiyonlar"
+      },
+      {
+        "n": 47,
+        "en": "Polynomial Definition & Degree",
+        "tr": "Polinom Tanımı ve Derecesi",
+        "slug": "polinom-tanimi-ve-derecesi"
+      },
+      {
+        "n": 48,
+        "en": "Polynomial Operations",
+        "tr": "Polinomlarda İşlemler",
+        "slug": "polinomlarda-islemler"
+      },
+      {
+        "n": 49,
+        "en": "Division Algorithm & Remainder Theorem",
+        "tr": "Bölme Algoritması ve Kalan Teoremi",
+        "slug": "bolme-algoritmasi-ve-kalan-teoremi"
+      },
+      {
+        "n": 50,
+        "en": "Factoring Techniques",
+        "tr": "Çarpanlara Ayırma Teknikleri",
+        "slug": "carpanlara-ayirma-teknikleri"
+      },
+      {
+        "n": 51,
+        "en": "Identities & Binomial Expansion",
+        "tr": "Özdeşlikler ve Binom Açılımı",
+        "slug": "ozdeslikler-ve-binom-acilimi"
+      },
+      {
+        "n": 52,
+        "en": "Linear Equations & Inequalities",
+        "tr": "Birinci Derece Denklemler ve Eşitsizlikler",
+        "slug": "birinci-derece-denklem-ve-esitsizlik"
+      },
+      {
+        "n": 53,
+        "en": "Systems of Linear Equations",
+        "tr": "Doğrusal Denklem Sistemleri",
+        "slug": "dogrusal-denklem-sistemleri"
+      },
+      {
+        "n": 54,
+        "en": "Quadratic Equations — Formula",
+        "tr": "İkinci Derece Denklemler — Formül",
+        "slug": "ikinci-derece-denklemler"
+      },
+      {
+        "n": 55,
+        "en": "Quadratic Roots & Vieta",
+        "tr": "İkinci Derece Kökler ve Vieta",
+        "slug": "ikinci-derece-kokler-ve-vieta"
+      },
+      {
+        "n": 56,
+        "en": "Quadratic Inequalities & Parabola",
+        "tr": "İkinci Derece Eşitsizlikler ve Parabol",
+        "slug": "ikinci-derece-esitsizlikler-ve-parabol"
+      },
+      {
+        "n": 57,
+        "en": "Higher-Degree Equations",
+        "tr": "Yüksek Dereceli Denklemler",
+        "slug": "yuksek-dereceli-denklemler"
+      },
+      {
+        "n": 58,
+        "en": "Radical & Exponential Equations",
+        "tr": "Köklü ve Üstel Denklemler",
+        "slug": "koklu-ve-ustel-denklemler"
+      },
+      {
+        "n": 59,
+        "en": "Absolute Value Equations",
+        "tr": "Mutlak Değerli Denklemler",
+        "slug": "mutlak-degerli-denklemler"
+      },
+      {
+        "n": 60,
+        "en": "Inequality Basics",
+        "tr": "Eşitsizlik Temelleri",
+        "slug": "esitsizlik-temelleri"
+      },
+      {
+        "n": 61,
+        "en": "Rational Inequalities",
+        "tr": "Rasyonel Eşitsizlikler",
+        "slug": "rasyonel-esitsizlikler"
+      },
+      {
+        "n": 62,
+        "en": "Absolute Value Inequalities",
+        "tr": "Mutlak Değerli Eşitsizlikler",
+        "slug": "mutlak-degerli-esitsizlikler"
+      },
+      {
+        "n": 63,
+        "en": "Arithmetic Sequences",
+        "tr": "Aritmetik Diziler",
+        "slug": "aritmetik-diziler"
+      },
+      {
+        "n": 64,
+        "en": "Geometric Sequences",
+        "tr": "Geometrik Diziler",
+        "slug": "geometrik-diziler"
+      },
+      {
+        "n": 65,
+        "en": "Sum Formulas (Σ)",
+        "tr": "Toplam Formülleri (Σ)",
+        "slug": "toplam-formulleri"
+      },
+      {
+        "n": 66,
+        "en": "Infinite Geometric Series",
+        "tr": "Sonsuz Geometrik Seriler",
+        "slug": "sonsuz-geometrik-seriler"
+      },
+      {
+        "n": 67,
+        "en": "Sequences: Limit, Monotonic, Bounded",
+        "tr": "Diziler: Limit, Monoton, Sınırlı",
+        "slug": "dizilerde-limit-monoton-sinirli"
+      },
+      {
+        "n": 68,
+        "en": "Complex Numbers: Introduction",
+        "tr": "Karmaşık Sayılar: Giriş",
+        "slug": "karmasik-sayilar-giris"
+      },
+      {
+        "n": 69,
+        "en": "Complex Arithmetic & Conjugate",
+        "tr": "Karmaşık Sayılarda İşlemler ve Eşlenik",
+        "slug": "karmasik-sayilarda-islemler-ve-eslenik"
+      },
+      {
+        "n": 70,
+        "en": "Modulus, Argument, Polar Form",
+        "tr": "Modül, Argüment, Kutupsal Biçim",
+        "slug": "modul-argument-kutupsal-bicim"
+      },
+      {
+        "n": 71,
+        "en": "De Moivre & Roots of Unity",
+        "tr": "De Moivre ve Birimin Kökleri",
+        "slug": "de-moivre-ve-birimin-kokleri"
+      },
+      {
+        "n": 72,
+        "en": "Matrix Definition & Operations",
+        "tr": "Matris Tanımı ve İşlemleri",
+        "slug": "matris-tanimi-ve-islemleri"
+      },
+      {
+        "n": 73,
+        "en": "Determinants (2×2, 3×3)",
+        "tr": "Determinantlar (2×2, 3×3)",
+        "slug": "determinantlar"
+      },
+      {
+        "n": 74,
+        "en": "Inverse Matrix & Linear Systems",
+        "tr": "Ters Matris ve Doğrusal Sistemler",
+        "slug": "ters-matris-ve-dogrusal-sistemler"
+      },
+      {
+        "n": 75,
+        "en": "Cramer's Rule",
+        "tr": "Cramer Kuralı",
+        "slug": "cramer-kurali"
+      },
+      {
+        "n": 76,
+        "en": "Coordinate Plane & Distance",
+        "tr": "Koordinat Düzlemi ve Uzaklık",
+        "slug": "koordinat-duzlemi-ve-uzaklik"
+      },
+      {
+        "n": 77,
+        "en": "Line Equation",
+        "tr": "Doğru Denklemi",
+        "slug": "dogru-denklemi"
+      },
+      {
+        "n": 78,
+        "en": "Angle Between Lines, Parallel & Perpendicular",
+        "tr": "Doğrular Arası Açı, Paralellik ve Diklik",
+        "slug": "dogrular-arasi-aci-paralellik-diklik"
+      },
+      {
+        "n": 79,
+        "en": "Circle Equation",
+        "tr": "Çember Denklemi",
+        "slug": "cember-denklemi"
+      },
+      {
+        "n": 80,
+        "en": "Conics: Ellipse",
+        "tr": "Konikler: Elips",
+        "slug": "konikler-elips"
+      },
+      {
+        "n": 81,
+        "en": "Conics: Parabola & Hyperbola",
+        "tr": "Konikler: Parabol ve Hiperbol",
+        "slug": "konikler-parabol-ve-hiperbol"
+      },
+      {
+        "n": 82,
+        "en": "Angles & Triangle Basics",
+        "tr": "Açılar ve Üçgen Temelleri",
+        "slug": "acilar-ve-ucgen-temelleri"
+      },
+      {
+        "n": 83,
+        "en": "Triangle Similarity",
+        "tr": "Üçgenlerde Benzerlik",
+        "slug": "ucgenlerde-benzerlik"
+      },
+      {
+        "n": 84,
+        "en": "Triangle Metric Relations",
+        "tr": "Üçgende Metrik Bağıntılar",
+        "slug": "ucgende-metrik-bagintilar"
+      },
+      {
+        "n": 85,
+        "en": "Pythagorean Generalization (Law of Cosines)",
+        "tr": "Pisagor Genellemesi (Kosinüs Teoremi)",
+        "slug": "pisagor-genellemesi"
+      },
+      {
+        "n": 86,
+        "en": "Quadrilaterals",
+        "tr": "Dörtgenler",
+        "slug": "dortgenler"
+      },
+      {
+        "n": 87,
+        "en": "Inscribed Angles in Circles",
+        "tr": "Çemberde Çevre Açılar",
+        "slug": "cemberde-cevre-acilar"
+      },
+      {
+        "n": 88,
+        "en": "Perimeter & Area",
+        "tr": "Çevre ve Alan",
+        "slug": "cevre-ve-alan"
+      },
+      {
+        "n": 89,
+        "en": "Solid Geometry: Prisms",
+        "tr": "Katı Cisimler: Prizmalar",
+        "slug": "kati-cisimler-prizmalar"
+      },
+      {
+        "n": 90,
+        "en": "Cylinder, Cone, Sphere",
+        "tr": "Silindir, Koni, Küre",
+        "slug": "silindir-koni-kure"
+      },
+      {
+        "n": 91,
+        "en": "Vectors (Geometric)",
+        "tr": "Vektörler (Geometrik)",
+        "slug": "vektorler-geometrik"
+      },
+      {
+        "n": 92,
+        "en": "Transformations (Translation, Rotation, Reflection)",
+        "tr": "Dönüşümler (Öteleme, Döndürme, Yansıma)",
+        "slug": "geometrik-donusumler"
+      },
+      {
+        "n": 93,
+        "en": "Locus & Geometric Construction",
+        "tr": "Geometrik Yer ve Çizim",
+        "slug": "geometrik-yer-ve-cizim"
+      },
+      {
+        "n": 94,
+        "en": "Probability Basics",
+        "tr": "Olasılık Temelleri",
+        "slug": "olasilik-temelleri"
+      },
+      {
+        "n": 95,
+        "en": "Independent & Dependent Events",
+        "tr": "Bağımsız ve Bağımlı Olaylar",
+        "slug": "bagimsiz-ve-bagimli-olaylar"
+      },
+      {
+        "n": 96,
+        "en": "Conditional Probability",
+        "tr": "Koşullu Olasılık",
+        "slug": "kosullu-olasilik"
+      },
+      {
+        "n": 97,
+        "en": "Bayes' Theorem",
+        "tr": "Bayes Teoremi",
+        "slug": "bayes-teoremi"
+      },
+      {
+        "n": 98,
+        "en": "Permutations",
+        "tr": "Permütasyon",
+        "slug": "permutasyon"
+      },
+      {
+        "n": 99,
+        "en": "Combinations",
+        "tr": "Kombinasyon",
+        "slug": "kombinasyon"
+      },
+      {
+        "n": 100,
+        "en": "Binomial Distribution",
+        "tr": "Binom Dağılımı",
+        "slug": "binom-dagilimi"
+      },
+      {
+        "n": 101,
+        "en": "Expected Value & Variance",
+        "tr": "Beklenen Değer ve Varyans",
+        "slug": "beklenen-deger-ve-varyans"
+      },
+      {
+        "n": 102,
+        "en": "Statistics Basics: Mean, Median, Mode",
+        "tr": "İstatistik Temelleri: Ortalama, Medyan, Mod",
+        "slug": "istatistik-temelleri"
+      },
+      {
+        "n": 103,
+        "en": "Standard Deviation & Quartiles",
+        "tr": "Standart Sapma ve Çeyrekler",
+        "slug": "standart-sapma-ve-ceyrekler"
+      },
+      {
+        "n": 104,
+        "en": "Histograms & Frequency Distributions",
+        "tr": "Histogramlar ve Frekans Dağılımları",
+        "slug": "histogramlar-ve-frekans-dagilimlari"
+      },
+      {
+        "n": 105,
+        "en": "Normal Distribution (Preview)",
+        "tr": "Normal Dağılım (Önizleme)",
+        "slug": "normal-dagilim"
+      },
+      {
+        "n": 106,
+        "en": "Data Analysis & Visualization",
+        "tr": "Veri Analizi ve Görselleştirme",
+        "slug": "veri-analizi-ve-gorsellestirme"
+      },
+      {
+        "n": 107,
+        "en": "Hypothesis Testing (Preview)",
+        "tr": "Hipotez Testi (Önizleme)",
+        "slug": "hipotez-testi"
+      }
+    ],
+    "notes": "107 lessons (1.html-107.html); index.html is a JS redirect to lesson 1 and is excluded; no duplicate or draft lessons. Numbering is fully contiguous 1-107 with no gaps and follows a coherent topical curriculum (Trigonometry 1-10, Limits 11-16, Derivatives 17-26, Integrals 27-34, Exp/Log 35-39, Functions 40-46, Polynomials/Equations 47-62, Sequences/Series 63-67, Complex 68-71, Matrices 72-75, Analytic Geometry 76-81, Plane/Solid Geometry 82-93, Probability 94-101, Statistics 102-107) — no ordering issues. SOURCE TITLES ARE ENGLISH (html lang=en; <title> = 'EN Title — Math — Mikail Sarpkaya'); the tr hreflang points to the same English URL, so there is no separate Turkish page content. 'en' holds the verbatim page title; 'tr' is a translation; slugs are concise transliterated Turkish per the strict ruleset and are unique within this track. SLUG/TOPIC OVERLAP WITH 'ales' TRACK (which already has Turkish slugs): heavy conceptual overlap but this is a deeper YKS/AYT-style course vs ALES exam-prep, so slugs were kept track-local and only partially aligned to ALES wording. Direct topic equivalents include matematik 2 (temel-trigonometrik-oranlar) ~ ales/56 'Trigonometri Temel Oranlar'; 54 (ikinci-derece-denklemler) = ales/26; 63 (aritmetik-diziler)=ales/41; 64 (geometrik-diziler)=ales/42; 79 (cember-denklemi)~ales/52 'Çember ve Daire'; 86 (dortgenler) & 88 (cevre-ve-alan)~ales polygon/area; 98 (permutasyon)=ales/43; 99 (kombinasyon)=ales/44; 94 (olasilik-temelleri)~ales/45 'Olasılık'; 50 (carpanlara-ayirma-teknikleri)~ales/30; 38/logaritmik & 36 ~ales/32 'Logaritma'; turev cluster 17-26 ~ales/61 'Türev'; integral cluster 27-34 ~ales/62 'İntegral'; limit cluster 11-16 ~ales/60 'Limit ve Süreklilik'; 40-44 functions ~ales/31. NOTE the ales track also ships duplicate slug-named html files (e.g. dogal-sayilar.html alongside 1.html); matematik currently ships only numbered files, so this migration is what introduces its slugs. CONTENT GAPS vs ales: matematik has NO number-theory/arithmetic-problem lessons (doğal/tam/rasyonel sayılar, bölünebilme, EBOB-EKOK, oran-orantı, yüzde, faiz, hız/işçi/yaş/karışım word-problems, modüler aritmetik) that ales covers; conversely ales lacks matematik's vectors (91), conics (80-81), De Moivre (71), matrices/determinants (72-75), curve sketching (25) and the statistics block (100-107). Lessons 105 & 107 are explicitly marked '(Preview)' in their titles (early/preview content, not full lessons) — flagged though not true drafts."
+  }
+}

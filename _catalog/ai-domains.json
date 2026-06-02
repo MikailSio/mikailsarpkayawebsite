@@ -1,0 +1,107 @@
+{
+  "rl": {
+    "category": "ai",
+    "subfield": "rl",
+    "name_en": "Reinforcement Learning",
+    "name_tr": "Pekiştirmeli Öğrenme",
+    "lessons": [
+      { "n": 1, "en": "What is RL?", "tr": "RL Nedir?", "slug": "what-is-rl" },
+      { "n": 2, "en": "Markov Decision Processes", "tr": "Markov Karar Süreçleri", "slug": "markov-decision-processes" },
+      { "n": 3, "en": "Dynamic Programming", "tr": "Dinamik Programlama", "slug": "dynamic-programming" },
+      { "n": 4, "en": "Monte Carlo & TD Learning", "tr": "Monte Carlo & TD Öğrenme", "slug": "monte-carlo-td-learning" },
+      { "n": 5, "en": "Q-Learning", "tr": "Q-Öğrenme", "slug": "q-learning" },
+      { "n": 6, "en": "Deep Q-Networks (DQN)", "tr": "Derin Q-Ağları (DQN)", "slug": "deep-q-networks" },
+      { "n": 7, "en": "Policy Gradient & REINFORCE", "tr": "Policy Gradient & REINFORCE", "slug": "policy-gradient-reinforce" },
+      { "n": 8, "en": "Actor-Critic", "tr": "Actor-Critic", "slug": "actor-critic" },
+      { "n": 9, "en": "PPO", "tr": "PPO", "slug": "ppo" },
+      { "n": 10, "en": "RLHF for LLMs", "tr": "LLM'ler için RLHF", "slug": "rlhf-for-llms" },
+      { "n": 11, "en": "Multi-Armed Bandits", "tr": "Çok Kollu Haydutlar", "slug": "multi-armed-bandits" },
+      { "n": 12, "en": "Modern RL & Capstone", "tr": "Modern RL & Bitirme", "slug": "modern-rl-capstone" },
+      { "n": 13, "en": "Continuous Control & Multi-Agent RL", "tr": "", "slug": "continuous-control-multi-agent-rl" }
+    ],
+    "notes": "13 lesson files (1-13), numbering contiguous, kept in numeric order. DUPLICATE/DRAFT: lesson 13's hero <h1> and og still read 'Modern RL & Capstone' / data-tr 'Modern RL & Bitirme' (identical to lesson 12) while its <title> reads 'Continuous Control & Multi-Agent RL' — lesson 13 looks like an un-updated copy of lesson 12; EN taken from <title>, TR left empty because the only TR present is the wrong (lesson-12) string. COUNT MISMATCH: sidebar on lesson 1 says '12 Lessons' but lesson 13's own sidebar says '13 Lessons' — inconsistent lesson count across the track. Lesson 10 (RLHF) cross-lists with NLP/LLM tracks; lesson 11 (Multi-Armed Bandits) cross-lists with recsys/7 (Bandits for Recommendation). Slugs drop the (DQN) parenthetical and remove '&'."
+  },
+  "gnn": {
+    "category": "ai",
+    "subfield": "gnn",
+    "name_en": "Graph Neural Networks",
+    "name_tr": "Çizge Sinir Ağları",
+    "lessons": [
+      { "n": 1, "en": "Why Graphs? Node, Edge, Graph Tasks", "tr": "Neden Graflar? Düğüm, Kenar, Graf Görevleri", "slug": "why-graphs" },
+      { "n": 2, "en": "Classical Graph Algorithms", "tr": "Klasik Graf Algoritmaları", "slug": "classical-graph-algorithms" },
+      { "n": 3, "en": "Spectral & Diffusion on Graphs", "tr": "Graflarda Spektral & Difüzyon", "slug": "spectral-diffusion-graphs" },
+      { "n": 4, "en": "GCN — Graph Convolutional Networks", "tr": "GCN — Graf Konvolüsyon Ağları", "slug": "graph-convolutional-networks" },
+      { "n": 5, "en": "GAT — Graph Attention Networks", "tr": "GAT — Graf Dikkat Ağları", "slug": "graph-attention-networks" },
+      { "n": 6, "en": "PyTorch Geometric (PyG)", "tr": "PyTorch Geometric (PyG)", "slug": "pytorch-geometric" },
+      { "n": 7, "en": "Graph Tasks: Node / Link / Graph", "tr": "Graf Görevleri: Düğüm / Bağlantı / Graf", "slug": "graph-tasks-node-link" },
+      { "n": 8, "en": "Capstone — Knowledge Graph + Recommender", "tr": "Bitirme — Bilgi Grafı + Öneri Sistemi", "slug": "knowledge-graph-recommender" }
+    ],
+    "notes": "8 lessons (1-8), numbering contiguous, no ordering issues. CONTENT OVERLAP: lesson 1 'Why Graphs? Node, Edge, Graph Tasks' and lesson 7 'Graph Tasks: Node / Link / Graph' cover overlapping node/link/graph-task material — possible redundancy / merge candidate. Slugs: lesson 1 drops trailing enumeration to 'why-graphs'; lessons 4 & 5 drop the redundant 'GCN —'/'GAT —' acronym lead segment; lesson 6 drops '(PyG)'; lesson 8 drops 'Capstone —' and the '+'. Lesson 8 (Knowledge Graph + Recommender) cross-lists with the recsys track. name_tr taken from nav label 'Çizge Sinir Ağları'."
+  },
+  "timeseries": {
+    "category": "ai",
+    "subfield": "timeseries",
+    "name_en": "Time Series Forecasting",
+    "name_tr": "Zaman Serisi ML",
+    "lessons": [
+      { "n": 1, "en": "Why Time Series? Stationarity & Decomposition", "tr": "Neden Zaman Serisi? Durağanlık & Ayrıştırma", "slug": "why-time-series" },
+      { "n": 2, "en": "ARIMA & Exponential Smoothing", "tr": "ARIMA & Üstel Düzleştirme", "slug": "arima-exponential-smoothing" },
+      { "n": 3, "en": "Prophet & STL Decomposition", "tr": "Prophet & STL Ayrıştırma", "slug": "prophet-stl-decomposition" },
+      { "n": 4, "en": "Feature Engineering for TS", "tr": "TS için Özellik Mühendisliği", "slug": "feature-engineering-ts" },
+      { "n": 5, "en": "ML for Time Series", "tr": "Zaman Serisi için ML", "slug": "ml-for-time-series" },
+      { "n": 6, "en": "Deep Learning for TS", "tr": "TS için Derin Öğrenme", "slug": "deep-learning-ts" },
+      { "n": 7, "en": "N-BEATS & N-HITS", "tr": "N-BEATS & N-HITS", "slug": "n-beats-n-hits" },
+      { "n": 8, "en": "Transformers for TS", "tr": "TS için Transformer'lar", "slug": "transformers-ts" },
+      { "n": 9, "en": "Probabilistic Forecasting", "tr": "Olasılıksal Tahmin", "slug": "probabilistic-forecasting" },
+      { "n": 10, "en": "Capstone — Production Forecasting Pipeline", "tr": "Bitirme — Üretim Tahmin Pipeline'ı", "slug": "production-forecasting-pipeline" }
+    ],
+    "notes": "10 lessons (1-10), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs: lesson 1 drops trailing enumeration to 'why-time-series'; lesson 7 keeps the N-BEATS/N-HITS model names (numbers are part of model identifiers, hyphenated) and only drops '&'; lesson 10 drops 'Capstone —'. name_en uses the full <title> track name 'Time Series Forecasting'; name_tr uses nav label 'Zaman Serisi ML'. Cross-listing candidate: lesson 8 'Transformers for TS' with the transformers track."
+  },
+  "recsys": {
+    "category": "ai",
+    "subfield": "recsys",
+    "name_en": "Recommender Systems",
+    "name_tr": "Öneri Sistemleri",
+    "lessons": [
+      { "n": 1, "en": "Recommendation Fundamentals", "tr": "Öneri Temelleri", "slug": "recommendation-fundamentals" },
+      { "n": 2, "en": "Matrix Factorization (SVD, ALS)", "tr": "Matris Çarpanlarına Ayırma (SVD, ALS)", "slug": "matrix-factorization" },
+      { "n": 3, "en": "Implicit Feedback Models", "tr": "Örtük Geri Bildirim Modelleri", "slug": "implicit-feedback-models" },
+      { "n": 4, "en": "Two-Tower Models", "tr": "Two-Tower Modelleri", "slug": "two-tower-models" },
+      { "n": 5, "en": "Deep Recommenders (NCF, Wide & Deep)", "tr": "Derin Öneri (NCF, Wide & Deep)", "slug": "deep-recommenders" },
+      { "n": 6, "en": "Sequential Recommenders", "tr": "Sıralı Öneri Sistemleri", "slug": "sequential-recommenders" },
+      { "n": 7, "en": "Bandits for Recommendation", "tr": "Öneri için Bandit'ler", "slug": "bandits-for-recommendation" },
+      { "n": 8, "en": "Capstone — RAG-Powered Recommender", "tr": "Bitirme — RAG Destekli Öneri Sistemi", "slug": "rag-powered-recommender" }
+    ],
+    "notes": "8 lessons (1-8), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs drop the parentheticals on lessons 2 (SVD, ALS) and 5 (NCF, Wide & Deep) and the 'Capstone —' lead on lesson 8. Cross-listing candidates: lesson 7 'Bandits for Recommendation' overlaps rl/11 'Multi-Armed Bandits'; lesson 8 'RAG-Powered Recommender' overlaps gnn/8 (Knowledge Graph + Recommender) and the vectordb/RAG tracks."
+  },
+  "causal": {
+    "category": "ai",
+    "subfield": "causal",
+    "name_en": "Causal Inference for ML",
+    "name_tr": "Nedensel Çıkarım",
+    "lessons": [
+      { "n": 1, "en": "Why Causality? Beyond Correlation", "tr": "Neden Nedensellik? Korelasyonun Ötesi", "slug": "why-causality-beyond-correlation" },
+      { "n": 2, "en": "Causal Graphs & DAGs", "tr": "Nedensel Grafler & DAG'lar", "slug": "causal-graphs-dags" },
+      { "n": 3, "en": "do-Calculus & Identifiability", "tr": "do-Hesabı & Tanımlanabilirlik", "slug": "do-calculus-identifiability" },
+      { "n": 4, "en": "Treatment Effects & Counterfactuals", "tr": "Tedavi Etkileri & Karşı-Olgular", "slug": "treatment-effects-counterfactuals" },
+      { "n": 5, "en": "Causal ML Methods", "tr": "Nedensel ML Yöntemleri", "slug": "causal-ml-methods" },
+      { "n": 6, "en": "Capstone — Causal Inference for NLP Bias", "tr": "Bitirme — NLP Önyargısı için Nedensel Çıkarım", "slug": "causal-inference-nlp-bias" }
+    ],
+    "notes": "6 lessons (1-6), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs: lesson 2 drops the apostrophe in DAG's; lesson 6 drops 'Capstone —' and 'for' and trims to ~4 words. name_en uses full <title> track name 'Causal Inference for ML'; name_tr uses nav label 'Nedensel Çıkarım'. Cross-listing candidate: lesson 6 (Causal Inference for NLP Bias) overlaps the NLP and fairness tracks."
+  },
+  "bio": {
+    "category": "ai",
+    "subfield": "bio",
+    "name_en": "Bioinformatics & AlphaFold",
+    "name_tr": "Biyoinformatik ML",
+    "lessons": [
+      { "n": 1, "en": "Bioinformatics Fundamentals", "tr": "Biyoinformatik Temelleri", "slug": "bioinformatics-fundamentals" },
+      { "n": 2, "en": "Protein Structure Prediction", "tr": "Protein Yapı Tahmini", "slug": "protein-structure-prediction" },
+      { "n": 3, "en": "AlphaFold 2 & 3", "tr": "AlphaFold 2 & 3", "slug": "alphafold" },
+      { "n": 4, "en": "Protein Language Models (ESM, ProtBERT)", "tr": "Protein Dil Modelleri (ESM, ProtBERT)", "slug": "protein-language-models" },
+      { "n": 5, "en": "Genomics & Variant Calling", "tr": "Genomik & Varyant Çağırma", "slug": "genomics-variant-calling" },
+      { "n": 6, "en": "Capstone — Drug-Target Interaction Pipeline", "tr": "Bitirme — İlaç-Hedef Etkileşim Pipeline'ı", "slug": "drug-target-interaction-pipeline" }
+    ],
+    "notes": "6 lessons (1-6), numbering contiguous, no ordering issues. No duplicates or drafts detected. Slugs: lesson 3 'AlphaFold 2 & 3' reduced to 'alphafold' to satisfy the no-numbers rule; lesson 4 drops '(ESM, ProtBERT)'; lesson 6 drops 'Capstone —'. name_en uses full <title> track name 'Bioinformatics & AlphaFold'; name_tr uses nav label 'Biyoinformatik ML'. Cross-listing candidate: lesson 4 (Protein Language Models) overlaps transformers/LLM tracks."
+  }
+}

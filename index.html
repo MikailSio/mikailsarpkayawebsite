@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Mikail Sarpkaya – Electrical & Electronics Engineer, NLP & Sentiment Analysis Researcher, EEE M.Sc. at Osmaniye Korkut Ata University."/>
-  <meta name="keywords" content="Mikail Sarpkaya, AI, NLP, Sentiment Analysis, Deep Learning, Machine Learning, Electrical Electronics Engineer, Osmaniye Korkut Ata University"/>
+  <meta name="description" content="Mikail Sarpkaya – Electrical & Electronics Engineer, AI & NLP Researcher, EEE M.Sc. at Osmaniye Korkut Ata University."/>
+  <meta name="keywords" content="Mikail Sarpkaya, AI, NLP, Deep Learning, Machine Learning, Transformers, Electrical Electronics Engineer, Osmaniye Korkut Ata University"/>
   <meta name="author" content="Mikail Sarpkaya"/>
   <link rel="canonical" href="https://mikailsarpkaya.com/"/><link rel="alternate" hreflang="en" href="https://mikailsarpkaya.com/"><link rel="alternate" hreflang="tr" href="https://mikailsarpkaya.com/"><link rel="alternate" hreflang="x-default" href="https://mikailsarpkaya.com/">
   <!-- Open Graph -->
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Mikail Sarpkaya"/><meta property="og:image" content="https://mikailsarpkaya.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://mikailsarpkaya.com/og-image.png">
   <meta property="og:locale" content="en_US"/>
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Mikail Sarpkaya — AI & NLP Researcher"/>
   <meta name="twitter:description" content="Electrical & Electronics Engineer, AI & NLP Researcher, EEE M.Sc."/>
   <title>Mikail Sarpkaya — AI & NLP Researcher</title>
@@ -23,8 +23,8 @@
   <link rel="manifest" href="assets/favicon/site.webmanifest"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="site.css?v=20"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="site.css?v=v2-037"/>
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -43,101 +43,85 @@
 <body>
 <div id="loader"><div class="loader-name"><span>MIKAIL</span><span>SARPKAYA</span></div><div class="loader-bar-wrap"><div class="loader-bar"></div></div><div class="loader-sub">AI &amp; NLP Researcher</div></div>
 <nav id="nav">
-  <a href="index" class="nav-logo">MS</a>
+  <a href="/" class="nav-logo">MS</a>
   <ul class="nav-links">
     <li><a href="#about" data-i18n="nav.about">About</a></li>
     <li><a href="projects" data-i18n="nav.projects">Projects</a></li>
     <li><a href="certificates" data-i18n="nav.certificates">Certificates</a></li>
     <li><a href="tutorials" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
-    <li class="lang-switch"><button class="lang-btn" onclick="setLang('tr')">TR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('es')">ES</button></li>
+    <li class="lang-switch"><button class="lang-btn" onclick="setLang('tr')" aria-label="Türkçe">TR</button><button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button><button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button><button class="lang-btn" onclick="setLang('es')" aria-label="Español">ES</button></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <a href="#about" onclick="toggleMobile()" data-i18n="nav.about">About</a>
   <a href="projects" onclick="toggleMobile()" data-i18n="nav.projects">Projects</a>
   <a href="certificates" onclick="toggleMobile()" data-i18n="nav.certificates">Certificates</a>
   <a href="tutorials" onclick="toggleMobile()" style="color:var(--gold)" data-i18n="nav.tutorials">Tutorials</a>
-  <div class="mobile-lang"><button class="lang-btn" onclick="setLang('tr')">TR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('es')">ES</button></div>
+  <div class="mobile-lang"><button class="lang-btn" onclick="setLang('tr')" aria-label="Türkçe">TR</button><button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button><button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button><button class="lang-btn" onclick="setLang('es')" aria-label="Español">ES</button></div>
 </div>
 
+<main id="main">
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-particles" id="particles"></div>
   <div class="hero-photo"><img src="assets/sunset.jpg" alt="Mikail Sarpkaya"></div>
   <div class="hero-content">
     <div class="hero-eyebrow" data-i18n="hero.eyebrow">Electrical &amp; Electronics Engineer — EEE M.Sc.</div>
     <h1 class="hero-title">
       <div class="word w1"><span class="word-inner">MIKAIL</span></div>
-      <div class="word w2"><span class="word-inner">SARPKAYA</span></div>
+      <div class="word w2"><span class="word-inner" data-cursor-track="0.4">SARPKAYA</span></div>
     </h1>
   </div>
   <div class="hero-footer">
-    <p class="hero-desc" data-i18n="hero.desc"><strong>AI &amp; NLP Researcher</strong> specializing in sentiment analysis on <em>IMDb reviews</em> using transformer and deep learning architectures.<br><br>EEE M.Sc. — Osmaniye Korkut Ata University<br>Dept. of Electrical &amp; Electronics Engineering</p>
+    <p class="hero-desc" data-i18n="hero.desc"><strong>I'm an AI &amp; NLP researcher</strong> — spending most of my time with deep learning and transformer architectures.<br><br>EEE M.Sc. (NLP focus) — Osmaniye Korkut Ata University<br><strong>TÜBİTAK 1001 Research Fellow</strong></p>
     <div class="hero-scroll"><div class="scroll-line"></div><span data-i18n-text="hero.scroll">Scroll to explore</span></div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- MARQUEE — identity ribbon -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span class="alt">AI &amp; NLP Research</span><span class="dot">·</span>
+    <span>Deep Learning</span><span class="dot">·</span>
+    <span class="alt">Transformer Architectures</span><span class="dot">·</span>
+    <span>Engineer · Researcher · Builder</span><span class="dot">·</span>
+    <span class="alt">Open to Collaboration</span><span class="dot">·</span>
+  </div>
+</div>
 
 <section id="about">
-  <svg class="about-bg-svg" viewBox="0 0 600 600" fill="none">
-    <line x1="300" y1="0" x2="300" y2="600" stroke="#4de8cc" stroke-width="0.5"/>
-    <line x1="0" y1="300" x2="600" y2="300" stroke="#c8a96e" stroke-width="0.5"/>
-    <circle cx="300" cy="300" r="90" stroke="#4de8cc" stroke-width="0.6"/>
-    <circle cx="300" cy="300" r="170" stroke="#c8a96e" stroke-width="0.35"/>
-    <circle cx="300" cy="300" r="260" stroke="#4de8cc" stroke-width="0.2"/>
-    <circle cx="300" cy="300" r="7" fill="#4de8cc" opacity="0.9"/>
-    <circle cx="300" cy="130" r="4" fill="#c8a96e" opacity="0.7"/><circle cx="470" cy="300" r="4" fill="#c8a96e" opacity="0.7"/>
-    <circle cx="300" cy="470" r="4" fill="#c8a96e" opacity="0.7"/><circle cx="130" cy="300" r="4" fill="#c8a96e" opacity="0.7"/>
-    <line x1="300" y1="130" x2="470" y2="300" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
-    <line x1="470" y1="300" x2="300" y2="470" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
-    <line x1="300" y1="470" x2="130" y2="300" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
-    <line x1="130" y1="300" x2="300" y2="130" stroke="#c8a96e" stroke-width="0.35" stroke-dasharray="5 5"/>
-    <circle cx="300" cy="300" r="90" stroke="#4de8cc" stroke-width="1.2" opacity="0"><animate attributeName="r" values="90;135;90" dur="3.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0;0.25" dur="3.5s" repeatCount="indefinite"/></circle>
-  </svg>
+  <aside class="about-aside">
+    <div class="section-num sr"><span data-i18n-text="about.eyebrow">Profile</span></div>
+    <h2 class="section-title sr"><span data-i18n-text="about.t1">About</span> <em data-i18n-text="about.t2">me</em></h2>
+  </aside>
   <div class="about-content">
-    <div class="section-eyebrow sr" data-i18n-text="about.eyebrow">Profile</div>
-    <h2 class="section-title sr"><span data-i18n-text="about.t1">ABOUT</span><br><span class="gold" data-i18n-text="about.t2">ME</span></h2>
-    <p class="body-text sr"><span data-i18n="about.p1">I hold a <strong>B.Sc. in Electrical &amp; Electronics Engineering</strong> from Osmaniye Korkut Ata University and I'm currently pursuing my <strong>M.Sc.</strong> at the same department. My thesis focuses on <strong>sentiment analysis of English IMDb reviews</strong> using deep learning and transformer architectures.</span></p>
-    <p class="body-text sr"><span data-i18n="about.p2">For my research I use <strong>PyTorch</strong> and <strong>HuggingFace Transformers</strong> for model training, <strong>Scikit-learn</strong> for classical ML, and <strong>Pandas / NumPy</strong> for data processing. I also have experience with <strong>C, C++, and C#</strong>.</span></p>
-    <p class="body-text sr"><span data-i18n="about.p3">Beyond research, I build and deploy web applications on a <strong>Linux VPS</strong> with Nginx &amp; Cloudflare — including <em>abctohero.com</em>, a cross-platform English learning app supporting 9 native languages. I also maintain a series of <strong>44 interactive AI/ML tutorials (442 lessons)</strong> on this site.</span></p>
+    <p class="body-text sr"><span data-i18n="about.p1">My academic journey started at Osmaniye Korkut Ata University with <strong>Electrical &amp; Electronics Engineering</strong>; now I'm continuing with my <strong>M.Sc.</strong> in the same department, focused on <strong>NLP</strong>. Next year I'm spending two semesters at <em>Tarragona / URV</em> on <strong>Erasmus</strong> — I'll be working on my M.Sc. thesis there while taking courses from their <strong>Computer Security Engineering and AI</strong> program. That's why I've been doubling down on math foundations and cybersecurity lately.</span></p>
+    <p class="body-text sr"><span data-i18n="about.p2">The tutorials and projects here — from Python basics to transformer architectures — are records I keep to lock down what I'm learning. <strong>I come back to them often</strong> — adding what I've newly learned and emerging technologies as they come, so my knowledge stays fresh. I learn by explaining; AI helps along the way.</span></p>
+    <p class="body-text sr"><span data-i18n="about.p3">I don't enjoy keeping things just in theory — building and sharing is the real fun. I run a few projects on a <strong>Linux VPS</strong> with Nginx &amp; Cloudflare; the one I care about most is <em>abctohero.com</em>, a platform I built to learn English while watching TV shows. From 60 series, I extracted <strong>130k+ raw words</strong> from the subtitles and filtered them down to a <strong>54k+ word pool</strong> — the important root words have their own etymology pages.<br><br>On the academic side, I'm a <strong>research scholarship holder</strong> in a <strong>TÜBİTAK 1001</strong> project led by my advisor <em>(area: machine learning for rehabilitation devices)</em>.</span></p>
     <div class="tech-grid sr">
-      <div class="tg-label">Languages</div><div class="tech-pill">Python</div><div class="tech-pill">C</div><div class="tech-pill">C++</div><div class="tech-pill">C#</div><div class="tech-pill">JavaScript</div>
-      <div class="tg-label">AI / ML</div><div class="tech-pill">PyTorch</div><div class="tech-pill">HuggingFace</div><div class="tech-pill">Scikit-learn</div><div class="tech-pill">NLP</div>
-      <div class="tg-label">Data</div><div class="tech-pill">Pandas</div><div class="tech-pill">NumPy</div>
-      <div class="tg-label">Web / DevOps</div><div class="tech-pill">HTML / CSS</div><div class="tech-pill">Linux / Nginx</div><div class="tech-pill">Git / GitHub</div>
+      <div class="tg-label">AI / ML</div>
+      <div class="tech-pills"><span class="tech-pill">PyTorch</span><span class="tech-pill">HuggingFace</span><span class="tech-pill">Transformers</span><span class="tech-pill">NLP</span></div>
+      <div class="tg-label">Code</div>
+      <div class="tech-pills"><span class="tech-pill">Python</span><span class="tech-pill">C / C++</span><span class="tech-pill">JavaScript</span></div>
+      <div class="tg-label">Web / Ops</div>
+      <div class="tech-pills"><span class="tech-pill">Linux VPS</span><span class="tech-pill">Nginx</span><span class="tech-pill">Cloudflare</span><span class="tech-pill">Git</span></div>
     </div>
+    <div class="about-quote sr" data-i18n="about.quote">"What I cannot create, I do not understand."<span class="quote-author">— Richard Feynman</span></div>
   </div>
-  <div class="about-quote sr" data-i18n="about.quote">"What I cannot create, I do not understand."<span class="quote-author">— Richard Feynman</span><br>"AI is the new electricity."<span class="quote-author">— Andrew Ng</span></div>
 </section>
 
 <div class="divider"></div>
 
-<!-- PROJECT 1 -->
-<div class="proj-scene">
-  <div class="proj-bg bg-1"></div>
-  <div class="proj-deco"><svg viewBox="0 0 500 600" fill="none"><circle cx="250" cy="300" r="200" stroke="#4de8cc" stroke-width="0.6"/><circle cx="250" cy="300" r="145" stroke="#4de8cc" stroke-width="0.5" stroke-dasharray="9 9"/><circle cx="250" cy="300" r="90" stroke="#4de8cc" stroke-width="0.9"/><circle cx="250" cy="300" r="14" fill="#4de8cc" opacity="0.9"/><line x1="250" y1="110" x2="250" y2="490" stroke="#4de8cc" stroke-width="0.4"/><line x1="60" y1="300" x2="440" y2="300" stroke="#4de8cc" stroke-width="0.4"/></svg></div>
+<!-- PROJECT 1 — minimal hook, full details on /projects -->
+<div class="proj-scene proj-scene-solo">
   <div class="proj-body">
-    <h3 class="proj-h sr">ABC TO<br><span class="c">HERO</span></h3>
-    <blockquote class="proj-pull cc sr" data-i18n="p1.pull">"A cross-platform English learning app supporting 9 native languages — structured, progressive, and built for real learners."</blockquote>
-    <p class="proj-p sr" data-i18n="p1.desc">A cross-platform English learning app supporting 9 native languages. Features a structured curriculum with vocabulary drills, grammar explanations, pronunciation guides, and interactive exercises. Available as a web app and mobile app (Android &amp; iOS), deployed on Linux VPS with Nginx &amp; Cloudflare.</p>
-    <div class="tag-row sr"><span class="tag-c">HTML / CSS / JS</span><span class="tag-c">9 Languages</span><span class="tag-c">Cross-Platform</span><span class="tag-c">Mobile App</span><span class="tag-c">Linux VPS</span><span class="tag-c">Nginx</span><span class="tag-c">Cloudflare</span></div>
-    <a href="https://abctohero.com" target="_blank" class="cta-btn sr"><span data-i18n-text="p1.cta">Visit abctohero.com</span> →</a>
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- PROJECT 2 -->
-<div class="proj-scene">
-  <div class="proj-bg bg-2"></div>
-  <div class="proj-deco"><svg viewBox="0 0 500 600" fill="none"><rect x="100" y="150" width="300" height="300" stroke="#c8a96e" stroke-width="0.6" transform="rotate(12 250 300)"/><rect x="125" y="175" width="250" height="250" stroke="#c8a96e" stroke-width="0.5" transform="rotate(28 250 300)"/><rect x="155" y="205" width="190" height="190" stroke="#c8a96e" stroke-width="0.4" transform="rotate(44 250 300)"/><circle cx="250" cy="300" r="7" fill="#c8a96e" opacity="0.85"/></svg></div>
-  <div class="proj-body">
-    <h3 class="proj-h sr">SENTIMENT<br><span class="g">ANALYSIS</span></h3>
-    <blockquote class="proj-pull sr" data-i18n="p2.pull">"Sentiment analysis on English IMDb movie reviews — comparing transformer and deep learning architectures for text classification."</blockquote>
-    <p class="proj-p sr" data-i18n="p2.desc">M.Sc. thesis research: sentiment analysis on English IMDb movie reviews using deep learning models. Comparing transformer architectures (BERT, RoBERTa) with recurrent models (LSTM, BiLSTM) for binary sentiment classification. EEE M.Sc. at Osmaniye Korkut Ata University.</p>
-    <div class="tag-row sr"><span class="tag-g">Python</span><span class="tag-g">PyTorch</span><span class="tag-g">HuggingFace</span><span class="tag-g">BERT</span><span class="tag-g">LSTM</span><span class="tag-g">Sentiment Analysis</span><span class="tag-g">NLP</span></div>
-    <a href="https://github.com/MikailSio" target="_blank" class="cta-btn sr" style="border-color:rgba(200,169,110,0.18)"><span data-i18n-text="p2.cta">GitHub</span> →</a>
+    <div class="proj-idx sr"><span>Featured Work</span></div>
+    <h3 class="proj-h sr">Abc <span class="c">to Hero</span></h3>
+    <blockquote class="proj-pull cc sr" data-i18n="p1.pull">"I wanted to learn English the way I actually watch shows — so I built it: scene by scene, from real episodes, with vocabulary straight from the screen."</blockquote>
+    <div class="proj-actions sr">
+      <a href="https://abctohero.com" target="_blank" class="cta-btn gold" data-magnetic="0.25"><span data-i18n-text="p1.cta">Visit abctohero.com</span><span>→</span></a>
+      <a href="projects" class="cta-btn" data-magnetic="0.25"><span data-i18n-text="p1.details">Project details</span><span>→</span></a>
+    </div>
   </div>
 </div>
 <div class="divider"></div>
@@ -145,56 +129,46 @@
 <!-- TUTORIALS SHOWCASE -->
 <section id="tutorials-showcase">
   <div class="tut-showcase-top">
-    <div class="section-eyebrow sr" data-i18n-text="tut.eyebrow">Learning Path</div>
-    <h2 class="section-title sr"><span data-i18n-text="tut.t1">TUTORIAL</span><br><span class="gold" data-i18n-text="tut.t2">SERIES</span></h2>
-    <p class="body-text sr" data-i18n="tut.intro">44 in-depth tutorials covering the full AI/ML learning path — from Python fundamentals to transformer architectures. Each tutorial features interactive code examples, visual explanations, and bilingual support (EN/TR).</p>
+    <div class="section-num sr"><span data-i18n-text="tut.eyebrow">Learning Path</span></div>
+    <h2 class="section-title sr"><span data-i18n-text="tut.t1">Tutorial</span> <em data-i18n-text="tut.t2">series</em></h2>
+    <p class="body-large sr" data-i18n="tut.intro">Personal notes I keep along the AI/ML learning path — from Python basics to transformer architectures. Records I write for myself and revise from time to time; if they help someone else too, that's a bonus. Currently in TR/EN.</p>
   </div>
-  <div class="tut-flow sr">
-    <!-- Fundamentals -->
-    <div class="tut-category">
-      <div class="tut-cat-label" data-i18n-text="tut.cat.base">Fundamentals</div>
-      <div class="tut-cat-grid">
-        <a href="tutorials/python/" class="tut-card"><span class="tut-card-icon">🐍</span><span class="tut-card-name">Python Core</span><span class="tut-card-level beginner" data-i18n-text="tut.lvl.beg">Beginner</span><span class="tut-card-desc" data-i18n-text="tut.d.python">Variables, loops, functions, OOP</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-        <a href="tutorials/numpy/" class="tut-card"><span class="tut-card-icon">🔢</span><span class="tut-card-name">NumPy</span><span class="tut-card-level beginner" data-i18n-text="tut.lvl.beg">Beginner</span><span class="tut-card-desc" data-i18n-text="tut.d.numpy">Arrays, indexing, broadcasting</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-        <a href="tutorials/pandas/" class="tut-card"><span class="tut-card-icon">🐼</span><span class="tut-card-name">Pandas</span><span class="tut-card-level beginner" data-i18n-text="tut.lvl.beg">Beginner</span><span class="tut-card-desc" data-i18n-text="tut.d.pandas">DataFrames, cleaning, groupby</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-      </div>
-    </div>
-    <div class="tut-flow-arrow"></div>
-    <!-- Mathematics -->
-    <div class="tut-category">
-      <div class="tut-cat-label" data-i18n-text="tut.cat.math">Mathematics</div>
-      <div class="tut-cat-grid">
-        <a href="tutorials/math/" class="tut-card"><span class="tut-card-icon">📐</span><span class="tut-card-name">Math for ML</span><span class="tut-card-level intermediate" data-i18n-text="tut.lvl.int">Intermediate</span><span class="tut-card-desc" data-i18n-text="tut.d.math">Vectors, matrices, eigen, probability</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-        <a href="tutorials/calculus/" class="tut-card"><span class="tut-card-icon">∫</span><span class="tut-card-name">Calculus</span><span class="tut-card-level intermediate" data-i18n-text="tut.lvl.int">Intermediate</span><span class="tut-card-desc" data-i18n-text="tut.d.calc">Derivatives, gradients, optimization</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-      </div>
-    </div>
-    <div class="tut-flow-arrow"></div>
-    <!-- ML / DL -->
-    <div class="tut-category">
-      <div class="tut-cat-label" data-i18n-text="tut.cat.ml">Machine Learning</div>
-      <div class="tut-cat-grid">
-        <a href="tutorials/ml-theory/" class="tut-card"><span class="tut-card-icon">🤖</span><span class="tut-card-name">ML Theory</span><span class="tut-card-level intermediate" data-i18n-text="tut.lvl.int">Intermediate</span><span class="tut-card-desc" data-i18n-text="tut.d.ml">Regression, trees, evaluation</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-        <a href="tutorials/deep/" class="tut-card"><span class="tut-card-icon">🧠</span><span class="tut-card-name">Deep Learning</span><span class="tut-card-level intermediate" data-i18n-text="tut.lvl.int">Intermediate</span><span class="tut-card-desc" data-i18n-text="tut.d.dl">Perceptrons, CNNs, PyTorch</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-      </div>
-    </div>
-    <div class="tut-flow-arrow"></div>
-    <!-- NLP -->
-    <div class="tut-category">
-      <div class="tut-cat-label" data-i18n-text="tut.cat.nlp">Natural Language Processing</div>
-      <div class="tut-cat-grid">
-        <a href="tutorials/nlp/1" class="tut-card"><span class="tut-card-icon">💬</span><span class="tut-card-name">NLP</span><span class="tut-card-level intermediate" data-i18n-text="tut.lvl.int">Intermediate</span><span class="tut-card-desc" data-i18n-text="tut.d.nlp">Preprocessing, embeddings, RNN, transformers</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">12 Lessons</span></span></a>
-        <a href="tutorials/huggingface/1" class="tut-card"><span class="tut-card-icon">🤗</span><span class="tut-card-name">HuggingFace</span><span class="tut-card-level advanced" data-i18n-text="tut.lvl.adv">Advanced</span><span class="tut-card-desc" data-i18n-text="tut.d.hf">Fine-tuning, deployment, LoRA</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-        <a href="tutorials/langchain/1" class="tut-card"><span class="tut-card-icon">⛓️</span><span class="tut-card-name">LangChain &amp; RAG</span><span class="tut-card-level advanced" data-i18n-text="tut.lvl.adv">Advanced</span><span class="tut-card-desc">RAG, agents, vector DB, evaluation</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">12 Lessons</span></span></a>
-      </div>
-    </div>
-    <div class="tut-flow-arrow"></div>
-    <!-- Systems -->
-    <div class="tut-category">
-      <div class="tut-cat-label" data-i18n-text="tut.cat.sys">Systems Programming</div>
-      <div class="tut-cat-grid">
-        <a href="tutorials/c/" class="tut-card"><span class="tut-card-icon">⚙️</span><span class="tut-card-name">C Language</span><span class="tut-card-level beginner" data-i18n-text="tut.lvl.beg">Beginner</span><span class="tut-card-desc" data-i18n-text="tut.d.c">Pointers, memory, structs</span><span class="tut-card-lessons"><span data-i18n-text="tut.lessons">6 Lessons</span></span></a>
-      </div>
-    </div>
+  <div class="tut-umbrella-grid sr">
+    <a href="tutorials/" class="tut-umbrella">
+      <span class="tut-um-icon">🤖</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.ai">AI / Machine Learning</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.ai.topics">ML · Deep Learning · NLP · Computer Vision · Audio · Multimodal · Transformers · RNN · GNN · Reinforcement Learning · Generative AI · Agents · RAG · Embeddings · Vector DBs · Time Series</p>
+    </a>
+    <a href="tutorials/" class="tut-umbrella">
+      <span class="tut-um-icon">📐</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.math">Mathematics</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.math.topics">Linear Algebra · Calculus · Probability · Statistics · Discrete Math · Differential Equations · Fourier Analysis · Complex Analysis</p>
+    </a>
+    <a href="tutorials/" class="tut-umbrella">
+      <span class="tut-um-icon">💻</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.lang">Programming Languages</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.lang.topics">Python · C · C++ · JavaScript · SQL · LaTeX</p>
+    </a>
+    <a href="tutorials/" class="tut-umbrella">
+      <span class="tut-um-icon">🛠️</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.tools">Tools &amp; Libraries</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.tools.topics">PyTorch · NumPy · Pandas · sklearn · Matplotlib · HuggingFace · LangChain · Git · GPU Programming</p>
+    </a>
+    <a href="tutorials/" class="tut-umbrella">
+      <span class="tut-um-icon">⚙️</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.sys">Systems &amp; DevOps</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.sys.topics">MLOps · Docker · Nginx · Linux VPS · Cloudflare · Edge Computing · IoT</p>
+    </a>
+    <a href="tutorials/" class="tut-umbrella">
+      <span class="tut-um-icon">🔒</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.sec">Security &amp; Ethics</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.sec.topics">Network Security · ML Security · Cryptography · Privacy-Preserving ML · Fairness · AI Safety · AI Compliance · Digital Forensics</p>
+    </a>
+    <a href="tutorials/ales/dogal-sayilar" class="tut-umbrella">
+      <span class="tut-um-icon">🎓</span>
+      <h3 class="tut-um-title" data-i18n-text="tut.um.ales">ALES Exam Prep</h3>
+      <p class="tut-um-topics" data-i18n="tut.um.ales.topics">62 lessons — Numbers · Algebra · Geometry · Functions · Calculus · Statistics · Exam Strategies</p>
+    </a>
   </div>
   <div style="text-align:center;margin-top:2.5rem;">
     <a href="tutorials" class="cta-btn sr"><span data-i18n-text="tut.cta">Browse All Tutorials</span> →</a>
@@ -203,35 +177,24 @@
 <div class="divider"></div>
 
 <section id="contact">
-  <div class="contact-ghost" data-i18n-text="con.ghost">CONNECT</div>
-  <div class="contact-eyebrow sr" data-i18n-text="con.eyebrow">Get In Touch</div>
-  <h2 class="contact-h sr"><span data-i18n-text="con.t1">LET'S</span><br><span class="outline" data-i18n-text="con.t2">TALK</span></h2>
+  <div class="contact-ghost" data-i18n-text="con.ghost">Connect</div>
+  <div class="contact-eyebrow sr"><span data-i18n-text="con.eyebrow">Get In Touch</span></div>
+  <h2 class="contact-h sr"><span data-i18n-text="con.t1">Let's</span> <span class="outline" data-i18n-text="con.t2">talk</span></h2>
   <p class="contact-sub sr" data-i18n="con.sub">Open to research collaborations, academic discussions,<br>freelance projects, and interesting engineering challenges.</p>
   <div class="contact-row sr">
-    <a href="/cdn-cgi/l/email-protection#066b6f6d676f6a756774766d677f67363f46616b676f6a2865696b" class="c-btn primary" data-i18n-text="con.email">Email Me</a>
-    <a href="https://www.linkedin.com/in/mikailsarpkaya/" target="_blank" class="c-btn">LinkedIn</a>
-    <a href="https://github.com/MikailSio" target="_blank" class="c-btn">GitHub</a>
-    <a href="https://www.kaggle.com/mikailsarpkaya" target="_blank" class="c-btn">Kaggle</a>
-    <a href="cv/index" class="c-btn" data-i18n-text="con.cv">View CV</a>
+    <a href="/cdn-cgi/l/email-protection#066b6f6d676f6a756774766d677f67363f46616b676f6a2865696b" class="c-btn primary" data-magnetic="0.25" data-i18n-text="con.email">Email Me</a>
+    <a href="https://www.linkedin.com/in/mikailsarpkaya/" target="_blank" class="c-btn" data-magnetic="0.2">LinkedIn</a>
+    <a href="https://github.com/MikailSio" target="_blank" class="c-btn" data-magnetic="0.2">GitHub</a>
+    <a href="https://www.kaggle.com/mikailsarpkaya" target="_blank" class="c-btn" data-magnetic="0.2">Kaggle</a>
+    <a href="/cv/" class="c-btn" data-magnetic="0.2" data-i18n-text="con.cv">View CV</a>
   </div>
 </section>
+</main>
 
 <footer><div class="f-copy" data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</div><div class="f-site">mikailsarpkaya<span>.com</span></div></footer>
 
-<script src="i18n.js?v=5"></script>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1900));
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
-function toggleMobile(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');}
-const pc=document.getElementById('particles');
-for(let i=0;i<45;i++){const p=document.createElement('div');p.className='particle';const sz=Math.random()*2.5+0.8;p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${80+Math.random()*20}%;--dx:${(Math.random()-0.5)*180}px;animation-duration:${Math.random()*9+7}s;animation-delay:${Math.random()*9}s;`;pc.appendChild(p);}
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.1});
-document.querySelectorAll('.sr').forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.09+'s';obs.observe(el);});
-window.addEventListener('scroll',()=>{
-  const links=document.querySelectorAll('.sb-link');
-  // no sidebar on index
-});
-</script>
+<script src="i18n.js?v=v2-037"></script>
+<script src="script-v2.js?v=v2-037"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>

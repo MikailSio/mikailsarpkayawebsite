@@ -1,0 +1,57 @@
+{
+  "mlops": {
+    "category": "ai",
+    "subfield": "mlops",
+    "name_en": "MLOps & Deployment",
+    "name_tr": "MLOps & Konuşlandırma",
+    "lessons": [
+      { "n": 1, "en": "What is MLOps?", "tr": "MLOps Nedir?", "slug": "what-is-mlops" },
+      { "n": 2, "en": "Reproducibility", "tr": "Tekrarlanabilirlik", "slug": "reproducibility" },
+      { "n": 3, "en": "Experiment Tracking", "tr": "Deney Takibi", "slug": "experiment-tracking" },
+      { "n": 4, "en": "Model Packaging", "tr": "Model Paketleme", "slug": "model-packaging" },
+      { "n": 5, "en": "Containerization (Docker)", "tr": "Konteynerleştirme", "slug": "containerization-docker" },
+      { "n": 6, "en": "Model Serving", "tr": "Model Serving", "slug": "model-serving" },
+      { "n": 7, "en": "Cloud Deployment", "tr": "Bulut Konuşlandırma", "slug": "cloud-deployment" },
+      { "n": 8, "en": "CI/CD for ML", "tr": "ML için CI/CD", "slug": "ci-cd-for-ml" },
+      { "n": 9, "en": "Monitoring & Drift", "tr": "İzleme & Drift", "slug": "monitoring-drift" },
+      { "n": 10, "en": "Scaling: Batch, Stream, Edge", "tr": "Ölçekleme", "slug": "scaling-batch-stream-edge" },
+      { "n": 11, "en": "LLM Ops", "tr": "LLM Operasyonları", "slug": "llm-ops" },
+      { "n": 12, "en": "End-to-End Capstone", "tr": "Uçtan Uca Bitirme", "slug": "end-to-end-capstone" }
+    ],
+    "notes": "12 lessons, clean numeric order 1-12. Has index.html redirect to lesson 1. No duplicates or drafts. TR title for lesson 6 (Model Serving) left untranslated in source; lesson 10 TR is shortened to just 'Ölçekleme'. Cross-listing: lesson 5 (Containerization/Docker), lesson 8 (CI/CD), and lesson 11 (LLM Ops) are candidate Tools cross-listings. Lesson 10 overlaps the 'edge' track (Edge scaling) — possible cross-link."
+  },
+  "edge": {
+    "category": "ai",
+    "subfield": "edge",
+    "name_en": "Edge ML & On-Device",
+    "name_tr": "Edge ML & Cihaz-Üstü",
+    "lessons": [
+      { "n": 1, "en": "Why Edge? Latency, Privacy, Cost", "tr": "Neden Edge? Gecikme, Gizlilik, Maliyet", "slug": "why-edge" },
+      { "n": 2, "en": "Quantization Deep Dive", "tr": "Quantization Detaylı İnceleme", "slug": "quantization-deep-dive" },
+      { "n": 3, "en": "Pruning & Distillation", "tr": "Budama & Damıtma", "slug": "pruning-distillation" },
+      { "n": 4, "en": "GGUF & llama.cpp", "tr": "GGUF & llama.cpp", "slug": "gguf-llama-cpp" },
+      { "n": 5, "en": "ONNX & Model Formats", "tr": "ONNX & Model Formatları", "slug": "onnx-model-formats" },
+      { "n": 6, "en": "Mobile Deployment (iOS, Android)", "tr": "Mobil Dağıtım (iOS, Android)", "slug": "mobile-deployment" },
+      { "n": 7, "en": "Browser ML (WebGPU, ONNX-Web, Transformers.js)", "tr": "Tarayıcı ML (WebGPU, ONNX-Web, Transformers.js)", "slug": "browser-ml" },
+      { "n": 8, "en": "Capstone — On-Device LLM Voice Assistant", "tr": "Bitirme — Cihaz-Üstü LLM Ses Asistanı", "slug": "capstone-voice-assistant" }
+    ],
+    "notes": "8 lessons, clean numeric order 1-8. No index.html in folder (mlops has one; edge/gpu do not — content gap for the redirect stub). No duplicates or drafts. Slugs truncated to <=4 words: 'why-edge' (dropped Latency/Privacy/Cost), 'mobile-deployment' and 'browser-ml' (dropped parenthetical platform lists). Cross-listing: lesson 4 (GGUF & llama.cpp), 5 (ONNX), 6 (Mobile), 7 (Browser/WebGPU/Transformers.js) are strong Tools cross-listing candidates. Lesson 7 (WebGPU) and lesson 2 (Quantization) overlap the 'gpu' track."
+  },
+  "gpu": {
+    "category": "ai",
+    "subfield": "gpu",
+    "name_en": "GPU & CUDA Programming",
+    "name_tr": "GPU & CUDA Programlama",
+    "lessons": [
+      { "n": 1, "en": "GPU Architecture Fundamentals", "tr": "GPU Mimarisi Temelleri", "slug": "gpu-architecture-fundamentals" },
+      { "n": 2, "en": "CUDA C/C++ Basics", "tr": "CUDA C/C++ Temelleri", "slug": "cuda-c-cpp-basics" },
+      { "n": 3, "en": "Memory Optimization", "tr": "Bellek Optimizasyonu", "slug": "memory-optimization" },
+      { "n": 4, "en": "Numba & CuPy", "tr": "Numba & CuPy", "slug": "numba-cupy" },
+      { "n": 5, "en": "Triton — Python DSL for GPU Kernels", "tr": "Triton — GPU Kernel'ları için Python DSL", "slug": "triton-gpu-kernels" },
+      { "n": 6, "en": "FlashAttention & Attention Kernels", "tr": "FlashAttention & Attention Kernel'ları", "slug": "flashattention-attention-kernels" },
+      { "n": 7, "en": "Multi-GPU & Distributed Training", "tr": "Çoklu-GPU & Dağıtık Eğitim", "slug": "multi-gpu-distributed-training" },
+      { "n": 8, "en": "Capstone — Optimized Inference Server", "tr": "Bitirme — Optimize Çıkarım Sunucusu", "slug": "capstone-inference-server" }
+    ],
+    "notes": "8 lessons, clean numeric order 1-8. No index.html in folder (content gap for redirect stub). No duplicates or drafts. Slugs: 'cuda-c-cpp-basics' (C/C++ -> c-cpp), 'triton-gpu-kernels' truncated to <=4 words. Cross-listing: whole track is a strong Tools cross-listing candidate (CUDA, Numba, CuPy, Triton, FlashAttention are named tools/libraries). Lesson 7 (Multi-GPU & Distributed Training) overlaps mlops scaling. Lesson 5 (Triton) and lesson 6 (FlashAttention) overlap edge browser/WebGPU and serving topics."
+  }
+}

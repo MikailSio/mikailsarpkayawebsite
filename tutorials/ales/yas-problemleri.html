@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Yaş Problemleri — ALES Sayısal — Mikail Sarpkaya</title>
+<meta name="description" content="ALES Sayısal Ders 33: Yaş Problemleri. Detaylı çözümlü ALES tipi sorular, alt konulara göre örnekler, hız çözüm taktikleri.">
+<meta name="author" content="Mikail Sarpkaya">
+<link rel="canonical" href="https://mikailsarpkaya.com/tutorials/ales/yas-problemleri"><link rel="alternate" hreflang="en" href="https://mikailsarpkaya.com/tutorials/ales/yas-problemleri"><link rel="alternate" hreflang="tr" href="https://mikailsarpkaya.com/tutorials/ales/yas-problemleri"><link rel="alternate" hreflang="x-default" href="https://mikailsarpkaya.com/tutorials/ales/yas-problemleri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yaş Problemleri — ALES Sayısal">
+<meta property="og:description" content="ALES Sayısal hazırlık dersi: Yaş Problemleri.">
+<meta property="og:url" content="https://mikailsarpkaya.com/tutorials/ales/yas-problemleri">
+<meta property="og:site_name" content="Mikail Sarpkaya"><meta property="og:image" content="https://mikailsarpkaya.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://mikailsarpkaya.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.querySelector('#ales-content'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Yaş Problemleri",
+  "description": "ALES Sayısal Ders 33: Yaş Problemleri",
+  "url": "https://mikailsarpkaya.com/tutorials/ales/yas-problemleri",
+  "inLanguage": "tr",
+  "learningResourceType": "Tutorial",
+  "educationalUse": "exam preparation",
+  "isPartOf": {"@type": "Course", "name": "ALES Sayısal", "url": "https://mikailsarpkaya.com/tutorials/ales/"},
+  "author": {"@type": "Person", "name": "Mikail Sarpkaya", "url": "https://mikailsarpkaya.com/"}
+}
+</script>
+</head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="ales-nav">
+  <div style="display:flex;align-items:center;gap:1rem">
+    <button class="ales-sb-toggle" aria-label="Menüyü aç" onclick="document.querySelector('.ales-shell').classList.toggle('sidebar-open')">☰</button>
+    <a href="/tutorials/ales/" class="ales-nav-logo">
+      <span>ALES</span>
+      <span class="badge">SAYISAL</span>
+    </a>
+  </div>
+  <div class="ales-nav-actions">
+    <a href="/tutorials/" class="ales-nav-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span>Tüm Dersler</span>
+    </a>
+    <button class="ales-nav-btn" id="alesThemeTog" aria-label="Tema değiştir" title="Tema">
+      <svg id="alesIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="alesIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="ales-shell">
+  <aside class="ales-sidebar" aria-label="ALES dersleri">
+    <div class="ales-sb-head">
+      <div class="ales-sb-eyebrow">Aktif Eğitim</div>
+      <div class="ales-sb-title">ALES Sayısal</div>
+      <div class="ales-sb-meta">62 ders · sınav odaklı</div>
+    </div>
+    <div class="ales-sb-group">
+      <div class="ales-sb-group-label">Sayılar</div>
+      <a href="/tutorials/ales/dogal-sayilar" class="ales-sb-link"><span class="num">L01</span><span class="lbl">Doğal Sayılar (ℕ)</span></a>
+      <a href="/tutorials/ales/tam-sayilar-ve-sayi-dogrusu" class="ales-sb-link"><span class="num">L02</span><span class="lbl">Tam Sayılar (ℤ) ve Sayı Doğrusu</span></a>
+      <a href="/tutorials/ales/rasyonel-sayilar" class="ales-sb-link"><span class="num">L03</span><span class="lbl">Rasyonel Sayılar (ℚ)</span></a>
+      <a href="/tutorials/ales/irrasyonel-ve-reel-sayilar" class="ales-sb-link"><span class="num">L04</span><span class="lbl">İrrasyonel ve Reel Sayılar (ℝ)</span></a>
+      <a href="/tutorials/ales/basamak-degeri-ve-cozumleme" class="ales-sb-link"><span class="num">L05</span><span class="lbl">Basamak Değeri ve Çözümleme</span></a>
+      <a href="/tutorials/ales/mutlak-deger" class="ales-sb-link"><span class="num">L06</span><span class="lbl">Mutlak Değer</span></a>
+      <a href="/tutorials/ales/bolunebilme-kurallari" class="ales-sb-link"><span class="num">L07</span><span class="lbl">Bölünebilme Kuralları</span></a>
+      <a href="/tutorials/ales/asal-sayilar-ve-asal-carpanlara-ayirma" class="ales-sb-link"><span class="num">L08</span><span class="lbl">Asal Sayılar ve Asal Çarpanlara Ayırma</span></a>
+      <a href="/tutorials/ales/ebob-ve-ekok" class="ales-sb-link"><span class="num">L09</span><span class="lbl">EBOB ve EKOK</span></a>
+      <a href="/tutorials/ales/moduler-aritmetik-ve-kalan-problemleri" class="ales-sb-link"><span class="num">L10</span><span class="lbl">Modüler Aritmetik ve Kalan Problemleri</span></a>
+      <div class="ales-sb-group-label">Üslü-Köklü</div>
+      <a href="/tutorials/ales/uslu-sayilar-tanim-ve-temel-kurallar" class="ales-sb-link"><span class="num">L11</span><span class="lbl">Üslü Sayılar — Tanım ve Temel Kurallar</span></a>
+      <a href="/tutorials/ales/uslu-sayilar-negatif-ve-sifir-us" class="ales-sb-link"><span class="num">L12</span><span class="lbl">Üslü Sayılar — Negatif ve Sıfır Üs</span></a>
+      <a href="/tutorials/ales/uslu-sayilar-denklemler-ve-siralama" class="ales-sb-link"><span class="num">L13</span><span class="lbl">Üslü Sayılar — Denklemler ve Sıralama</span></a>
+      <a href="/tutorials/ales/koklu-sayilar-kare-kok" class="ales-sb-link"><span class="num">L14</span><span class="lbl">Köklü Sayılar — Kare Kök</span></a>
+      <a href="/tutorials/ales/koklu-sayilar-n-dereceden-kok" class="ales-sb-link"><span class="num">L15</span><span class="lbl">Köklü Sayılar — n. Dereceden Kök</span></a>
+      <a href="/tutorials/ales/koklu-sayilar-rasyonellestirme" class="ales-sb-link"><span class="num">L16</span><span class="lbl">Köklü Sayılar — Rasyonelleştirme</span></a>
+      <a href="/tutorials/ales/bilimsel-gosterim" class="ales-sb-link"><span class="num">L17</span><span class="lbl">Bilimsel Gösterim</span></a>
+      <div class="ales-sb-group-label">Oran-Yüzde</div>
+      <a href="/tutorials/ales/rasyonel-sayilarla-islemler-kesirler" class="ales-sb-link"><span class="num">L18</span><span class="lbl">Rasyonel Sayılarla İşlemler (Kesirler)</span></a>
+      <a href="/tutorials/ales/ondalik-sayilar-ve-devirli-acilim" class="ales-sb-link"><span class="num">L19</span><span class="lbl">Ondalık Sayılar ve Devirli Açılım</span></a>
+      <a href="/tutorials/ales/oran-ve-oranti" class="ales-sb-link"><span class="num">L20</span><span class="lbl">Oran ve Orantı</span></a>
+      <a href="/tutorials/ales/dogru-ve-ters-oranti" class="ales-sb-link"><span class="num">L21</span><span class="lbl">Doğru ve Ters Orantı</span></a>
+      <a href="/tutorials/ales/yuzde-hesabi" class="ales-sb-link"><span class="num">L22</span><span class="lbl">Yüzde Hesabı</span></a>
+      <a href="/tutorials/ales/faiz-basit-ve-bilesik" class="ales-sb-link"><span class="num">L23</span><span class="lbl">Faiz (Basit ve Bileşik)</span></a>
+      <a href="/tutorials/ales/kar-zarar-kdv-iskonto" class="ales-sb-link"><span class="num">L24</span><span class="lbl">Kar-Zarar, KDV, İskonto</span></a>
+      <div class="ales-sb-group-label">Cebir</div>
+      <a href="/tutorials/ales/birinci-derece-denklemler" class="ales-sb-link"><span class="num">L25</span><span class="lbl">Birinci Derece Denklemler</span></a>
+      <a href="/tutorials/ales/ikinci-derece-denklemler" class="ales-sb-link"><span class="num">L26</span><span class="lbl">İkinci Derece Denklemler</span></a>
+      <a href="/tutorials/ales/esitsizlikler" class="ales-sb-link"><span class="num">L27</span><span class="lbl">Eşitsizlikler</span></a>
+      <a href="/tutorials/ales/mutlak-degerli-denklem-ve-esitsizlik" class="ales-sb-link"><span class="num">L28</span><span class="lbl">Mutlak Değerli Denklem ve Eşitsizlik</span></a>
+      <a href="/tutorials/ales/polinomlar-tanim-derece-islemler" class="ales-sb-link"><span class="num">L29</span><span class="lbl">Polinomlar — Tanım, Derece, İşlemler</span></a>
+      <a href="/tutorials/ales/carpanlara-ayirma-ve-ozdeslikler" class="ales-sb-link"><span class="num">L30</span><span class="lbl">Çarpanlara Ayırma ve Özdeşlikler</span></a>
+      <a href="/tutorials/ales/fonksiyonlar-tanim-bileske-ters" class="ales-sb-link"><span class="num">L31</span><span class="lbl">Fonksiyonlar — Tanım, Bileşke, Ters</span></a>
+      <a href="/tutorials/ales/logaritma" class="ales-sb-link"><span class="num">L32</span><span class="lbl">Logaritma</span></a>
+      <div class="ales-sb-group-label">Sözel</div>
+      <a href="/tutorials/ales/yas-problemleri" class="ales-sb-link active"><span class="num">L33</span><span class="lbl">Yaş Problemleri</span></a>
+      <a href="/tutorials/ales/hiz-zaman-yol-problemleri" class="ales-sb-link"><span class="num">L34</span><span class="lbl">Hız-Zaman-Yol Problemleri</span></a>
+      <a href="/tutorials/ales/isci-is-problemleri" class="ales-sb-link"><span class="num">L35</span><span class="lbl">İşçi-İş Problemleri</span></a>
+      <a href="/tutorials/ales/havuz-problemleri" class="ales-sb-link"><span class="num">L36</span><span class="lbl">Havuz Problemleri</span></a>
+      <a href="/tutorials/ales/karisim-problemleri" class="ales-sb-link"><span class="num">L37</span><span class="lbl">Karışım Problemleri</span></a>
+      <a href="/tutorials/ales/para-problemleri" class="ales-sb-link"><span class="num">L38</span><span class="lbl">Para Problemleri</span></a>
+      <a href="/tutorials/ales/sayi-problemleri" class="ales-sb-link"><span class="num">L39</span><span class="lbl">Sayı Problemleri</span></a>
+      <a href="/tutorials/ales/ortalama-problemleri" class="ales-sb-link"><span class="num">L40</span><span class="lbl">Ortalama Problemleri</span></a>
+      <div class="ales-sb-group-label">Diziler & Sayma</div>
+      <a href="/tutorials/ales/aritmetik-diziler" class="ales-sb-link"><span class="num">L41</span><span class="lbl">Aritmetik Diziler</span></a>
+      <a href="/tutorials/ales/geometrik-diziler" class="ales-sb-link"><span class="num">L42</span><span class="lbl">Geometrik Diziler</span></a>
+      <a href="/tutorials/ales/permutasyon" class="ales-sb-link"><span class="num">L43</span><span class="lbl">Permütasyon</span></a>
+      <a href="/tutorials/ales/kombinasyon" class="ales-sb-link"><span class="num">L44</span><span class="lbl">Kombinasyon</span></a>
+      <a href="/tutorials/ales/olasilik" class="ales-sb-link"><span class="num">L45</span><span class="lbl">Olasılık</span></a>
+      <div class="ales-sb-group-label">Mantık-Küme</div>
+      <a href="/tutorials/ales/mantik-ve-onermeler" class="ales-sb-link"><span class="num">L46</span><span class="lbl">Mantık ve Önermeler</span></a>
+      <a href="/tutorials/ales/kumeler-ve-venn-semasi" class="ales-sb-link"><span class="num">L47</span><span class="lbl">Kümeler ve Venn Şeması</span></a>
+      <div class="ales-sb-group-label">Geometri</div>
+      <a href="/tutorials/ales/acilar-ve-dogrular" class="ales-sb-link"><span class="num">L48</span><span class="lbl">Açılar ve Doğrular</span></a>
+      <a href="/tutorials/ales/ucgenler-temel-ozellikler" class="ales-sb-link"><span class="num">L49</span><span class="lbl">Üçgenler — Temel Özellikler</span></a>
+      <a href="/tutorials/ales/pisagor-ve-ozel-ucgenler" class="ales-sb-link"><span class="num">L50</span><span class="lbl">Pisagor ve Özel Üçgenler</span></a>
+      <a href="/tutorials/ales/cokgenler" class="ales-sb-link"><span class="num">L51</span><span class="lbl">Çokgenler</span></a>
+      <a href="/tutorials/ales/cember-ve-daire" class="ales-sb-link"><span class="num">L52</span><span class="lbl">Çember ve Daire</span></a>
+      <a href="/tutorials/ales/kati-cisimler" class="ales-sb-link"><span class="num">L53</span><span class="lbl">Katı Cisimler</span></a>
+      <a href="/tutorials/ales/analitik-geometri-dogru" class="ales-sb-link"><span class="num">L54</span><span class="lbl">Analitik Geometri — Doğru</span></a>
+      <a href="/tutorials/ales/analitik-geometri-parabol" class="ales-sb-link"><span class="num">L55</span><span class="lbl">Analitik Geometri — Parabol</span></a>
+      <a href="/tutorials/ales/trigonometri-temel-oranlar" class="ales-sb-link"><span class="num">L56</span><span class="lbl">Trigonometri Temel Oranlar</span></a>
+      <div class="ales-sb-group-label">Strateji</div>
+      <a href="/tutorials/ales/tablo-ve-grafik-yorumu" class="ales-sb-link"><span class="num">L57</span><span class="lbl">Tablo ve Grafik Yorumu</span></a>
+      <a href="/tutorials/ales/ales-hiz-cozum-taktikleri" class="ales-sb-link"><span class="num">L58</span><span class="lbl">ALES Hız Çözüm Taktikleri</span></a>
+      <a href="/tutorials/ales/sinav-stratejisi-ve-zaman-yonetimi" class="ales-sb-link"><span class="num">L59</span><span class="lbl">Sınav Stratejisi ve Zaman Yönetimi</span></a>
+      <div class="ales-sb-group-label">Kalkülüs</div>
+      <a href="/tutorials/ales/limit-ve-sureklilik" class="ales-sb-link"><span class="num">L60</span><span class="lbl">Limit ve Süreklilik</span></a>
+      <a href="/tutorials/ales/turev" class="ales-sb-link"><span class="num">L61</span><span class="lbl">Türev</span></a>
+      <a href="/tutorials/ales/integral" class="ales-sb-link"><span class="num">L62</span><span class="lbl">İntegral</span></a>
+    </div>
+  </aside>
+
+  <main id="main" class="ales-main">
+    <header class="ales-header">
+      <div class="ales-eyebrow">
+        <span>ALES Sayısal</span>
+        <span class="dot"></span>
+        <span>Ders 33 / 62</span>
+      </div>
+      <h1 class="ales-h1">Yaş Problemleri</h1>
+    </header>
+
+    <div id="ales-content"></div>
+
+    <nav class="ales-lesson-nav">
+      <a href="/tutorials/ales/logaritma" class="ales-nav-link prev"><span class="arrow">← Önceki Ders</span><span class="ttl">Logaritma</span></a>
+      <a href="/tutorials/ales/hiz-zaman-yol-problemleri" class="ales-nav-link next"><span class="arrow">Sonraki Ders →</span><span class="ttl">Hız-Zaman-Yol Problemleri</span></a>
+    </nav>
+  </main>
+</div>
+
+<footer class="ales-footer">
+  © 2026 Mikail Sarpkaya · ALES Sayısal — Sınava Hazırlık Kursu
+</footer>
+
+<script src="L33.js?v=1"></script>
+<script>
+(function(){
+  var data = window.ALES_LESSON;
+  if (data && data.content) {
+    var el = document.getElementById('ales-content');
+    el.innerHTML = data.content;
+    // Re-execute any inline scripts inside content
+    el.querySelectorAll('script').forEach(function(o){
+      var s = document.createElement('script');
+      s.textContent = o.textContent;
+      o.parentNode.replaceChild(s, o);
+    });
+    // KaTeX render after content insertion
+    if (typeof renderMathInElement === 'function') {
+      renderMathInElement(el, {
+        delimiters:[
+          {left:'$$',right:'$$',display:true},
+          {left:'$',right:'$',display:false}
+        ],
+        throwOnError:false
+      });
+    } else {
+      // KaTeX not loaded yet — wait
+      window.addEventListener('load', function(){
+        if (typeof renderMathInElement === 'function') {
+          renderMathInElement(el, {
+            delimiters:[
+              {left:'$$',right:'$$',display:true},
+              {left:'$',right:'$',display:false}
+            ],
+            throwOnError:false
+          });
+        }
+      });
+    }
+  }
+
+  // Theme toggle
+  function setTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    var moon = document.getElementById('alesIconMoon');
+    var sun = document.getElementById('alesIconSun');
+    if (moon) moon.style.display = t === 'dark' ? '' : 'none';
+    if (sun) sun.style.display = t === 'light' ? '' : 'none';
+    try { localStorage.setItem('ales-theme', t); } catch(e){}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('ales-theme'); } catch(e){}
+  if (saved) setTheme(saved);
+  var btn = document.getElementById('alesThemeTog');
+  if (btn) btn.addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    setTheme(cur === 'dark' ? 'light' : 'dark');
+  });
+
+  // Auto-scroll active sidebar link into view
+  setTimeout(function(){
+    var active = document.querySelector('.ales-sb-link.active');
+    if (active && active.scrollIntoView) {
+      active.scrollIntoView({block: 'nearest'});
+    }
+  }, 50);
+})();
+</script>
+</body>
+</html>

@@ -8,44 +8,59 @@
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Certificates — Mikail Sarpkaya"/>
   <meta property="og:description" content="Verified certificates from Coursera, IBM, and SiliconMade Academy."/>
-  <meta property="og:url" content="https://mikailsarpkaya.com/certificates.html"/>
-  <meta name="twitter:card" content="summary"/>
+  <meta property="og:url" content="https://mikailsarpkaya.com/certificates"/>
+  <meta property="og:site_name" content="Mikail Sarpkaya"/>
+  <meta property="og:image" content="https://mikailsarpkaya.com/og-image.png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Certificates — Mikail Sarpkaya"/>
+  <meta name="twitter:description" content="Verified certificates from Coursera, IBM, and SiliconMade Academy."/>
+  <meta name="twitter:image" content="https://mikailsarpkaya.com/og-image.png"/>
   <title>Certificates — Mikail Sarpkaya</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"/>
   <link rel="manifest" href="assets/favicon/site.webmanifest"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="site.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="site.css?v=v2-037"/>
 </head>
 <body>
 <div id="loader"><div class="loader-name"><span>CERTS</span></div><div class="loader-bar-wrap"><div class="loader-bar"></div></div><div class="loader-sub">mikailsarpkaya.com</div></div>
 
 <nav id="nav">
-  <a href="index" class="nav-logo">MS</a>
+  <a href="/" class="nav-logo">MS</a>
   <ul class="nav-links">
-    <li><a href="index" data-i18n="nav.home">Home</a></li>
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="projects" data-i18n="nav.projects">Projects</a></li>
     <li><a href="certificates" class="active" data-i18n="nav.certificates">Certificates</a></li>
     <li><a href="tutorials" class="nav-tut" data-i18n="nav.tutorials">Tutorials</a></li>
-    <li class="lang-switch"><button class="lang-btn" onclick="setLang('tr')">TR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('es')">ES</button></li>
+    <li class="lang-switch"><button class="lang-btn" onclick="setLang('tr')" aria-label="Türkçe">TR</button><button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button><button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button><button class="lang-btn" onclick="setLang('es')" aria-label="Español">ES</button></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index" onclick="toggleMobile()" data-i18n="nav.home">Home</a>
+  <a href="/" onclick="toggleMobile()" data-i18n="nav.home">Home</a>
   <a href="projects" onclick="toggleMobile()" data-i18n="nav.projects">Projects</a>
   <a href="certificates" onclick="toggleMobile()" data-i18n="nav.certificates">Certificates</a>
   <a href="tutorials" onclick="toggleMobile()" style="color:var(--gold)" data-i18n="nav.tutorials">Tutorials</a>
-  <div class="mobile-lang"><button class="lang-btn" onclick="setLang('tr')">TR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('es')">ES</button></div>
+  <div class="mobile-lang"><button class="lang-btn" onclick="setLang('tr')" aria-label="Türkçe">TR</button><button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button><button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button><button class="lang-btn" onclick="setLang('es')" aria-label="Español">ES</button></div>
 </div>
 
-<div class="page-hero">
-  <div class="page-eyebrow sr"><span data-i18n-text="cp.eyebrow">Education</span></div>
-  <h1 class="page-title sr"><span data-i18n-text="cp.t1">CERTS &amp;</span><br><span class="outline" data-i18n-text="cp.t2">LEARNING</span></h1>
-  <p class="page-sub sr"><span data-i18n="cp.desc">Verified certificates from Coursera, IBM, and SiliconMade Academy — continuously expanding knowledge across engineering and programming.</span></p>
+<main id="main">
+<div class="page-hero with-aside">
+  <div class="page-hero-content">
+    <div class="page-eyebrow sr"><span data-i18n-text="cp.eyebrow">Credentials</span></div>
+    <h1 class="page-title sr"><span data-i18n-text="cp.t1">CERTS &amp;</span><br><span class="outline" data-i18n-text="cp.t2">LEARNING</span></h1>
+    <p class="page-sub sr"><span data-i18n="cp.desc">Verified certificates from Coursera, IBM, and SiliconMade Academy — continuously expanding knowledge across engineering and programming.</span></p>
+  </div>
+  <aside class="page-hero-aside sr">
+    <span class="credly-eyebrow" data-i18n-text="cert.credly.label">More badges on</span>
+    <a href="https://www.credly.com/users/mikailsarpkaya/badges#credly" target="_blank" class="cta-btn gold" data-magnetic="0.25">
+      <span data-i18n-text="cert.credly.cta">View my Credly profile</span>
+      <span>→</span>
+    </a>
+  </aside>
 </div>
 <div class="divider"></div>
 
@@ -62,47 +77,37 @@
 
     <div class="cert-card sr" data-category="engineering">
       <div class="cert-issuer">Coursera / IBM</div>
-      <div class="cert-name">Introduction to Software Engineering</div>
+      <h2 class="cert-name">Introduction to Software Engineering</h2>
       <a href="https://coursera.org/share/6560fa5a0ba78483a71b0ebadc5c0f21" target="_blank" class="cert-verify">✓ Verify Certificate ↗</a>
     </div>
 
     <div class="cert-card sr" data-category="engineering">
       <div class="cert-issuer">SiliconMade Academy</div>
-      <div class="cert-name" data-i18n-text="cert.sma.name">Temel Programlama Eğitimi</div>
+      <h2 class="cert-name" data-i18n-text="cert.sma.name">Temel Programlama Eğitimi</h2>
       <a href="assets/certs/temel-programlama-eng.pdf" target="_blank" class="cert-verify">✓ View Certificate ↗</a>
     </div>
 
     <div class="cert-card sr" data-category="ai data">
+      <div class="cert-issuer">Coursera / DeepLearning.AI</div>
+      <h2 class="cert-name">Deep Learning Specialization — Andrew Ng</h2>
+      <a href="https://coursera.org/share/4e40f0dda258b60e59e5245c958fff18" target="_blank" class="cert-verify">✓ Verify Certificate ↗</a>
+    </div>
+
+    <div class="cert-card sr" data-category="ai data">
       <div class="cert-issuer">SiliconMade Academy</div>
-      <div class="cert-name" data-i18n-text="cert.sma2.name">Yapay Zeka ve Veri Bilimi Eğitimi</div>
-      <span class="cert-verify" style="color:var(--muted);cursor:default;" data-i18n-text="cert.portfolio">In Portfolio</span>
+      <h2 class="cert-name" data-i18n-text="cert.sma2.name">Yapay Zeka ve Veri Bilimi Eğitimi</h2>
+      <span class="cert-verify" style="color:var(--muted);cursor:default;" data-i18n-text="cert.portfolio">In Progress</span>
     </div>
 
     <!-- ADD NEW CERTS BELOW -->
 
   </div>
 </section>
+</main>
 
-<footer><div class="f-copy">© 2026 Mikail Sarpkaya</div><div class="f-site">mikailsarpkaya<span>.com</span></div></footer>
+<footer><div class="f-copy" data-i18n-text="footer">© 2026 Mikail Sarpkaya. All rights reserved.</div><div class="f-site">mikailsarpkaya<span>.com</span></div></footer>
 
-<script>
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1200));
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
-function toggleMobile(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');}
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const f=btn.dataset.filter;
-    document.querySelectorAll('.cert-card[data-category]').forEach(c=>{
-      c.style.display=(f==='all'||c.dataset.category.includes(f))?'flex':'none';
-    });
-  });
-});
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.08});
-document.querySelectorAll('.sr').forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.08+'s';obs.observe(el);});
-</script>
-<script src="i18n.js?v=2"></script>
+<script src="i18n.js?v=v2-037"></script>
+<script src="script-v2.js?v=v2-037"></script>
 </body>
 </html>

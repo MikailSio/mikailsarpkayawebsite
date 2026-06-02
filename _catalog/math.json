@@ -1,0 +1,151 @@
+{
+  "linalg": {
+    "category": "math",
+    "subfield": "linalg",
+    "name_en": "Linear Algebra",
+    "name_tr": "Doğrusal Cebir",
+    "lessons": [
+      { "n": 1, "en": "Vectors & Vector Spaces", "tr": "Vektörler & Vektör Uzayları", "slug": "vectors-vector-spaces" },
+      { "n": 2, "en": "Matrices & Transformations", "tr": "Matrisler & Dönüşümler", "slug": "matrices-transformations" },
+      { "n": 3, "en": "Linear Systems", "tr": "Doğrusal Sistemler", "slug": "linear-systems" },
+      { "n": 4, "en": "Eigenvalues & Eigenvectors", "tr": "Özdeğerler & Özvektörler", "slug": "eigenvalues-eigenvectors" },
+      { "n": 5, "en": "SVD & Matrix Decomposition", "tr": "SVD & Matris Ayrışımı", "slug": "svd-matrix-decomposition" },
+      { "n": 6, "en": "Tensors & Multidimensional Arrays", "tr": "Tensörler & Derin Öğrenme", "slug": "tensors-multidimensional-arrays" },
+      { "n": 7, "en": "Float & Stability", "tr": "Float & Kararlılık", "slug": "float-stability" },
+      { "n": 8, "en": "Matrix Calculus", "tr": "Matris Analizi", "slug": "matrix-calculus" }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisite: ENTIRE track is core ML math — flag all for cross-listing into AI path (esp. L1 vectors, L2 matrices, L4 eigenvalues→PCA, L5 SVD→PCA/embeddings, L6 tensors→deep learning, L8 matrix calculus→backprop; L7 float/stability for numerical ML). Title/hero mismatch L6: <title> says 'Tensors & Multidimensional Arrays' but hero h1 reads 'Tensors & Deep Learning' (tr 'Tensörler & Derin Öğrenme' kept from hero) — reconcile. Stale metadata: sidebar/index label '6 Lessons' but 8 files exist (L7, L8 added later). No duplicate hero block here. Numeric order consistent."
+  },
+  "calculus": {
+    "category": "math",
+    "subfield": "calculus",
+    "name_en": "Calculus",
+    "name_tr": "Kalkülüs",
+    "lessons": [
+      { "n": 1, "en": "Limits & Derivatives", "tr": "Limitler & Türevler", "slug": "limits-derivatives" },
+      { "n": 2, "en": "Differentiation Rules", "tr": "Türev Kuralları", "slug": "differentiation-rules" },
+      { "n": 3, "en": "Partial Derivatives", "tr": "Kısmi Türevler", "slug": "partial-derivatives" },
+      { "n": 4, "en": "Chain Rule & Backprop", "tr": "Zincir Kuralı & Geri Yayılım", "slug": "chain-rule-backprop" },
+      { "n": 5, "en": "Integration for ML", "tr": "ML İçin İntegral", "slug": "integration-for-ml" },
+      { "n": 6, "en": "Optimization & GD", "tr": "Optimizasyon & Gradyan İnişi", "slug": "optimization-gradient-descent" },
+      { "n": 7, "en": "Lagrange Multipliers", "tr": "Lagrange Çarpanları", "slug": "lagrange-multipliers" },
+      { "n": 8, "en": "Advanced Vector Analysis", "tr": "Vektör Analizi", "slug": "advanced-vector-analysis" }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisite: ENTIRE track is core ML math — flag all for cross-listing into AI path (esp. L3 partial derivatives, L4 chain rule→backprop, L6 optimization→gradient descent, L7 Lagrange→constrained opt/SVM). Abbreviation in <title> L6 'Optimization & GD' expanded to 'gradient-descent' in slug (per hero 'Optimization & Gradient Descent'). Title/hero mismatch L8: <title> 'Advanced Vector Analysis' vs hero 'Vector Analysis' (tr 'Vektör Analizi' from hero). No duplicate hero block. Numeric order consistent."
+  },
+  "math": {
+    "category": "math",
+    "subfield": "probability",
+    "name_en": "ML Mathematics",
+    "name_tr": "ML Matematik",
+    "lessons": [
+      { "n": 1, "en": "Probability Fundamentals", "tr": "Olasılık Temelleri", "slug": "probability-fundamentals" },
+      { "n": 2, "en": "Statistics & Distributions", "tr": "İstatistik & Dağılımlar", "slug": "statistics-distributions" },
+      { "n": 3, "en": "Bayesian Thinking", "tr": "Bayesçi Düşünme", "slug": "bayesian-thinking" },
+      { "n": 4, "en": "Information Theory", "tr": "Bilgi Teorisi", "slug": "information-theory" },
+      { "n": 5, "en": "Optimization Theory", "tr": "Optimizasyon Teorisi", "slug": "optimization-theory" },
+      { "n": 6, "en": "Numerical Methods", "tr": "Sayısal Yöntemler", "slug": "numerical-methods" },
+      { "n": 7, "en": "Convex Optimization", "tr": "Konveks Optimizasyon", "slug": "convex-optimization" },
+      { "n": 8, "en": "Manifold Geometry", "tr": "Manifold Geometrisi", "slug": "manifold-geometry" },
+      { "n": 9, "en": "Information Geometry", "tr": "Bilgi Geometrisi", "slug": "information-geometry" },
+      { "n": 10, "en": "Statistical Learning Theory", "tr": "Öğrenme Teorisi", "slug": "statistical-learning-theory" },
+      { "n": 11, "en": "Advanced Probability: Martingales & Concentration", "tr": "Martingaleler & Yoğunlaşma", "slug": "martingales-concentration" }
+    ],
+    "notes": "11 lesson files (1-11). This 'math' folder = 'ML Mathematics' (sidebar sb-current-title 'ML MATHEMATICS' / 'ML Matematik'): it is AI-focused and should live in the AI path, NOT the standalone Math section. Subfield marked 'probability'. AI prerequisite: ENTIRE track (probability, statistics, Bayesian, information theory, optimization, convex opt, manifold/information geometry, learning theory, martingales) — flag all for the AI path. Title/hero mismatches: L10 <title> 'Statistical Learning Theory' vs hero 'Learning Theory'; L11 <title> 'Advanced Probability: Martingales & Concentration' vs hero 'Martingales & Concentration' (colon stripped, slug trimmed to martingales-concentration). L8/L9 (Manifold/Information Geometry) are advanced/specialized — possible content depth gap vs intro lessons. Numeric order consistent."
+  },
+  "discrete": {
+    "category": "math",
+    "subfield": "discrete",
+    "name_en": "Discrete Math & Graph Theory",
+    "name_tr": "Discrete Math & Graph Theory",
+    "lessons": [
+      { "n": 1, "en": "Combinatorics & Counting", "tr": "Sayma & Kombinatorik", "slug": "combinatorics-counting" },
+      { "n": 2, "en": "Generating Functions & Inclusion-Exclusion", "tr": "Üreteç Fonksiyonları", "slug": "generating-functions" },
+      { "n": 3, "en": "Graph Fundamentals & Traversal", "tr": "Çizge Temelleri", "slug": "graph-fundamentals-traversal" },
+      { "n": 4, "en": "Graph Algorithms (Dijkstra, MST, Max-Flow)", "tr": "Çizge Algoritmaları", "slug": "graph-algorithms" },
+      { "n": 5, "en": "Spectral Graph Theory", "tr": "Spektral Çizgeler", "slug": "spectral-graph-theory" },
+      { "n": 6, "en": "Knowledge Graphs & Dependency Parsing", "tr": "Bilgi Grafları", "slug": "knowledge-graphs" }
+    ],
+    "notes": "6 lesson files (1-6). AI prerequisites: L3 Graph Fundamentals, L4 Graph Algorithms, L5 Spectral Graph Theory, L6 Knowledge Graphs & Dependency Parsing — these underpin GNNs and NLP and should cross-list into the AI path (L1/L2 combinatorics/generating functions are weaker AI ties). DUPLICATE/DRAFT artifact: every lesson contains a stray second <h1 class='topic-title'> reading 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (leftover boilerplate hero copied from the calculus template, ~line 1463) — should be removed. Slugs trimmed for long EN titles (L2→generating-functions, L4→graph-algorithms, L6→knowledge-graphs). TR hero terminology inconsistent ('Çizge' vs 'Graf' for graph). Track name not localized to TR. Numeric order consistent."
+  },
+  "complex": {
+    "category": "math",
+    "subfield": "complex",
+    "name_en": "Complex Analysis",
+    "name_tr": "Complex Analysis",
+    "lessons": [
+      { "n": 1, "en": "Complex Numbers & Geometric Intuition", "tr": "Karmaşık Sayılar", "slug": "complex-numbers" },
+      { "n": 2, "en": "Complex Functions & Continuity", "tr": "Karmaşık Fonksiyonlar", "slug": "complex-functions" },
+      { "n": 3, "en": "Cauchy-Riemann & Analyticity", "tr": "Cauchy-Riemann", "slug": "cauchy-riemann" },
+      { "n": 4, "en": "Complex Integration & Cauchy Theorem", "tr": "Cauchy Teoremi", "slug": "complex-integration" },
+      { "n": 5, "en": "Residue Theorem & Real Integrals", "tr": "Rezidü Hesabı", "slug": "residue-theorem" },
+      { "n": 6, "en": "Conformal Maps & Applications", "tr": "Konform Dönüşümler", "slug": "conformal-maps" }
+    ],
+    "notes": "6 lesson files (1-6). AI ties are indirect: this track mainly supports the Fourier/signal-processing track rather than being a direct ML prerequisite — flag as supporting math, low priority for AI cross-listing. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. Slugs trimmed from longer EN titles (L1→complex-numbers, L2→complex-functions, L4→complex-integration, L5→residue-theorem). TR heroes give short forms only (e.g. L5 'Rezidü Hesabı' = Residue Calculus vs title 'Residue Theorem'). Track name not localized to TR. Numeric order consistent."
+  },
+  "fourier": {
+    "category": "math",
+    "subfield": "fourier",
+    "name_en": "Fourier",
+    "name_tr": "Fourier",
+    "lessons": [
+      { "n": 1, "en": "Periodic Functions & Sinusoids", "tr": "Periyodik Fonksiyonlar", "slug": "periodic-functions" },
+      { "n": 2, "en": "Fourier Series", "tr": "Fourier Serileri", "slug": "fourier-series" },
+      { "n": 3, "en": "Complex Exponential Form", "tr": "Karmaşık Üstel Form", "slug": "complex-exponential-form" },
+      { "n": 4, "en": "Continuous Fourier Transform", "tr": "Fourier Dönüşümü", "slug": "continuous-fourier-transform" },
+      { "n": 5, "en": "Discrete Fourier Transform & FFT", "tr": "DFT & FFT", "slug": "discrete-fourier-transform" },
+      { "n": 6, "en": "Laplace Transform", "tr": "Laplace Dönüşümü", "slug": "laplace-transform" },
+      { "n": 7, "en": "Wavelets", "tr": "Wavelet Dönüşümü", "slug": "wavelets" },
+      { "n": 8, "en": "Spectral Methods in ML", "tr": "Spektral Yöntemler", "slug": "spectral-methods" }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisites: L5 Discrete Fourier Transform & FFT, L7 Wavelets, L8 Spectral Methods in ML (and L4 Fourier Transform as basis) — relevant to signal/audio ML, CNN spectral methods; cross-list these into the AI path. DUPLICATE/DRAFT artifact: every lesson carries a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. TR hero for L4 omits 'Continuous' ('Fourier Dönüşümü'). Numeric order consistent."
+  },
+  "diffeq": {
+    "category": "math",
+    "subfield": "diffeq",
+    "name_en": "Differential Equations",
+    "name_tr": "Differential Equations",
+    "lessons": [
+      { "n": 1, "en": "ODE Fundamentals", "tr": "ODE Temelleri", "slug": "ode-fundamentals" },
+      { "n": 2, "en": "Second-Order Linear ODEs", "tr": "İkinci Mertebe ODE", "slug": "second-order-odes" },
+      { "n": 3, "en": "ODE Systems & Matrix Form", "tr": "ODE Sistemleri", "slug": "ode-systems" },
+      { "n": 4, "en": "Partial Differential Equations (PDE)", "tr": "PDE Temelleri", "slug": "partial-differential-equations" },
+      { "n": 5, "en": "Numerical ODE Methods", "tr": "Sayısal Çözücüler", "slug": "numerical-ode-methods" },
+      { "n": 6, "en": "Stochastic Differential Equations (SDE)", "tr": "SDE & Brownian", "slug": "stochastic-differential-equations" },
+      { "n": 7, "en": "Variational PDE & Calculus of Variations", "tr": "Varyasyonel Yöntemler", "slug": "variational-pde" },
+      { "n": 8, "en": "Neural ODEs, Neural SDEs & Flow Matching", "tr": "Neural Diffeq", "slug": "neural-odes" }
+    ],
+    "notes": "8 lesson files (1-8). AI prerequisites: L6 Stochastic Differential Equations (Brownian) and L8 Neural ODEs/SDEs & Flow Matching are DIRECT prereqs for modern generative AI (diffusion/flow-matching); L7 Variational methods also relevant — cross-list these into the AI path. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. TR heroes give short forms (L5 'Sayısal Çözücüler' = Numerical Solvers vs title 'Numerical ODE Methods'; L8 'Neural Diffeq' untranslated). Long EN titles trimmed in slugs. Track name not localized to TR. Numeric order consistent."
+  },
+  "markov": {
+    "category": "math",
+    "subfield": "markov",
+    "name_en": "Markov Chains & MCMC",
+    "name_tr": "Markov Chains & MCMC",
+    "lessons": [
+      { "n": 1, "en": "Markov Chain Fundamentals", "tr": "Markov Zincirleri", "slug": "markov-chain-fundamentals" },
+      { "n": 2, "en": "Hidden Markov Models (HMM)", "tr": "Saklı Markov", "slug": "hidden-markov-models" },
+      { "n": 3, "en": "Monte Carlo & MCMC Foundations", "tr": "Monte Carlo & MCMC", "slug": "monte-carlo-mcmc" },
+      { "n": 4, "en": "Hamiltonian Monte Carlo (HMC) & NUTS", "tr": "HMC & NUTS", "slug": "hamiltonian-monte-carlo" },
+      { "n": 5, "en": "Variational Inference & ELBO", "tr": "Varyasyonel Çıkarım", "slug": "variational-inference" },
+      { "n": 6, "en": "Bayesian Deep Learning & Modern Apps", "tr": "Bayesçi Derin Öğrenme", "slug": "bayesian-deep-learning" }
+    ],
+    "notes": "6 lesson files (1-6). AI prerequisite: ENTIRE track is probabilistic ML (Markov chains, HMM, MCMC, HMC/NUTS, Variational Inference/ELBO, Bayesian Deep Learning) — flag all for cross-listing into the AI path; L5 (VI/ELBO) and L6 (Bayesian DL) are especially central to modern generative/Bayesian deep learning. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. TR heroes give short forms (L1 'Markov Zincirleri', L2 'Saklı Markov'). Track name not localized to TR. Numeric order consistent."
+  },
+  "control": {
+    "category": "math",
+    "subfield": "control",
+    "name_en": "Control Theory",
+    "name_tr": "Control Theory",
+    "lessons": [
+      { "n": 1, "en": "System Modeling & Transfer Functions", "tr": "Sistem Modelleme", "slug": "system-modeling" },
+      { "n": 2, "en": "PID Controllers", "tr": "PID Kontrol", "slug": "pid-controllers" },
+      { "n": 3, "en": "Bode & Nyquist Analysis", "tr": "Bode & Nyquist", "slug": "bode-nyquist-analysis" },
+      { "n": 4, "en": "Root Locus", "tr": "Kök Yer Eğrisi", "slug": "root-locus" },
+      { "n": 5, "en": "State-Space Representation", "tr": "Durum Uzayı", "slug": "state-space-representation" },
+      { "n": 6, "en": "Lyapunov Stability", "tr": "Lyapunov Kararlılık", "slug": "lyapunov-stability" },
+      { "n": 7, "en": "LQR, MPC & Modern Control + RL", "tr": "LQR / MPC", "slug": "lqr-mpc" }
+    ],
+    "notes": "7 lesson files (1-7). AI prerequisites: L7 LQR, MPC & Modern Control + RL is a DIRECT bridge to reinforcement learning; L5 State-Space and L6 Lyapunov Stability support RL/optimal control and training-stability analysis — cross-list these into the AI path. DUPLICATE/DRAFT artifact: every lesson has a stray second <h1 class='topic-title'> 'LIMITS & DERIVATIVES' / 'LİMİTLER & TÜREVLER' (calculus-template leftover, ~line 1463) — remove. Long EN titles trimmed in slugs (L1→system-modeling, L7→lqr-mpc). TR heroes give short forms (L1 'Sistem Modelleme', L5 'Durum Uzayı'). Track name not localized to TR. Numeric order consistent."
+  }
+}

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="Graph Algorithms (Dijkstra, MST, Max-Flow) — Lesson 4 of Discrete Mathematics & Graph Theory. Interactive Discrete lesson · Combinatorics, graphs, spectral graph theory, GNN basis · mikailsarpkaya.com"><meta property="og:title" content="Graph Algorithms (Dijkstra, MST, Max-Flow) — Discrete Math & Graph Theory"><meta property="og:description" content="Graph Algorithms (Dijkstra, MST, Max-Flow) — Lesson 4 of Discrete Mathematics & Graph Theory. Interactive Discrete lesson · Combinatorics, graphs, spectral graph theory, GNN basis · mikailsarpkaya.com"><meta property="og:type" content="article"><meta property="og:url" content="https://mikailsarpkaya.com/tutorials/math/discrete/graph-algorithms"><meta property="og:site_name" content="Mikail Sarpkaya"><meta property="og:image" content="https://mikailsarpkaya.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://mikailsarpkaya.com/og-image.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Graph Algorithms (Dijkstra, MST, Max-Flow)"><meta name="twitter:description" content="Graph Algorithms (Dijkstra, MST, Max-Flow) — Lesson 4 of Discrete Mathematics & Graph Theory."><link rel="canonical" href="https://mikailsarpkaya.com/tutorials/math/discrete/graph-algorithms"><link rel="alternate" hreflang="en" href="https://mikailsarpkaya.com/tutorials/math/discrete/graph-algorithms"><link rel="alternate" hreflang="tr" href="https://mikailsarpkaya.com/tutorials/math/discrete/graph-algorithms"><link rel="alternate" hreflang="x-default" href="https://mikailsarpkaya.com/tutorials/math/discrete/graph-algorithms">
+<title>Graph Algorithms (Dijkstra, MST, Max-Flow) — Discrete — Mikail Sarpkaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="dns-prefetch" href="https://cdn.plot.ly"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.querySelector('.lesson-content'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script><script src="plotly-fix.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.28.1/full/pyodide.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/theme/material-darker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/python/python.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Graph Algorithms (Dijkstra, MST, Max-Flow)", "description": "Graph Algorithms (Dijkstra, MST, Max-Flow) — lesson 4 of Discrete Mathematics & Graph Theory.", "url": "https://mikailsarpkaya.com/tutorials/math/discrete/graph-algorithms", "inLanguage": ["en", "tr"], "learningResourceType": "Tutorial", "educationalUse": "self-study", "isPartOf": {"@type": "Course", "name": "Discrete Mathematics & Graph Theory", "url": "https://mikailsarpkaya.com/tutorials/math/discrete/"},"author": {"@type": "Person", "name": "Mikail Sarpkaya", "url": "https://mikailsarpkaya.com/"}, "publisher": {"@type": "Person", "name": "Mikail Sarpkaya"}}</script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div id="loader"><div class="ld-name"><span>D</span><span>S</span><span>C</span><span>R</span></div><div class="ld-bar-wrap"><div class="ld-bar"></div></div><div class="ld-sub">Loading…</div></div>
+<nav id="nav"><a href="/tutorials/" class="nav-logo">MS</a><div class="nav-controls"><div class="color-picker-wrap"><button class="nav-btn" id="colorTog" aria-label="Accent color"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 14 3.5 3.5 0 0 1 0 7 10 10 0 1 0 0-20z"/></svg></button><div class="color-dropdown" id="colorDrop"><div class="cd-label">Accent Color</div><div class="color-presets" id="presets"></div><div class="color-custom"><label>Custom</label><input type="color" id="customColor" value="#c8a96e"></div></div></div><button class="nav-btn" id="langTog" aria-label="Language"><span class="lang-label" id="langLabel">EN</span></button></div></nav>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="layout">
+  <aside class="sidebar sb-v3" id="sidebar">
+
+<style>
+/* Wider sidebar (was 250px, now 300px → +20%) for one-line lesson titles */
+:root { --sb-w: 300px; }
+
+.sidebar.sb-v3 {
+  font-size: 0.92rem;
+  padding: 1rem 0.75rem 2rem;
+  overflow-y: auto;
+  width: var(--sb-w);
+  min-width: var(--sb-w);
+  transition: width 0.3s var(--ease, ease), min-width 0.3s var(--ease, ease);
+}
+
+/* ===== COLLAPSED RAIL ===== Override core2.css full-hide; keep 56px rail visible */
+body.sb-collapsed .sidebar.sb-v3 {
+  margin-left: 0 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: 56px !important;
+  min-width: 56px !important;
+  overflow: hidden;
+  padding: 1rem 0.4rem 2rem;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-back,
+body.sb-collapsed .sidebar.sb-v3 .sb-current,
+body.sb-collapsed .sidebar.sb-v3 .sb-section-items,
+body.sb-collapsed .sidebar.sb-v3 .sb-label-text,
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label::after { display: none !important; }
+body.sb-collapsed .sidebar.sb-v3 .sb-section { margin: 0.55rem 0; }
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label {
+  padding: 0.6rem 0;
+  justify-content: center;
+  gap: 0;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label .sb-icon {
+  font-size: 1.4rem;
+  filter: grayscale(0.2) brightness(0.9);
+  transition: filter 0.2s, transform 0.2s;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section.open > .sb-section-label .sb-icon {
+  filter: none;
+  transform: scale(1.15);
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section.open > .sb-section-label {
+  background: rgba(200,169,110,0.10);
+  border-left: 2px solid #c8a96e;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label:hover .sb-icon {
+  filter: none;
+  transform: scale(1.15);
+}
+/* Hover-to-peek: expand on hover when collapsed (desktop only) */
+@media(min-width:901px){
+  body.sb-collapsed .sidebar.sb-v3:hover {
+    width: var(--sb-w) !important;
+    min-width: var(--sb-w) !important;
+    overflow-y: auto;
+    padding: 1rem 0.75rem 2rem;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.35);
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-back,
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-current,
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-label-text { display: revert !important; }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section.open > .sb-section-items { display: block !important; }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section-label {
+    font-size: 0.72rem;
+    padding: 0.55rem 0.55rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    background: transparent;
+    border-left: none;
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section.open > .sb-section-label {
+    background: rgba(200,169,110,0.05);
+    border-left: none;
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section-label::after { display: inline-block !important; }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section { margin: 0.1rem 0; }
+  /* Restore icon size to default in hover-peek (was 1.4rem in pure rail mode) */
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section-label .sb-icon {
+    font-size: 1rem;
+    transform: none;
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section.open > .sb-section-label .sb-icon {
+    transform: scale(1.05);
+  }
+}
+.sidebar.sb-v3 .sb-back {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.75rem; letter-spacing: 0.06em;
+  color: rgba(235,230,220,0.55);
+  text-decoration: none;
+  margin-bottom: 0.9rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.sidebar.sb-v3 .sb-back:hover { color: #c8a96e; background: rgba(200,169,110,0.06); }
+
+/* ========== CURRENT PAGE CARD (prominent) ========== */
+.sidebar.sb-v3 .sb-current {
+  position: relative;
+  background: linear-gradient(135deg, rgba(200,169,110,0.10) 0%, rgba(200,169,110,0.02) 100%);
+  border: 1px solid rgba(200,169,110,0.22);
+  border-left: 4px solid #c8a96e;
+  border-radius: 8px;
+  padding: 0.85rem 0.95rem 0.9rem;
+  margin: 0 0 1.2rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.sidebar.sb-v3 .sb-current-eyebrow {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 0.65rem; letter-spacing: 0.14em;
+  color: rgba(200,169,110,0.75);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.sidebar.sb-v3 .sb-current-title {
+  font-family: "Bebas Neue", "Outfit", sans-serif;
+  font-size: 1.35rem; letter-spacing: 0.06em;
+  color: #ebe6dc;
+  line-height: 1.05;
+  font-weight: 600;
+}
+.sidebar.sb-v3 .sb-current-sub {
+  font-size: 0.72rem;
+  color: rgba(235,230,220,0.6);
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+}
+.sidebar.sb-v3 .sb-current-lesson {
+  display: flex; align-items: baseline; gap: 0.5rem;
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed rgba(200,169,110,0.18);
+}
+.sidebar.sb-v3 .sb-current-lesson .num {
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem; font-weight: 500;
+  color: #c8a96e;
+  letter-spacing: 0.05em;
+}
+.sidebar.sb-v3 .sb-current-lesson .ttl {
+  font-size: 0.84rem;
+  color: #ebe6dc;
+  line-height: 1.2;
+}
+
+/* ========== SECTION (TOP-LEVEL) ========== */
+.sidebar.sb-v3 .sb-section {
+  margin: 0.1rem 0;
+}
+.sidebar.sb-v3 .sb-section-label {
+  cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.55rem;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(200,169,110,0.85);
+  border-radius: 5px;
+  transition: color 0.15s, background 0.15s;
+}
+.sidebar.sb-v3 .sb-section-label .sb-icon {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+  filter: grayscale(0.15) brightness(0.95);
+  transition: filter 0.15s, transform 0.15s;
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-label .sb-icon {
+  filter: none;
+  transform: scale(1.05);
+}
+.sidebar.sb-v3 .sb-section-label .sb-label-text { flex: 1; }
+.sidebar.sb-v3 .sb-section-label::after {
+  content: "▸"; font-size: 0.6rem;
+  margin-left: auto;
+  opacity: 0.45;
+  transition: transform 0.2s;
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-label::after { transform: rotate(90deg); }
+.sidebar.sb-v3 .sb-section-label:hover {
+  color: #c8a96e;
+  background: rgba(200,169,110,0.05);
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-label { color: #c8a96e; }
+
+.sidebar.sb-v3 .sb-section-items {
+  display: none;
+  padding: 0.15rem 0 0.15rem 0.75rem;
+  margin: 0 0 0.4rem 0.55rem;
+  border-left: 1px solid rgba(200,169,110,0.12);
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-items { display: block; }
+
+/* ========== TRACK (SUB-LEVEL inside a section) ========== */
+.sidebar.sb-v3 .sb-track {
+  margin: 0.05rem 0;
+}
+.sidebar.sb-v3 .sb-track-label {
+  cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(235,230,220,0.78);
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  text-decoration: none;
+}
+.sidebar.sb-v3 .sb-track-label::after {
+  content: "▸"; font-size: 0.58rem;
+  margin-left: auto;
+  opacity: 0.35;
+  transition: transform 0.2s;
+}
+.sidebar.sb-v3 .sb-track-label.no-children::after { display: none; }
+.sidebar.sb-v3 .sb-track.open > .sb-track-label::after { transform: rotate(90deg); opacity: 0.8; }
+.sidebar.sb-v3 .sb-track-label:hover {
+  color: #c8a96e;
+  background: rgba(200,169,110,0.05);
+}
+.sidebar.sb-v3 .sb-track.current > .sb-track-label {
+  color: #c8a96e;
+  font-weight: 600;
+}
+
+.sidebar.sb-v3 .sb-track-items {
+  display: none;
+  padding: 0.1rem 0 0.15rem 0.5rem;
+  margin: 0 0 0.3rem 0.5rem;
+  border-left: 1px solid rgba(200,169,110,0.1);
+}
+.sidebar.sb-v3 .sb-track.open > .sb-track-items { display: block; }
+
+/* Single-track group (no label): drop the redundant left indent */
+.sidebar.sb-v3 .sb-track.no-label { margin: 0; }
+.sidebar.sb-v3 .sb-track.no-label > .sb-track-items {
+  padding: 0;
+  margin: 0;
+  border-left: 0;
+}
+
+/* ========== LESSON ROW (numbered) ========== */
+.sidebar.sb-v3 .sb-lesson {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.34rem 0.45rem;
+  text-decoration: none;
+  color: rgba(235,230,220,0.62);
+  border-left: 2px solid transparent;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.sidebar.sb-v3 .sb-lesson .num {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(200,169,110,0.45);
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.sidebar.sb-v3 .sb-lesson .lbl {
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+.sidebar.sb-v3 .sb-lesson:hover {
+  color: #ebe6dc;
+  background: rgba(200,169,110,0.04);
+}
+.sidebar.sb-v3 .sb-lesson:hover .num { color: rgba(200,169,110,0.7); }
+.sidebar.sb-v3 .sb-lesson.active {
+  color: #c8a96e;
+  background: rgba(200,169,110,0.08);
+  border-left-color: #c8a96e;
+}
+.sidebar.sb-v3 .sb-lesson.active .num { color: #c8a96e; opacity: 1; }
+.sidebar.sb-v3 .sb-lesson.active .lbl { font-weight: 500; }
+
+/* Scroll polish */
+.sidebar.sb-v3::-webkit-scrollbar { width: 5px; }
+.sidebar.sb-v3::-webkit-scrollbar-track { background: transparent; }
+.sidebar.sb-v3::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.18); border-radius: 3px; }
+
+/* ========== MAIN CONTENT CENTERING (applies to every page with sb-v3) ========== */
+/* Width: 1200px (was 920px, +30%) — uniform across every lesson page */
+.layout .main { display: flex; flex-direction: column; align-items: stretch; }
+.layout .main > .topic-hero    { max-width: 1200px; margin: 0 auto; width: 100%; }
+.layout .main > .lesson-content { max-width: 1200px; margin: 0 auto; width: 100%; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+.layout .main > .lab-section    { max-width: 1200px; margin: 0 auto; width: 100%; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+.layout .main > .lesson-nav     { max-width: 1200px; margin: 1rem auto; width: 100%; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+@media(max-width:768px){
+  .layout .main > .lesson-content,
+  .layout .main > .lab-section,
+  .layout .main > .lesson-nav { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* Toggle button — tangent to sidebar (just outside its right edge) */
+body.sb-collapsed .sb-toggle-btn {
+  left: 56px !important;            /* rail width */
+  transform: translateX(2px) !important;
+}
+body.sb-collapsed .sb-toggle-btn:active { transform: translateX(2px) scale(.92) !important; }
+
+/* ===== Visual styling for legacy l-* boxes used by c/cpp/js/latex lessons ===== */
+.lesson-content .l-highlight {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 1.05rem 1.4rem;
+  background: linear-gradient(135deg, rgba(200,169,110,0.08) 0%, rgba(200,169,110,0.02) 100%);
+  border: 1px solid rgba(200,169,110,0.22);
+  border-left: 4px solid #c8a96e;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(235,230,220,0.85);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+}
+html[data-theme="light"] .lesson-content .l-highlight { color: rgba(28,26,22,0.85); box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
+.lesson-content .l-highlight strong { color: #c8a96e; font-weight: 600; letter-spacing: 0.01em; }
+.lesson-content .l-highlight code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: rgba(200,169,110,0.12);
+  color: rgba(235,230,220,0.95);
+}
+html[data-theme="light"] .lesson-content .l-highlight code { background: rgba(0,0,0,0.06); color: rgba(28,26,22,0.92); }
+
+/* Bigger, more readable lesson body text & lists */
+.lesson-content .l-text { font-size: 1.04rem; line-height: 1.85; margin-bottom: 1.1rem; }
+.lesson-content .l-list { margin: 0.9rem 0 1.4rem; }
+.lesson-content .l-list li { font-size: 1.02rem; line-height: 1.85; margin-bottom: 0.35rem; padding-left: 1.4rem; }
+.lesson-content .l-list li::before { font-size: 1.1em; }
+.lesson-content .l-text strong { color: var(--text); font-weight: 600; }
+.lesson-content .l-text code,
+.lesson-content .l-list li code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  background: rgba(200,169,110,0.10);
+  color: #c8a96e;
+}
+html[data-theme="light"] .lesson-content .l-text code,
+html[data-theme="light"] .lesson-content .l-list li code { background: rgba(0,0,0,0.06); }
+
+.lesson-content .l-note,
+.lesson-content .l-warn { font-size: 1rem; line-height: 1.75; padding: 1.05rem 1.35rem; }
+
+/* Auto-create section visual breaks where the original content has no h2/h3 */
+.lesson-content .l-text + .l-highlight,
+.lesson-content .code-wrap + .l-highlight { margin-top: 1.8rem; }
+
+/* Cap calc-cards at 4 columns so formulas like cos(θ)=(a·b)/(‖a‖‖b‖) fit one line */
+.lesson-content .calc-cards { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important; }
+@media(max-width:1100px){
+  .lesson-content .calc-cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
+}
+@media(max-width:760px){
+  .lesson-content .calc-cards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; }
+}
+@media(max-width:500px){
+  .lesson-content .calc-cards { grid-template-columns: 1fr !important; }
+}
+</style>
+<script>
+(function(){
+  if (window.__sbV3Wired) return;
+  window.__sbV3Wired = true;
+  document.addEventListener('click', function(e){
+    var label = e.target.closest('.sidebar.sb-v3 .sb-section-label, .sidebar.sb-v3 .sb-track-label');
+    if (!label) return;
+    // Skip when label is a direct link (no-children monolithic tracks)
+    if (label.classList.contains('no-children')) return;
+    var wrapper = label.closest('.sb-section, .sb-track');
+    if (wrapper) wrapper.classList.toggle('open');
+  });
+})();
+</script>
+    <a href="/tutorials/" class="sb-back" data-en="← All Tutorials" data-tr="← Tüm Eğitimler">← All Tutorials</a>
+
+    <div class="sb-current">
+      <div class="sb-current-eyebrow" data-en="Mathematics" data-tr="Matematik">Mathematics</div>
+      <div class="sb-current-title" data-en="Discrete Math & Graph Theory" data-tr="Discrete Math & Graph Theory">Discrete Math & Graph Theory</div>
+      <div class="sb-current-sub" data-en="6 Lessons" data-tr="6 Ders">6 Lessons</div>
+      <div class="sb-current-lesson"><span class="num">L04</span><span class="ttl" data-en="Graph Algorithms (Dijkstra, MST, Max-Flow)" data-tr="Çizge Algoritmaları">Graph Algorithms (Dijkstra, MST, Max-Flow)</span></div>
+    </div>
+
+    <div class="sb-section open">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">📐</span><span class="sb-label-text" data-en="Mathematics" data-tr="Matematik">Mathematics</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/math/linalg/" class="sb-track-label" data-en="Linear Algebra" data-tr="Doğrusal Cebir">Linear Algebra</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/linalg/vectors-vector-spaces" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Vectors & Vector Spaces" data-tr="Vektörler & Vektör Uzayları">Vectors & Vector Spaces</span></a>
+              <a href="/tutorials/math/linalg/matrices-transformations" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Matrices & Transformations" data-tr="Matrisler & Dönüşümler">Matrices & Transformations</span></a>
+              <a href="/tutorials/math/linalg/linear-systems" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Linear Systems" data-tr="Doğrusal Sistemler">Linear Systems</span></a>
+              <a href="/tutorials/math/linalg/eigenvalues-eigenvectors" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Eigenvalues & Eigenvectors" data-tr="Özdeğerler & Özvektörler">Eigenvalues & Eigenvectors</span></a>
+              <a href="/tutorials/math/linalg/svd-matrix-decomposition" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="SVD & Matrix Decomposition" data-tr="SVD & Matris Ayrışımı">SVD & Matrix Decomposition</span></a>
+              <a href="/tutorials/math/linalg/tensors-multidimensional-arrays" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Tensors & Multidimensional Arrays" data-tr="Tensörler & Derin Öğrenme">Tensors & Multidimensional Arrays</span></a>
+              <a href="/tutorials/math/linalg/float-stability" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Float & Stability" data-tr="Float & Kararlılık">Float & Stability</span></a>
+              <a href="/tutorials/math/linalg/matrix-calculus" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Matrix Calculus" data-tr="Matris Analizi">Matrix Calculus</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/calculus/" class="sb-track-label" data-en="Calculus" data-tr="Kalkülüs">Calculus</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/calculus/limits-derivatives" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Limits & Derivatives" data-tr="Limitler & Türevler">Limits & Derivatives</span></a>
+              <a href="/tutorials/math/calculus/differentiation-rules" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Differentiation Rules" data-tr="Türev Kuralları">Differentiation Rules</span></a>
+              <a href="/tutorials/math/calculus/partial-derivatives" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Partial Derivatives" data-tr="Kısmi Türevler">Partial Derivatives</span></a>
+              <a href="/tutorials/math/calculus/chain-rule-backprop" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Chain Rule & Backprop" data-tr="Zincir Kuralı & Geri Yayılım">Chain Rule & Backprop</span></a>
+              <a href="/tutorials/math/calculus/integration-for-ml" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Integration for ML" data-tr="ML İçin İntegral">Integration for ML</span></a>
+              <a href="/tutorials/math/calculus/optimization-gradient-descent" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Optimization & GD" data-tr="Optimizasyon & Gradyan İnişi">Optimization & GD</span></a>
+              <a href="/tutorials/math/calculus/lagrange-multipliers" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Lagrange Multipliers" data-tr="Lagrange Çarpanları">Lagrange Multipliers</span></a>
+              <a href="/tutorials/math/calculus/advanced-vector-analysis" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Advanced Vector Analysis" data-tr="Vektör Analizi">Advanced Vector Analysis</span></a>
+            </div>
+          </div>
+          <div class="sb-track open current">
+            <a href="/tutorials/math/discrete/" class="sb-track-label" data-en="Discrete Math & Graph Theory" data-tr="Discrete Math & Graph Theory">Discrete Math & Graph Theory</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/discrete/combinatorics-counting" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Combinatorics & Counting" data-tr="Sayma & Kombinatorik">Combinatorics & Counting</span></a>
+              <a href="/tutorials/math/discrete/generating-functions" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Generating Functions & Inclusion-Exclusion" data-tr="Üreteç Fonksiyonları">Generating Functions & Inclusion-Exclusion</span></a>
+              <a href="/tutorials/math/discrete/graph-fundamentals-traversal" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Graph Fundamentals & Traversal" data-tr="Çizge Temelleri">Graph Fundamentals & Traversal</span></a>
+              <a href="/tutorials/math/discrete/graph-algorithms" class="sb-lesson active"><span class="num">04</span><span class="lbl" data-en="Graph Algorithms (Dijkstra, MST, Max-Flow)" data-tr="Çizge Algoritmaları">Graph Algorithms (Dijkstra, MST, Max-Flow)</span></a>
+              <a href="/tutorials/math/discrete/spectral-graph-theory" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Spectral Graph Theory" data-tr="Spektral Çizgeler">Spectral Graph Theory</span></a>
+              <a href="/tutorials/math/discrete/knowledge-graphs" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Knowledge Graphs & Dependency Parsing" data-tr="Bilgi Grafları">Knowledge Graphs & Dependency Parsing</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/complex/" class="sb-track-label" data-en="Complex Analysis" data-tr="Complex Analysis">Complex Analysis</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/complex/complex-numbers" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Complex Numbers & Geometric Intuition" data-tr="Karmaşık Sayılar">Complex Numbers & Geometric Intuition</span></a>
+              <a href="/tutorials/math/complex/complex-functions" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Complex Functions & Continuity" data-tr="Karmaşık Fonksiyonlar">Complex Functions & Continuity</span></a>
+              <a href="/tutorials/math/complex/cauchy-riemann" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Cauchy-Riemann & Analyticity" data-tr="Cauchy-Riemann">Cauchy-Riemann & Analyticity</span></a>
+              <a href="/tutorials/math/complex/complex-integration" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Complex Integration & Cauchy Theorem" data-tr="Cauchy Teoremi">Complex Integration & Cauchy Theorem</span></a>
+              <a href="/tutorials/math/complex/residue-theorem" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Residue Theorem & Real Integrals" data-tr="Rezidü Hesabı">Residue Theorem & Real Integrals</span></a>
+              <a href="/tutorials/math/complex/conformal-maps" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Conformal Maps & Applications" data-tr="Konform Dönüşümler">Conformal Maps & Applications</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/fourier/" class="sb-track-label" data-en="Fourier" data-tr="Fourier">Fourier</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/fourier/periodic-functions" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Periodic Functions & Sinusoids" data-tr="Periyodik Fonksiyonlar">Periodic Functions & Sinusoids</span></a>
+              <a href="/tutorials/math/fourier/fourier-series" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Fourier Series" data-tr="Fourier Serileri">Fourier Series</span></a>
+              <a href="/tutorials/math/fourier/complex-exponential-form" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Complex Exponential Form" data-tr="Karmaşık Üstel Form">Complex Exponential Form</span></a>
+              <a href="/tutorials/math/fourier/continuous-fourier-transform" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Continuous Fourier Transform" data-tr="Fourier Dönüşümü">Continuous Fourier Transform</span></a>
+              <a href="/tutorials/math/fourier/discrete-fourier-transform" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Discrete Fourier Transform & FFT" data-tr="DFT & FFT">Discrete Fourier Transform & FFT</span></a>
+              <a href="/tutorials/math/fourier/laplace-transform" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Laplace Transform" data-tr="Laplace Dönüşümü">Laplace Transform</span></a>
+              <a href="/tutorials/math/fourier/wavelets" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Wavelets" data-tr="Wavelet Dönüşümü">Wavelets</span></a>
+              <a href="/tutorials/math/fourier/spectral-methods" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Spectral Methods in ML" data-tr="Spektral Yöntemler">Spectral Methods in ML</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/diffeq/" class="sb-track-label" data-en="Differential Equations" data-tr="Differential Equations">Differential Equations</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/diffeq/ode-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="ODE Fundamentals" data-tr="ODE Temelleri">ODE Fundamentals</span></a>
+              <a href="/tutorials/math/diffeq/second-order-odes" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Second-Order Linear ODEs" data-tr="İkinci Mertebe ODE">Second-Order Linear ODEs</span></a>
+              <a href="/tutorials/math/diffeq/ode-systems" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="ODE Systems & Matrix Form" data-tr="ODE Sistemleri">ODE Systems & Matrix Form</span></a>
+              <a href="/tutorials/math/diffeq/partial-differential-equations" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Partial Differential Equations (PDE)" data-tr="PDE Temelleri">Partial Differential Equations (PDE)</span></a>
+              <a href="/tutorials/math/diffeq/numerical-ode-methods" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Numerical ODE Methods" data-tr="Sayısal Çözücüler">Numerical ODE Methods</span></a>
+              <a href="/tutorials/math/diffeq/stochastic-differential-equations" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Stochastic Differential Equations (SDE)" data-tr="SDE & Brownian">Stochastic Differential Equations (SDE)</span></a>
+              <a href="/tutorials/math/diffeq/variational-pde" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Variational PDE & Calculus of Variations" data-tr="Varyasyonel Yöntemler">Variational PDE & Calculus of Variations</span></a>
+              <a href="/tutorials/math/diffeq/neural-odes" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Neural ODEs, Neural SDEs & Flow Matching" data-tr="Neural Diffeq">Neural ODEs, Neural SDEs & Flow Matching</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/markov/" class="sb-track-label" data-en="Markov Chains & MCMC" data-tr="Markov Chains & MCMC">Markov Chains & MCMC</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/markov/markov-chain-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Markov Chain Fundamentals" data-tr="Markov Zincirleri">Markov Chain Fundamentals</span></a>
+              <a href="/tutorials/math/markov/hidden-markov-models" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Hidden Markov Models (HMM)" data-tr="Saklı Markov">Hidden Markov Models (HMM)</span></a>
+              <a href="/tutorials/math/markov/monte-carlo-mcmc" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Monte Carlo & MCMC Foundations" data-tr="Monte Carlo & MCMC">Monte Carlo & MCMC Foundations</span></a>
+              <a href="/tutorials/math/markov/hamiltonian-monte-carlo" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Hamiltonian Monte Carlo (HMC) & NUTS" data-tr="HMC & NUTS">Hamiltonian Monte Carlo (HMC) & NUTS</span></a>
+              <a href="/tutorials/math/markov/variational-inference" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Variational Inference & ELBO" data-tr="Varyasyonel Çıkarım">Variational Inference & ELBO</span></a>
+              <a href="/tutorials/math/markov/bayesian-deep-learning" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Bayesian Deep Learning & Modern Apps" data-tr="Bayesçi Derin Öğrenme">Bayesian Deep Learning & Modern Apps</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/control/" class="sb-track-label" data-en="Control Theory" data-tr="Control Theory">Control Theory</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/control/system-modeling" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="System Modeling & Transfer Functions" data-tr="Sistem Modelleme">System Modeling & Transfer Functions</span></a>
+              <a href="/tutorials/math/control/pid-controllers" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="PID Controllers" data-tr="PID Kontrol">PID Controllers</span></a>
+              <a href="/tutorials/math/control/bode-nyquist-analysis" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Bode & Nyquist Analysis" data-tr="Bode & Nyquist">Bode & Nyquist Analysis</span></a>
+              <a href="/tutorials/math/control/root-locus" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Root Locus" data-tr="Kök Yer Eğrisi">Root Locus</span></a>
+              <a href="/tutorials/math/control/state-space-representation" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="State-Space Representation" data-tr="Durum Uzayı">State-Space Representation</span></a>
+              <a href="/tutorials/math/control/lyapunov-stability" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Lyapunov Stability" data-tr="Lyapunov Kararlılık">Lyapunov Stability</span></a>
+              <a href="/tutorials/math/control/lqr-mpc" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="LQR, MPC & Modern Control + RL" data-tr="LQR / MPC">LQR, MPC & Modern Control + RL</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </aside>
+  <button class="sb-toggle-btn" id="sbToggle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button>
+  <main id="main" class="main">
+    <section class="topic-hero">
+      <div class="hero-grid"></div>
+      <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="topic-eyebrow" data-en="Lesson 04 · Discrete" data-tr="Ders 04 · Ayrık">Lesson 04 · Discrete</div>
+      <h1 class="topic-title" data-en="GRAPH <span class='accent'>ALGORITHMS</span>" data-tr="ÇİZGE <span class='accent'>ALGORİTMALARI</span>">GRAPH <span class='accent'>ALGORITHMS</span></h1>
+      <p class="topic-desc" data-en="Shortest paths, minimum spanning trees, maximum flow — <strong>workhorses of optimization on networks</strong>." data-tr="En kısa yollar, minimum yayılma ağaçları, maksimum akış — <strong>ağ optimizasyonunun can damarları</strong>.">Shortest paths, minimum spanning trees, maximum flow — <strong>workhorses of optimization on networks</strong>.</p>
+      <div class="topic-meta">
+        <div class="meta-item"><span class="meta-label" data-en="Reading" data-tr="Okuma">Reading</span> 24 min</div>
+        <div class="meta-item"><span class="meta-label" data-en="Level" data-tr="Seviye">Level</span> <span data-en="University" data-tr="Üniversite">University</span></div>
+        <div class="meta-item"><span class="meta-label" data-en="Tools" data-tr="Araçlar">Tools</span> NumPy · NetworkX · Plotly</div>
+      </div>
+      <div class="topic-deco" aria-hidden="true">min Σw</div>
+    </section>
+    <section class="lesson-content" id="lessonContent"></section>
+    <section class="lab-section" id="labSection">
+      <h2 class="lab-title" data-en="🧪 Interactive Python Lab" data-tr="🧪 Etkileşimli Python Laboratuvarı">🧪 Interactive Python Lab</h2>
+      <p class="lab-desc" data-en="Run Python code directly in your browser. NumPy is pre-loaded." data-tr="Python kodunu doğrudan tarayıcınızda çalıştırın.">Run Python code directly in your browser. NumPy is pre-loaded.</p>
+      <div class="lab-status" id="labStatus"><span class="lab-loading" data-en="⏳ Loading Python..." data-tr="⏳ Python yükleniyor...">⏳ Loading Python...</span></div>
+      <div class="lab-exercise"><div class="lab-exercise-header" data-en="🎯 Free Playground" data-tr="🎯 Serbest Alan">🎯 Free Playground</div><div class="lab-editor-wrap"><textarea class="lab-editor" id="editor1" spellcheck="false">import numpy as np
+
+print("Hello from Graph Algorithms (Dijkstra, MST, Max-Flow)!")
+print("NumPy version:", np.__version__)</textarea><button class="lab-run-btn" onclick="runCode('editor1','output1')">▶ <span data-en="Run" data-tr="Çalıştır">Run</span></button></div><pre class="lab-output" id="output1">Click "Run" to execute...</pre></div>
+    </section>
+    <div class="lesson-nav"><a href="/tutorials/math/discrete/graph-fundamentals-traversal" class="ln-btn" data-en="← Graph Fundamentals & Traversal" data-tr="← Çizge Temelleri & Gezme">← Graph Fundamentals & Traversal</a><span class="ln-center" data-en="Lesson 4 of 6" data-tr="Ders 4 / 6">Lesson 4 of 6</span><a href="/tutorials/math/discrete/spectral-graph-theory" class="ln-btn ln-next" data-en="Next: Spectral Graph Theory →" data-tr="Sonraki: Spektral Çizge Teorisi →">Next: Spectral Graph Theory →</a></div>
+    <footer class="tut-footer"><div>© 2026 Mikail Sarpkaya</div><div><a href="https://mikailsarpkaya.com">mikailsarpkaya.com</a></div></footer>
+  </main>
+</div>
+<button class="sb-mobile" id="sbMobile" aria-label="Toggle sidebar" aria-controls="sidebar">☰</button>
+<script src="core.js?v=3"></script>
+<script src="L4.js?v=1"></script>
+<script>
+function loadLesson(lang){if(typeof DISCRETE_L4==='undefined')return;var c=(lang==='tr'&&DISCRETE_L4.tr)?DISCRETE_L4.tr:DISCRETE_L4.en;var el=document.getElementById('lessonContent');if(el&&c){el.innerHTML=c;el.querySelectorAll('script').forEach(function(o){var s=document.createElement('script');s.textContent=o.textContent;o.parentNode.replaceChild(s,o);});if(typeof renderMathInElement==='function')renderMathInElement(el,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});}}
+var il='en';try{il=localStorage.getItem('tut-lang')||'en';}catch(e){}loadLesson(il);document.addEventListener('langchange',function(e){loadLesson(e.detail.lang);});
+</script>
+<script>
+var pyR=false,pyI=null;async function initPyodide(){try{pyI=await loadPyodide({indexURL:"https://cdn.jsdelivr.net/pyodide/v0.28.1/full/"});await pyI.loadPackage("numpy");pyR=true;var s=document.getElementById('labStatus');var l='en';try{l=localStorage.getItem('tut-lang')||'en'}catch(e){}if(s)s.innerHTML='<span class="lab-ready">'+(l==='tr'?'✅ Python hazır':'✅ Python ready')+'</span>';document.querySelectorAll('.lab-run-btn').forEach(function(b){b.disabled=false;});}catch(e){var s=document.getElementById('labStatus');if(s)s.innerHTML='<span class="lab-error">❌ '+e.message+'</span>';}}
+async function runCode(eId,oId){if(!pyR){document.getElementById(oId).textContent='⏳ Loading...';return;}var code=document.getElementById(eId).value;var o=document.getElementById(oId);o.textContent='⏳ Running...';o.className='lab-output';try{pyI.runPython('import io,sys;sys.stdout=io.StringIO()');await pyI.runPythonAsync(code);var out=pyI.runPython('sys.stdout.getvalue()');o.textContent=out||'(no output)';o.classList.add('lab-success');}catch(e){o.textContent='❌ Error:
+'+e.message;o.classList.add('lab-error-output');}}
+var lO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){initPyodide();lO.disconnect();}});},{rootMargin:'200px'});var lE=document.getElementById('labSection');if(lE)lO.observe(lE);
+var cmE={};document.querySelectorAll('.lab-editor').forEach(function(ta){var cm=CodeMirror.fromTextArea(ta,{mode:'python',theme:'material-darker',lineNumbers:true,indentUnit:4,tabSize:4,indentWithTabs:false,lineWrapping:true,viewportMargin:Infinity,extraKeys:{'Tab':function(cm){cm.replaceSelection('    ','end')},'Shift-Enter':function(cm){runCode(ta.id,ta.id.replace('editor','output'));}}});cmE[ta.id]=cm;});
+var _rC=runCode;runCode=async function(e,o){if(cmE[e])cmE[e].save();return _rC(e,o);};
+</script>
+<script src="runner.js?v=1" defer></script>
+<script src="nav.js?v=1" defer></script>
+</body>
+</html>
+    </div>
+  </aside>
+  <button class="sb-toggle-btn" id="sbToggle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button>
+  <main id="main" class="main">
+    <section class="topic-hero">
+      <div class="hero-grid"></div>
+      <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="topic-eyebrow" data-en="Lesson 01 · Calculus" data-tr="Ders 01 · Kalkülüs">Lesson 01 · Calculus</div>
+      <h1 class="topic-title" data-en="LIMITS &amp; <span class='accent'>DERIVATIVES</span>" data-tr="LİMİTLER &amp; <span class='accent'>TÜREVLER</span>">LIMITS &amp; <span class='accent'>DERIVATIVES</span></h1>
+      <p class="topic-desc" data-en="Limits, rates of change, derivative definition — the <strong>language of change</strong>." data-tr="Limitler, değişim oranları, türev tanımı — <strong>değişimin dili</strong>.">Limits, rates of change, derivative definition — the <strong>language of change</strong>.</p>
+      <div class="topic-meta">
+        <div class="meta-item"><span class="meta-label" data-en="Reading" data-tr="Okuma">Reading</span> 22 min</div>
+        <div class="meta-item"><span class="meta-label" data-en="Level" data-tr="Seviye">Level</span> <span data-en="University" data-tr="Üniversite">University</span></div>
+        <div class="meta-item"><span class="meta-label" data-en="Tools" data-tr="Araçlar">Tools</span> NumPy · Plotly</div>
+      </div>
+      <div class="topic-deco" aria-hidden="true">∂</div>
+    </section>
+    <section class="lesson-content" id="lessonContent"></section>
+    <section class="lab-section" id="labSection">
+      <h2 class="lab-title" data-en="🧪 Interactive Python Lab" data-tr="🧪 Etkileşimli Python Laboratuvarı">🧪 Interactive Python Lab</h2>
+      <p class="lab-desc" data-en="Run Python code directly in your browser. NumPy is pre-loaded." data-tr="Python kodunu doğrudan tarayıcınızda çalıştırın.">Run Python code directly in your browser. NumPy is pre-loaded.</p>
+      <div class="lab-status" id="labStatus"><span class="lab-loading" data-en="⏳ Loading Python..." data-tr="⏳ Python yükleniyor...">⏳ Loading Python...</span></div>
+      <div class="lab-exercise"><div class="lab-exercise-header" data-en="🎯 Free Playground" data-tr="🎯 Serbest Alan">🎯 Free Playground</div><div class="lab-editor-wrap"><textarea class="lab-editor" id="editor1" spellcheck="false">import numpy as np
+
+print("Hello from Periodic Functions & Sinusoids!")
+print("NumPy version:", np.__version__)</textarea><button class="lab-run-btn" onclick="runCode('editor1','output1')">▶ <span data-en="Run" data-tr="Çalıştır">Run</span></button></div><pre class="lab-output" id="output1">Click "Run" to execute...</pre></div>
+    </section>
+    <div class="lesson-nav">
+      <a href="/tutorials/math/linalg/tensors-multidimensional-arrays" class="ln-btn" data-en="&larr; Tensors" data-tr="&larr; Tensörler">&larr; Tensors</a>
+      <span class="ln-center" data-en="Lesson 1 of 6" data-tr="Ders 1 / 6">Lesson 1 of 6</span>
+      <a href="/tutorials/math/calculus/differentiation-rules" class="ln-btn ln-next" data-en="Next: Rules &rarr;" data-tr="Sonraki: Kurallar &rarr;">Next: Rules &rarr;</a>
+    </div>
+    <footer class="tut-footer"><div>© 2026 Mikail Sarpkaya</div><div><a href="https://mikailsarpkaya.com">mikailsarpkaya.com</a></div></footer>
+  </main>
+</div>
+<button class="sb-mobile" id="sbMobile" aria-label="Toggle sidebar" aria-controls="sidebar">☰</button>
+<script src="core.js?v=3"></script>
+<script src="L1.js?v=1"></script>
+<script>
+function loadLesson(lang){if(typeof DISCRETE_L4==='undefined')return;var c=(lang==='tr'&&DISCRETE_L4.tr)?DISCRETE_L4.tr:DISCRETE_L4.en;var el=document.getElementById('lessonContent');if(el&&c){el.innerHTML=c;el.querySelectorAll('script').forEach(function(o){var s=document.createElement('script');s.textContent=o.textContent;o.parentNode.replaceChild(s,o);});if(typeof renderMathInElement==='function')renderMathInElement(el,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});}}
+var il='en';try{il=localStorage.getItem('tut-lang')||'en';}catch(e){}loadLesson(il);document.addEventListener('langchange',function(e){loadLesson(e.detail.lang);});
+</script>
+<script>
+var pyR=false,pyI=null;async function initPyodide(){try{pyI=await loadPyodide({indexURL:"https://cdn.jsdelivr.net/pyodide/v0.28.1/full/"});await pyI.loadPackage("numpy");pyR=true;var s=document.getElementById('labStatus');var l='en';try{l=localStorage.getItem('tut-lang')||'en'}catch(e){}if(s)s.innerHTML='<span class="lab-ready">'+(l==='tr'?'✅ Python hazır':'✅ Python ready')+'</span>';document.querySelectorAll('.lab-run-btn').forEach(function(b){b.disabled=false;});}catch(e){var s=document.getElementById('labStatus');if(s)s.innerHTML='<span class="lab-error">❌ '+e.message+'</span>';}}
+async function runCode(eId,oId){if(!pyR){document.getElementById(oId).textContent='⏳ Loading...';return;}var code=document.getElementById(eId).value;var o=document.getElementById(oId);o.textContent='⏳ Running...';o.className='lab-output';try{pyI.runPython('import io,sys;sys.stdout=io.StringIO()');await pyI.runPythonAsync(code);var out=pyI.runPython('sys.stdout.getvalue()');o.textContent=out||'(no output)';o.classList.add('lab-success');}catch(e){o.textContent='❌ Error:\n'+e.message;o.classList.add('lab-error-output');}}
+var lO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){initPyodide();lO.disconnect();}});},{rootMargin:'200px'});var lE=document.getElementById('labSection');if(lE)lO.observe(lE);
+var cmE={};document.querySelectorAll('.lab-editor').forEach(function(ta){var cm=CodeMirror.fromTextArea(ta,{mode:'python',theme:'material-darker',lineNumbers:true,indentUnit:4,tabSize:4,indentWithTabs:false,lineWrapping:true,viewportMargin:Infinity,extraKeys:{'Tab':function(cm){cm.replaceSelection('    ','end')},'Shift-Enter':function(cm){runCode(ta.id,ta.id.replace('editor','output'));}}});cmE[ta.id]=cm;});
+var _rC=runCode;runCode=async function(e,o){if(cmE[e])cmE[e].save();return _rC(e,o);};
+</script>
+<script src="runner.js?v=1" defer></script>
+<script src="nav.js?v=1" defer></script>
+</body>
+</html>

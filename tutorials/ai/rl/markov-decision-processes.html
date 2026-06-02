@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="Markov Decision Processes — Lesson 2 of Reinforcement Learning. Interactive Reinforcement Learning lesson · Q-learning, policy gradient · mikailsarpkaya.com"><meta property="og:title" content="Markov Decision Processes — Reinforcement Learning"><meta property="og:description" content="Markov Decision Processes — Lesson 2 of Reinforcement Learning. Interactive Reinforcement Learning lesson · Q-learning, policy gradient · mikailsarpkaya.com"><meta property="og:type" content="article"><meta property="og:url" content="https://mikailsarpkaya.com/tutorials/ai/rl/markov-decision-processes"><meta property="og:site_name" content="Mikail Sarpkaya"><meta property="og:image" content="https://mikailsarpkaya.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://mikailsarpkaya.com/og-image.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Markov Decision Processes"><meta name="twitter:description" content="Markov Decision Processes — Lesson 2 of Reinforcement Learning. Interactive Reinforcement Learning lesson · Q-learning, policy gradient · mikailsarpkaya.com"><link rel="canonical" href="https://mikailsarpkaya.com/tutorials/ai/rl/markov-decision-processes"><link rel="alternate" hreflang="en" href="https://mikailsarpkaya.com/tutorials/ai/rl/markov-decision-processes"><link rel="alternate" hreflang="tr" href="https://mikailsarpkaya.com/tutorials/ai/rl/markov-decision-processes"><link rel="alternate" hreflang="x-default" href="https://mikailsarpkaya.com/tutorials/ai/rl/markov-decision-processes">
+<title>Markov Decision Processes — Reinforcement Learning — Mikail Sarpkaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="dns-prefetch" href="https://cdn.plot.ly"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.querySelector('.lesson-content'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script><script src="plotly-fix.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.28.1/full/pyodide.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/theme/material-darker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/python/python.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Markov Decision Processes", "description": "Markov Decision Processes — lesson 2 of Reinforcement Learning.", "url": "https://mikailsarpkaya.com/tutorials/ai/rl/markov-decision-processes", "inLanguage": ["en", "tr"], "learningResourceType": "Tutorial", "educationalUse": "self-study", "isPartOf": {"@type": "Course", "name": "Reinforcement Learning", "url": "https://mikailsarpkaya.com/tutorials/ai/rl/"}, "author": {"@type": "Person", "name": "Mikail Sarpkaya", "url": "https://mikailsarpkaya.com/"}, "publisher": {"@type": "Person", "name": "Mikail Sarpkaya"}}</script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div id="loader"><div class="ld-name"><span>P</span><span>A</span><span>N</span><span>D</span><span>A</span><span>S</span></div><div class="ld-bar-wrap"><div class="ld-bar"></div></div><div class="ld-sub">Loading…</div></div>
+<nav id="nav"><a href="/tutorials/" class="nav-logo">MS</a><div class="nav-controls"><div class="color-picker-wrap"><button class="nav-btn" id="colorTog" aria-label="Accent color"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 14 3.5 3.5 0 0 1 0 7 10 10 0 1 0 0-20z"/></svg></button><div class="color-dropdown" id="colorDrop"><div class="cd-label">Accent Color</div><div class="color-presets" id="presets"></div><div class="color-custom"><label>Custom</label><input type="color" id="customColor" value="#0ea5e9"></div></div></div><button class="nav-btn" id="langTog" aria-label="Language"><span class="lang-label" id="langLabel">EN</span></button></div></nav>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="layout">
+  <aside class="sidebar sb-v3" id="sidebar">
+
+<style>
+/* Wider sidebar (was 250px, now 300px → +20%) for one-line lesson titles */
+:root { --sb-w: 300px; }
+
+.sidebar.sb-v3 {
+  font-size: 0.92rem;
+  padding: 1rem 0.75rem 2rem;
+  overflow-y: auto;
+  width: var(--sb-w);
+  min-width: var(--sb-w);
+  transition: width 0.3s var(--ease, ease), min-width 0.3s var(--ease, ease);
+}
+
+/* ===== COLLAPSED RAIL ===== Override core2.css full-hide; keep 56px rail visible */
+body.sb-collapsed .sidebar.sb-v3 {
+  margin-left: 0 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: 56px !important;
+  min-width: 56px !important;
+  overflow: hidden;
+  padding: 1rem 0.4rem 2rem;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-back,
+body.sb-collapsed .sidebar.sb-v3 .sb-current,
+body.sb-collapsed .sidebar.sb-v3 .sb-section-items,
+body.sb-collapsed .sidebar.sb-v3 .sb-label-text,
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label::after { display: none !important; }
+body.sb-collapsed .sidebar.sb-v3 .sb-section { margin: 0.55rem 0; }
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label {
+  padding: 0.6rem 0;
+  justify-content: center;
+  gap: 0;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label .sb-icon {
+  font-size: 1.4rem;
+  filter: grayscale(0.2) brightness(0.9);
+  transition: filter 0.2s, transform 0.2s;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section.open > .sb-section-label .sb-icon {
+  filter: none;
+  transform: scale(1.15);
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section.open > .sb-section-label {
+  background: rgba(200,169,110,0.10);
+  border-left: 2px solid #c8a96e;
+}
+body.sb-collapsed .sidebar.sb-v3 .sb-section-label:hover .sb-icon {
+  filter: none;
+  transform: scale(1.15);
+}
+/* Hover-to-peek: expand on hover when collapsed (desktop only) */
+@media(min-width:901px){
+  body.sb-collapsed .sidebar.sb-v3:hover {
+    width: var(--sb-w) !important;
+    min-width: var(--sb-w) !important;
+    overflow-y: auto;
+    padding: 1rem 0.75rem 2rem;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.35);
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-back,
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-current,
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-label-text { display: revert !important; }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section.open > .sb-section-items { display: block !important; }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section-label {
+    font-size: 0.72rem;
+    padding: 0.55rem 0.55rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    background: transparent;
+    border-left: none;
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section.open > .sb-section-label {
+    background: rgba(200,169,110,0.05);
+    border-left: none;
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section-label::after { display: inline-block !important; }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section { margin: 0.1rem 0; }
+  /* Restore icon size to default in hover-peek (was 1.4rem in pure rail mode) */
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section-label .sb-icon {
+    font-size: 1rem;
+    transform: none;
+  }
+  body.sb-collapsed .sidebar.sb-v3:hover .sb-section.open > .sb-section-label .sb-icon {
+    transform: scale(1.05);
+  }
+}
+.sidebar.sb-v3 .sb-back {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.75rem; letter-spacing: 0.06em;
+  color: rgba(235,230,220,0.55);
+  text-decoration: none;
+  margin-bottom: 0.9rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.sidebar.sb-v3 .sb-back:hover { color: #c8a96e; background: rgba(200,169,110,0.06); }
+
+/* ========== CURRENT PAGE CARD (prominent) ========== */
+.sidebar.sb-v3 .sb-current {
+  position: relative;
+  background: linear-gradient(135deg, rgba(200,169,110,0.10) 0%, rgba(200,169,110,0.02) 100%);
+  border: 1px solid rgba(200,169,110,0.22);
+  border-left: 4px solid #c8a96e;
+  border-radius: 8px;
+  padding: 0.85rem 0.95rem 0.9rem;
+  margin: 0 0 1.2rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.sidebar.sb-v3 .sb-current-eyebrow {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 0.65rem; letter-spacing: 0.14em;
+  color: rgba(200,169,110,0.75);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.sidebar.sb-v3 .sb-current-title {
+  font-family: "Bebas Neue", "Outfit", sans-serif;
+  font-size: 1.35rem; letter-spacing: 0.06em;
+  color: #ebe6dc;
+  line-height: 1.05;
+  font-weight: 600;
+}
+.sidebar.sb-v3 .sb-current-sub {
+  font-size: 0.72rem;
+  color: rgba(235,230,220,0.6);
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+}
+.sidebar.sb-v3 .sb-current-lesson {
+  display: flex; align-items: baseline; gap: 0.5rem;
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed rgba(200,169,110,0.18);
+}
+.sidebar.sb-v3 .sb-current-lesson .num {
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem; font-weight: 500;
+  color: #c8a96e;
+  letter-spacing: 0.05em;
+}
+.sidebar.sb-v3 .sb-current-lesson .ttl {
+  font-size: 0.84rem;
+  color: #ebe6dc;
+  line-height: 1.2;
+}
+
+/* ========== SECTION (TOP-LEVEL) ========== */
+.sidebar.sb-v3 .sb-section {
+  margin: 0.1rem 0;
+}
+.sidebar.sb-v3 .sb-section-label {
+  cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.55rem;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(200,169,110,0.85);
+  border-radius: 5px;
+  transition: color 0.15s, background 0.15s;
+}
+.sidebar.sb-v3 .sb-section-label .sb-icon {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+  filter: grayscale(0.15) brightness(0.95);
+  transition: filter 0.15s, transform 0.15s;
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-label .sb-icon {
+  filter: none;
+  transform: scale(1.05);
+}
+.sidebar.sb-v3 .sb-section-label .sb-label-text { flex: 1; }
+.sidebar.sb-v3 .sb-section-label::after {
+  content: "▸"; font-size: 0.6rem;
+  margin-left: auto;
+  opacity: 0.45;
+  transition: transform 0.2s;
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-label::after { transform: rotate(90deg); }
+.sidebar.sb-v3 .sb-section-label:hover {
+  color: #c8a96e;
+  background: rgba(200,169,110,0.05);
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-label { color: #c8a96e; }
+
+.sidebar.sb-v3 .sb-section-items {
+  display: none;
+  padding: 0.15rem 0 0.15rem 0.75rem;
+  margin: 0 0 0.4rem 0.55rem;
+  border-left: 1px solid rgba(200,169,110,0.12);
+}
+.sidebar.sb-v3 .sb-section.open > .sb-section-items { display: block; }
+
+/* ========== TRACK (SUB-LEVEL inside a section) ========== */
+.sidebar.sb-v3 .sb-track {
+  margin: 0.05rem 0;
+}
+.sidebar.sb-v3 .sb-track-label {
+  cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(235,230,220,0.78);
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  text-decoration: none;
+}
+.sidebar.sb-v3 .sb-track-label::after {
+  content: "▸"; font-size: 0.58rem;
+  margin-left: auto;
+  opacity: 0.35;
+  transition: transform 0.2s;
+}
+.sidebar.sb-v3 .sb-track-label.no-children::after { display: none; }
+.sidebar.sb-v3 .sb-track.open > .sb-track-label::after { transform: rotate(90deg); opacity: 0.8; }
+.sidebar.sb-v3 .sb-track-label:hover {
+  color: #c8a96e;
+  background: rgba(200,169,110,0.05);
+}
+.sidebar.sb-v3 .sb-track.current > .sb-track-label {
+  color: #c8a96e;
+  font-weight: 600;
+}
+
+.sidebar.sb-v3 .sb-track-items {
+  display: none;
+  padding: 0.1rem 0 0.15rem 0.5rem;
+  margin: 0 0 0.3rem 0.5rem;
+  border-left: 1px solid rgba(200,169,110,0.1);
+}
+.sidebar.sb-v3 .sb-track.open > .sb-track-items { display: block; }
+
+/* Single-track group (no label): drop the redundant left indent */
+.sidebar.sb-v3 .sb-track.no-label { margin: 0; }
+.sidebar.sb-v3 .sb-track.no-label > .sb-track-items {
+  padding: 0;
+  margin: 0;
+  border-left: 0;
+}
+
+/* ========== LESSON ROW (numbered) ========== */
+.sidebar.sb-v3 .sb-lesson {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.34rem 0.45rem;
+  text-decoration: none;
+  color: rgba(235,230,220,0.62);
+  border-left: 2px solid transparent;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.sidebar.sb-v3 .sb-lesson .num {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(200,169,110,0.45);
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.sidebar.sb-v3 .sb-lesson .lbl {
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+.sidebar.sb-v3 .sb-lesson:hover {
+  color: #ebe6dc;
+  background: rgba(200,169,110,0.04);
+}
+.sidebar.sb-v3 .sb-lesson:hover .num { color: rgba(200,169,110,0.7); }
+.sidebar.sb-v3 .sb-lesson.active {
+  color: #c8a96e;
+  background: rgba(200,169,110,0.08);
+  border-left-color: #c8a96e;
+}
+.sidebar.sb-v3 .sb-lesson.active .num { color: #c8a96e; opacity: 1; }
+.sidebar.sb-v3 .sb-lesson.active .lbl { font-weight: 500; }
+
+/* Scroll polish */
+.sidebar.sb-v3::-webkit-scrollbar { width: 5px; }
+.sidebar.sb-v3::-webkit-scrollbar-track { background: transparent; }
+.sidebar.sb-v3::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.18); border-radius: 3px; }
+
+/* ========== MAIN CONTENT CENTERING (applies to every page with sb-v3) ========== */
+/* Width: 1200px (was 920px, +30%) — uniform across every lesson page */
+.layout .main { display: flex; flex-direction: column; align-items: stretch; }
+.layout .main > .topic-hero    { max-width: 1200px; margin: 0 auto; width: 100%; }
+.layout .main > .lesson-content { max-width: 1200px; margin: 0 auto; width: 100%; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+.layout .main > .lab-section    { max-width: 1200px; margin: 0 auto; width: 100%; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+.layout .main > .lesson-nav     { max-width: 1200px; margin: 1rem auto; width: 100%; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+@media(max-width:768px){
+  .layout .main > .lesson-content,
+  .layout .main > .lab-section,
+  .layout .main > .lesson-nav { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* Toggle button — tangent to sidebar (just outside its right edge) */
+body.sb-collapsed .sb-toggle-btn {
+  left: 56px !important;            /* rail width */
+  transform: translateX(2px) !important;
+}
+body.sb-collapsed .sb-toggle-btn:active { transform: translateX(2px) scale(.92) !important; }
+
+/* ===== Visual styling for legacy l-* boxes used by c/cpp/js/latex lessons ===== */
+.lesson-content .l-highlight {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 1.05rem 1.4rem;
+  background: linear-gradient(135deg, rgba(200,169,110,0.08) 0%, rgba(200,169,110,0.02) 100%);
+  border: 1px solid rgba(200,169,110,0.22);
+  border-left: 4px solid #c8a96e;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(235,230,220,0.85);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+}
+html[data-theme="light"] .lesson-content .l-highlight { color: rgba(28,26,22,0.85); box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
+.lesson-content .l-highlight strong { color: #c8a96e; font-weight: 600; letter-spacing: 0.01em; }
+.lesson-content .l-highlight code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: rgba(200,169,110,0.12);
+  color: rgba(235,230,220,0.95);
+}
+html[data-theme="light"] .lesson-content .l-highlight code { background: rgba(0,0,0,0.06); color: rgba(28,26,22,0.92); }
+
+/* Bigger, more readable lesson body text & lists */
+.lesson-content .l-text { font-size: 1.04rem; line-height: 1.85; margin-bottom: 1.1rem; }
+.lesson-content .l-list { margin: 0.9rem 0 1.4rem; }
+.lesson-content .l-list li { font-size: 1.02rem; line-height: 1.85; margin-bottom: 0.35rem; padding-left: 1.4rem; }
+.lesson-content .l-list li::before { font-size: 1.1em; }
+.lesson-content .l-text strong { color: var(--text); font-weight: 600; }
+.lesson-content .l-text code,
+.lesson-content .l-list li code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  background: rgba(200,169,110,0.10);
+  color: #c8a96e;
+}
+html[data-theme="light"] .lesson-content .l-text code,
+html[data-theme="light"] .lesson-content .l-list li code { background: rgba(0,0,0,0.06); }
+
+.lesson-content .l-note,
+.lesson-content .l-warn { font-size: 1rem; line-height: 1.75; padding: 1.05rem 1.35rem; }
+
+/* Auto-create section visual breaks where the original content has no h2/h3 */
+.lesson-content .l-text + .l-highlight,
+.lesson-content .code-wrap + .l-highlight { margin-top: 1.8rem; }
+
+/* Cap calc-cards at 4 columns so formulas like cos(θ)=(a·b)/(‖a‖‖b‖) fit one line */
+.lesson-content .calc-cards { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important; }
+@media(max-width:1100px){
+  .lesson-content .calc-cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
+}
+@media(max-width:760px){
+  .lesson-content .calc-cards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; }
+}
+@media(max-width:500px){
+  .lesson-content .calc-cards { grid-template-columns: 1fr !important; }
+}
+</style>
+<script>
+(function(){
+  if (window.__sbV3Wired) return;
+  window.__sbV3Wired = true;
+  document.addEventListener('click', function(e){
+    var label = e.target.closest('.sidebar.sb-v3 .sb-section-label, .sidebar.sb-v3 .sb-track-label');
+    if (!label) return;
+    // Skip when label is a direct link (no-children monolithic tracks)
+    if (label.classList.contains('no-children')) return;
+    var wrapper = label.closest('.sb-section, .sb-track');
+    if (wrapper) wrapper.classList.toggle('open');
+  });
+})();
+</script>
+    <a href="/tutorials/" class="sb-back" data-en="← All Tutorials" data-tr="← Tüm Eğitimler">← All Tutorials</a>
+
+    <div class="sb-current">
+      <div class="sb-current-eyebrow" data-en="AI & ML" data-tr="Yapay Zeka & ML">AI & ML</div>
+      <div class="sb-current-title" data-en="Reinforcement Learning" data-tr="Pekiştirmeli Öğrenme">Reinforcement Learning</div>
+      <div class="sb-current-sub" data-en="13 Lessons" data-tr="13 Ders">13 Lessons</div>
+      <div class="sb-current-lesson"><span class="num">L02</span><span class="ttl" data-en="Markov Decision Processes" data-tr="Markov Karar Süreçleri">Markov Decision Processes</span></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">🧱</span><span class="sb-label-text" data-en="Foundations" data-tr="Temeller">Foundations</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/programming/python/" class="sb-track-label" data-en="Python Core" data-tr="Python Temelleri">Python Core</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/programming/python/setup-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Setup & Fundamentals" data-tr="Kurulum & Temeller">Setup & Fundamentals</span></a>
+              <a href="/tutorials/programming/python/control-flow-functions" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Control Flow & Functions" data-tr="Kontrol Akışı & Fonksiyonlar">Control Flow & Functions</span></a>
+              <a href="/tutorials/programming/python/data-structures" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Data Structures" data-tr="Veri Yapıları">Data Structures</span></a>
+              <a href="/tutorials/programming/python/oop-classes" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="OOP & Classes" data-tr="OOP & Sınıflar">OOP & Classes</span></a>
+              <a href="/tutorials/programming/python/file-io-error-handling" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="File I/O & Error Handling" data-tr="Dosya I/O & Hata Yönetimi">File I/O & Error Handling</span></a>
+              <a href="/tutorials/programming/python/advanced-python" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Advanced Python" data-tr="İleri Python">Advanced Python</span></a>
+              <a href="/tutorials/programming/python/modern-python-features" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Modern Python 3.10+ Features" data-tr="Modern Python 3.10+ Features">Modern Python 3.10+ Features</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">📐</span><span class="sb-label-text" data-en="Math for AI" data-tr="AI için Matematik">Math for AI</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/math/linalg/" class="sb-track-label" data-en="Linear Algebra" data-tr="Doğrusal Cebir">Linear Algebra</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/linalg/vectors-vector-spaces" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Vectors & Vector Spaces" data-tr="Vektörler & Vektör Uzayları">Vectors & Vector Spaces</span></a>
+              <a href="/tutorials/math/linalg/matrices-transformations" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Matrices & Transformations" data-tr="Matrisler & Dönüşümler">Matrices & Transformations</span></a>
+              <a href="/tutorials/math/linalg/linear-systems" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Linear Systems" data-tr="Doğrusal Sistemler">Linear Systems</span></a>
+              <a href="/tutorials/math/linalg/eigenvalues-eigenvectors" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Eigenvalues & Eigenvectors" data-tr="Özdeğerler & Özvektörler">Eigenvalues & Eigenvectors</span></a>
+              <a href="/tutorials/math/linalg/svd-matrix-decomposition" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="SVD & Matrix Decomposition" data-tr="SVD & Matris Ayrışımı">SVD & Matrix Decomposition</span></a>
+              <a href="/tutorials/math/linalg/tensors-multidimensional-arrays" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Tensors & Multidimensional Arrays" data-tr="Tensörler & Derin Öğrenme">Tensors & Multidimensional Arrays</span></a>
+              <a href="/tutorials/math/linalg/float-stability" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Float & Stability" data-tr="Float & Kararlılık">Float & Stability</span></a>
+              <a href="/tutorials/math/linalg/matrix-calculus" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Matrix Calculus" data-tr="Matris Analizi">Matrix Calculus</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/math/calculus/" class="sb-track-label" data-en="Calculus" data-tr="Kalkülüs">Calculus</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/math/calculus/limits-derivatives" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Limits & Derivatives" data-tr="Limitler & Türevler">Limits & Derivatives</span></a>
+              <a href="/tutorials/math/calculus/differentiation-rules" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Differentiation Rules" data-tr="Türev Kuralları">Differentiation Rules</span></a>
+              <a href="/tutorials/math/calculus/partial-derivatives" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Partial Derivatives" data-tr="Kısmi Türevler">Partial Derivatives</span></a>
+              <a href="/tutorials/math/calculus/chain-rule-backprop" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Chain Rule & Backprop" data-tr="Zincir Kuralı & Geri Yayılım">Chain Rule & Backprop</span></a>
+              <a href="/tutorials/math/calculus/integration-for-ml" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Integration for ML" data-tr="ML İçin İntegral">Integration for ML</span></a>
+              <a href="/tutorials/math/calculus/optimization-gradient-descent" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Optimization & GD" data-tr="Optimizasyon & Gradyan İnişi">Optimization & GD</span></a>
+              <a href="/tutorials/math/calculus/lagrange-multipliers" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Lagrange Multipliers" data-tr="Lagrange Çarpanları">Lagrange Multipliers</span></a>
+              <a href="/tutorials/math/calculus/advanced-vector-analysis" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Advanced Vector Analysis" data-tr="Vektör Analizi">Advanced Vector Analysis</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/probability/" class="sb-track-label" data-en="ML Mathematics" data-tr="ML Matematik">ML Mathematics</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/probability/probability-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Probability Fundamentals" data-tr="Olasılık Temelleri">Probability Fundamentals</span></a>
+              <a href="/tutorials/ai/probability/statistics-distributions" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Statistics & Distributions" data-tr="İstatistik & Dağılımlar">Statistics & Distributions</span></a>
+              <a href="/tutorials/ai/probability/bayesian-thinking" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Bayesian Thinking" data-tr="Bayesçi Düşünme">Bayesian Thinking</span></a>
+              <a href="/tutorials/ai/probability/information-theory" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Information Theory" data-tr="Bilgi Teorisi">Information Theory</span></a>
+              <a href="/tutorials/ai/probability/optimization-theory" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Optimization Theory" data-tr="Optimizasyon Teorisi">Optimization Theory</span></a>
+              <a href="/tutorials/ai/probability/numerical-methods" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Numerical Methods" data-tr="Sayısal Yöntemler">Numerical Methods</span></a>
+              <a href="/tutorials/ai/probability/convex-optimization" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Convex Optimization" data-tr="Konveks Optimizasyon">Convex Optimization</span></a>
+              <a href="/tutorials/ai/probability/manifold-geometry" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Manifold Geometry" data-tr="Manifold Geometrisi">Manifold Geometry</span></a>
+              <a href="/tutorials/ai/probability/information-geometry" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Information Geometry" data-tr="Bilgi Geometrisi">Information Geometry</span></a>
+              <a href="/tutorials/ai/probability/statistical-learning-theory" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Statistical Learning Theory" data-tr="Öğrenme Teorisi">Statistical Learning Theory</span></a>
+              <a href="/tutorials/ai/probability/martingales-concentration" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Advanced Probability: Martingales & Concentration" data-tr="Martingaleler & Yoğunlaşma">Advanced Probability: Martingales & Concentration</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">📊</span><span class="sb-label-text" data-en="Data" data-tr="Veri">Data</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/ai/numpy/" class="sb-track-label" data-en="NumPy" data-tr="NumPy">NumPy</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/numpy/arrays-creation" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Arrays & Creation" data-tr="Diziler & Oluşturma">Arrays & Creation</span></a>
+              <a href="/tutorials/ai/numpy/indexing-slicing" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Indexing & Slicing" data-tr="İndeksleme & Dilimleme">Indexing & Slicing</span></a>
+              <a href="/tutorials/ai/numpy/broadcasting-vectorization" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Broadcasting & Vectorization" data-tr="Broadcasting & Vektörizasyon">Broadcasting & Vectorization</span></a>
+              <a href="/tutorials/ai/numpy/statistics-sorting" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Statistics & Sorting" data-tr="İstatistik & Sıralama">Statistics & Sorting</span></a>
+              <a href="/tutorials/ai/numpy/linear-algebra" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Linear Algebra" data-tr="Doğrusal Cebir">Linear Algebra</span></a>
+              <a href="/tutorials/ai/numpy/random-practical" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Random & Practical" data-tr="Rastgele & Pratik">Random & Practical</span></a>
+              <a href="/tutorials/ai/numpy/einsum-mastery" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="einsum Mastery" data-tr="einsum Ustalığı">einsum Mastery</span></a>
+              <a href="/tutorials/ai/numpy/strides-memory-layout" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Strides & Memory Layout" data-tr="Strides & Bellek Düzeni">Strides & Memory Layout</span></a>
+              <a href="/tutorials/ai/numpy/numerical-stability" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Numerical Stability" data-tr="Sayısal Kararlılık">Numerical Stability</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/pandas/" class="sb-track-label" data-en="Pandas" data-tr="Pandas">Pandas</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/pandas/series-dataframes" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Series & DataFrames" data-tr="Series & DataFrame">Series & DataFrames</span></a>
+              <a href="/tutorials/ai/pandas/data-loading-export" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Data Loading & Export" data-tr="Veri Yükleme & Dışa Aktarma">Data Loading & Export</span></a>
+              <a href="/tutorials/ai/pandas/selection-filtering" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Selection & Filtering" data-tr="Seçim & Filtreleme">Selection & Filtering</span></a>
+              <a href="/tutorials/ai/pandas/data-cleaning" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Data Cleaning" data-tr="Veri Temizleme">Data Cleaning</span></a>
+              <a href="/tutorials/ai/pandas/groupby-aggregation" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="GroupBy & Aggregation" data-tr="GroupBy & Toplama">GroupBy & Aggregation</span></a>
+              <a href="/tutorials/ai/pandas/merging-reshaping" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Merging & Reshaping" data-tr="Birleştirme & Yeniden Şekillendirme">Merging & Reshaping</span></a>
+              <a href="/tutorials/ai/pandas/time-series-foundations" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Time Series Foundations" data-tr="Zaman Serisi Temelleri">Time Series Foundations</span></a>
+              <a href="/tutorials/ai/pandas/string-text-processing" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="String & Text Processing for NLP" data-tr="NLP icin Metin Isleme">String & Text Processing for NLP</span></a>
+              <a href="/tutorials/ai/pandas/multiindex-mastery" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="MultiIndex Mastery" data-tr="MultiIndex Ustalığı">MultiIndex Mastery</span></a>
+              <a href="/tutorials/ai/pandas/polars-lazy-fast" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Polars — Lazy & Fast" data-tr="Polars — Tembel & Hızlı">Polars — Lazy & Fast</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/sql/" class="sb-track-label" data-en="SQL" data-tr="SQL">SQL</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/sql/what-is-sql" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="What is SQL?" data-tr="SQL Nedir?">What is SQL?</span></a>
+              <a href="/tutorials/ai/sql/select-where-order-by" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="SELECT, WHERE, ORDER BY" data-tr="SELECT, WHERE, ORDER BY">SELECT, WHERE, ORDER BY</span></a>
+              <a href="/tutorials/ai/sql/aggregates-group-by" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Aggregates & GROUP BY" data-tr="Toplama & GROUP BY">Aggregates & GROUP BY</span></a>
+              <a href="/tutorials/ai/sql/joins" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="JOINs" data-tr="JOIN İşlemleri">JOINs</span></a>
+              <a href="/tutorials/ai/sql/subqueries-ctes" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Subqueries & CTEs" data-tr="Alt Sorgular & CTE">Subqueries & CTEs</span></a>
+              <a href="/tutorials/ai/sql/window-functions" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Window Functions" data-tr="Pencere Fonksiyonları">Window Functions</span></a>
+              <a href="/tutorials/ai/sql/dates-strings-nulls" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Dates, Strings, NULLs" data-tr="Tarihler, Metinler, NULL'lar">Dates, Strings, NULLs</span></a>
+              <a href="/tutorials/ai/sql/indexes-performance" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Indexes & Performance" data-tr="İndeksler & Performans">Indexes & Performance</span></a>
+              <a href="/tutorials/ai/sql/schema-design-normalization" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Schema Design & Normalization" data-tr="Şema Tasarımı & Normalizasyon">Schema Design & Normalization</span></a>
+              <a href="/tutorials/ai/sql/real-world-analytics-pipeline" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Real-World Analytics Pipeline" data-tr="Gerçek Dünya Analitik Boru Hattı">Real-World Analytics Pipeline</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/matplotlib/" class="sb-track-label" data-en="Matplotlib" data-tr="Matplotlib">Matplotlib</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/matplotlib/anatomy-figure" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Anatomy of a Figure" data-tr="Figure Anatomisi">Anatomy of a Figure</span></a>
+              <a href="/tutorials/ai/matplotlib/lines-markers-styles" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Lines, Markers, Styles" data-tr="Çizgiler & Stiller">Lines, Markers, Styles</span></a>
+              <a href="/tutorials/ai/matplotlib/subplots-layout" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Subplots & Layout" data-tr="Subplot & Düzen">Subplots & Layout</span></a>
+              <a href="/tutorials/ai/matplotlib/styling-themes" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Styling & Themes" data-tr="Stillendirme & Temalar">Styling & Themes</span></a>
+              <a href="/tutorials/ai/matplotlib/three-d-heatmaps" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="3D & Heatmaps" data-tr="3B & Isı Haritaları">3D & Heatmaps</span></a>
+              <a href="/tutorials/ai/matplotlib/ml-cookbook-export" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="ML Cookbook & Export" data-tr="ML Tarifleri & Dışa Aktarma">ML Cookbook & Export</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">🧠</span><span class="sb-label-text" data-en="Core ML" data-tr="Temel ML">Core ML</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/ai/ml/" class="sb-track-label" data-en="ML Theory" data-tr="ML Teorisi">ML Theory</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/ml/what-is-machine-learning" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="What is Machine Learning?" data-tr="Makine Öğrenmesi Nedir?">What is Machine Learning?</span></a>
+              <a href="/tutorials/ai/ml/linear-regression" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Linear Regression" data-tr="Lineer Regresyon">Linear Regression</span></a>
+              <a href="/tutorials/ai/ml/logistic-regression-classification" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Logistic Regression & Classification" data-tr="Lojistik Regresyon & Sınıflandırma">Logistic Regression & Classification</span></a>
+              <a href="/tutorials/ai/ml/generalization-bias-variance" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Generalisation: Bias-Variance & CV" data-tr="Genelleme: Bias-Variance & CV">Generalisation: Bias-Variance & CV</span></a>
+              <a href="/tutorials/ai/ml/evaluation-hyperparameter-tuning" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Evaluation & Hyperparameter Tuning" data-tr="Değerlendirme & Hyperparameter Tuning">Evaluation & Hyperparameter Tuning</span></a>
+              <a href="/tutorials/ai/ml/regularization" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Regularisation" data-tr="Regularization">Regularisation</span></a>
+              <a href="/tutorials/ai/ml/trees-ensembles-xgboost" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Trees & Ensembles (XGBoost)" data-tr="Ağaçlar & Ensemble (XGBoost)">Trees & Ensembles (XGBoost)</span></a>
+              <a href="/tutorials/ai/ml/clustering" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Clustering" data-tr="Kümeleme (Clustering)">Clustering</span></a>
+              <a href="/tutorials/ai/ml/dimensionality-reduction" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Dimensionality Reduction" data-tr="Boyut İndirgeme">Dimensionality Reduction</span></a>
+              <a href="/tutorials/ai/ml/feature-engineering-imbalanced" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Feature Engineering & Imbalanced Data" data-tr="Özellik Mühendisliği & Dengesiz Veri">Feature Engineering & Imbalanced Data</span></a>
+              <a href="/tutorials/ai/ml/mlops-production" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="MLOps & Production" data-tr="MLOps & Üretim">MLOps & Production</span></a>
+              <a href="/tutorials/ai/ml/support-vector-machines" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Support Vector Machines (SVM)" data-tr="Destek Vektör Makineleri (SVM)">Support Vector Machines (SVM)</span></a>
+              <a href="/tutorials/ai/ml/naive-bayes" class="sb-lesson"><span class="num">13</span><span class="lbl" data-en="Naive Bayes Classifier" data-tr="Naive Bayes Sınıflandırıcı">Naive Bayes Classifier</span></a>
+              <a href="/tutorials/ai/ml/k-nearest-neighbors" class="sb-lesson"><span class="num">14</span><span class="lbl" data-en="k-Nearest Neighbors (kNN)" data-tr="k-En Yakın Komşu (kNN)">k-Nearest Neighbors (kNN)</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/sklearn/" class="sb-track-label" data-en="scikit-learn" data-tr="scikit-learn">scikit-learn</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/sklearn/estimator-api" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Estimator API" data-tr="Estimator API">Estimator API</span></a>
+              <a href="/tutorials/ai/sklearn/preprocessing-pipelines" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Preprocessing & Pipelines" data-tr="Önişleme & Pipeline">Preprocessing & Pipelines</span></a>
+              <a href="/tutorials/ai/sklearn/linear-models" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Linear Models" data-tr="Doğrusal Modeller">Linear Models</span></a>
+              <a href="/tutorials/ai/sklearn/tree-based-models" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Tree-Based Models" data-tr="Ağaç Modelleri">Tree-Based Models</span></a>
+              <a href="/tutorials/ai/sklearn/model-selection-cv" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Model Selection & CV" data-tr="Model Seçimi & CV">Model Selection & CV</span></a>
+              <a href="/tutorials/ai/sklearn/classification-metrics" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Classification Metrics" data-tr="Sınıflandırma Metrikleri">Classification Metrics</span></a>
+              <a href="/tutorials/ai/sklearn/regression-clustering" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Regression & Clustering" data-tr="Regresyon & Kümeleme">Regression & Clustering</span></a>
+              <a href="/tutorials/ai/sklearn/pca-end-to-end" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="PCA & End-to-End" data-tr="PCA & Uçtan Uca">PCA & End-to-End</span></a>
+              <a href="/tutorials/ai/sklearn/svm" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="SVM (sklearn)" data-tr="SVM (sklearn)">SVM (sklearn)</span></a>
+              <a href="/tutorials/ai/sklearn/naive-bayes" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Naive Bayes (sklearn)" data-tr="Naive Bayes (sklearn)">Naive Bayes (sklearn)</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">🤖</span><span class="sb-label-text" data-en="Deep Learning" data-tr="Derin Öğrenme">Deep Learning</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/ai/dl/" class="sb-track-label" data-en="Deep Learning" data-tr="Derin Öğrenme">Deep Learning</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/dl/neural-networks-intro" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Neural Networks Intro (Perceptron, MLP)" data-tr="Sinir Ağına Giriş (Perceptron, MLP)">Neural Networks Intro (Perceptron, MLP)</span></a>
+              <a href="/tutorials/ai/dl/activations-loss-functions" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Activations & Loss Functions" data-tr="Aktivasyon & Kayıp Fonksiyonları">Activations & Loss Functions</span></a>
+              <a href="/tutorials/ai/dl/backpropagation-computational-graphs" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Backpropagation & Computational Graphs" data-tr="Backpropagation & Hesap Grafı">Backpropagation & Computational Graphs</span></a>
+              <a href="/tutorials/ai/dl/optimization-training-dynamics" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Optimization & Training Dynamics" data-tr="Optimizasyon & Eğitim Dinamiği">Optimization & Training Dynamics</span></a>
+              <a href="/tutorials/ai/dl/regularization-normalization" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Regularization & Normalization" data-tr="Regularization & Normalization">Regularization & Normalization</span></a>
+              <a href="/tutorials/ai/dl/cnn-computer-vision" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="CNN & Computer Vision" data-tr="CNN & Bilgisayarla Görü">CNN & Computer Vision</span></a>
+              <a href="/tutorials/ai/dl/transfer-learning-pretraining" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Transfer Learning & Pre-training" data-tr="Transfer Learning & Pre-training">Transfer Learning & Pre-training</span></a>
+              <a href="/tutorials/ai/dl/rnn-lstm-sequential" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="RNN & LSTM (Sequential Models)" data-tr="RNN & LSTM (Sıralı Modeller)">RNN & LSTM (Sequential Models)</span></a>
+              <a href="/tutorials/ai/dl/attention-transformers" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Attention & Transformers" data-tr="Attention & Transformers">Attention & Transformers</span></a>
+              <a href="/tutorials/ai/dl/generative-models" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Generative Models (VAE, GAN, Diffusion)" data-tr="Generative Modeller (VAE, GAN, Diffusion)">Generative Models (VAE, GAN, Diffusion)</span></a>
+              <a href="/tutorials/ai/dl/production-efficiency-mlops" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Production, Efficiency & MLOps" data-tr="Üretim, Verimlilik & MLOps">Production, Efficiency & MLOps</span></a>
+              <a href="/tutorials/ai/dl/mamba-state-space-models" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Mamba & State Space Models" data-tr="Mamba ve Durum Uzayı Modelleri">Mamba & State Space Models</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/pytorch/" class="sb-track-label" data-en="PyTorch" data-tr="PyTorch">PyTorch</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/pytorch/tensors-foundation" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Tensors Foundation" data-tr="Tensör Temelleri">Tensors Foundation</span></a>
+              <a href="/tutorials/ai/pytorch/autograd" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Autograd" data-tr="Autograd">Autograd</span></a>
+              <a href="/tutorials/ai/pytorch/nn-module" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="nn.Module" data-tr="nn.Module">nn.Module</span></a>
+              <a href="/tutorials/ai/pytorch/dataloader-dataset" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="DataLoader & Dataset" data-tr="DataLoader & Dataset">DataLoader & Dataset</span></a>
+              <a href="/tutorials/ai/pytorch/training-loop" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Training Loop" data-tr="Eğitim Döngüsü">Training Loop</span></a>
+              <a href="/tutorials/ai/pytorch/cnn-basics" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="CNN Basics" data-tr="CNN Temelleri">CNN Basics</span></a>
+              <a href="/tutorials/ai/pytorch/rnn-lstm-gru" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="RNN / LSTM / GRU" data-tr="RNN / LSTM / GRU">RNN / LSTM / GRU</span></a>
+              <a href="/tutorials/ai/pytorch/embeddings-tokenization" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Embeddings & Tokenization" data-tr="Embedding & Tokenizasyon">Embeddings & Tokenization</span></a>
+              <a href="/tutorials/ai/pytorch/attention-transformer" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Attention & Transformer" data-tr="Dikkat & Transformer">Attention & Transformer</span></a>
+              <a href="/tutorials/ai/pytorch/pretrained-transfer" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Pretrained & Transfer" data-tr="Pretrained & Transfer">Pretrained & Transfer</span></a>
+              <a href="/tutorials/ai/pytorch/production" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Production" data-tr="Üretim">Production</span></a>
+              <a href="/tutorials/ai/pytorch/nlp-sentiment-project" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="NLP Sentiment Project" data-tr="NLP Duygu Projesi">NLP Sentiment Project</span></a>
+              <a href="/tutorials/ai/pytorch/distributed-training-ddp-fsdp" class="sb-lesson"><span class="num">13</span><span class="lbl" data-en="Distributed Training — DDP & FSDP" data-tr="Dağıtık Eğitim — DDP & FSDP">Distributed Training — DDP & FSDP</span></a>
+              <a href="/tutorials/ai/pytorch/torch-compile-mixed-precision" class="sb-lesson"><span class="num">14</span><span class="lbl" data-en="torch.compile + Mixed Precision" data-tr="torch.compile + Karışık Hassasiyet">torch.compile + Mixed Precision</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">💬</span><span class="sb-label-text" data-en="NLP & LLMs" data-tr="NLP & LLM">NLP & LLMs</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/ai/nlp/" class="sb-track-label" data-en="NLP & LLMs" data-tr="NLP & LLM'ler">NLP & LLMs</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/nlp/text-preprocessing" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Text Preprocessing" data-tr="Metin Ön İşleme">Text Preprocessing</span></a>
+              <a href="/tutorials/ai/nlp/bow-tfidf-ngrams" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="BoW, TF-IDF & n-grams" data-tr="TDF, TF-IDF & n-gramlar">BoW, TF-IDF & n-grams</span></a>
+              <a href="/tutorials/ai/nlp/text-classification" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Text Classification" data-tr="Metin Sınıflandırma">Text Classification</span></a>
+              <a href="/tutorials/ai/nlp/sentiment-analysis" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Sentiment Analysis" data-tr="Duygu Analizi">Sentiment Analysis</span></a>
+              <a href="/tutorials/ai/nlp/word-embeddings" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Word Embeddings" data-tr="Kelime Gömmeleri">Word Embeddings</span></a>
+              <a href="/tutorials/ai/nlp/topic-modeling" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Topic Modeling" data-tr="Konu Modelleme">Topic Modeling</span></a>
+              <a href="/tutorials/ai/nlp/sequence-labeling" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Sequence Labeling & IE" data-tr="Dizi Etiketleme & BÇ">Sequence Labeling & IE</span></a>
+              <a href="/tutorials/ai/nlp/language-models" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Language Models" data-tr="Dil Modelleri">Language Models</span></a>
+              <a href="/tutorials/ai/nlp/seq2seq-attention" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Seq2Seq & Attention" data-tr="Seq2Seq & Dikkat">Seq2Seq & Attention</span></a>
+              <a href="/tutorials/ai/nlp/transformers-bert" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Transformers & BERT" data-tr="Transformerler & BERT">Transformers & BERT</span></a>
+              <a href="/tutorials/ai/nlp/generative-llms" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Generative LLMs" data-tr="Üretici LLM'ler">Generative LLMs</span></a>
+              <a href="/tutorials/ai/nlp/applied-nlp" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Applied NLP" data-tr="Uygulamalı NLP">Applied NLP</span></a>
+              <a href="/tutorials/ai/nlp/subword-tokenization" class="sb-lesson"><span class="num">13</span><span class="lbl" data-en="Subword Tokenization" data-tr="Alt-kelime Tokenleştirme">Subword Tokenization</span></a>
+              <a href="/tutorials/ai/nlp/reasoning-models" class="sb-lesson"><span class="num">14</span><span class="lbl" data-en="Reasoning Models" data-tr="Akıl Yürütme Modelleri">Reasoning Models</span></a>
+              <a href="/tutorials/ai/nlp/llm-evaluation" class="sb-lesson"><span class="num">15</span><span class="lbl" data-en="LLM Evaluation" data-tr="LLM Değerlendirme">LLM Evaluation</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/huggingface/" class="sb-track-label" data-en="HuggingFace Transformers" data-tr="HuggingFace Transformers">HuggingFace Transformers</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/huggingface/ecosystem-pipelines" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Ecosystem & Pipelines" data-tr="Ekosistem & Pipeline">Ecosystem & Pipelines</span></a>
+              <a href="/tutorials/ai/huggingface/tokenizers" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Tokenizers" data-tr="Tokenizer'lar">Tokenizers</span></a>
+              <a href="/tutorials/ai/huggingface/bert-sentiment-analysis" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="BERT Sentiment Analysis" data-tr="BERT Duygu Analizi">BERT Sentiment Analysis</span></a>
+              <a href="/tutorials/ai/huggingface/ner-token-classification" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="NER Token Classification" data-tr="NER Token Sınıflandırma">NER Token Classification</span></a>
+              <a href="/tutorials/ai/huggingface/generation-summarization" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Generation & Summarization" data-tr="Üretim & Özetleme">Generation & Summarization</span></a>
+              <a href="/tutorials/ai/huggingface/deployment-lora" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Deployment & LoRA" data-tr="Konuşlandırma & LoRA">Deployment & LoRA</span></a>
+              <a href="/tutorials/ai/huggingface/trainer-deep-dive" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Trainer Deep Dive" data-tr="Trainer Detaylı İnceleme">Trainer Deep Dive</span></a>
+              <a href="/tutorials/ai/huggingface/peft-fine-tuning" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="PEFT — Parameter-Efficient Fine-Tuning" data-tr="PEFT — Parametre-Verimli İnce Ayar">PEFT — Parameter-Efficient Fine-Tuning</span></a>
+              <a href="/tutorials/ai/huggingface/vllm-tgi-production-serving" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="vLLM & TGI — Production Serving" data-tr="vLLM & TGI — Üretim Sunumu">vLLM & TGI — Production Serving</span></a>
+              <a href="/tutorials/ai/huggingface/lm-evaluation-harness" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="lm-evaluation-harness" data-tr="lm-evaluation-harness">lm-evaluation-harness</span></a>
+              <a href="/tutorials/ai/huggingface/huggingface-agents-smolagents" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="HuggingFace Agents (smolagents)" data-tr="HuggingFace Agent'ları (smolagents)">HuggingFace Agents (smolagents)</span></a>
+              <a href="/tutorials/ai/huggingface/fine-tuning-recipes" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Fine-Tuning Recipes" data-tr="İnce Ayar Tarifleri">Fine-Tuning Recipes</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/langchain/" class="sb-track-label" data-en="LangChain & RAG" data-tr="LangChain & RAG">LangChain & RAG</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/langchain/what-is-langchain" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="What is LangChain?" data-tr="LangChain Nedir?">What is LangChain?</span></a>
+              <a href="/tutorials/ai/langchain/llms-chat-models" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="LLMs & Chat Models" data-tr="LLM'ler & Sohbet Modelleri">LLMs & Chat Models</span></a>
+              <a href="/tutorials/ai/langchain/prompt-engineering" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Prompt Engineering" data-tr="Prompt Mühendisliği">Prompt Engineering</span></a>
+              <a href="/tutorials/ai/langchain/chains-with-lcel" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Chains with LCEL" data-tr="LCEL ile Zincirler">Chains with LCEL</span></a>
+              <a href="/tutorials/ai/langchain/embeddings-vector-stores" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Embeddings & Vector Stores" data-tr="Gömmeler & Vektör DB">Embeddings & Vector Stores</span></a>
+              <a href="/tutorials/ai/langchain/rag-retrieval-augmented-generation" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="RAG: Retrieval-Augmented Generation" data-tr="RAG: Geri Erişimli Üretim">RAG: Retrieval-Augmented Generation</span></a>
+              <a href="/tutorials/ai/langchain/document-loaders-splitters" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Document Loaders & Splitters" data-tr="Belge Yükleyiciler & Bölücüler">Document Loaders & Splitters</span></a>
+              <a href="/tutorials/ai/langchain/memory-stateful-conversations" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Memory: Stateful Conversations" data-tr="Hafıza">Memory: Stateful Conversations</span></a>
+              <a href="/tutorials/ai/langchain/agents-tool-use" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Agents & Tool Use" data-tr="Ajanlar & Araçlar">Agents & Tool Use</span></a>
+              <a href="/tutorials/ai/langchain/advanced-rag" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Advanced RAG" data-tr="İleri RAG">Advanced RAG</span></a>
+              <a href="/tutorials/ai/langchain/production-langserve-observability" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Production: LangServe & Observability" data-tr="Üretim & Gözlem">Production: LangServe & Observability</span></a>
+              <a href="/tutorials/ai/langchain/customer-support-rag-bot" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Capstone: Customer Support RAG Bot" data-tr="Bitirme: RAG Botu">Capstone: Customer Support RAG Bot</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/agents/" class="sb-track-label" data-en="LLM Agents" data-tr="LLM Agents">LLM Agents</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/agents/why-agents-chain-autonomy" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Why Agents? Chain → Autonomy" data-tr="Neden Agent? Chain → Otonom">Why Agents? Chain → Autonomy</span></a>
+              <a href="/tutorials/ai/agents/agent-loop-react" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="The Agent Loop — ReAct from Scratch" data-tr="Agent Döngüsü — Sıfırdan ReAct">The Agent Loop — ReAct from Scratch</span></a>
+              <a href="/tutorials/ai/agents/tool-calling-function-calling" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Tool Calling & Function Calling" data-tr="Tool Calling & Function Calling">Tool Calling & Function Calling</span></a>
+              <a href="/tutorials/ai/agents/tool-design-patterns" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Tool Design Patterns" data-tr="Tool Tasarım Desenleri">Tool Design Patterns</span></a>
+              <a href="/tutorials/ai/agents/langchain-langgraph-agents" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="LangChain & LangGraph Agents" data-tr="LangChain & LangGraph Agent'ları">LangChain & LangGraph Agents</span></a>
+              <a href="/tutorials/ai/agents/memory-architectures" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Memory Architectures" data-tr="Bellek Mimarileri">Memory Architectures</span></a>
+              <a href="/tutorials/ai/agents/planning-task-decomposition" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Planning & Task Decomposition" data-tr="Planlama & Görev Ayrıştırma">Planning & Task Decomposition</span></a>
+              <a href="/tutorials/ai/agents/multi-agent-systems" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Multi-Agent Systems" data-tr="Multi-Agent Sistemler">Multi-Agent Systems</span></a>
+              <a href="/tutorials/ai/agents/browser-code-agents" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Browser & Code Agents" data-tr="Browser & Kod Agent'ları">Browser & Code Agents</span></a>
+              <a href="/tutorials/ai/agents/agent-evaluation" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Agent Evaluation" data-tr="Agent Değerlendirme">Agent Evaluation</span></a>
+              <a href="/tutorials/ai/agents/production-agents" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Production Agents" data-tr="Üretim Agent'ları">Production Agents</span></a>
+              <a href="/tutorials/ai/agents/multi-agent-research-assistant" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Multi-Agent NLP Research Assistant" data-tr="Multi-Agent NLP Araştırma Asistanı">Multi-Agent NLP Research Assistant</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/vectordb/" class="sb-track-label" data-en="Vector Databases" data-tr="Vektör Veritabanları">Vector Databases</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/vectordb/why-vector-dbs" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Why Vector DBs? Embeddings → Search" data-tr="Neden Vector DB? Gömme → Arama">Why Vector DBs? Embeddings → Search</span></a>
+              <a href="/tutorials/ai/vectordb/faiss-deep-dive" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="FAISS Deep Dive" data-tr="FAISS Detaylı İnceleme">FAISS Deep Dive</span></a>
+              <a href="/tutorials/ai/vectordb/hnsw-ann-algorithms" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="HNSW & ANN Algorithms" data-tr="HNSW & ANN Algoritmaları">HNSW & ANN Algorithms</span></a>
+              <a href="/tutorials/ai/vectordb/vector-db-zoo" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="The Vector DB Zoo" data-tr="Vector DB Hayvanat Bahçesi">The Vector DB Zoo</span></a>
+              <a href="/tutorials/ai/vectordb/hybrid-search-reranking" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Hybrid Search & Reranking" data-tr="Hibrit Arama & Reranking">Hybrid Search & Reranking</span></a>
+              <a href="/tutorials/ai/vectordb/indexing-update-strategies" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Indexing & Update Strategies" data-tr="İndeksleme & Güncelleme Stratejileri">Indexing & Update Strategies</span></a>
+              <a href="/tutorials/ai/vectordb/production-vector-db-ops" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Production Vector DB Ops" data-tr="Üretim Vector DB Operasyonları">Production Vector DB Ops</span></a>
+              <a href="/tutorials/ai/vectordb/capstone-production-rag-pipeline" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Capstone — Production RAG Pipeline" data-tr="Bitirme — Üretim RAG Pipeline'ı">Capstone — Production RAG Pipeline</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section open">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">🎯</span><span class="sb-label-text" data-en="Domains" data-tr="Alanlar">Domains</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/ai/cv/" class="sb-track-label" data-en="Computer Vision" data-tr="Bilgisayarla Görme">Computer Vision</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/cv/image-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Image Fundamentals" data-tr="Görüntü Temelleri">Image Fundamentals</span></a>
+              <a href="/tutorials/ai/cv/preprocessing-augmentation" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Preprocessing & Augmentation" data-tr="Önişleme & Augmentation">Preprocessing & Augmentation</span></a>
+              <a href="/tutorials/ai/cv/classical-cv" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Classical CV" data-tr="Klasik CV">Classical CV</span></a>
+              <a href="/tutorials/ai/cv/feature-detection" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Feature Detection" data-tr="Öznitelik Tespiti">Feature Detection</span></a>
+              <a href="/tutorials/ai/cv/cnn-fundamentals" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="CNN Fundamentals" data-tr="CNN Temelleri">CNN Fundamentals</span></a>
+              <a href="/tutorials/ai/cv/object-detection" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Object Detection" data-tr="Nesne Tespiti">Object Detection</span></a>
+              <a href="/tutorials/ai/cv/semantic-segmentation" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Semantic Segmentation" data-tr="Semantik Segmentasyon">Semantic Segmentation</span></a>
+              <a href="/tutorials/ai/cv/vision-transformers" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Vision Transformers" data-tr="Vision Transformer'lar">Vision Transformers</span></a>
+              <a href="/tutorials/ai/cv/image-generation" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Image Generation" data-tr="Görüntü Üretimi">Image Generation</span></a>
+              <a href="/tutorials/ai/cv/clip-multimodal" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="CLIP & Multimodal" data-tr="CLIP & Multimodal">CLIP & Multimodal</span></a>
+              <a href="/tutorials/ai/cv/production-cv" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Production CV" data-tr="Üretim CV">Production CV</span></a>
+              <a href="/tutorials/ai/cv/nlp-cv-multimodal-project" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="NLP+CV Multimodal Project" data-tr="NLP+CV Multimodal Projesi">NLP+CV Multimodal Project</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/audio/" class="sb-track-label" data-en="Audio" data-tr="Ses">Audio</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/audio/audio-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Audio Fundamentals" data-tr="Ses Temelleri">Audio Fundamentals</span></a>
+              <a href="/tutorials/ai/audio/fft-spectrograms" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="FFT & Spectrograms" data-tr="FFT & Spektrogramlar">FFT & Spectrograms</span></a>
+              <a href="/tutorials/ai/audio/mel-spectrograms-mfcc" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Mel-Spectrograms & MFCC" data-tr="Mel-Spektrogram & MFCC">Mel-Spectrograms & MFCC</span></a>
+              <a href="/tutorials/ai/audio/whisper-asr" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Whisper ASR" data-tr="Whisper Konuşma Tanıma">Whisper ASR</span></a>
+              <a href="/tutorials/ai/audio/text-to-speech" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Text to Speech (TTS)" data-tr="Metinden Sese (TTS)">Text to Speech (TTS)</span></a>
+              <a href="/tutorials/ai/audio/audio-embeddings" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Audio Embeddings" data-tr="Ses Gömmeleri">Audio Embeddings</span></a>
+              <a href="/tutorials/ai/audio/audio-classification-voicebot" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Audio Classification & Voicebot" data-tr="Ses Sınıflandırma & Voicebot">Audio Classification & Voicebot</span></a>
+              <a href="/tutorials/ai/audio/production-real-time" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Production & Real-Time" data-tr="Üretim & Gerçek Zamanlı">Production & Real-Time</span></a>
+              <a href="/tutorials/ai/audio/music-information-retrieval" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Music Information Retrieval" data-tr="Müzik Bilgi Erişimi">Music Information Retrieval</span></a>
+              <a href="/tutorials/ai/audio/speaker-diarization" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Speaker Diarization" data-tr="Konuşmacı Ayrıştırma">Speaker Diarization</span></a>
+              <a href="/tutorials/ai/audio/audio-llms-voice-agents" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Audio LLMs & Voice Agents" data-tr="Ses LLM'leri & Voice Agent'lar">Audio LLMs & Voice Agents</span></a>
+              <a href="/tutorials/ai/audio/sound-event-detection" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Sound Event Detection" data-tr="Ses Olayı Tespiti">Sound Event Detection</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/multimodal/" class="sb-track-label" data-en="Multimodal AI" data-tr="Multimodal">Multimodal AI</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/multimodal/what-is-multimodal" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="What is Multimodal? Vision + Language + Audio" data-tr="Multimodal Nedir? Görü + Dil + Ses">What is Multimodal? Vision + Language + Audio</span></a>
+              <a href="/tutorials/ai/multimodal/clip-deep-dive" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="CLIP Deep Dive" data-tr="CLIP Detaylı İnceleme">CLIP Deep Dive</span></a>
+              <a href="/tutorials/ai/multimodal/vision-language-models" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Vision-Language Models (LLaVA, BLIP-2)" data-tr="Görü-Dil Modelleri (LLaVA, BLIP-2)">Vision-Language Models (LLaVA, BLIP-2)</span></a>
+              <a href="/tutorials/ai/multimodal/audio-language-models" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Audio-Language Models (Whisper-LLM, AudioGPT)" data-tr="Ses-Dil Modelleri (Whisper-LLM, AudioGPT)">Audio-Language Models (Whisper-LLM, AudioGPT)</span></a>
+              <a href="/tutorials/ai/multimodal/video-understanding" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Video Understanding" data-tr="Video Anlama">Video Understanding</span></a>
+              <a href="/tutorials/ai/multimodal/document-ai-ocr-free" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Document AI & OCR-Free Understanding" data-tr="Doküman AI & OCR-Bağımsız Anlama">Document AI & OCR-Free Understanding</span></a>
+              <a href="/tutorials/ai/multimodal/multimodal-generation" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Multimodal Generation (DALL-E, Sora, Suno)" data-tr="Multimodal Üretim (DALL-E, Sora, Suno)">Multimodal Generation (DALL-E, Sora, Suno)</span></a>
+              <a href="/tutorials/ai/multimodal/multimodal-nlp-assistant" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Capstone — Multimodal NLP Assistant" data-tr="Bitirme — Multimodal NLP Asistanı">Capstone — Multimodal NLP Assistant</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/timeseries/" class="sb-track-label" data-en="Time Series Forecasting" data-tr="Zaman Serisi ML">Time Series Forecasting</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/timeseries/why-time-series" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Why Time Series? Stationarity & Decomposition" data-tr="Neden Zaman Serisi? Durağanlık & Ayrıştırma">Why Time Series? Stationarity & Decomposition</span></a>
+              <a href="/tutorials/ai/timeseries/arima-exponential-smoothing" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="ARIMA & Exponential Smoothing" data-tr="ARIMA & Üstel Düzleştirme">ARIMA & Exponential Smoothing</span></a>
+              <a href="/tutorials/ai/timeseries/prophet-stl-decomposition" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Prophet & STL Decomposition" data-tr="Prophet & STL Ayrıştırma">Prophet & STL Decomposition</span></a>
+              <a href="/tutorials/ai/timeseries/feature-engineering-ts" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Feature Engineering for TS" data-tr="TS için Özellik Mühendisliği">Feature Engineering for TS</span></a>
+              <a href="/tutorials/ai/timeseries/ml-for-time-series" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="ML for Time Series" data-tr="Zaman Serisi için ML">ML for Time Series</span></a>
+              <a href="/tutorials/ai/timeseries/deep-learning-ts" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Deep Learning for TS" data-tr="TS için Derin Öğrenme">Deep Learning for TS</span></a>
+              <a href="/tutorials/ai/timeseries/n-beats-n-hits" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="N-BEATS & N-HITS" data-tr="N-BEATS & N-HITS">N-BEATS & N-HITS</span></a>
+              <a href="/tutorials/ai/timeseries/transformers-ts" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Transformers for TS" data-tr="TS için Transformer'lar">Transformers for TS</span></a>
+              <a href="/tutorials/ai/timeseries/probabilistic-forecasting" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Probabilistic Forecasting" data-tr="Olasılıksal Tahmin">Probabilistic Forecasting</span></a>
+              <a href="/tutorials/ai/timeseries/production-forecasting-pipeline" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Capstone — Production Forecasting Pipeline" data-tr="Bitirme — Üretim Tahmin Pipeline'ı">Capstone — Production Forecasting Pipeline</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/gnn/" class="sb-track-label" data-en="Graph Neural Networks" data-tr="Çizge Sinir Ağları">Graph Neural Networks</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/gnn/why-graphs" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Why Graphs? Node, Edge, Graph Tasks" data-tr="Neden Graflar? Düğüm, Kenar, Graf Görevleri">Why Graphs? Node, Edge, Graph Tasks</span></a>
+              <a href="/tutorials/ai/gnn/classical-graph-algorithms" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Classical Graph Algorithms" data-tr="Klasik Graf Algoritmaları">Classical Graph Algorithms</span></a>
+              <a href="/tutorials/ai/gnn/spectral-diffusion-graphs" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Spectral & Diffusion on Graphs" data-tr="Graflarda Spektral & Difüzyon">Spectral & Diffusion on Graphs</span></a>
+              <a href="/tutorials/ai/gnn/graph-convolutional-networks" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="GCN — Graph Convolutional Networks" data-tr="GCN — Graf Konvolüsyon Ağları">GCN — Graph Convolutional Networks</span></a>
+              <a href="/tutorials/ai/gnn/graph-attention-networks" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="GAT — Graph Attention Networks" data-tr="GAT — Graf Dikkat Ağları">GAT — Graph Attention Networks</span></a>
+              <a href="/tutorials/ai/gnn/pytorch-geometric" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="PyTorch Geometric (PyG)" data-tr="PyTorch Geometric (PyG)">PyTorch Geometric (PyG)</span></a>
+              <a href="/tutorials/ai/gnn/graph-tasks-node-link" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Graph Tasks: Node / Link / Graph" data-tr="Graf Görevleri: Düğüm / Bağlantı / Graf">Graph Tasks: Node / Link / Graph</span></a>
+              <a href="/tutorials/ai/gnn/knowledge-graph-recommender" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Capstone — Knowledge Graph + Recommender" data-tr="Bitirme — Bilgi Grafı + Öneri Sistemi">Capstone — Knowledge Graph + Recommender</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/recsys/" class="sb-track-label" data-en="Recommender Systems" data-tr="Öneri Sistemleri">Recommender Systems</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/recsys/recommendation-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Recommendation Fundamentals" data-tr="Öneri Temelleri">Recommendation Fundamentals</span></a>
+              <a href="/tutorials/ai/recsys/matrix-factorization" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Matrix Factorization (SVD, ALS)" data-tr="Matris Çarpanlarına Ayırma (SVD, ALS)">Matrix Factorization (SVD, ALS)</span></a>
+              <a href="/tutorials/ai/recsys/implicit-feedback-models" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Implicit Feedback Models" data-tr="Örtük Geri Bildirim Modelleri">Implicit Feedback Models</span></a>
+              <a href="/tutorials/ai/recsys/two-tower-models" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Two-Tower Models" data-tr="Two-Tower Modelleri">Two-Tower Models</span></a>
+              <a href="/tutorials/ai/recsys/deep-recommenders" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Deep Recommenders (NCF, Wide & Deep)" data-tr="Derin Öneri (NCF, Wide & Deep)">Deep Recommenders (NCF, Wide & Deep)</span></a>
+              <a href="/tutorials/ai/recsys/sequential-recommenders" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Sequential Recommenders" data-tr="Sıralı Öneri Sistemleri">Sequential Recommenders</span></a>
+              <a href="/tutorials/ai/recsys/bandits-for-recommendation" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Bandits for Recommendation" data-tr="Öneri için Bandit'ler">Bandits for Recommendation</span></a>
+              <a href="/tutorials/ai/recsys/rag-powered-recommender" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Capstone — RAG-Powered Recommender" data-tr="Bitirme — RAG Destekli Öneri Sistemi">Capstone — RAG-Powered Recommender</span></a>
+            </div>
+          </div>
+          <div class="sb-track open current">
+            <a href="/tutorials/ai/rl/" class="sb-track-label" data-en="Reinforcement Learning" data-tr="Pekiştirmeli Öğrenme">Reinforcement Learning</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/rl/what-is-rl" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="What is RL?" data-tr="RL Nedir?">What is RL?</span></a>
+              <a href="/tutorials/ai/rl/markov-decision-processes" class="sb-lesson active"><span class="num">02</span><span class="lbl" data-en="Markov Decision Processes" data-tr="Markov Karar Süreçleri">Markov Decision Processes</span></a>
+              <a href="/tutorials/ai/rl/dynamic-programming" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Dynamic Programming" data-tr="Dinamik Programlama">Dynamic Programming</span></a>
+              <a href="/tutorials/ai/rl/monte-carlo-td-learning" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Monte Carlo & TD Learning" data-tr="Monte Carlo & TD Öğrenme">Monte Carlo & TD Learning</span></a>
+              <a href="/tutorials/ai/rl/q-learning" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Q-Learning" data-tr="Q-Öğrenme">Q-Learning</span></a>
+              <a href="/tutorials/ai/rl/deep-q-networks" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Deep Q-Networks (DQN)" data-tr="Derin Q-Ağları (DQN)">Deep Q-Networks (DQN)</span></a>
+              <a href="/tutorials/ai/rl/policy-gradient-reinforce" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Policy Gradient & REINFORCE" data-tr="Policy Gradient & REINFORCE">Policy Gradient & REINFORCE</span></a>
+              <a href="/tutorials/ai/rl/actor-critic" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Actor-Critic" data-tr="Actor-Critic">Actor-Critic</span></a>
+              <a href="/tutorials/ai/rl/ppo" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="PPO" data-tr="PPO">PPO</span></a>
+              <a href="/tutorials/ai/rl/rlhf-for-llms" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="RLHF for LLMs" data-tr="LLM'ler için RLHF">RLHF for LLMs</span></a>
+              <a href="/tutorials/ai/rl/multi-armed-bandits" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="Multi-Armed Bandits" data-tr="Çok Kollu Haydutlar">Multi-Armed Bandits</span></a>
+              <a href="/tutorials/ai/rl/modern-rl-capstone" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="Modern RL & Capstone" data-tr="Modern RL & Bitirme">Modern RL & Capstone</span></a>
+              <a href="/tutorials/ai/rl/continuous-control-multi-agent-rl" class="sb-lesson"><span class="num">13</span><span class="lbl" data-en="Continuous Control & Multi-Agent RL" data-tr="Continuous Control & Multi-Agent RL">Continuous Control & Multi-Agent RL</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/causal/" class="sb-track-label" data-en="Causal Inference for ML" data-tr="Nedensel Çıkarım">Causal Inference for ML</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/causal/why-causality-beyond-correlation" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Why Causality? Beyond Correlation" data-tr="Neden Nedensellik? Korelasyonun Ötesi">Why Causality? Beyond Correlation</span></a>
+              <a href="/tutorials/ai/causal/causal-graphs-dags" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Causal Graphs & DAGs" data-tr="Nedensel Grafler & DAG'lar">Causal Graphs & DAGs</span></a>
+              <a href="/tutorials/ai/causal/do-calculus-identifiability" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="do-Calculus & Identifiability" data-tr="do-Hesabı & Tanımlanabilirlik">do-Calculus & Identifiability</span></a>
+              <a href="/tutorials/ai/causal/treatment-effects-counterfactuals" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Treatment Effects & Counterfactuals" data-tr="Tedavi Etkileri & Karşı-Olgular">Treatment Effects & Counterfactuals</span></a>
+              <a href="/tutorials/ai/causal/causal-ml-methods" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Causal ML Methods" data-tr="Nedensel ML Yöntemleri">Causal ML Methods</span></a>
+              <a href="/tutorials/ai/causal/causal-inference-nlp-bias" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Capstone — Causal Inference for NLP Bias" data-tr="Bitirme — NLP Önyargısı için Nedensel Çıkarım">Capstone — Causal Inference for NLP Bias</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/bio/" class="sb-track-label" data-en="Bioinformatics & AlphaFold" data-tr="Biyoinformatik ML">Bioinformatics & AlphaFold</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/bio/bioinformatics-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Bioinformatics Fundamentals" data-tr="Biyoinformatik Temelleri">Bioinformatics Fundamentals</span></a>
+              <a href="/tutorials/ai/bio/protein-structure-prediction" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Protein Structure Prediction" data-tr="Protein Yapı Tahmini">Protein Structure Prediction</span></a>
+              <a href="/tutorials/ai/bio/alphafold" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="AlphaFold 2 & 3" data-tr="AlphaFold 2 & 3">AlphaFold 2 & 3</span></a>
+              <a href="/tutorials/ai/bio/protein-language-models" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Protein Language Models (ESM, ProtBERT)" data-tr="Protein Dil Modelleri (ESM, ProtBERT)">Protein Language Models (ESM, ProtBERT)</span></a>
+              <a href="/tutorials/ai/bio/genomics-variant-calling" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Genomics & Variant Calling" data-tr="Genomik & Varyant Çağırma">Genomics & Variant Calling</span></a>
+              <a href="/tutorials/ai/bio/drug-target-interaction-pipeline" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Capstone — Drug-Target Interaction Pipeline" data-tr="Bitirme — İlaç-Hedef Etkileşim Pipeline'ı">Capstone — Drug-Target Interaction Pipeline</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-label"><span class="sb-icon" aria-hidden="true">⚙️</span><span class="sb-label-text" data-en="Production" data-tr="Üretim">Production</span></div>
+      <div class="sb-section-items">
+          <div class="sb-track">
+            <a href="/tutorials/ai/mlops/" class="sb-track-label" data-en="MLOps & Deployment" data-tr="MLOps & Konuşlandırma">MLOps & Deployment</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/mlops/what-is-mlops" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="What is MLOps?" data-tr="MLOps Nedir?">What is MLOps?</span></a>
+              <a href="/tutorials/ai/mlops/reproducibility" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Reproducibility" data-tr="Tekrarlanabilirlik">Reproducibility</span></a>
+              <a href="/tutorials/ai/mlops/experiment-tracking" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Experiment Tracking" data-tr="Deney Takibi">Experiment Tracking</span></a>
+              <a href="/tutorials/ai/mlops/model-packaging" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Model Packaging" data-tr="Model Paketleme">Model Packaging</span></a>
+              <a href="/tutorials/ai/mlops/containerization-docker" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Containerization (Docker)" data-tr="Konteynerleştirme">Containerization (Docker)</span></a>
+              <a href="/tutorials/ai/mlops/model-serving" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Model Serving" data-tr="Model Serving">Model Serving</span></a>
+              <a href="/tutorials/ai/mlops/cloud-deployment" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Cloud Deployment" data-tr="Bulut Konuşlandırma">Cloud Deployment</span></a>
+              <a href="/tutorials/ai/mlops/ci-cd-for-ml" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="CI/CD for ML" data-tr="ML için CI/CD">CI/CD for ML</span></a>
+              <a href="/tutorials/ai/mlops/monitoring-drift" class="sb-lesson"><span class="num">09</span><span class="lbl" data-en="Monitoring & Drift" data-tr="İzleme & Drift">Monitoring & Drift</span></a>
+              <a href="/tutorials/ai/mlops/scaling-batch-stream-edge" class="sb-lesson"><span class="num">10</span><span class="lbl" data-en="Scaling: Batch, Stream, Edge" data-tr="Ölçekleme">Scaling: Batch, Stream, Edge</span></a>
+              <a href="/tutorials/ai/mlops/llm-ops" class="sb-lesson"><span class="num">11</span><span class="lbl" data-en="LLM Ops" data-tr="LLM Operasyonları">LLM Ops</span></a>
+              <a href="/tutorials/ai/mlops/end-to-end-capstone" class="sb-lesson"><span class="num">12</span><span class="lbl" data-en="End-to-End Capstone" data-tr="Uçtan Uca Bitirme">End-to-End Capstone</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/edge/" class="sb-track-label" data-en="Edge ML & On-Device" data-tr="Edge ML & Cihaz-Üstü">Edge ML & On-Device</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/edge/why-edge" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="Why Edge? Latency, Privacy, Cost" data-tr="Neden Edge? Gecikme, Gizlilik, Maliyet">Why Edge? Latency, Privacy, Cost</span></a>
+              <a href="/tutorials/ai/edge/quantization-deep-dive" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="Quantization Deep Dive" data-tr="Quantization Detaylı İnceleme">Quantization Deep Dive</span></a>
+              <a href="/tutorials/ai/edge/pruning-distillation" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Pruning & Distillation" data-tr="Budama & Damıtma">Pruning & Distillation</span></a>
+              <a href="/tutorials/ai/edge/gguf-llama-cpp" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="GGUF & llama.cpp" data-tr="GGUF & llama.cpp">GGUF & llama.cpp</span></a>
+              <a href="/tutorials/ai/edge/onnx-model-formats" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="ONNX & Model Formats" data-tr="ONNX & Model Formatları">ONNX & Model Formats</span></a>
+              <a href="/tutorials/ai/edge/mobile-deployment" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="Mobile Deployment (iOS, Android)" data-tr="Mobil Dağıtım (iOS, Android)">Mobile Deployment (iOS, Android)</span></a>
+              <a href="/tutorials/ai/edge/browser-ml" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Browser ML (WebGPU, ONNX-Web, Transformers.js)" data-tr="Tarayıcı ML (WebGPU, ONNX-Web, Transformers.js)">Browser ML (WebGPU, ONNX-Web, Transformers.js)</span></a>
+              <a href="/tutorials/ai/edge/capstone-voice-assistant" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Capstone — On-Device LLM Voice Assistant" data-tr="Bitirme — Cihaz-Üstü LLM Ses Asistanı">Capstone — On-Device LLM Voice Assistant</span></a>
+            </div>
+          </div>
+          <div class="sb-track">
+            <a href="/tutorials/ai/gpu/" class="sb-track-label" data-en="GPU & CUDA Programming" data-tr="GPU & CUDA Programlama">GPU & CUDA Programming</a>
+            <div class="sb-track-items">
+              <a href="/tutorials/ai/gpu/gpu-architecture-fundamentals" class="sb-lesson"><span class="num">01</span><span class="lbl" data-en="GPU Architecture Fundamentals" data-tr="GPU Mimarisi Temelleri">GPU Architecture Fundamentals</span></a>
+              <a href="/tutorials/ai/gpu/cuda-c-cpp-basics" class="sb-lesson"><span class="num">02</span><span class="lbl" data-en="CUDA C/C++ Basics" data-tr="CUDA C/C++ Temelleri">CUDA C/C++ Basics</span></a>
+              <a href="/tutorials/ai/gpu/memory-optimization" class="sb-lesson"><span class="num">03</span><span class="lbl" data-en="Memory Optimization" data-tr="Bellek Optimizasyonu">Memory Optimization</span></a>
+              <a href="/tutorials/ai/gpu/numba-cupy" class="sb-lesson"><span class="num">04</span><span class="lbl" data-en="Numba & CuPy" data-tr="Numba & CuPy">Numba & CuPy</span></a>
+              <a href="/tutorials/ai/gpu/triton-gpu-kernels" class="sb-lesson"><span class="num">05</span><span class="lbl" data-en="Triton — Python DSL for GPU Kernels" data-tr="Triton — GPU Kernel'ları için Python DSL">Triton — Python DSL for GPU Kernels</span></a>
+              <a href="/tutorials/ai/gpu/flashattention-attention-kernels" class="sb-lesson"><span class="num">06</span><span class="lbl" data-en="FlashAttention & Attention Kernels" data-tr="FlashAttention & Attention Kernel'ları">FlashAttention & Attention Kernels</span></a>
+              <a href="/tutorials/ai/gpu/multi-gpu-distributed-training" class="sb-lesson"><span class="num">07</span><span class="lbl" data-en="Multi-GPU & Distributed Training" data-tr="Çoklu-GPU & Dağıtık Eğitim">Multi-GPU & Distributed Training</span></a>
+              <a href="/tutorials/ai/gpu/capstone-inference-server" class="sb-lesson"><span class="num">08</span><span class="lbl" data-en="Capstone — Optimized Inference Server" data-tr="Bitirme — Optimize Çıkarım Sunucusu">Capstone — Optimized Inference Server</span></a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </aside>
+  <button class="sb-toggle-btn" id="sbToggle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button>
+  <main id="main" class="main">
+    <section class="topic-hero"><div class="hero-grid"></div><div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="topic-eyebrow" data-en="Lesson 02 · Reinforcement Learning" data-tr="Ders 02 · Pekiştirmeli Öğrenme">Lesson 02 · Reinforcement Learning</div>
+      <h1 class="topic-title" data-en="Markov Decision Processes" data-tr="Markov Karar Süreçleri">Markov Decision Processes</h1>
+      <p class="topic-desc" data-en="Reinforcement learning — Q-learning, policy gradient, RLHF." data-tr="Pekiştirmeli öğrenme — Q-öğrenme, politika gradyanı, RLHF.">Reinforcement learning — Q-learning, policy gradient, RLHF.</p>
+      <div class="topic-meta"><div class="meta-item"><span class="meta-label" data-en="Reading" data-tr="Okuma">Reading</span> 28 min</div><div class="meta-item"><span class="meta-label" data-en="Level" data-tr="Seviye">Level</span> <span data-en="Advanced" data-tr="İleri">Advanced</span></div><div class="meta-item"><span class="meta-label" data-en="Tools" data-tr="Araçlar">Tools</span> PyTorch · Gym</div></div>
+      <div class="topic-deco" aria-hidden="true">🎮</div>
+    </section>
+    <section class="lesson-content" id="lessonContent"></section>
+    <section class="lab-section" id="labSection">
+      <h2 class="lab-title" data-en="🧪 Interactive Python Lab" data-tr="🧪 Etkileşimli Python Laboratuvarı">🧪 Interactive Python Lab</h2>
+      <p class="lab-desc" data-en="Run Python code directly in your browser. Pandas &amp; NumPy pre-loaded." data-tr="Python kodunu doğrudan tarayıcınızda çalıştırın.">Run Python code directly in your browser. Pandas &amp; NumPy pre-loaded.</p>
+      <div class="lab-status" id="labStatus"><span class="lab-loading">⏳ Loading Python...</span></div>
+      <div class="lab-exercise"><div class="lab-exercise-header">🎯 Free Playground</div><div class="lab-editor-wrap"><textarea class="lab-editor" id="editor1" spellcheck="false">import numpy as np
+
+# Try Python directly in your browser. Edit and run.
+x = np.array([1, 2, 3, 4, 5])
+print("mean:", x.mean(), "  std:", x.std().round(3))
+print(df.describe())</textarea><button class="lab-run-btn" onclick="runCode('editor1','output1')">▶ Run</button></div><pre class="lab-output" id="output1">Click "Run" to execute...</pre></div>
+    </section>
+    <div class="lesson-nav"><a href="/tutorials/ai/rl/what-is-rl" class="ln-btn">← What is RL?</a><span class="ln-center" data-en="Lesson 2 of 12" data-tr="Ders 2 / 12">Lesson 2 of 12</span><a href="/tutorials/ai/rl/dynamic-programming" class="ln-btn ln-next">Next: Dynamic Programming →</a></div>
+    <footer class="tut-footer"><div>© 2026 Mikail Sarpkaya. All rights reserved.</div><div><a href="https://mikailsarpkaya.com">mikailsarpkaya.com</a></div></footer>
+  </main>
+</div>
+<button class="sb-mobile" id="sbMobile" aria-label="Toggle sidebar" aria-controls="sidebar">☰</button>
+<script src="core.js?v=3"></script>
+<script src="L2.js?v=1"></script>
+<script>
+function loadLesson(lang){if(typeof RL_L2==='undefined')return;var c=(lang==='tr'&&RL_L2.tr)?RL_L2.tr:RL_L2.en;var el=document.getElementById('lessonContent');if(el&&c){el.innerHTML=c;el.querySelectorAll('script').forEach(function(o){var s=document.createElement('script');s.textContent=o.textContent;o.parentNode.replaceChild(s,o);});if(typeof renderMathInElement==='function')renderMathInElement(el,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});}setTimeout(function(){window.dispatchEvent(new Event("resize"));},600);}
+var il='en';try{il=localStorage.getItem('tut-lang')||'en';}catch(e){}loadLesson(il);document.addEventListener('langchange',function(e){loadLesson(e.detail.lang);});
+</script>
+<script>
+var pyR=false,pyI=null;async function initPyodide(){try{pyI=await loadPyodide({indexURL:"https://cdn.jsdelivr.net/pyodide/v0.28.1/full/"});await pyI.loadPackage(["numpy","pandas"]);pyR=true;var s=document.getElementById('labStatus');var l='en';try{l=localStorage.getItem('tut-lang')||'en'}catch(e){}if(s)s.innerHTML='<span class="lab-ready">'+(l==='tr'?'✅ Python hazır':'✅ Python ready')+'</span>';document.querySelectorAll('.lab-run-btn').forEach(function(b){b.disabled=false;});}catch(e){var s=document.getElementById('labStatus');if(s)s.innerHTML='<span class="lab-error">❌ '+e.message+'</span>';}}
+async function runCode(eId,oId){if(!pyR){document.getElementById(oId).textContent='⏳ Loading...';return;}var code=document.getElementById(eId).value;var o=document.getElementById(oId);o.textContent='⏳ Running...';o.className='lab-output';try{pyI.runPython('import io,sys;sys.stdout=io.StringIO()');await pyI.runPythonAsync(code);var out=pyI.runPython('sys.stdout.getvalue()');o.textContent=out||'(no output)';o.classList.add('lab-success');}catch(e){o.textContent='❌ Error:\n'+e.message;o.classList.add('lab-error-output');}}
+var lO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){initPyodide();lO.disconnect();}});},{rootMargin:'200px'});var lE=document.getElementById('labSection');if(lE)lO.observe(lE);
+var cmE={};document.querySelectorAll('.lab-editor').forEach(function(ta){var cm=CodeMirror.fromTextArea(ta,{mode:'python',theme:'material-darker',lineNumbers:true,indentUnit:4,tabSize:4,indentWithTabs:false,lineWrapping:true,viewportMargin:Infinity,extraKeys:{'Tab':function(cm){cm.replaceSelection('    ','end')},'Shift-Enter':function(cm){runCode(ta.id,ta.id.replace('editor','output'));}}});cmE[ta.id]=cm;});
+var _rC=runCode;runCode=async function(e,o){if(cmE[e])cmE[e].save();return _rC(e,o);};
+</script>
+<script src="runner.js?v=1" defer></script>
+<script src="nav.js?v=1" defer></script>
+</body>
+</html>

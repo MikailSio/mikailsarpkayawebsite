@@ -1,0 +1,84 @@
+{
+  "python": {
+    "category": "programming",
+    "subfield": "python",
+    "name_en": "Python Core",
+    "name_tr": "Python Temelleri",
+    "lessons": [
+      { "n": 1, "en": "Setup & Fundamentals", "tr": "Kurulum & Temeller", "slug": "setup-fundamentals" },
+      { "n": 2, "en": "Control Flow & Functions", "tr": "Kontrol Akışı & Fonksiyonlar", "slug": "control-flow-functions" },
+      { "n": 3, "en": "Data Structures", "tr": "Veri Yapıları", "slug": "data-structures" },
+      { "n": 4, "en": "OOP & Classes", "tr": "OOP & Sınıflar", "slug": "oop-classes" },
+      { "n": 5, "en": "File I/O & Error Handling", "tr": "Dosya I/O & Hata Yönetimi", "slug": "file-io-error-handling" },
+      { "n": 6, "en": "Advanced Python", "tr": "İleri Python", "slug": "advanced-python" },
+      { "n": 7, "en": "Modern Python 3.10+ Features", "tr": "", "slug": "modern-python-features" }
+    ],
+    "notes": "Cross-listed: Programming + AI foundations (NumPy/pandas/ML tracks build on this). DATA BUG: lesson 7 (7.html) is a genuine distinct lesson — <title>, meta description and canonical URL .../python/7 all say 'Modern Python 3.10+ Features' (dataclasses, match/case, pathlib, type hints) — BUT its visible <h1> hero and eyebrow were copy-pasted from lesson 6 and never updated (still read 'Advanced Python' / 'Lesson 06', og:description still 'Lesson 6 of Python'); its data-tr is also the stale 'İleri Python', so tr left empty. COUNT MISMATCH: index.html and its meta declare only '6 Lessons' / 'Lessons 6' but 7 lesson files exist — lesson 7 is unregistered in the track index. Numeric order is otherwise correct (1-7)."
+  },
+  "c": {
+    "category": "programming",
+    "subfield": "c",
+    "name_en": "C Language",
+    "name_tr": "C Dili",
+    "lessons": [
+      { "n": 1, "en": "Hello World & Compilation", "tr": "Merhaba Dünya & Derleme", "slug": "hello-world-compilation" },
+      { "n": 2, "en": "Variables & Data Types", "tr": "Değişkenler & Veri Tipleri", "slug": "variables-data-types" },
+      { "n": 3, "en": "Pointers & Memory", "tr": "İşaretçiler & Bellek", "slug": "pointers-memory" },
+      { "n": 4, "en": "Functions & Recursion", "tr": "Fonksiyonlar & Özyineleme", "slug": "functions-recursion" },
+      { "n": 5, "en": "Arrays, Strings & Structs", "tr": "Diziler, Dizgiler & Yapılar", "slug": "arrays-strings-structs" },
+      { "n": 6, "en": "File I/O & Preprocessor", "tr": "Dosya G/Ç & Önişlemci", "slug": "file-io-preprocessor" }
+    ],
+    "notes": "6 lessons, clean 1-6 numeric order, no gaps or duplicates. index.html count matches. Solid intro-to-C progression. No content gaps noted."
+  },
+  "cpp": {
+    "category": "programming",
+    "subfield": "cpp",
+    "name_en": "C++",
+    "name_tr": "C++",
+    "lessons": [
+      { "n": 1, "en": "C++ Fundamentals & Modern Setup", "tr": "C++ Temelleri & Modern Kurulum", "slug": "cpp-fundamentals-setup" },
+      { "n": 2, "en": "Object-Oriented Programming", "tr": "Nesne Yönelimli Programlama", "slug": "object-oriented-programming" },
+      { "n": 3, "en": "Inheritance & Polymorphism", "tr": "Kalıtım & Çok Biçimlilik", "slug": "inheritance-polymorphism" },
+      { "n": 4, "en": "Templates & Generic Programming", "tr": "Şablonlar & Genel Programlama", "slug": "templates-generic-programming" },
+      { "n": 5, "en": "Smart Pointers & Memory Management", "tr": "Akıllı İşaretçiler & Bellek Yönetimi", "slug": "smart-pointers-memory" },
+      { "n": 6, "en": "Modern C++ Features (C++11/14/17/20)", "tr": "Modern C++ Özellikleri (C++11/14/17/20)", "slug": "modern-cpp-features" },
+      { "n": 7, "en": "File I/O & String Processing", "tr": "Dosya G/Ç & Dizi İşleme", "slug": "file-io-string-processing" },
+      { "n": 8, "en": "Practical Project — Mini Library System", "tr": "Pratik Proje — Mini Kütüphane Sistemi", "slug": "mini-library-system" }
+    ],
+    "notes": "8 lessons, clean 1-8 numeric order, no gaps or duplicates. 'C++' transliterated to 'cpp' in slugs (++ is punctuation; bare 'c' would collide with the C track). Lesson 6 version numbers (C++11/14/17/20) dropped from slug per no-numbers rule. Lesson 8 uses an em-dash (&mdash;) in title vs &amp; elsewhere — harmless. Capstone project structure is good."
+  },
+  "js": {
+    "category": "programming",
+    "subfield": "js",
+    "name_en": "JavaScript",
+    "name_tr": "JavaScript",
+    "lessons": [
+      { "n": 1, "en": "JavaScript Fundamentals", "tr": "JavaScript Temelleri", "slug": "javascript-fundamentals" },
+      { "n": 2, "en": "Operators, Conditionals & Loops", "tr": "Operatörler, Koşullar ve Döngüler", "slug": "operators-conditionals-loops" },
+      { "n": 3, "en": "Functions & Scope", "tr": "Fonksiyonlar ve Kapsam", "slug": "functions-scope" },
+      { "n": 4, "en": "Arrays & Objects", "tr": "Diziler ve Nesneler", "slug": "arrays-objects" },
+      { "n": 5, "en": "DOM Manipulation & Events", "tr": "DOM Manipülasyonu ve Olaylar", "slug": "dom-manipulation-events" },
+      { "n": 6, "en": "Asynchronous JavaScript", "tr": "Asenkron JavaScript", "slug": "asynchronous-javascript" },
+      { "n": 7, "en": "ES6+ Modern Features", "tr": "ES6+ Modern Özellikler", "slug": "es6-modern-features" },
+      { "n": 8, "en": "Error Handling, Storage & Best Practices", "tr": "Hata Yönetimi, Depolama ve En İyi Uygulamalar", "slug": "error-handling-storage" }
+    ],
+    "notes": "Cross-listed: Programming + Web (foundational for the CSS/Web tracks). 8 lessons, clean 1-8 numeric order, no gaps or duplicates. Lesson 7 'ES6+' kept as 'es6' per shared example. Lesson 8 slug truncated to 'error-handling-storage' (dropped 'Best Practices') to honor the ~4-word cap. No content gaps noted."
+  },
+  "latex": {
+    "category": "tools",
+    "subfield": "latex",
+    "name_en": "LaTeX",
+    "name_tr": "LaTeX",
+    "lessons": [
+      { "n": 1, "en": "What is LaTeX & Setup", "tr": "LaTeX Nedir ve Kurulum", "slug": "latex-setup" },
+      { "n": 2, "en": "Text Formatting & Structure", "tr": "Metin Biçimlendirme ve Yapı", "slug": "text-formatting-structure" },
+      { "n": 3, "en": "Mathematics in LaTeX", "tr": "LaTeX'te Matematik", "slug": "mathematics-latex" },
+      { "n": 4, "en": "Tables & Figures", "tr": "Tablolar ve Şekiller", "slug": "tables-figures" },
+      { "n": 5, "en": "Document Structure & Layout", "tr": "Doküman Yapısı ve Düzen", "slug": "document-structure-layout" },
+      { "n": 6, "en": "Beamer Presentations", "tr": "Beamer Sunumları", "slug": "beamer-presentations" },
+      { "n": 7, "en": "Bibliography & Citations", "tr": "Kaynakça ve Atıflar", "slug": "bibliography-citations" },
+      { "n": 8, "en": "Advanced LaTeX", "tr": "İleri Düzey LaTeX", "slug": "advanced-latex" }
+    ],
+    "notes": "category 'tools' (not programming) per instructions. 8 lessons, clean 1-8 numeric order, no gaps or duplicates. Lesson 1 'What is LaTeX & Setup' slugged 'latex-setup' (dropped interrogative 'What is'). Lesson 3 'Mathematics in LaTeX' → 'mathematics-latex' (dropped stop-word 'in'). No content gaps noted."
+  }
+}

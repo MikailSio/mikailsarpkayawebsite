@@ -1,0 +1,61 @@
+{
+  "cv": {
+    "category": "ai",
+    "subfield": "cv",
+    "name_en": "Computer Vision",
+    "name_tr": "Bilgisayarla Görme",
+    "lessons": [
+      { "n": 1, "en": "Image Fundamentals", "tr": "Görüntü Temelleri", "slug": "image-fundamentals" },
+      { "n": 2, "en": "Preprocessing & Augmentation", "tr": "Önişleme & Augmentation", "slug": "preprocessing-augmentation" },
+      { "n": 3, "en": "Classical CV", "tr": "Klasik CV", "slug": "classical-cv" },
+      { "n": 4, "en": "Feature Detection", "tr": "Öznitelik Tespiti", "slug": "feature-detection" },
+      { "n": 5, "en": "CNN Fundamentals", "tr": "CNN Temelleri", "slug": "cnn-fundamentals" },
+      { "n": 6, "en": "Object Detection", "tr": "Nesne Tespiti", "slug": "object-detection" },
+      { "n": 7, "en": "Semantic Segmentation", "tr": "Semantik Segmentasyon", "slug": "semantic-segmentation" },
+      { "n": 8, "en": "Vision Transformers", "tr": "Vision Transformer'lar", "slug": "vision-transformers" },
+      { "n": 9, "en": "Image Generation", "tr": "Görüntü Üretimi", "slug": "image-generation" },
+      { "n": 10, "en": "CLIP & Multimodal", "tr": "CLIP & Multimodal", "slug": "clip-multimodal" },
+      { "n": 11, "en": "Production CV", "tr": "Üretim CV", "slug": "production-cv" },
+      { "n": 12, "en": "NLP+CV Multimodal Project", "tr": "NLP+CV Multimodal Projesi", "slug": "nlp-cv-multimodal-project" }
+    ],
+    "notes": "12 lessons, numbering contiguous 1-12, no ordering issues. Lesson 10 (CLIP & Multimodal) and 12 (NLP+CV Multimodal Project) overlap heavily with the dedicated 'multimodal' track (esp. multimodal/2 CLIP Deep Dive) — cross-listing candidates. Lesson 3 'Classical CV' and 1 'Image Fundamentals' have related scope but distinct. No duplicate or draft lessons detected."
+  },
+  "audio": {
+    "category": "ai",
+    "subfield": "audio",
+    "name_en": "Audio",
+    "name_tr": "Ses",
+    "lessons": [
+      { "n": 1, "en": "Audio Fundamentals", "tr": "Ses Temelleri", "slug": "audio-fundamentals" },
+      { "n": 2, "en": "FFT & Spectrograms", "tr": "FFT & Spektrogramlar", "slug": "fft-spectrograms" },
+      { "n": 3, "en": "Mel-Spectrograms & MFCC", "tr": "Mel-Spektrogram & MFCC", "slug": "mel-spectrograms-mfcc" },
+      { "n": 4, "en": "Whisper ASR", "tr": "Whisper Konuşma Tanıma", "slug": "whisper-asr" },
+      { "n": 5, "en": "Text to Speech (TTS)", "tr": "Metinden Sese (TTS)", "slug": "text-to-speech" },
+      { "n": 6, "en": "Audio Embeddings", "tr": "Ses Gömmeleri", "slug": "audio-embeddings" },
+      { "n": 7, "en": "Audio Classification & Voicebot", "tr": "Ses Sınıflandırma & Voicebot", "slug": "audio-classification-voicebot" },
+      { "n": 8, "en": "Production & Real-Time", "tr": "Üretim & Gerçek Zamanlı", "slug": "production-real-time" },
+      { "n": 9, "en": "Music Information Retrieval", "tr": "Müzik Bilgi Erişimi", "slug": "music-information-retrieval" },
+      { "n": 10, "en": "Speaker Diarization", "tr": "Konuşmacı Ayrıştırma", "slug": "speaker-diarization" },
+      { "n": 11, "en": "Audio LLMs & Voice Agents", "tr": "Ses LLM'leri & Voice Agent'lar", "slug": "audio-llms-voice-agents" },
+      { "n": 12, "en": "Sound Event Detection", "tr": "Ses Olayı Tespiti", "slug": "sound-event-detection" }
+    ],
+    "notes": "12 lessons, numbering contiguous 1-12, no ordering issues. Lesson 5 slug dropped redundant '(TTS)' parenthetical; lesson 12 'Sound Event Detection' conceptually adjacent to lesson 7 'Audio Classification' but distinct. Lessons 4 (Whisper ASR) and 11 (Audio LLMs & Voice Agents) are cross-listing candidates with multimodal/4 (Audio-Language Models). No duplicate or draft lessons detected."
+  },
+  "multimodal": {
+    "category": "ai",
+    "subfield": "multimodal",
+    "name_en": "Multimodal AI",
+    "name_tr": "Multimodal",
+    "lessons": [
+      { "n": 1, "en": "What is Multimodal? Vision + Language + Audio", "tr": "Multimodal Nedir? Görü + Dil + Ses", "slug": "what-is-multimodal" },
+      { "n": 2, "en": "CLIP Deep Dive", "tr": "CLIP Detaylı İnceleme", "slug": "clip-deep-dive" },
+      { "n": 3, "en": "Vision-Language Models (LLaVA, BLIP-2)", "tr": "Görü-Dil Modelleri (LLaVA, BLIP-2)", "slug": "vision-language-models" },
+      { "n": 4, "en": "Audio-Language Models (Whisper-LLM, AudioGPT)", "tr": "Ses-Dil Modelleri (Whisper-LLM, AudioGPT)", "slug": "audio-language-models" },
+      { "n": 5, "en": "Video Understanding", "tr": "Video Anlama", "slug": "video-understanding" },
+      { "n": 6, "en": "Document AI & OCR-Free Understanding", "tr": "Doküman AI & OCR-Bağımsız Anlama", "slug": "document-ai-ocr-free" },
+      { "n": 7, "en": "Multimodal Generation (DALL-E, Sora, Suno)", "tr": "Multimodal Üretim (DALL-E, Sora, Suno)", "slug": "multimodal-generation" },
+      { "n": 8, "en": "Capstone — Multimodal NLP Assistant", "tr": "Bitirme — Multimodal NLP Asistanı", "slug": "multimodal-nlp-assistant" }
+    ],
+    "notes": "8 lessons, numbering contiguous 1-8, no ordering issues. NO index.html in this track folder (only cv and audio have one) — content gap to flag for the track landing page. Slugs strip parenthetical model lists (LLaVA/BLIP-2, etc.) and the 'Capstone —' lead segment per rules. Lesson 2 'CLIP Deep Dive' overlaps cv/10 'CLIP & Multimodal'; lesson 4 overlaps audio/4 & audio/11; lesson 3 overlaps cv content — strong cross-listing cluster with cv and audio tracks."
+  }
+}

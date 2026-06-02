@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Linear Algebra — Mikail Sarpkaya Tutorials</title>
+<meta name="description" content="Master linear algebra for ML/AI — vectors, matrices, eigenvalues, SVD, tensors. Interactive Plotly graphs and KaTeX formulas. By Mikail Sarpkaya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tutorials/core.css?v=20260320b">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.38/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
+<style>
+.plotly-graph{width:100%;min-height:400px;margin:1.2rem 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border,rgba(255,255,255,.08))}
+.katex-block{text-align:center;padding:1rem 0;font-size:1.15rem;overflow-x:auto}
+.katex-inline .katex{font-size:1em}
+.formula-box{background:var(--surface);border:1px solid var(--border,rgba(255,255,255,.08));border-radius:var(--radius);padding:1.2rem 1.5rem;margin:1rem 0;text-align:center}
+.formula-box .katex{font-size:1.2rem}
+.formula-label{font-size:.75rem;color:var(--text-dim);margin-bottom:.5rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-name"><span>L</span><span>I</span><span>N</span><span>A</span><span>L</span><span>G</span></div>
+  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
+  <div class="ld-sub">Loading…</div>
+</div>
+
+<nav id="nav">
+  <a href="/tutorials/" class="nav-logo">MS</a>
+  <div class="nav-controls">
+    <div class="color-picker-wrap">
+      <button class="nav-btn" id="colorTog" aria-label="Accent color">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 14 3.5 3.5 0 0 1 0 7 10 10 0 1 0 0-20z"/></svg>
+      </button>
+      <div class="color-dropdown" id="colorDrop">
+        <div class="cd-label">Accent Color</div>
+        <div class="color-presets" id="presets"></div>
+        <div class="color-custom"><label>Custom</label><input type="color" id="customColor" value="#c8a96e"></div>
+      </div>
+    </div>
+    <button class="nav-btn" id="themeTog" aria-label="Toggle theme">
+      <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="nav-btn" id="langTog" aria-label="Language"><span class="lang-label" id="langLabel">EN</span></button>
+  </div>
+</nav>
+
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a href="/tutorials/" class="sb-back" data-en="← All Tutorials" data-tr="← Tüm Eğitimler">← All Tutorials</a>
+    <div class="sb-head">
+      <div class="sb-title" data-en="TUTORIALS" data-tr="EĞİTİMLER">TUTORIALS</div>
+      <div class="sb-sub" data-en="Software & AI Guides" data-tr="Yazılım ve Yapay Zeka">Software &amp; AI Guides</div>
+    </div>
+    <div class="sb-group open">
+      <div class="sb-group-label" data-en="Mathematics" data-tr="Matematik">Mathematics</div>
+      <div class="sb-group-items">
+        <a href="/tutorials/linalg/" class="sb-link active">Linear Algebra <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/calculus/" class="sb-link">Calculus <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/probability/" class="sb-link">Probability &amp; Statistics <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/optimization/" class="sb-link">Optimization <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/numerical/" class="sb-link">Numerical Methods <span class="sb-badge sb-soon">Soon</span></a>
+      </div>
+    </div>
+    <div class="sb-group open">
+      <div class="sb-group-label" data-en="AI & Data Science" data-tr="Yapay Zeka ve Veri Bilimi">AI &amp; Data Science</div>
+      <div class="sb-group-items">
+        <a href="/tutorials/numpy/" class="sb-link">NumPy <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/pandas/" class="sb-link">Pandas <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/ml-theory/" class="sb-link">ML Theory <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/deep/" class="sb-link">Deep Learning <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/rnn/" class="sb-link">RNN / LSTM <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/transformers/" class="sb-link">Transformers <span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+    <div class="sb-group">
+      <div class="sb-group-label" data-en="Programming" data-tr="Programlama">Programming</div>
+      <div class="sb-group-items">
+        <a href="/tutorials/python/" class="sb-link">Python Core <span class="sb-badge sb-live">Live</span></a>
+        <a href="/tutorials/c/" class="sb-link">C Language <span class="sb-badge sb-live">Live</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <button class="sb-toggle-btn" id="sbToggle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button>
+
+  <main class="main">
+    <section class="topic-hero">
+      <div class="hero-grid"></div>
+      <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="topic-eyebrow" id="eyebrow">Tutorial · Mathematics</div>
+      <h1 class="topic-title">LINEAR <span class="accent">ALGEBRA</span></h1>
+      <p class="topic-desc" id="heroDesc">Vectors, matrices, eigenvalues, SVD, and tensors — the <strong>mathematical backbone</strong> of machine learning and deep learning.</p>
+      <div class="topic-meta">
+        <div class="meta-item"><span class="meta-label" data-key="metaLessons">Lessons</span> 6</div>
+        <div class="meta-item"><span class="meta-label" data-key="metaLevel">Level</span> University</div>
+        <div class="meta-item"><span class="meta-label" data-key="metaTools">Tools</span> NumPy · Plotly</div>
+      </div>
+      <div class="topic-deco" aria-hidden="true">LA</div>
+    </section>
+
+    <section class="lessons">
+      <div class="lesson-block open" id="l1">
+        <div class="lesson-header">
+          <span class="lesson-num">01</span>
+          <div class="lesson-info">
+            <div class="lesson-title">Vectors &amp; Vector Spaces</div>
+            <div class="lesson-sub">notation, addition, dot product, norms, cosine similarity, orthogonality, span, basis</div>
+            <div class="lesson-badges"><span class="l-badge lb-live l-badge-text">Available</span><span class="l-time">22 min read</span></div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <div class="lesson-block" id="l2">
+        <div class="lesson-header">
+          <span class="lesson-num">02</span>
+          <div class="lesson-info">
+            <div class="lesson-title">Matrices &amp; Transformations</div>
+            <div class="lesson-sub">multiplication, transpose, inverse, determinant, rank, linear transformations</div>
+            <div class="lesson-badges"><span class="l-badge lb-live l-badge-text">Available</span><span class="l-time">22 min read</span></div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <div class="lesson-block" id="l3">
+        <div class="lesson-header">
+          <span class="lesson-num">03</span>
+          <div class="lesson-info">
+            <div class="lesson-title">Systems of Linear Equations</div>
+            <div class="lesson-sub">Ax=b, Gaussian elimination, LU decomposition, least squares, normal equation</div>
+            <div class="lesson-badges"><span class="l-badge lb-live l-badge-text">Available</span><span class="l-time">20 min read</span></div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <div class="lesson-block" id="l4">
+        <div class="lesson-header">
+          <span class="lesson-num">04</span>
+          <div class="lesson-info">
+            <div class="lesson-title">Eigenvalues &amp; Eigenvectors</div>
+            <div class="lesson-sub">characteristic equation, diagonalization, spectral theorem, PCA connection</div>
+            <div class="lesson-badges"><span class="l-badge lb-live l-badge-text">Available</span><span class="l-time">20 min read</span></div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <div class="lesson-block" id="l5">
+        <div class="lesson-header">
+          <span class="lesson-num">05</span>
+          <div class="lesson-info">
+            <div class="lesson-title">SVD &amp; Matrix Decomposition</div>
+            <div class="lesson-sub">singular value decomposition, low-rank approximation, PCA, image compression</div>
+            <div class="lesson-badges"><span class="l-badge lb-live l-badge-text">Available</span><span class="l-time">20 min read</span></div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+
+      <div class="lesson-block" id="l6">
+        <div class="lesson-header">
+          <span class="lesson-num">06</span>
+          <div class="lesson-info">
+            <div class="lesson-title">Tensors &amp; Multidimensional Arrays</div>
+            <div class="lesson-sub">tensor operations, broadcasting, reshaping, einsum, deep learning tensors</div>
+            <div class="lesson-badges"><span class="l-badge lb-live l-badge-text">Available</span><span class="l-time">18 min read</span></div>
+          </div>
+          <span class="lesson-arrow">▸</span>
+        </div>
+        <div class="lesson-body"></div>
+      </div>
+    </section>
+
+    <div class="lesson-nav">
+      <a href="/tutorials/" class="ln-btn" id="prevLabel">&larr; All Tutorials</a>
+      <span class="ln-center">Linear Algebra &middot; 6 lessons</span>
+      <a href="/tutorials/calculus/" class="ln-btn ln-next" id="nextLabel">Next: Calculus &rarr;</a>
+    </div>
+
+    <footer class="tut-footer">
+      <div>&copy; 2026 Mikail Sarpkaya. All rights reserved.</div>
+      <div><a href="https://mikailsarpkaya.com">mikailsarpkaya.com</a></div>
+    </footer>
+  </main>
+</div>
+
+<button class="sb-mobile" id="sbMobile">☰</button>
+<script src="/tutorials/core.js"></script>
+<script src="/linalg-L1.js"></script>
+<script src="/linalg-lessons.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "huggingface": {
+    "category": "ai",
+    "subfield": "huggingface",
+    "name_en": "HuggingFace Transformers",
+    "name_tr": "HuggingFace Transformers",
+    "lessons": [
+      { "n": 1, "en": "Ecosystem & Pipelines", "tr": "Ekosistem & Pipeline", "slug": "ecosystem-pipelines" },
+      { "n": 2, "en": "Tokenizers", "tr": "Tokenizer'lar", "slug": "tokenizers" },
+      { "n": 3, "en": "BERT Sentiment Analysis", "tr": "BERT Duygu Analizi", "slug": "bert-sentiment-analysis" },
+      { "n": 4, "en": "NER Token Classification", "tr": "NER Token Sınıflandırma", "slug": "ner-token-classification" },
+      { "n": 5, "en": "Generation & Summarization", "tr": "Üretim & Özetleme", "slug": "generation-summarization" },
+      { "n": 6, "en": "Deployment & LoRA", "tr": "Konuşlandırma & LoRA", "slug": "deployment-lora" },
+      { "n": 7, "en": "Trainer Deep Dive", "tr": "Trainer Detaylı İnceleme", "slug": "trainer-deep-dive" },
+      { "n": 8, "en": "PEFT — Parameter-Efficient Fine-Tuning", "tr": "PEFT — Parametre-Verimli İnce Ayar", "slug": "peft-fine-tuning" },
+      { "n": 9, "en": "vLLM & TGI — Production Serving", "tr": "vLLM & TGI — Üretim Sunumu", "slug": "vllm-tgi-production-serving" },
+      { "n": 10, "en": "lm-evaluation-harness", "tr": "lm-evaluation-harness", "slug": "lm-evaluation-harness" },
+      { "n": 11, "en": "HuggingFace Agents (smolagents)", "tr": "HuggingFace Agent'ları (smolagents)", "slug": "huggingface-agents-smolagents" },
+      { "n": 12, "en": "Fine-Tuning Recipes", "tr": "İnce Ayar Tarifleri", "slug": "fine-tuning-recipes" }
+    ],
+    "notes": "12 lessons (1-12), numeric order is coherent (ecosystem -> tokenizers -> task models -> training/PEFT -> serving/eval -> recipes). Lessons 1-6 use track label 'HuggingFace' in <title> while 7-12 use 'HuggingFace Transformers'; index.html title is just 'HuggingFace'. Lesson 11 (smolagents) is a cross-listing candidate with the 'agents' track. No duplicates or drafts detected."
+  },
+  "langchain": {
+    "category": "ai",
+    "subfield": "langchain",
+    "name_en": "LangChain & RAG",
+    "name_tr": "LangChain & RAG",
+    "lessons": [
+      { "n": 1, "en": "What is LangChain?", "tr": "LangChain Nedir?", "slug": "what-is-langchain" },
+      { "n": 2, "en": "LLMs & Chat Models", "tr": "LLM'ler & Sohbet Modelleri", "slug": "llms-chat-models" },
+      { "n": 3, "en": "Prompt Engineering", "tr": "Prompt Mühendisliği", "slug": "prompt-engineering" },
+      { "n": 4, "en": "Chains with LCEL", "tr": "LCEL ile Zincirler", "slug": "chains-with-lcel" },
+      { "n": 5, "en": "Embeddings & Vector Stores", "tr": "Gömmeler & Vektör DB", "slug": "embeddings-vector-stores" },
+      { "n": 6, "en": "RAG: Retrieval-Augmented Generation", "tr": "RAG: Geri Erişimli Üretim", "slug": "rag-retrieval-augmented-generation" },
+      { "n": 7, "en": "Document Loaders & Splitters", "tr": "Belge Yükleyiciler & Bölücüler", "slug": "document-loaders-splitters" },
+      { "n": 8, "en": "Memory: Stateful Conversations", "tr": "Hafıza", "slug": "memory-stateful-conversations" },
+      { "n": 9, "en": "Agents & Tool Use", "tr": "Ajanlar & Araçlar", "slug": "agents-tool-use" },
+      { "n": 10, "en": "Advanced RAG", "tr": "İleri RAG", "slug": "advanced-rag" },
+      { "n": 11, "en": "Production: LangServe & Observability", "tr": "Üretim & Gözlem", "slug": "production-langserve-observability" },
+      { "n": 12, "en": "Capstone: Customer Support RAG Bot", "tr": "Bitirme: RAG Botu", "slug": "customer-support-rag-bot" }
+    ],
+    "notes": "12 lessons (1-12), coherent progression ending in a capstone. Track label 'LangChain & RAG' consistent across all lessons + index. EN titles taken from <title> (fuller); sidebar hero data-en abbreviates some (e.g. L6 'RAG: Retrieval-Augmented Gen.', L11 'Production: LangServe & Obs.', L12 'Capstone: RAG Bot'). Heavy topical overlap with vectordb (embeddings/RAG) and agents (L9 Agents & Tool Use) — cross-listing candidates. No duplicates or drafts."
+  },
+  "agents": {
+    "category": "ai",
+    "subfield": "agents",
+    "name_en": "LLM Agents",
+    "name_tr": "LLM Agents",
+    "lessons": [
+      { "n": 1, "en": "Why Agents? Chain → Autonomy", "tr": "Neden Agent? Chain → Otonom", "slug": "why-agents-chain-autonomy" },
+      { "n": 2, "en": "The Agent Loop — ReAct from Scratch", "tr": "Agent Döngüsü — Sıfırdan ReAct", "slug": "agent-loop-react" },
+      { "n": 3, "en": "Tool Calling & Function Calling", "tr": "Tool Calling & Function Calling", "slug": "tool-calling-function-calling" },
+      { "n": 4, "en": "Tool Design Patterns", "tr": "Tool Tasarım Desenleri", "slug": "tool-design-patterns" },
+      { "n": 5, "en": "LangChain & LangGraph Agents", "tr": "LangChain & LangGraph Agent'ları", "slug": "langchain-langgraph-agents" },
+      { "n": 6, "en": "Memory Architectures", "tr": "Bellek Mimarileri", "slug": "memory-architectures" },
+      { "n": 7, "en": "Planning & Task Decomposition", "tr": "Planlama & Görev Ayrıştırma", "slug": "planning-task-decomposition" },
+      { "n": 8, "en": "Multi-Agent Systems", "tr": "Multi-Agent Sistemler", "slug": "multi-agent-systems" },
+      { "n": 9, "en": "Browser & Code Agents", "tr": "Browser & Kod Agent'ları", "slug": "browser-code-agents" },
+      { "n": 10, "en": "Agent Evaluation", "tr": "Agent Değerlendirme", "slug": "agent-evaluation" },
+      { "n": 11, "en": "Production Agents", "tr": "Üretim Agent'ları", "slug": "production-agents" },
+      { "n": 12, "en": "Multi-Agent NLP Research Assistant", "tr": "Multi-Agent NLP Araştırma Asistanı", "slug": "multi-agent-research-assistant" }
+    ],
+    "notes": "12 lesson files present (1-12) with coherent order, but the sidebar metadata is STALE: sb-current-sub says '8 Lessons' on every page (should be 12). No index.html for this track (huggingface & langchain have one; agents & vectordb do not). Lesson 5 (LangChain & LangGraph Agents) cross-lists with the langchain track; lesson 12 (NLP Research Assistant capstone) cross-lists with NLP. No duplicate/draft lessons detected."
+  },
+  "vectordb": {
+    "category": "ai",
+    "subfield": "vectordb",
+    "name_en": "Vector Databases",
+    "name_tr": "Vektör Veritabanları",
+    "lessons": [
+      { "n": 1, "en": "Why Vector DBs? Embeddings → Search", "tr": "Neden Vector DB? Gömme → Arama", "slug": "why-vector-dbs" },
+      { "n": 2, "en": "FAISS Deep Dive", "tr": "FAISS Detaylı İnceleme", "slug": "faiss-deep-dive" },
+      { "n": 3, "en": "HNSW & ANN Algorithms", "tr": "HNSW & ANN Algoritmaları", "slug": "hnsw-ann-algorithms" },
+      { "n": 4, "en": "The Vector DB Zoo", "tr": "Vector DB Hayvanat Bahçesi", "slug": "vector-db-zoo" },
+      { "n": 5, "en": "Hybrid Search & Reranking", "tr": "Hibrit Arama & Reranking", "slug": "hybrid-search-reranking" },
+      { "n": 6, "en": "Indexing & Update Strategies", "tr": "İndeksleme & Güncelleme Stratejileri", "slug": "indexing-update-strategies" },
+      { "n": 7, "en": "Production Vector DB Ops", "tr": "Üretim Vector DB Operasyonları", "slug": "production-vector-db-ops" },
+      { "n": 8, "en": "Capstone — Production RAG Pipeline", "tr": "Bitirme — Üretim RAG Pipeline'ı", "slug": "capstone-production-rag-pipeline" }
+    ],
+    "notes": "8 lessons (1-8), coherent order ending in a capstone; sidebar sb-current-sub correctly says '8 Lessons'. No index.html for this track. Strong overlap with langchain L5/L6 (embeddings, RAG) — cross-listing candidate. No duplicate or draft lessons detected."
+  }
+}
